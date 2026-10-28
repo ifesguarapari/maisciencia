@@ -1,0 +1,40 @@
+[project]
+name = "maisciencia-api"
+version = "0.1.0"
+description = "Development tools for Maisciencia APIs"
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "maisciencia-common",
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.dependencies]
+maisciencia-common = {path = "common", develop = true}
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+force-exclude = '(^|/)(\.venv|venv|build|dist)/'
+
+[tool.pylint.main]
+py-version = "3.11"
+persistent = false
+ignore-paths = ['(^|/)(\.venv|venv|build|dist)/']
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+
+[dependency-groups]
+dev = [
+    "black (>=26.10.1,<27.0.0)",
+    "commitizen (>=4.19.3,<5.0.0)",
+    "pre-commit (>=4.7.0,<5.0.0)",
+    "gunicorn (>=26.2.0,<27.0.0)",
+    "pylint (>=4.1.3,<5.0.0)"
+]

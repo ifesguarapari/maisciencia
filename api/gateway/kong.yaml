@@ -1,0 +1,81 @@
+_format_version: '3.0'
+_transform: true
+
+services:
+  - name: administrations
+    url: http://administrations:5000
+    routes:
+      - name: administrations
+        paths: ['~^/api/administrations(?=/|$)']
+        strip_path: true
+        path_handling: v0
+
+  - name: activities
+    url: http://activities:5000
+    routes:
+      - name: activities
+        paths: ['~^/api/activities(?=/|$)']
+        strip_path: true
+        path_handling: v0
+
+  - name: events
+    url: http://events:5000
+    routes:
+      - name: events
+        paths: ['~^/api/events(?=/|$)']
+        strip_path: true
+        path_handling: v0
+
+  - name: content
+    url: http://content:5000
+    routes:
+      - name: content
+        paths: ['~^/api/content(?=/|$)']
+        strip_path: true
+        path_handling: v0
+
+  - name: authentication
+    url: http://authentication:5000/health
+    routes:
+      - name: authentication-health
+        paths: ['~^/api/authentication/health(?=/|$)']
+        strip_path: true
+        path_handling: v0
+
+  - name: messaging
+    url: http://messaging:5000
+    routes:
+      - name: messaging
+        paths: ['~^/api/messaging(?=/|$)']
+        strip_path: true
+        path_handling: v0
+
+  - name: integrations
+    url: http://integrations:5000
+    routes:
+      - name: integrations
+        paths: ['~^/api/integrations(?=/|$)']
+        strip_path: true
+        path_handling: v0
+
+  - name: web
+    url: http://web:5000
+    routes:
+      - name: web
+        paths: ['~^/api/web(?=/|$)']
+        strip_path: true
+        path_handling: v0
+
+plugins:
+  - name: cors
+    config:
+      origins:
+        - http://localhost:5173
+        - http://127.0.0.1:5173
+        - http://localhost:4173
+        - http://127.0.0.1:4173
+      methods: [GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS]
+      headers: [Authorization, Content-Type, X-CSRF-Token]
+      credentials: true
+      max_age: 3600
+      preflight_continue: false

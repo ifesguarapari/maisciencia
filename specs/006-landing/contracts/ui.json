@@ -1,0 +1,148 @@
+{
+  "feature": "006-landing",
+  "locale": "pt-BR",
+  "routes": {
+    "/": {
+      "view": "landing",
+      "apiRequests": false
+    },
+    "/login": {
+      "view": "placeholder",
+      "authentication": false,
+      "returnTo": "/"
+    },
+    "/feira": {
+      "view": "placeholder",
+      "title": "Feira",
+      "description": "A página da feira está em construção. Em breve, você encontrará aqui mais informações.",
+      "apiRequests": false,
+      "returnTo": "/"
+    }
+  },
+  "fairLinks": {
+    "label": "Feira",
+    "href": "/feira",
+    "accent": "#d94b91",
+    "locations": ["desktop-navigation", "mobile-navigation", "hero-actions"],
+    "heroPosition": "after-learn-more"
+  },
+  "requiredSections": [
+    "inicio",
+    "sobre",
+    "impacto",
+    "metodologia",
+    "oficinas",
+    "escolas",
+    "equipe",
+    "apoio"
+  ],
+  "additionalSections": [
+    "closing"
+  ],
+  "institutions": {
+    "tabs": {
+      "schools": 21,
+      "campuses": 9
+    },
+    "filters": [
+      "name",
+      "city"
+    ],
+    "details": "supplied information only",
+    "emptyState": true
+  },
+  "team": {
+    "coordinators": 3,
+    "collaborators": 6,
+    "networkPanels": 2,
+    "fictionalPortraits": false
+  },
+  "indicators": {
+    "schools": 21,
+    "campuses": 9,
+    "cities": 11,
+    "students": 300,
+    "investmentBrl": 3000000
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/ifesmaisciencia/"
+  },
+  "support": {
+    "preserveProjectBrands": false,
+    "image": "/images/apoio.svg",
+    "alt": "Apoio: CNPq, FNDCT, Ministério da Educação, Ministério da Ciência, Tecnologia e Inovação e Governo do Brasil",
+    "preserveAspectRatio": true
+  },
+  "motion": {
+    "respectsReducedMotion": true,
+    "counterRunsOnce": true,
+    "imageScaling": false
+  },
+  "startup": {
+    "background": "#101114",
+    "statusLocale": "pt-BR",
+    "hideUnstyledContent": true,
+    "hiddenContentIsInteractive": false,
+    "releaseWhenReady": true,
+    "minimumArtificialDelay": false,
+    "boundedWait": true,
+    "waitForLazyImages": false,
+    "failureRecovery": "readable and accessible",
+    "noScriptContent": true,
+    "respectsReducedMotion": true
+  },
+  "pwa": {
+    "apiCache": false,
+    "updatesRequireAction": true,
+    "iconSource": "/favicon.svg",
+    "icons": [
+      { "src": "/icons/apple-touch-icon.png", "size": 180, "purpose": "apple-touch-icon", "opaque": true },
+      { "src": "/icons/pwa-192x192.png", "size": 192, "purpose": "any" },
+      { "src": "/icons/pwa-512x512.png", "size": 512, "purpose": "any" },
+      { "src": "/icons/pwa-maskable-512x512.png", "size": 512, "purpose": "maskable", "opaque": true, "safeZoneRadiusRatio": 0.4 }
+    ]
+  },
+  "workshops": {
+    "heading": "Oficinas práticas. Muitas possibilidades de descoberta.",
+    "fixedPeriods": false,
+    "environmentLabel": "Ambiente virtual",
+    "items": [
+      {
+        "id": "games",
+        "title": "Ler um Livro com Jogos",
+        "environment": "Letreirama",
+        "url": "https://www.letreirama.com.br/"
+      },
+      {
+        "id": "rockets",
+        "title": "Lançar Foguetes com Precisão",
+        "category": "FÍSICA + MATEMÁTICA",
+        "environment": "Foguetrõnica",
+        "url": "https://www.foguetronica.com.br/"
+      },
+      {
+        "id": "cities",
+        "title": "Melhorar a Cidade com Eletrônica",
+        "environment": "Tecidade",
+        "url": "https://www.tecidade.com.br/"
+      }
+    ]
+  },
+  "approvedProjects": {
+    "heading": "PROJETOS APROVADOS",
+    "items": [
+      {
+        "name": "Ler um Livro como uma Experiência de Aprendizagem sobre Pensamento Computacional por meio de Programação de Jogos Digitais",
+        "process": "441618/2024-3",
+        "valueBrl": 3000000,
+        "valueLabel": "R$ 3 milhões"
+      },
+      {
+        "name": "FEMAIS-ES: Feira Estadual Mais Ciência na Escola do Espírito Santo",
+        "process": "401593/2026-6",
+        "valueBrl": 210000,
+        "valueLabel": "R$ 210 mil"
+      }
+    ]
+  }
+}

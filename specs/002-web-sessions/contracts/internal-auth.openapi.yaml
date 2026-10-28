@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: Internal authentication API
+  version: 1.0.0
+  description: Private authentication contract for trusted backend callers. These paths are not published by Kong.
+servers:
+  - url: http://authentication:5000
+security:
+  - internalToken: []
+paths:
+  /internal/login:
+    post:
+      operationId: internalLogin
+      description: The request body must not exceed 16384 bytes (16 KiB).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: './openapi.yaml#/components/schemas/Credentials'}
+      responses:
+        '200':
+          description: New session view including a private bearer token. Cache-Control is no-store.
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/PrivateSession'}
+        '413': {$ref: './openapi.yaml#/components/responses/PayloadTooLarge'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /internal/session:
+    post:
+      operationId: internalSession
+      description: Validate current identity and expiration, updating idle activity conditionally. No request-body fields are read.
+      security:
+        - internalToken: []
+          sessionBearer: []
+      responses:
+        '200':
+          description: Public-safe session fields without the bearer token. Cache-Control is no-store.
+          content:
+            application/json:
+              schema: {$ref: './openapi.yaml#/components/schemas/Session'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /internal/logout:
+    post:
+      operationId: internalLogout
+      description: Revoke the session by stable database identifier after bearer and CSRF validation. No request-body fields are read.
+      security:
+        - internalToken: []
+          sessionBearer: []
+      parameters:
+        - $ref: './openapi.yaml#/components/parameters/Csrf'
+      responses:
+        '200':
+          description: Revocation confirmed. Cache-Control is no-store.
+          content:
+            application/json:
+              schema: {$ref: './openapi.yaml#/components/schemas/Success'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /internal/refresh:
+    post:
+      operationId: internalRefresh
+      description: Conditionally replace token_hash while preserving the session identifier, CSRF token and absolute expiration. No request-body fields are read.
+      security:
+        - internalToken: []
+          sessionBearer: []
+      parameters:
+        - $ref: './openapi.yaml#/components/parameters/Csrf'
+      responses:
+        '200':
+          description: New private token and existing public session view. Cache-Control is no-store.
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/PrivateSession'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+components:
+  securitySchemes:
+    internalToken: {type: apiKey, in: header, name: X-Internal-Token}
+    sessionBearer: {type: http, scheme: bearer, bearerFormat: opaque}
+  schemas:
+    PrivateSession:
+      type: object
+      additionalProperties: false
+      required: [user, csrf_token, expires_at, session_token]
+      properties:
+        user: {$ref: './openapi.yaml#/components/schemas/User'}
+        csrf_token: {type: string, pattern: '^[A-Za-z0-9_-]{32,256}$'}
+        expires_at: {type: string, format: date-time}
+        session_token: {type: string, pattern: '^[A-Za-z0-9_-]{32,256}$'}
+    InternalError:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+          enum: [invalid_credentials, authentication_required, internal_authentication_required, invalid_csrf_token, authentication_unavailable]
+  responses:
+    Unauthorized:
+      description: Invalid service secret, credentials or session. Cache-Control is no-store.
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/InternalError'}
+    Forbidden:
+      description: Invalid session-bound CSRF proof. Cache-Control is no-store.
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/InternalError'}
+    Unavailable:
+      description: Missing internal configuration or sanitized database failure. Cache-Control is no-store.
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/InternalError'}

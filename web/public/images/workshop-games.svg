@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Stories become digital games</title>
+  <desc id="description">An open book, a game controller and luminous pixels on a dark scientific grid.</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#A53579" stop-opacity=".5"/><stop offset="1" stop-color="#16181F" stop-opacity="0"/></radialGradient>
+    <linearGradient id="cover" x1="148" y1="193" x2="325" y2="108" gradientUnits="userSpaceOnUse"><stop stop-color="#9C3D88"/><stop offset="1" stop-color="#ED81B8"/></linearGradient>
+    <linearGradient id="page" x1="178" y1="110" x2="286" y2="209" gradientUnits="userSpaceOnUse"><stop stop-color="#FCF0E0"/><stop offset="1" stop-color="#C5A3B9"/></linearGradient>
+    <linearGradient id="pad" x1="280" y1="167" x2="352" y2="234" gradientUnits="userSpaceOnUse"><stop stop-color="#4D445E"/><stop offset="1" stop-color="#272832"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#B47EAD" stroke-opacity=".055"/></pattern>
+  </defs>
+  <path fill="#181A21" d="M0 0h480v300H0z"/>
+  <ellipse cx="247" cy="148" rx="231" ry="174" fill="url(#glow)"/>
+  <path fill="url(#grid)" d="M0 0h480v300H0z"/>
+  <g stroke="#D96BA7" stroke-opacity=".17"><ellipse cx="244" cy="197" rx="162" ry="54"/><ellipse cx="244" cy="197" rx="125" ry="40"/><path d="M49 198h45m293 0h43M244 238v30"/></g>
+  <path d="m118 173 96-61 139 51-96 66z" fill="#0C0D14" fill-opacity=".45"/>
+  <path d="m126 159 92-56 138 47v15l-97 64-133-51z" fill="#713767"/>
+  <path d="m126 159 92-56 138 47-97 65z" fill="url(#cover)"/>
+  <path d="m137 154 80-51 40 18 88 26-88 56-120-41z" fill="#A789A1"/>
+  <path d="M257 195c-34-27-73-32-117-34v-63c52 3 83 14 117 38z" fill="url(#page)"/>
+  <path d="M257 195c26-31 53-45 86-51V84c-41 7-66 21-86 52z" fill="#F0D9D7"/>
+  <path d="M257 136v59" stroke="#9C658B" stroke-width="2"/>
+  <g stroke="#B78C9F" stroke-width="3" stroke-linecap="round"><path d="m154 118 52 17m-52-2 71 23m-71-8 54 18m-54-3 65 21"/><path d="m274 139 47-31m-47 45 47-31m-47 45 33-22"/></g>
+  <path d="m224 119 8-26 9 2-10 27z" fill="#D94B91"/>
+  <g transform="rotate(-12 310 205)">
+    <path d="M272 180c-12 0-21 9-24 24l-4 21c-3 16 12 24 22 14l12-12h60l12 12c11 10 25 2 22-14l-4-21c-3-15-12-24-24-24z" fill="#16171F"/>
+    <path d="M272 175c-12 0-21 9-24 24l-4 21c-3 16 12 24 22 14l12-12h60l12 12c11 10 25 2 22-14l-4-21c-3-15-12-24-24-24z" fill="url(#pad)" stroke="#A58BB4" stroke-opacity=".65"/>
+    <path d="M266 190h9v8h8v9h-8v8h-9v-8h-8v-9h8z" fill="#D8CDE3"/>
+    <circle cx="344" cy="193" r="4" fill="#D94B91"/><circle cx="353" cy="202" r="4" fill="#E6B84D"/><circle cx="335" cy="202" r="4" fill="#20C4B5"/><circle cx="344" cy="211" r="4" fill="#9B83E6"/>
+    <rect x="300" y="198" width="13" height="4" rx="2" fill="#B8A6C7"/>
+  </g>
+  <g fill="#D96BA7"><path opacity=".6" d="M91 95h9v9h-9zM104 108h9v9h-9zM378 116h8v8h-8zM367 127h8v8h-8z"/><path opacity=".35" d="M105 84h9v9h-9zM391 103h8v8h-8zM92 121h7v7h-7z"/><path d="M292 49h3v11h-3zm-4 4h11v3h-11z"/></g>
+  <g stroke="#F1D2E5" stroke-opacity=".5"><path d="M166 59v12m-6-6h12M384 221v10m-5-5h10"/><circle cx="109" cy="213" r="3"/><circle cx="354" cy="60" r="2"/></g>
+</svg>

@@ -1,0 +1,18 @@
+{
+  "feature": "007-web-delivery",
+  "workflow": ".github/workflows/web.yml",
+  "branch": "main",
+  "events": ["pull_request", "push", "workflow_dispatch"],
+  "nodeVersion": "24",
+  "packageDirectory": "web",
+  "artifactDirectory": "web/dist",
+  "environment": "github-pages",
+  "baseVariable": "WEB_BASE_PATH",
+  "localBase": "/",
+  "projectBase": "/maisciencia/",
+  "routeEntries": ["index.html", "login/index.html", "feira/index.html"],
+  "checks": ["npm ci", "npm run lint", "npm test", "npm run build", "npm run check:build", "python3 scripts/validate-specs.py"],
+  "publishesPullRequests": false,
+  "deploysApi": false,
+  "requiresVpsSecrets": false
+}
