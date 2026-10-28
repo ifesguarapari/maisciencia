@@ -1,0 +1,18 @@
+{
+  "name": "spec-kit",
+  "cli_package": "specify-cli",
+  "version": "1.2.4",
+  "distribution": "PyPI",
+  "upstream": "https://github.com/github/spec-kit",
+  "integration": "generic",
+  "commands_directory": ".specify/commands",
+  "script_type": "sh",
+  "markdown_locale": "pt-BR",
+  "persistence_model": "living-spec",
+  "generated_on": "2026-10-27",
+  "local_customizations": [
+    "Localized command instructions and templates",
+    "Project constitution and architecture baselines",
+    "Requirements traceability and evidence validation"
+  ]
+}

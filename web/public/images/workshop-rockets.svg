@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Discovering the physics of flight</title>
+  <desc id="description">A model rocket rises along an illustrated trajectory above a launch platform and scientific orbit lines.</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#916124" stop-opacity=".4"/><stop offset="1" stop-color="#181A21" stop-opacity="0"/></radialGradient>
+    <linearGradient id="body" x1="221" y1="95" x2="265" y2="156" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF3D4"/><stop offset=".52" stop-color="#DBCCAA"/><stop offset="1" stop-color="#84796B"/></linearGradient>
+    <linearGradient id="flame" x1="191" y1="172" x2="157" y2="232" gradientUnits="userSpaceOnUse"><stop stop-color="#FFF4B4"/><stop offset=".45" stop-color="#E6B84D"/><stop offset="1" stop-color="#D27531" stop-opacity="0"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#C8A36A" stroke-opacity=".055"/></pattern>
+  </defs>
+  <path fill="#181A21" d="M0 0h480v300H0z"/>
+  <ellipse cx="249" cy="143" rx="228" ry="172" fill="url(#glow)"/>
+  <path fill="url(#grid)" d="M0 0h480v300H0z"/>
+  <g stroke="#E6B84D" stroke-opacity=".16"><ellipse cx="240" cy="224" rx="163" ry="38"/><ellipse cx="240" cy="224" rx="125" ry="26"/><path d="M240 262v22M39 224h38m327 0h36"/></g>
+  <path d="M112 215C109 92 252 30 382 126" stroke="#E6B84D" stroke-opacity=".7" stroke-dasharray="4 7"/>
+  <path d="m370 116 12 10-16-1" stroke="#E6B84D" stroke-width="1.5"/>
+  <path d="m129 226 69-36 92 27-70 38z" fill="#343233" stroke="#75674A"/>
+  <path d="m143 220 55-27 77 24-55 28z" fill="#24262B" stroke="#A88A4C" stroke-opacity=".6"/>
+  <ellipse cx="203" cy="222" rx="22" ry="7" fill="#E6B84D" fill-opacity=".18"/>
+  <g transform="rotate(34 234 126)">
+    <path d="M219 173c-7 20-8 38-3 62 19-22 27-42 28-61z" fill="url(#flame)"/>
+    <path d="M227 173c-3 14-2 24 0 33 7-12 10-23 9-33z" fill="#FFF5C2"/>
+    <path d="m216 125-18 27-2 28 25-14zm31 0 18 27 2 28-25-14z" fill="#D29C40" stroke="#F7CD76" stroke-opacity=".7"/>
+    <path d="M214 93c0-20 8-36 18-47 10 11 18 27 18 47v64c-8 12-28 12-36 0z" fill="url(#body)"/>
+    <path d="M214 93c0-20 8-36 18-47 10 11 18 27 18 47z" fill="#E6B84D"/>
+    <path d="M232 47c7 20 10 35 10 46v66" stroke="#FFF4C9" stroke-opacity=".4"/>
+    <circle cx="232" cy="118" r="12" fill="#8E7750"/><circle cx="232" cy="118" r="8.5" fill="#263D49" stroke="#FBDE98"/><path d="m228 114 5-2" stroke="#9DD0CA" stroke-width="2" stroke-linecap="round"/>
+    <path d="M214 148h36v10c-8 12-28 12-36 0z" fill="#D29C40"/>
+    <path d="M220 164h24v7h-24z" fill="#5D5752" stroke="#BBA47D"/>
+  </g>
+  <g stroke="#D1B470" stroke-opacity=".5"><path d="M98 76v14m-7-7h14M344 201v12m-6-6h12M375 66v10m-5-5h10"/><circle cx="144" cy="123" r="3"/><circle cx="319" cy="52" r="3"/><circle cx="385" cy="181" r="2"/></g>
+  <path d="M321 174h48m-42-10v10m12-16v16m12-8v8m12-20v20" stroke="#9C8250" stroke-opacity=".6"/>
+  <path d="M106 258h39m7 0h7" stroke="#CFAD61" stroke-opacity=".4"/>
+</svg>

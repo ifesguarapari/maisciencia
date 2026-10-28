@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "feature": "003-web-pwa",
+  "snapshot_date": "2026-10-27",
+  "status": "observed-baseline",
+  "backend_contract": "../../002-web-sessions/contracts/openapi.yaml",
+  "api_base_environment_key": "VITE_API_URL",
+  "default_api_base": "/api",
+  "backend_prefix": "/web",
+  "request": {
+    "credentials": "include",
+    "cache": "no-store",
+    "timeout_ms": 7000,
+    "csrf_header": "X-CSRF-Token"
+  },
+  "service_identities": ["web", "administrations", "activities", "events", "content", "authentication", "messaging", "integrations"],
+  "session_storage": {
+    "private_identifier": "backend-issued-http-only-cookie",
+    "public_identity": "page-memory",
+    "csrf_proof": "page-memory",
+    "local_storage_used": false
+  },
+  "pwa": {
+    "registration": "prompt",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "manifest_language": "en",
+    "api_navigation_fallback": false,
+    "api_runtime_cache": false,
+    "business_offline_sync": false
+  },
+  "verification": {
+    "source_inspection": "completed",
+    "browser_installation": "pending",
+    "browser_offline": "pending",
+    "browser_update": "pending"
+  }
+}

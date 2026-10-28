@@ -1,0 +1,8 @@
+# Local Spec Kit tools and caches
+.specify/.venv/
+.specify/cache/
+.specify/runtime/
+
+# Python process tooling
+__pycache__/
+*.py[cod]

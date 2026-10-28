@@ -1,0 +1,209 @@
+openapi: 3.1.0
+info:
+  title: Browser backend API
+  version: 1.0.0
+  description: Public session and process-health contract observed in the browser backend.
+servers:
+  - url: http://localhost:8000/api/web
+paths:
+  /login:
+    post:
+      operationId: login
+      description: An allowed Origin and JSON content type are required. The request body must not exceed 16384 bytes (16 KiB). The opaque session identifier is returned only in an HttpOnly cookie.
+      parameters:
+        - $ref: '#/components/parameters/Origin'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Credentials'
+      responses:
+        '200':
+          description: Authenticated public identity with a scoped session cookie.
+          headers:
+            Set-Cookie:
+              description: Host-only maisciencia_session cookie; HttpOnly, Path=/api/web, SameSite=Lax and configurable Secure (enabled by default).
+              schema: {type: string}
+            Cache-Control:
+              schema: {type: string, const: no-store}
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Session'}
+        '400': {$ref: '#/components/responses/InvalidRequest'}
+        '413': {$ref: '#/components/responses/PayloadTooLarge'}
+        '401': {$ref: '#/components/responses/Unauthenticated'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '415': {$ref: '#/components/responses/InvalidContentType'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /session:
+    get:
+      operationId: getSession
+      description: Resolve an active session and update idle activity without changing absolute expiration.
+      security: [{sessionCookie: []}]
+      responses:
+        '200':
+          description: Public identity and CSRF proof; Cache-Control is no-store.
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Session'}
+        '401': {$ref: '#/components/responses/Unauthenticated'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /logout:
+    post:
+      operationId: logout
+      description: Require JSON content type and revoke the session before clearing its cookie. No request-body fields are read. A dependency failure retains the cookie and does not confirm logout.
+      security: [{sessionCookie: []}]
+      parameters:
+        - $ref: '#/components/parameters/Origin'
+        - $ref: '#/components/parameters/Csrf'
+      responses:
+        '200':
+          description: Revocation confirmed and scoped cookie removed; Cache-Control is no-store.
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Success'}
+        '401': {$ref: '#/components/responses/Unauthenticated'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '415': {$ref: '#/components/responses/InvalidContentType'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /session/refresh:
+    post:
+      operationId: refreshSession
+      description: Require JSON content type and rotate the opaque cookie identifier while preserving the absolute expiration and CSRF proof. No request-body fields are read.
+      security: [{sessionCookie: []}]
+      parameters:
+        - $ref: '#/components/parameters/Origin'
+        - $ref: '#/components/parameters/Csrf'
+      responses:
+        '200':
+          description: Public session view and a rotated scoped HttpOnly cookie; Cache-Control is no-store.
+          headers:
+            Set-Cookie:
+              schema: {type: string}
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Session'}
+        '401': {$ref: '#/components/responses/Unauthenticated'}
+        '403': {$ref: '#/components/responses/Forbidden'}
+        '415': {$ref: '#/components/responses/InvalidContentType'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /status:
+    get:
+      operationId: getServiceStatus
+      responses:
+        '200':
+          description: Independent process availability for the eight fixed identities; does not verify database availability. Cache-Control is no-store.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [services]
+                properties:
+                  services:
+                    type: array
+                    minItems: 8
+                    maxItems: 8
+                    items:
+                      type: object
+                      required: [slug, status]
+                      properties:
+                        slug:
+                          type: string
+                          enum: [web, administrations, activities, events, content, authentication, messaging, integrations]
+                        status: {type: string, enum: [ok, unavailable]}
+  /health:
+    get:
+      operationId: getHealth
+      responses:
+        '200':
+          description: Browser backend process health independent of authentication and MongoDB. Cache-Control is no-store.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status, service]
+                properties:
+                  status: {type: string, const: ok}
+                  service: {type: string, const: web}
+components:
+  securitySchemes:
+    sessionCookie: {type: apiKey, in: cookie, name: maisciencia_session}
+  parameters:
+    Origin:
+      in: header
+      name: Origin
+      required: true
+      description: Exact origin from the operator-configured allowlist.
+      schema: {type: string}
+    Csrf:
+      in: header
+      name: X-CSRF-Token
+      required: true
+      schema: {type: string, pattern: '^[A-Za-z0-9_-]{32,256}$'}
+  schemas:
+    Credentials:
+      type: object
+      required: [email, password]
+      properties:
+        email: {type: string, minLength: 1, maxLength: 254}
+        password: {type: string, minLength: 1, maxLength: 1024, writeOnly: true}
+    User:
+      type: object
+      additionalProperties: false
+      required: [id, email, name]
+      properties:
+        id: {type: string, minLength: 1}
+        email: {type: string, minLength: 1}
+        name: {type: string, minLength: 1}
+    Session:
+      type: object
+      additionalProperties: false
+      required: [user, csrf_token, expires_at]
+      properties:
+        user: {$ref: '#/components/schemas/User'}
+        csrf_token: {type: string, pattern: '^[A-Za-z0-9_-]{32,256}$'}
+        expires_at: {type: string, format: date-time}
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+          enum: [invalid_request, invalid_credentials, authentication_required, invalid_origin, invalid_csrf_token, invalid_content_type, authentication_unavailable]
+    Success:
+      type: object
+      required: [status]
+      properties:
+        status: {type: string, const: ok}
+  responses:
+    PayloadTooLarge:
+      description: Request body exceeds 16384 bytes (16 KiB). Flask returns its HTML error page; Cache-Control is no-store.
+      content:
+        text/html:
+          schema: {type: string}
+    InvalidRequest:
+      description: Invalid login JSON object or field values. Cache-Control is no-store.
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Unauthenticated:
+      description: Invalid credentials or missing, expired, revoked or rejected session. The browser cookie is cleared. Cache-Control is no-store.
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Forbidden:
+      description: Missing or untrusted Origin, or missing or invalid CSRF proof. Cache-Control is no-store.
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    InvalidContentType:
+      description: State changes require application/json. Cache-Control is no-store.
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Unavailable:
+      description: Sanitized authentication dependency failure. Cache-Control is no-store.
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}

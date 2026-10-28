@@ -1,0 +1,30 @@
+minimum_pre_commit_version: '4.4.0'
+default_install_hook_types: [pre-commit, commit-msg]
+
+repos:
+  - repo: local
+    hooks:
+      - id: black
+        name: Black (APIs)
+        entry: api/.venv/bin/python -m black --config api/pyproject.toml --workers 1
+        language: unsupported
+        files: ^api/
+        types: [python]
+        stages: [pre-commit]
+        require_serial: true
+
+      - id: pylint
+        name: Pylint (APIs)
+        entry: api/.venv/bin/python -m pylint --rcfile=api/pyproject.toml
+        language: unsupported
+        files: ^api/
+        types: [python]
+        stages: [pre-commit]
+        require_serial: true
+
+      - id: commitizen
+        name: Commitizen (Conventional Commits)
+        entry: api/.venv/bin/python -m commitizen --config api/pyproject.toml check --allow-abort --commit-msg-file
+        language: unsupported
+        stages: [commit-msg]
+        always_run: true

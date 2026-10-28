@@ -1,0 +1,38 @@
+{
+  "name": "maisciencia-web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "check:build": "node scripts/check-build.mjs",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "node --test --test-isolation=none tests/*.test.js",
+    "commit": "cz"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "commitizen": "^4.3.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.4",
+    "vite-plugin-pwa": "^2.0.0"
+  },
+  "dependencies": {
+    "alpinejs": "^3.17.5"
+  }
+}

@@ -1,0 +1,186 @@
+name: maisciencia
+
+x-api: &api
+  restart: unless-stopped
+  init: true
+  depends_on:
+    mongo:
+      condition: service_healthy
+  networks: [backend]
+
+x-api-environment: &api-environment
+  MONGO_URI: mongodb://mongo:27017/
+  MONGO_DB: ${MONGO_DB:-maisciencia}
+  MONGO_AUTH_SOURCE: ${MONGO_DB:-maisciencia}
+  MONGO_MAX_POOL_SIZE: '10'
+  # Gateway CORS headers are applied only by Kong.
+  CORS_ORIGINS: ''
+
+services:
+  mongo:
+    image: mongo:8.0.34-noble
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_DB:-maisciencia}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME:?Set MONGO_ROOT_USERNAME in api/.env}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:?Set MONGO_ROOT_PASSWORD in api/.env}
+      ADMINISTRATIONS_DB_PASSWORD: ${ADMINISTRATIONS_DB_PASSWORD:?Set ADMINISTRATIONS_DB_PASSWORD in api/.env}
+      ACTIVITIES_DB_PASSWORD: ${ACTIVITIES_DB_PASSWORD:?Set ACTIVITIES_DB_PASSWORD in api/.env}
+      EVENTS_DB_PASSWORD: ${EVENTS_DB_PASSWORD:?Set EVENTS_DB_PASSWORD in api/.env}
+      CONTENT_DB_PASSWORD: ${CONTENT_DB_PASSWORD:?Set CONTENT_DB_PASSWORD in api/.env}
+      AUTHENTICATION_DB_PASSWORD: ${AUTHENTICATION_DB_PASSWORD:?Set AUTHENTICATION_DB_PASSWORD in api/.env}
+      MESSAGING_DB_PASSWORD: ${MESSAGING_DB_PASSWORD:?Set MESSAGING_DB_PASSWORD in api/.env}
+      INTEGRATIONS_DB_PASSWORD: ${INTEGRATIONS_DB_PASSWORD:?Set INTEGRATIONS_DB_PASSWORD in api/.env}
+    ports:
+      - '127.0.0.1:27017:27017'
+    volumes:
+      - mongo-data:/data/db
+      - ./mongo/init-services.js:/docker-entrypoint-initdb.d/10-services.js:ro
+    networks: [backend]
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          mongosh --quiet --host mongo
+          --username "$${MONGO_INITDB_ROOT_USERNAME}"
+          --password "$${MONGO_INITDB_ROOT_PASSWORD}"
+          --authenticationDatabase admin
+          --eval 'const application = db.getSiblingDB(process.env.MONGO_INITDB_DATABASE); quit(db.adminCommand({ping: 1}).ok === 1 && application.getUser("integrations") ? 0 : 1)'
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 10
+
+  administrations:
+    <<: *api
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: administrations
+    environment:
+      <<: *api-environment
+      MONGO_USERNAME: administrations
+      MONGO_PASSWORD: ${ADMINISTRATIONS_DB_PASSWORD:?Set ADMINISTRATIONS_DB_PASSWORD in api/.env}
+
+  activities:
+    <<: *api
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: activities
+    environment:
+      <<: *api-environment
+      MONGO_USERNAME: activities
+      MONGO_PASSWORD: ${ACTIVITIES_DB_PASSWORD:?Set ACTIVITIES_DB_PASSWORD in api/.env}
+
+  events:
+    <<: *api
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: events
+    environment:
+      <<: *api-environment
+      MONGO_USERNAME: events
+      MONGO_PASSWORD: ${EVENTS_DB_PASSWORD:?Set EVENTS_DB_PASSWORD in api/.env}
+
+  content:
+    <<: *api
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: content
+    environment:
+      <<: *api-environment
+      MONGO_USERNAME: content
+      MONGO_PASSWORD: ${CONTENT_DB_PASSWORD:?Set CONTENT_DB_PASSWORD in api/.env}
+
+  authentication:
+    <<: *api
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: authentication
+    environment:
+      <<: *api-environment
+      MONGO_USERNAME: authentication
+      MONGO_PASSWORD: ${AUTHENTICATION_DB_PASSWORD:?Set AUTHENTICATION_DB_PASSWORD in api/.env}
+      AUTH_INTERNAL_TOKEN: ${AUTH_INTERNAL_TOKEN:?Set AUTH_INTERNAL_TOKEN in api/.env}
+      SESSION_IDLE_TIMEOUT_SECONDS: ${SESSION_IDLE_TIMEOUT_SECONDS:-1800}
+      SESSION_ABSOLUTE_TIMEOUT_SECONDS: ${SESSION_ABSOLUTE_TIMEOUT_SECONDS:-28800}
+
+  messaging:
+    <<: *api
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: messaging
+    environment:
+      <<: *api-environment
+      MONGO_USERNAME: messaging
+      MONGO_PASSWORD: ${MESSAGING_DB_PASSWORD:?Set MESSAGING_DB_PASSWORD in api/.env}
+
+  integrations:
+    <<: *api
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: integrations
+    environment:
+      <<: *api-environment
+      MONGO_USERNAME: integrations
+      MONGO_PASSWORD: ${INTEGRATIONS_DB_PASSWORD:?Set INTEGRATIONS_DB_PASSWORD in api/.env}
+
+  web:
+    restart: unless-stopped
+    init: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE: web
+    environment:
+      AUTHENTICATION_URL: http://authentication:5000
+      AUTH_INTERNAL_TOKEN: ${AUTH_INTERNAL_TOKEN:?Set AUTH_INTERNAL_TOKEN in api/.env}
+      WEB_ALLOWED_ORIGINS: ${WEB_ALLOWED_ORIGINS:-http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173,http://127.0.0.1:4173,http://localhost:8000,http://127.0.0.1:8000}
+      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-true}
+      SESSION_COOKIE_SAMESITE: ${SESSION_COOKIE_SAMESITE:-Lax}
+      SESSION_COOKIE_PATH: /api/web
+    networks: [backend]
+
+  gateway:
+    image: kong:3.9.4-ubuntu
+    restart: unless-stopped
+    environment:
+      KONG_DATABASE: 'off'
+      KONG_DECLARATIVE_CONFIG: /etc/kong/kong.yaml
+      KONG_ROUTER_FLAVOR: traditional_compat
+      KONG_PROXY_LISTEN: 0.0.0.0:8000
+      KONG_ADMIN_LISTEN: 'off'
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+    ports:
+      - '127.0.0.1:8000:8000'
+    volumes:
+      - ./gateway/kong.yaml:/etc/kong/kong.yaml:ro
+    networks: [backend]
+    # The gateway starts independently of domain health.
+    healthcheck:
+      test: [CMD, kong, health]
+      interval: 10s
+      timeout: 5s
+      start_period: 15s
+      retries: 5
+
+networks:
+  backend:
+
+volumes:
+  mongo-data:

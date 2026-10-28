@@ -1,0 +1,117 @@
+schema_version: 1
+feature: 001-platform-foundation
+snapshot_date: '2026-10-27'
+status: observed-baseline
+sources:
+  - api/compose.yaml
+  - api/Dockerfile
+  - api/gateway/kong.yaml
+  - api/mongo/init-services.js
+runtime:
+  framework: flask
+  server: gunicorn
+  workers_per_container: 2
+  preload_application: false
+  container_count: 10
+gateway:
+  mode: db-less
+  public_url: http://localhost:8000
+  admin_api_enabled: false
+  route_prefix_boundary_required: true
+  internal_authentication_routes_public: false
+database:
+  engine: mongodb
+  database_environment_key: MONGO_DB
+  default_database: maisciencia
+  user_count: 7
+  allowed_collection_actions: [find, insert, update, remove, createIndex, listIndexes]
+  initialization_scope: empty-volume-only
+health:
+  native_process_path: /health
+  native_database_path: /health/db
+  process_response: {status: ok, service: '<service-id>'}
+  database_available: {http_status: 200, status: ok, database: connected}
+  database_unavailable: {http_status: 503, status: error, database: unavailable}
+services:
+  administrations:
+    source_directory: api/services/administrations
+    compose_service: administrations
+    upstream: http://administrations:5000
+    public_prefix: /api/administrations
+    database_access: true
+    database_username: administrations
+    password_environment_key: ADMINISTRATIONS_DB_PASSWORD
+    collections: [schools, students, teams, memberships]
+  activities:
+    source_directory: api/services/activities
+    compose_service: activities
+    upstream: http://activities:5000
+    public_prefix: /api/activities
+    database_access: true
+    database_username: activities
+    password_environment_key: ACTIVITIES_DB_PASSWORD
+    collections: [workshops, practices, records]
+  events:
+    source_directory: api/services/events
+    compose_service: events
+    upstream: http://events:5000
+    public_prefix: /api/events
+    database_access: true
+    database_username: events
+    password_environment_key: EVENTS_DB_PASSWORD
+    collections: [events, registrations, attendances]
+  content:
+    source_directory: api/services/content
+    compose_service: content
+    upstream: http://content:5000
+    public_prefix: /api/content
+    database_access: true
+    database_username: content
+    password_environment_key: CONTENT_DB_PASSWORD
+    collections: [publications, news, informations]
+  authentication:
+    source_directory: api/services/authentication
+    compose_service: authentication
+    upstream: http://authentication:5000
+    public_prefix: /api/authentication/health
+    gateway_service_path: /health
+    native_internal_prefix: /internal
+    database_access: true
+    database_username: authentication
+    password_environment_key: AUTHENTICATION_DB_PASSWORD
+    collections: [users, sessions, recoveries]
+  messaging:
+    source_directory: api/services/messaging
+    compose_service: messaging
+    upstream: http://messaging:5000
+    public_prefix: /api/messaging
+    database_access: true
+    database_username: messaging
+    password_environment_key: MESSAGING_DB_PASSWORD
+    collections: [conversations, messages, notifications]
+  integrations:
+    source_directory: api/services/integrations
+    compose_service: integrations
+    upstream: http://integrations:5000
+    public_prefix: /api/integrations
+    database_access: true
+    database_username: integrations
+    password_environment_key: INTEGRATIONS_DB_PASSWORD
+    collections: [pipelines, agents]
+  web:
+    source_directory: api/services/web
+    compose_service: web
+    upstream: http://web:5000
+    public_prefix: /api/web
+    database_access: false
+    database_health_endpoint: false
+    collections: []
+    authentication_owner: authentication
+related_features:
+  sessions: specs/002-web-sessions/spec.md
+  browser: specs/003-web-pwa/spec.md
+verification:
+  source_inspection: completed
+  docker_end_to_end: pending
+  mongodb_rbac: pending
+  production_capacity: not_measured
