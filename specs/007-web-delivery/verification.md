@@ -5,15 +5,15 @@
 | Requisito | Evidência | Estado observado |
 | --- | --- | --- |
 | FR-001 | Eventos, Node, cache e lockfile do workflow | YAML conferido; instalação limpa pelo lockfile passou |
-| FR-002 | ESLint, testes, build, artefato e SDD | ESLint, 29 testes, builds e verificador passaram |
+| FR-002 | ESLint, testes, build, artefato e SDD | ESLint, 37 testes, builds e verificador passaram localmente e no run da release 0.2.0 |
 | FR-003 | Guards e permissões de PR, push e dispatch | Revisão de nove combinações de evento/ref e permissões sem escrita no build |
-| FR-004 | Diretório publicado, dependência e concorrência | Upload restrito a `web/dist`; deploy depende de build e usa fila sem cancelamento |
+| FR-004 | Diretório publicado, dependência e concorrência | Upload restrito a `web/dist`; deploy 42384132172 concluiu com sucesso para o commit da tag 0.2.0 |
 | FR-005 | Builds e testes de caminhos nas duas bases | `/` e `/maisciencia/` passaram; artefatos e navegador conferidos |
-| FR-006 | Entradas físicas e HTTP sem fallback | Dez endereços conferidos em servidor estático, incluindo redirecionamentos nativos |
+| FR-006 | Entradas físicas e HTTP sem fallback | Sete páginas publicadas e 13 variantes de URL conferidas por HTTPS; conteúdo corresponde ao build local |
 | FR-007 | Manifesto, service worker e recursos sob a base | Manifesto e escopo conferidos; navegação estática offline passou sob `/maisciencia/` |
 | FR-008 | Ausência de workflow API e preservação de configuração local | Somente `web.yml`; `.env` ignorados e ausentes do artefato |
 | FR-009 | Instruções reproduzíveis e limites honestos | README, arquitetura, contribuição e quickstart sincronizados |
-| FR-010 | Política SemVer, manifestos, changelog, Git Flow e tag | Política registrada para preparar 0.2.0; finalização e resultados remotos serão registrados após execução |
+| FR-010 | Política SemVer, manifestos, changelog, Git Flow e tag | 0.2.0 sincronizada nos manifestos e changelog; Git Flow concluído, tag e branches enviados, release GitHub publicada |
 
 ## Checks de código e artefato
 
@@ -133,6 +133,51 @@ referências internas, respectivamente. O build final está na base `/`, usada
 pelo domínio configurado. O validador SDD passou com sete features, 67 requisitos
 e 84 tarefas, assim como `git diff --check`. O hook Commitizen validou o commit;
 Black e Pylint não tiveram arquivos Python da API para conferir.
+
+## Publicação da release 0.2.0 em 2026-11-07
+
+O commit de preparação `a94c93d` foi finalizado por Git Flow. O merge em `main`
+é `24e0caa27dfd16b1884b63a8e6ec4f53d9707b99`, alvo da tag anotada 0.2.0.
+O merge de retorno em `develop` é `37972c9`. O push atômico enviou as duas
+branches e somente essa nova tag, sem push forçado. As branches temporárias
+bugfix e release foram removidas localmente pelo fluxo. Os hooks Commitizen
+passaram também no commit de preparação e nos merges.
+
+O [workflow 42384132172](https://github.com/ifesguarapari/maisciencia/actions/runs/42384132172)
+concluiu com `success` para o commit exato da release. Ambos os jobs passaram:
+Validate and build web e Deploy web to GitHub Pages. O log do deploy confirmou
+a versão de build, o sucesso da implantação e a URL
+[https://maisciencia.ifes.app.br/](https://maisciencia.ifes.app.br/).
+A [release 0.2.0](https://github.com/ifesguarapari/maisciencia/releases/tag/0.2.0)
+foi publicada com as notas em português, vinculada à tag existente.
+
+A verificação HTTPS realizou 46 consultas: os 33 arquivos do build e 13
+variantes de endereço das sete páginas, incluindo as rotas provisórias com
+e sem barra final. Todas terminaram em HTTP 200 e tiveram SHA256 idêntico
+ao arquivo correspondente do build local na base `/`, incluindo HTML, CSS,
+JavaScript, manifesto, service worker, fontes, imagens e ícones. A comparação
+comprova que os arquivos novos foram publicados, sem confundir HTML anterior
+em cache com o artefato da release.
+
+O registro de resultados posteriores à publicação é incorporado a `develop`
+como documentação, preservando o commit de `main` e a tag imutável da release.
+Não houve criação de workflow API, alteração de DNS, de domínio ou de HTTPS,
+nem exposição de `.env` ou configuração de VPS.
+
+Chrome 156 headless, com perfil novo, conferiu o site real em 1440 e 390 px.
+O indicador terminou, CSS e fontes carregaram, oito imagens ficaram disponíveis
+em cada largura e o hero apresentou somente Feira rosa e Aplicativo verde,
+sem rolagem horizontal. Cliques reais na feira e em Ler um Livro com Jogos,
+seguidos de retorno à raiz, passaram. As oito etapas observaram 108 respostas
+sem chamadas de API, exceções de runtime, erros de console, HTTP de erro ou
+falhas de carregamento. Capturas desktop e móvel foram inspecionadas; o helper
+rolou a página para aferir as imagens com carregamento sob demanda.
+
+Essa conferência de produção usou perfil novo online. Não repetiu instalação,
+offline ou atualização de uma PWA já instalada, nem homologou aparelhos
+físicos ou outros motores. Esses limites permanecem distintos do sucesso
+do deploy e dos arquivos publicados. A validação estrutural SDD e
+`git diff --check` passaram também após registrar os resultados remotos.
 
 ## Limites da preparação original
 
