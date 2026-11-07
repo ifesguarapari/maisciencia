@@ -22,6 +22,6 @@ T005 e verificações finais dependem da implementação concreta.
 ## Evolução: release e publicação autorizadas
 
 - [x] T009 [US2] Registrar política SemVer e fluxo Git Flow em `CONTRIBUTING.md`, sincronizando especificação, plano e contrato da entrega web (FR-009, FR-010).
-- [ ] T010 [US2] Incorporar o trabalho em `develop`, preparar `release/0.2.0`, atualizar os manifestos da web e `CHANGELOG.md` e executar os checks locais antes de finalizar a release (FR-002, FR-010).
+- [x] T010 [US2] Incorporar o trabalho em `develop`, preparar `release/0.2.0`, atualizar os manifestos da web e `CHANGELOG.md` e executar os checks locais antes de finalizar a release (FR-002, FR-010).
 - [ ] T011 [US2] Finalizar a release em `main` e `develop`, criar a tag 0.2.0 e enviar branches e tag; acompanhar o workflow e publicar as notas da versão no GitHub (FR-003, FR-004, FR-010).
 - [ ] T012 [US3] Conferir as sete páginas e recursos por HTTPS e a interface em navegador no domínio configurado; registrar resultados reais e limites em `verification.md` (FR-005, FR-006, FR-007, FR-008, FR-009).

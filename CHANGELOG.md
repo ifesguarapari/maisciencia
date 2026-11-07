@@ -3,7 +3,7 @@
 As releases da web seguem a política SemVer descrita em
 [CONTRIBUTING.md](CONTRIBUTING.md). As versões da API são independentes.
 
-## Não publicado
+## 0.2.0 - 2026-11-07
 
 ### Novidades
 
