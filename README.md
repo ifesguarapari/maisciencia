@@ -112,6 +112,8 @@ as instituições, a equipe e o apoio institucional em português. Ela funciona
 sem chamadas ao backend. `/login` apresenta uma mensagem provisória de acesso
 ao futuro aplicativo, e `/feira` apresenta a página da feira em construção,
 conforme [006-landing](specs/006-landing/spec.md).
+`/oficinas` e as três páginas individuais das oficinas também apresentam aviso
+de construção e retorno; os cards oferecem os acessos pelo botão Saiba mais.
 
 ## Integração e publicação da web
 
@@ -124,8 +126,8 @@ Para ativar a hospedagem, selecione **GitHub Actions** em **Settings → Pages**
 e incorpore o workflow pelo fluxo normal de revisão. Sem domínio personalizado,
 o endereço esperado é `https://ifesguarapari.github.io/maisciencia/`. A base
 da publicação é obtida da configuração do Pages; os builds locais continuam
-usando `/` por padrão. A geração de entradas HTML permite abrir `login/` e
-`feira/` diretamente em hospedagem estática.
+usando `/` por padrão. A geração de entradas HTML permite abrir `login/`,
+`feira/` e as quatro rotas de oficinas diretamente em hospedagem estática.
 
 O roteiro está em [007-web-delivery](specs/007-web-delivery/quickstart.md).
 O workflow da API e o deploy no futuro VPS Hostinger foram adiados por pedido

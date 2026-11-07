@@ -22,10 +22,27 @@ a apresentação não depende de MongoDB, Kong ou autenticação disponíveis.
 
 O botão Aplicativo aponta para `/login`, que exibe somente a mensagem
 provisória e o retorno ao site. Os botões rosa Feira, no cabeçalho desktop,
-no menu móvel e depois de Conheça Mais, apontam para `/feira`. Essa rota exibe
-o título “Feira”, uma mensagem de página em construção e o retorno ao site.
-Ambas as rotas aceitam acesso direto com ou sem barra final e operam sem
-chamadas de API. Não há formulário, restauração de sessão ou consulta de
+no menu móvel e no hero, apontam para `/feira`. O hero contém somente Feira
+em rosa e Aplicativo em verde, sem o botão Conheça Mais. Os dois repetem o
+estilo dos equivalentes do cabeçalho: cantos de 6 px, borda e texto coloridos
+e fundo na mesma cor com 10% de opacidade para Feira e 7% para Aplicativo.
+Seus destinos `/feira` e `/login` respeitam a base pública. A rota `/feira`
+exibe o título “Feira”, uma mensagem de página em construção e o retorno ao site.
+O item Oficinas no cabeçalho desktop, no menu móvel e no rodapé abre `/oficinas`,
+que informa a futura apresentação do planejamento e da execução das oficinas.
+Os botões “Saiba mais” dos três cards abrem as páginas correspondentes:
+
+| Caminho | Título provisório |
+| --- | --- |
+| `/oficinas` | Oficinas |
+| `/oficinas/ler` | Ler um Livro com Jogos |
+| `/oficinas/lancar` | Lançar Foguetes com Precisão |
+| `/oficinas/melhorar` | Melhorar a Cidade com Eletrônica |
+
+Todas as páginas provisórias exibem aviso de construção ou disponibilidade
+futura e retorno ao site. Aceitam acesso direto com ou sem barra final,
+respeitam a base pública e operam sem chamadas de API. Não há formulário,
+restauração de sessão ou consulta de
 saúde na página pública desta entrega. Os serviços de autenticação
 e BFF continuam documentados em [api/README.md](../api/README.md).
 
@@ -49,11 +66,26 @@ não foi fornecido; endereços, horários, cursos e vínculos de profissionais
 não disponíveis não devem ser inventados. O usuário confirmou prosseguir
 com os dados já informados.
 
-A interface institucional, incluindo as páginas provisórias `/login` e `/feira`,
-usa português do Brasil por pedido específico de `006-landing`. O idioma da
-feira segue o conteúdo institucional já autorizado. Código, identificadores,
-arquivos e comentários continuam em inglês; `/feira` preserva a rota solicitada
-pelo usuário. A exceção de idioma está registrada na
+Os três selos de oficina mostram apenas “OFICINA”, sem número. Cada card oferece
+um botão “Saiba mais” com cantos de 6 px, borda e texto na cor da oficina e
+fundo na mesma cor com 10% de opacidade, seguindo o estilo de Feira e Aplicativo.
+Esses botões substituem a legenda Ambiente virtual e os links das antigas
+marcas externas. “Voltar ao Início”, no encerramento, segue esse mesmo estilo
+na cor menta, com foco visível em todos esses controles.
+O rodapé apresenta a parceria em três linhas dentro do mesmo parágrafo da
+missão, no quadrante `.footer-identity`, após “Ciência, tecnologia e inovação
+aproximando escolas e comunidades.”:
+
+```text
+Desenvolvido em parceria com:
+Profe - Soluções Em Tecnologia Educacional Ltda
+CNPJ: 66.907.525/0001-13
+```
+
+A interface institucional, incluindo as seis páginas provisórias, usa português
+do Brasil por pedido específico de `006-landing`. Código, identificadores,
+arquivos e comentários continuam em inglês; `/feira` e `/oficinas` preservam
+os caminhos públicos solicitados pelo usuário. A exceção de idioma está registrada na
 [constituição](../.specify/memory/constitution.md).
 
 ## Comandos e verificação
@@ -74,7 +106,11 @@ Na raiz do repositório, execute `python3 scripts/validate-specs.py`.
 Os resultados de filtros, navegação e layout devem ser registrados em
 [verification.md](../specs/006-landing/verification.md). ESLint e build não
 substituem testes de teclado, toque, menu, movimento reduzido ou enquadramento
-em navegador.
+em navegador. O [roteiro institucional](../specs/006-landing/quickstart.md)
+inclui os dois botões do hero, os três botões das oficinas, o item Oficinas
+nos menus e rodapé, as quatro novas rotas, o estilo de “Voltar ao Início” e
+as três linhas da parceria no mesmo parágrafo da missão no quadrante de
+identidade.
 
 O ESLint usa flat config, com globais de navegador nos módulos de `src` e
 Node.js nos arquivos de configuração. Para criar commits com Commitizen,
@@ -88,11 +124,15 @@ A variável `VITE_API_URL` permanece disponível para futuras integrações,
 mas a landing não faz chamadas de API. Variáveis `VITE_*` são públicas no build:
 não inclua senhas, tokens ou segredos internos.
 
-Em produção, sirva `dist/` por HTTPS. O build fornece `login/index.html` e
-`feira/index.html`, permitindo abrir as rotas provisórias diretamente em um
-servidor estático sem fallback SPA. O servidor pode normalizar a URL para barra
-final. Quando o aplicativo passar a usar o backend, encaminhe `/api` para o
-Kong e siga o contrato do BFF.
+Em produção, sirva `dist/` por HTTPS. `src/pages.js` centraliza as seis páginas
+provisórias e as sete entradas HTML: `index.html`, `login/index.html`,
+`feira/index.html`, `oficinas/index.html`, `oficinas/ler/index.html`,
+`oficinas/lancar/index.html` e `oficinas/melhorar/index.html`. A interface, o
+plugin de rotas estáticas e o verificador de build usam esse mesmo catálogo.
+As entradas permitem abrir as rotas diretamente em um servidor estático sem
+fallback SPA, inclusive nos caminhos aninhados das oficinas. O servidor pode
+normalizar a URL para barra final. Quando o aplicativo passar a usar o backend,
+encaminhe `/api` para o Kong e siga o contrato do BFF.
 O proxy local de Vite é uma configuração de desenvolvimento.
 
 ## GitHub Actions e Pages
@@ -100,10 +140,14 @@ O proxy local de Vite é uma configuração de desenvolvimento.
 O workflow [Web](../.github/workflows/web.yml) valida PRs para `main` e executa
 instalação pelo lockfile, ESLint, testes, SDD, build e conferência do artefato.
 Somente pushes ou execuções manuais em `main` enviam `dist/` ao GitHub Pages.
-Configure **Settings → Pages → Source → GitHub Actions** no repositório.
+Na consulta de 2026-11-07, Pages está configurado com `build_type: workflow`,
+domínio `https://maisciencia.ifes.app.br/`, HTTPS e base `/`. A opção equivalente
+na interface é **Settings → Pages → Source → GitHub Actions**.
 O roteiro completo está em [007-web-delivery](../specs/007-web-delivery/quickstart.md).
 
-O desenvolvimento local usa a base `/`. Para reproduzir o site de projeto:
+O desenvolvimento local e o domínio atual usam a base `/`. Sem domínio próprio,
+o endereço alternativo de projeto é `https://ifesguarapari.github.io/maisciencia/`.
+Para conferir também essa base de projeto:
 
 ```bash
 WEB_BASE_PATH=/maisciencia/ npm run build
@@ -114,6 +158,15 @@ WEB_BASE_PATH=/maisciencia/ npm run check:build
 Na publicação, a configuração do Pages fornece a base efetiva. Caminhos de
 recursos, navegação e PWA acompanham essa base. O backend e o VPS não participam
 desse workflow, e uma configuração local não significa publicação já realizada.
+
+A autorização de 2026-11-07 permite concluir o Git Flow e publicar a web.
+Siga a [política de versões e releases](../CONTRIBUTING.md#versões-e-releases-da-web)
+e registre as alterações no [changelog](../CHANGELOG.md). A release `0.2.0`
+incorpora as novas rotas das oficinas e as revisões da página, seguindo
+`bugfix/landing-details → develop → release/0.2.0 → main`, com tag `0.2.0`
+e sincronização de `develop`. O push de `main` inicia o workflow; acompanhe
+o commit exato até build e deploy concluírem e confira o site publicado antes
+de declarar sucesso. A versão da API permanece independente.
 
 ## PWA
 

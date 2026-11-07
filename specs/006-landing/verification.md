@@ -12,16 +12,16 @@ locais executados nesta entrega; não representam homologação humana.
 | FR-003 | Navegação, seção ativa, rolagem e menu móvel | Estado ativo, cabeçalho rolado, menu, Escape e retorno de foco passaram em Chrome. |
 | FR-004 | Nove seções, cabeçalho e rodapé | DOM e conteúdo conferidos; nove seções e um H1. |
 | FR-005 | Cinco indicadores exatos, contagem e estado final com movimento reduzido | Valores finais observados em Chrome; observer e proteção contra repetição inspecionados. |
-| FR-006 | Oficinas práticas, categoria de foguetes, ambientes virtuais e culminâncias | Título e categoria atualizados; três datas substituídas pelos links fornecidos. Fonte e HTML gerado conferidos; ESLint e build passaram. |
+| FR-006 | Oficinas práticas, selos sem números, botões internos e culminâncias | Três botões Saiba mais com raio de 6 px, borda e texto na cor do card e fundo translúcido conferidos na fonte, build e Chrome. Destinos e culminâncias preservados. |
 | FR-007 | Contagem 21/9, busca, filtro, abas, detalhes e estado vazio | Sete testes Node passaram; fluxos interativos passaram em Chrome. |
 | FR-008 | Pessoas e dados limitados ao material fornecido | Marcelene Alves Duarte substitui o suporte em Informática na colaboração; função e iniciais atualizadas. Mantidas três pessoas na coordenação e seis na colaboração. |
-| FR-009 | Identificações, faixa de apoios fornecida, dois projetos aprovados com processos CNPq e valores, e Instagram fornecido | Dois projetos conferidos na fonte e no HTML gerado. A faixa apresenta somente `apoio.svg`, conforme revisão posterior; fonte e build conferidos. ESLint e build passaram; processo Ifes PROEX continua ausente. |
-| FR-010 | `/login`, `/feira`, variantes com barra final, retorno e ausência de chamadas de API | Títulos, conteúdo provisório, H1 único e retorno conferidos no Chrome em sete larguras; zero requisições de API no fluxo observado. |
+| FR-009 | Identificações, faixa de apoios, projetos, Instagram e parceria Profe | Projetos e faixa conferidos; parceria com nome e CNPJ exatos dentro do mesmo parágrafo da missão em footer-identity, inclusive em 320 px. Processo Ifes PROEX continua ausente. |
+| FR-010 | Seis páginas provisórias, variantes com barra final, retorno e ausência de API | Aplicativo, feira e quatro rotas de oficinas conferidos nas duas bases, com H1 e mensagens próprios; retorno e acesso direto passaram no Chrome. |
 | FR-011 | Layout, teclado, semântica, foco e movimento reduzido | Chrome em 1440, 390 e 320 px, teclado das abas, Escape, foco e redução de movimento passaram. |
 | FR-012 | Head SEO, locale PWA, cache estático e atualização explícita | Build e manifesto pt-BR com 26 entradas; navegação estática offline passou no Chrome. Instalação e ciclo de atualização não executados. |
 | FR-013 | Fundo crítico, indicador, prontidão, foco e recuperação | Sete cenários novos de carregamento passaram no Chrome; script inline aprovado pelo ESLint. |
 | FR-014 | Ausência de animação de escala nas marcas e nas imagens das oficinas | Animação das marcas, atraso associado, keyframes e zoom de hover removidos; busca no CSS e build conferidos. |
-| FR-015 | Três links Feira com detalhes rosa, destino provisório e layout responsivo | Cores computadas e três cliques reais conferidos no Chrome; menu por teclado, foco e sete larguras passaram. |
+| FR-015 | Três links Feira e abertura somente com Feira rosa e Aplicativo verde | Hero sem Conheça Mais; cores, borda e raio iguais aos botões do cabeçalho conferidos no Chrome em 1440, 390 e 320 px. Cliques nos dois botões do hero e retorno passaram. |
 
 ## Execução local
 
@@ -273,6 +273,118 @@ Após novo build, a verificação direcionada em 390 e 320 px confirmou texto
 auxiliar de 1 por 1 px, recortado, Enter, Escape, foco, link Feira e retorno,
 sem overflow, chamadas de API ou erros. A nova captura móvel foi inspecionada.
 O Chrome e o preview locais foram encerrados após essa conferência final.
+
+## Evolução: nova arte do favicon em 2026-11-07
+
+Os quatro PNGs foram reexportados com Inkscape 1.4.3 a partir da nova versão
+fornecida de `web/public/favicon.svg`, que contém o logotipo completo. Foram
+preservados os tamanhos de 180, 192 e 512 px. Apple Touch e maskable têm fundo
+cinza opaco; os dois PNGs PWA comuns preservam os cantos transparentes da origem.
+Na versão maskable, a arte foi centralizada a 95% sobre o mesmo fundo, com raio
+máximo da marca de 200,50 px, dentro dos 204,80 px previstos em FR-012. A medição
+tolera dois níveis por canal no fundo para distinguir o antialiasing da marca.
+
+As quatro imagens foram inspecionadas visualmente e tiveram dimensões,
+opacidade e cores conferidas. Todas diferem dos PNGs anteriores. Comparações
+SHA256 confirmaram que o SVG fornecido e `interface.svg` foram preservados.
+O build com `WEB_BASE_PATH=/maisciencia/` e `npm run check:build` passaram;
+os quatro arquivos publicados são idênticos às exportações e constam no precache.
+Não foram adicionados testes permanentes nem repetidos os exercícios de
+instalação, navegação ou atualização em navegador para essa troca de imagens.
+
+## Evolução: oficinas e parceria em 2026-11-07
+
+Os três selos passaram a exibir somente “OFICINA”. A legenda Ambiente virtual
+e os links externos foram substituídos por botões nativos “Saiba mais”, com
+fundo rosa, amarelo ou verde correspondente ao card, cantos retos e rótulos
+acessíveis específicos. As culminâncias foram preservadas. Os três links de
+navegação Oficinas agora abrem a página geral `/oficinas`.
+
+O catálogo compartilhado `web/src/pages.js` reúne as seis páginas provisórias:
+aplicativo, feira, oficinas e as três oficinas individuais. Títulos, descrições
+e cores são usados pela interface; as sete entradas físicas incluem a página
+inicial e são usadas também pelo emissor de HTML e pelo verificador do artefato.
+A página geral informa o futuro conteúdo sobre planejamento e execução; as
+três oficinas exibem mensagem de construção e retorno ao site.
+
+O rodapé apresenta a mensagem de parceria Profe e o CNPJ fornecido, em três
+linhas. Texto, selos, destinos e ausência dos links anteriores foram comparados
+ao contrato na fonte e nos HTMLs compilados nas bases `/` e `/maisciencia/`.
+
+ESLint e os 37 testes Node passaram. Builds e `check:build` passaram nas duas
+bases, com 33 arquivos e 701 referências na raiz e 698 no prefixo. As sete
+entradas físicas estão presentes no precache. Não foram criados testes que
+apenas reproduzissem a redação dos cards ou da parceria; os casos novos cobrem
+roteamento aninhado, fronteiras do prefixo, contratos e ausência de entradas.
+
+Chrome headless, com servidor HTTP estático sem fallback, conferiu 26 acessos
+diretos: 14 respostas 200 e 12 redirecionamentos nativos 301. Cards, rodapé,
+links e páginas foram conferidos em 1440, 390 e 320 px, nas duas bases. Os
+botões têm 44 px de altura mínima, cantos de raio zero, foco visível de 2 px
+e contrastes de 7,55:1, 10,32:1 e 10,76:1. A parceria permaneceu em três linhas,
+sem quebra adicional, inclusive em 320 px.
+
+Os cliques nos botões, os links de Oficinas no desktop, menu e rodapé, o retorno
+e o fechamento do menu com Escape passaram. Não houve rolagem horizontal,
+erro de runtime ou rede, chamada de API ou endereço escapando da base nos
+62 casos de navegação observados. Quatro capturas finais foram inspecionadas.
+O helper foi ajustado para aceitar os dois retornos legítimos de cada página
+e aguardar o título após navegação; a execução final não teve falhas.
+
+O validador SDD e `git diff --check` passaram. O Chrome e os servidores locais
+foram encerrados após os checks. Não foram repetidos os exercícios de instalação,
+atualização ou offline em navegador para essa evolução; não houve publicação remota.
+
+## Evolução: parceria integrada e padrão dos botões em 2026-11-07
+
+A parceria passou para dentro do mesmo parágrafo da missão em `.footer-identity`,
+logo abaixo da descrição existente. Os três textos fornecidos permanecem
+íntegros, sem faixa independente. Os botões Saiba mais e Voltar ao Início
+passaram a usar raio de 6 px, borda e texto coloridos, fundo com 10% de
+opacidade e 20% no hover. As oficinas mantêm suas cores e o retorno usa menta.
+
+Chrome headless conferiu rodapé e os quatro botões em 1440, 390 e 320 px.
+Os 12 casos confirmaram altura mínima de 44 px, borda de 1 px, raio de 6 px
+e foco visível de 2 px. O menor contraste de texto calculado foi 4,76:1 no
+hover da oficina rosa. A parceria permaneceu no mesmo parágrafo, sem overflow,
+com nome e CNPJ legíveis nas três larguras. Voltar ao Início retornou ao topo;
+os três cliques das oficinas e seus retornos passaram.
+
+## Evolução: duas ações na abertura em 2026-11-07
+
+Conheça Mais foi retirado da área de ações. Feira rosa e Aplicativo verde
+reutilizam as classes do cabeçalho, preservando borda, texto, raio de 6 px e
+fundo translúcido: 10% para Feira e 7% para Aplicativo. A altura mínima no
+hero é de 44 px. Variantes antigas sem uso foram removidas do CSS.
+
+`WEB_BASE_PATH=/maisciencia/ npm run build` e o mesmo prefixo em
+`npm run check:build` passaram: 33 arquivos e 691 referências internas.
+Fonte, contrato e as sete entradas HTML compiladas foram comparados: todos
+contêm somente os dois links na ordem Feira e Aplicativo, com destinos
+dentro da base. O build PWA gerou 30 entradas de precache.
+
+A conferência em Chrome headless usou o build servido por HTTP estático nas
+larguras de 1440, 390 e 320 px. Cores, borda e fundo dos dois botões do hero
+coincidiram com os equivalentes do cabeçalho. Foco, layout e menu móvel
+passaram sem rolagem horizontal. Os cliques de Feira e Aplicativo abriram
+suas páginas provisórias e o retorno funcionou. Nos cinco percursos de clique
+e retorno, incluindo as oficinas, e nos três acessos iniciais, os 13 casos
+de rede não registraram erros HTTP, exceções de runtime ou chamadas de API.
+Capturas do hero, cards, menu e rodapé em desktop e celular foram inspecionadas.
+
+O coletor temporário teve três falsos negativos: dois ao ler o menu antes
+da pintura de `x-show` e um ao medir contraste em um recorte deslocado pelo
+relayout durante a captura. A recoleta direcionada aguardou a pintura e
+usou captura do viewport com recorte pelas coordenadas atuais, passando sem
+falhas e sem alteração do produto. O contraste de Feira em 1440 px foi
+8,42:1 no estado normal e 7,43:1 no hover. Os menus móveis tinham controles
+de 47 px e fecharam com Escape.
+
+O validador SDD passou com sete features, 66 requisitos e 80 tarefas;
+`git diff --check` passou. Estas revisões de HTML/CSS não acrescentaram testes
+permanentes nem repetiram ESLint, testes Node, instalação, atualização ou
+offline. As evidências desses exercícios anteriores continuam com seu alcance
+original. Não houve publicação remota nesta revisão.
 
 ## Limitações preservadas
 

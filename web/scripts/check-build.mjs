@@ -1,9 +1,9 @@
 import { readdir, readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { routeEntries } from '../src/pages.js'
 
 const origin = 'https://build.invalid'
-const routeEntries = ['index.html', 'login/index.html', 'feira/index.html']
 const staticExtension = /\.(?:html|css|js|mjs|svg|png|jpe?g|webp|avif|gif|ico|woff2?|webmanifest)(?:[?#].*)?$/i
 const strings = /(["'`])((?:\\.|(?!\1)[^\\\r\n])*)\1/g
 

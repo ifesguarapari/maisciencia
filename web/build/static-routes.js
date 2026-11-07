@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
+import { dirname, resolve } from 'node:path'
+import { routeEntries } from '../src/pages.js'
 
 export function staticRouteEntries() {
   let outputDirectory
@@ -14,10 +15,11 @@ export function staticRouteEntries() {
       if (!entry || entry.type !== 'asset') {
         throw new Error('The compiled index.html is required for static route entries')
       }
-      for (const route of ['login', 'feira']) {
-        const directory = resolve(outputDirectory, route)
-        await mkdir(directory, { recursive: true })
-        await writeFile(resolve(directory, 'index.html'), entry.source)
+      for (const routeEntry of routeEntries) {
+        if (routeEntry === 'index.html') continue
+        const filename = resolve(outputDirectory, routeEntry)
+        await mkdir(dirname(filename), { recursive: true })
+        await writeFile(filename, entry.source)
       }
     },
   }

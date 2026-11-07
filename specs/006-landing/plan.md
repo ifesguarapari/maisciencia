@@ -94,11 +94,11 @@ Vite; não se acrescenta uma folha bloqueante duplicada no build.
 | FR-003 | Cabeçalho HTML e estado/observers em `web/src/main.js`; rótulo Projeto nos menus e rodapé, e PROJETO na seção, em `web/index.html` |
 | FR-004 | Nove seções em `web/index.html`; Atividades Semanais com atividades extracurriculares orientadas, sem carga horária fixa |
 | FR-005 | Indicadores HTML e contagem progressiva no módulo principal |
-| FR-006 | Título, categoria, cards sem datas e links de ambientes virtuais em `web/index.html`; ilustrações temáticas |
+| FR-006 | Título, categoria, selos OFICINA sem números e botões Saiba mais nas cores dos cards em `web/index.html` e `web/src/style.css` |
 | FR-007 | Dados de instituições, abas, busca, filtro e painéis Alpine |
 | FR-008 | Listas em `web/src/data.js`, incluindo Marcelene Alves Duarte em Matemática, e estados sem dados não fornecidos |
-| FR-009 | Seção de apoio com dois projetos, processos CNPq e valores individuais; faixa com somente a imagem `web/public/images/apoio.svg` centralizada; rodapé sem referência ao processo Ifes PROEX |
-| FR-010 | Seleção de caminho e apresentações provisórias de `/login` e `/feira`, com retorno ao site e sem cliente de API |
+| FR-009 | Projetos e faixa de apoio; rodapé com parceria Profe em três linhas, sem referência ao processo Ifes PROEX |
+| FR-010 | Catálogo compartilhado de apresentações provisórias de aplicativo, feira e oficinas, com retorno e sem API; entradas físicas mantidas pela feature 007 |
 | FR-011 | HTML, CSS responsivo e comportamento de redução de movimento |
 | FR-012 | Head SEO, `web/vite.config.js`, recursos estáticos, quatro ícones PNG derivados de `web/public/favicon.svg` e atualização PWA |
 | FR-013 | CSS crítico e bootstrap em `web/index.html`, coordenação de prontidão e recuperação do frontend |
@@ -161,6 +161,13 @@ de raio 204,8 px. Não alterar `favicon.svg` nem o sprite de símbolos da interf
 Os links HTML e o manifesto já apontam aos arquivos pedidos; conferir sua
 presença no build e no precache PWA. Registrar inspeção visual e limites reais.
 
+Em 2026-11-07, reexportar os quatro PNGs com a nova arte do favicon fornecida
+pelo usuário. A origem agora contém o logotipo completo. Preservar sua composição
+e ajustar somente a margem da versão maskable se necessário para conter a marca
+no círculo seguro, sem alterar o SVG fornecido nem os símbolos da interface.
+A exportação maskable usa a arte a 95%, centralizada sobre fundo opaco da mesma
+cor; as outras versões mantêm a composição original nas dimensões declaradas.
+
 ## Evolução: acesso à feira
 
 Manter o documento único com Alpine e acrescentar o estado `isFair` e o estado
@@ -175,3 +182,44 @@ em borda, fundo e foco, com texto claro para contraste. Ajustar espaçamento da
 navegação na faixa intermediária e permitir quebra de linha dos botões do hero.
 Conferir os três links, acesso direto e com barra final, retorno, regressão de
 `/login`, menu, foco e larguras desktop/móvel no navegador.
+
+## Evolução: páginas das oficinas e parceria
+
+Em 2026-11-07, substituir os três blocos Ambiente virtual por links nativos
+Saiba mais com fundo `--workshop-color`, cantos retos e alvo de pelo menos
+44 px de altura. Preservar as culminâncias e os demais textos dos cards.
+O item Oficinas da navegação passa a abrir a apresentação geral em `/oficinas`.
+
+Compartilhar o catálogo de rotas provisórias entre seleção de página, emissão
+de HTML físico e verificador do build. Incluir a página geral e as três oficinas
+com títulos próprios e mensagens de construção; manter aplicativo e feira.
+Os caminhos pedidos em português permanecem valores públicos, com identificadores
+do código em inglês. O HTML usa título e descrição do catálogo e pode usar a
+cor correspondente à oficina. Preservar a base do Pages e o carregamento escuro.
+
+No rodapé, acrescentar bloco próprio de parceria com três linhas, nome e CNPJ
+exatos do contrato. Conferir leitura e quebra de linha em desktop e celular.
+
+## Evolução: integração da parceria e botões com fundo translúcido
+
+Na revisão seguinte de 2026-11-07, integrar a mensagem de parceria ao parágrafo
+de descrição de `.footer-identity`, logo após o texto existente, usando spans
+com quebra de linha. Retirar a faixa independente e sua borda, preservando o
+nome e CNPJ fornecidos. A mensagem acompanha o alinhamento do quadrante.
+
+Compartilhar uma classe de botão com raio de 6 px, borda e texto de destaque
+e fundo com 10% da cor, acompanhando Feira e Aplicativo. Cada Saiba mais mantém
+a cor da oficina; Voltar ao Início usa o verde do tema. Manter alvos de 44 px,
+foco visível e hover com reforço discreto do fundo. Os destinos permanecem os
+mesmos; a revisão muda a apresentação. Conferir desktop, celular e toque/teclado
+no build com prefixo do Pages.
+
+## Evolução: duas ações na abertura
+
+Ainda em 2026-11-07, retirar Conheça Mais da área `.hero-actions`. Manter Feira
+e Aplicativo, nessa ordem, reutilizando as classes dos botões do cabeçalho
+para preservar exatamente seus detalhes rosa e verde, borda, raio de 6 px e
+fundo translúcido. Definir altura mínima de 44 px e tipografia explícita no
+hero, que não herda as regras tipográficas da navegação. Remover variantes
+de botão que fiquem sem uso. Preservar os destinos e conferir layout, foco,
+cores e cliques em desktop e celular no build com prefixo do Pages.

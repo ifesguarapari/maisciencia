@@ -79,23 +79,45 @@ BFF verificam origem e JSON; logout e renovação exigem CSRF válido.
 Respostas de sessão não são armazenadas no cache PWA.
 
 `web/` usa HTML, Tailwind CSS e Alpine.js, com build Vite e PWA. A página
-institucional em `/` e as páginas provisórias `/login` e `/feira` usam português
-do Brasil, conforme o pedido específico de `006-landing`; a feira segue o
-conteúdo institucional já autorizado. Essas páginas não enviam requisições de
-API. Os botões rosa Feira no cabeçalho desktop, no menu móvel e junto a Conheça
-Mais abrem `/feira`, que apresenta o título “Feira”, a mensagem de página em
-construção e o retorno ao site. O servidor estático deve retornar `index.html`
-no acesso direto a `/login` e `/feira`, inclusive com barra final. O build de
-`007-web-delivery` fornece entradas HTML físicas para essas rotas, permitindo
-hospedagem estática no GitHub Pages sem depender de fallback SPA. A demonstração
-anterior dos fluxos de sessão e saúde foi substituída na
-entrada pública; a baseline `003` preserva seu inventário retrospectivo.
+institucional em `/` e as seis páginas provisórias `/login`, `/feira`,
+`/oficinas`, `/oficinas/ler`, `/oficinas/lancar` e `/oficinas/melhorar` usam
+português do Brasil, conforme o pedido específico de `006-landing`. Essas
+páginas não enviam requisições de API. Os botões rosa Feira no cabeçalho
+desktop, no menu móvel e no hero abrem `/feira`, que apresenta
+o título “Feira”, a mensagem de página em construção e o retorno ao site.
+O hero contém somente Feira em rosa e Aplicativo em verde, sem Conheça Mais,
+com o mesmo estilo dos equivalentes do cabeçalho: cantos de 6 px, borda e texto
+coloridos e fundo na mesma cor com 10% de opacidade para Feira e 7% para
+Aplicativo. Feira abre `/feira` e Aplicativo abre `/login`, respeitando a base
+pública.
+O item Oficinas nos dois menus e no rodapé abre `/oficinas`, com aviso de
+construção e futura apresentação do planejamento e da execução das oficinas.
+Os três cards têm selo “OFICINA”, sem número, e botões “Saiba mais” com cantos
+de 6 px, borda e texto na cor da oficina e fundo na mesma cor com 10% de
+opacidade, seguindo o estilo de Feira e Aplicativo. Eles abrem as páginas
+correspondentes de ler, lançar e melhorar. “Voltar ao Início”, no encerramento,
+segue o mesmo estilo na cor menta; esses controles mantêm foco visível.
+Os links externos e a legenda Ambiente virtual foram substituídos.
+
+`web/src/pages.js` centraliza os títulos, mensagens e cores das páginas
+provisórias, além da lista de sete entradas HTML consumida pela interface,
+pelo plugin de rotas estáticas e pelo verificador de build. O build de
+`007-web-delivery` fornece `index.html` e uma entrada `<route>/index.html` para
+cada página provisória, incluindo as oficinas aninhadas. Isso permite acesso
+direto, recarga e variantes com barra final em hospedagem estática, na raiz
+ou no prefixo do GitHub Pages, sem depender de fallback SPA. A demonstração
+anterior dos fluxos de sessão e saúde foi substituída na entrada pública;
+a baseline `003` preserva seu inventário retrospectivo.
 
 A landing apresenta as seções, instituições e pessoas fornecidas, com filtros
 e painéis locais. Dados complementares de `site.docx` não fornecidos não são
-inventados. O BFF e a autenticação continuam disponíveis na infraestrutura
-para o futuro aplicativo. Instalação e experiência offline dependem da
-validação em navegador, além do build.
+inventados. O rodapé registra a parceria em três linhas: “Desenvolvido em
+parceria com:”, “Profe - Soluções Em Tecnologia Educacional Ltda” e
+“CNPJ: 66.907.525/0001-13”. As três linhas ficam no quadrante `.footer-identity`,
+dentro do mesmo parágrafo da missão, após “Ciência, tecnologia e inovação
+aproximando escolas e comunidades.”. O BFF e a autenticação continuam
+disponíveis na infraestrutura para o futuro aplicativo. Instalação e
+experiência offline dependem da validação em navegador, além do build.
 
 ## Integração e hospedagem da web
 
@@ -107,10 +129,20 @@ não têm workflow ou configuração de implantação nesta entrega.
 
 O site suporta a raiz e o prefixo do Pages, com base de build `WEB_BASE_PATH`.
 Links, recursos, rotas, manifesto e service worker respeitam a mesma base.
-O endereço esperado sem domínio próprio é
-`https://ifesguarapari.github.io/maisciencia/`; a configuração efetiva do Pages
-fornece a base na publicação. A ativação e uma execução real no GitHub são
-etapas externas, distintas dos checks locais descritos em
+Na consulta de configuração do Pages em 2026-11-07, o domínio é
+`https://maisciencia.ifes.app.br/`, com HTTPS, base `/` e `build_type: workflow`.
+A configuração efetiva fornece a base na publicação. Sem domínio próprio,
+o endereço alternativo de projeto é `https://ifesguarapari.github.io/maisciencia/`,
+com base `/maisciencia/`.
+
+A autorização de 2026-11-07 permite executar Git Flow e publicar a web,
+evoluindo a preparação local originalmente registrada em `007-web-delivery`.
+A [política de versões](../CONTRIBUTING.md#versões-e-releases-da-web) adota
+SemVer, versões independentes para web e API e tags sem prefixo. A release
+`0.2.0` segue `bugfix/landing-details → develop → release/0.2.0 → main`, com
+retorno a `develop`, changelog e publicação pelo workflow. As mudanças ficam
+no [histórico de versões](../CHANGELOG.md); a execução remota e a conferência
+do site devem ser registradas somente após sua realização em
 [007-web-delivery](../specs/007-web-delivery/verification.md).
 
 ## Contexto permanente e especificações
@@ -119,7 +151,7 @@ etapas externas, distintas dos checks locais descritos em
 - [001-platform-foundation](../specs/001-platform-foundation/spec.md): processos, contratos de infraestrutura e dados.
 - [002-web-sessions](../specs/002-web-sessions/spec.md): identidade, sessão e fronteira navegador/backend.
 - [003-web-pwa](../specs/003-web-pwa/spec.md): interface, saúde agregada e PWA.
-- [006-landing](../specs/006-landing/spec.md): apresentação pública, rede, equipe e acessos provisórios ao aplicativo e à feira.
+- [006-landing](../specs/006-landing/spec.md): apresentação pública, rede, equipe e acessos provisórios ao aplicativo, à feira e às oficinas.
 - [007-web-delivery](../specs/007-web-delivery/spec.md): integração contínua e hospedagem estática da web no GitHub Pages.
 - [CONTRIBUTING.md](../CONTRIBUTING.md): idioma, qualidade e configuração local.
 

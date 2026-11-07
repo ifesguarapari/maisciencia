@@ -10,9 +10,19 @@
   "baseVariable": "WEB_BASE_PATH",
   "localBase": "/",
   "projectBase": "/maisciencia/",
-  "routeEntries": ["index.html", "login/index.html", "feira/index.html"],
+  "routeEntries": ["index.html", "login/index.html", "feira/index.html", "oficinas/index.html", "oficinas/ler/index.html", "oficinas/lancar/index.html", "oficinas/melhorar/index.html"],
   "checks": ["npm ci", "npm run lint", "npm test", "npm run build", "npm run check:build", "python3 scripts/validate-specs.py"],
   "publishesPullRequests": false,
   "deploysApi": false,
-  "requiresVpsSecrets": false
+  "requiresVpsSecrets": false,
+  "release": {
+    "versioning": "semver",
+    "versionFiles": ["web/package.json", "web/package-lock.json"],
+    "changelog": "CHANGELOG.md",
+    "developmentBranch": "develop",
+    "releaseBranchPrefix": "release/",
+    "tagPrefix": "",
+    "immutableTags": true,
+    "independentApiVersion": true
+  }
 }

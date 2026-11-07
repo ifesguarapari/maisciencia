@@ -14,8 +14,11 @@ projeto do GitHub Pages. Esta feature é uma evolução nova de entrega; não mu
 os serviços Flask, o Kong ou o MongoDB.
 
 Criar somente o workflow da web. API, compra ou configuração de VPS, credenciais
-SSH, implantação de containers, DNS e domínio próprio ficam fora deste pedido.
-Não fazer push, habilitar Pages nem disparar publicação remota nesta execução.
+SSH, implantação de containers e alterações de DNS ficam fora deste pedido.
+A preparação original foi local. Em 2026-11-07, o usuário autorizou concluir
+o Git Flow, versionar semanticamente e publicar a web, incluindo os commits,
+merges, tag e pushes necessários. Essa evolução usa a configuração existente
+do Pages, com domínio próprio, e substitui o limite remoto da execução original.
 
 ## Histórias e aceitação
 
@@ -40,15 +43,21 @@ validação, sem enviar arquivos de backend ou depender de segredos de VPS.
   então a documentação explica a configuração necessária sem afirmar publicação.
 - Dadas execuções simultâneas, quando uma implantação já está em andamento,
   então as publicações compartilham uma fila sem cancelar a implantação ativa.
+- Dadas mudanças prontas para publicação, quando preparo a release, então
+  aplico a política SemVer documentada, finalizo a branch de trabalho em
+  `develop` e a release em `main` e `develop`, com tag imutável da versão.
+- Dada a autorização de publicação, quando envio a release, então acompanho
+  o workflow e verifico o site publicado, distinguindo esses resultados dos
+  checks locais.
 
 ### US3 — Usar o site hospedado em um prefixo (P1)
 
 Como visitante, quero abrir a página e suas rotas diretamente, com imagens,
 ícones, fontes e navegação funcionando no endereço público do projeto.
 
-- Dado o site em `/maisciencia/`, quando abro início, aplicativo ou feira, então
+- Dado o site em `/maisciencia/`, quando abro início, aplicativo, feira ou oficinas, então
   recursos, links e retorno permanecem dentro desse prefixo.
-- Dada uma primeira visita a `login/` ou `feira/`, quando o servidor só oferece
+- Dada uma primeira visita a uma das seis páginas provisórias, quando o servidor só oferece
   arquivos estáticos, então recebo HTML existente sem depender de fallback SPA.
 - Dado o build na raiz, quando abro as mesmas rotas, então os fluxos anteriores
   continuam disponíveis. Manifesto e service worker usam a base correspondente.
@@ -70,7 +79,8 @@ Como visitante, quero abrir a página e suas rotas diretamente, com imagens,
   imagens, SVGs com fragmentos, fontes e seleção de rota DEVEM respeitar a base
   configurada, sem modificar conteúdo, cores ou interações institucionais.
 - **FR-006**: O build DEVE produzir entradas HTML físicas para `login/` e
-  `feira/`, com seus textos provisórios e retorno, preservando acesso direto,
+  `feira/`, além de `oficinas/`, `oficinas/ler/`, `oficinas/lancar/` e
+  `oficinas/melhorar/`, com seus textos provisórios e retorno, preservando acesso direto,
   atualização e variantes com barra final em hospedagem estática.
 - **FR-007**: Manifesto, ícones, registro e escopo do service worker DEVEM
   respeitar a base. Navegação e recursos estáticos podem funcionar offline após
@@ -78,21 +88,33 @@ Como visitante, quero abrir a página e suas rotas diretamente, com imagens,
   dependendo de ação explícita do visitante.
 - **FR-008**: A configuração DEVE preservar `.env` locais e manter API e VPS
   fora dos workflows desta entrega. Nenhum segredo SSH, workflow da API ou
-  alteração remota de hospedagem DEVE ser criado.
+  infraestrutura de VPS DEVE ser criado. A publicação autorizada da web DEVE
+  utilizar a configuração existente do Pages, preservando domínio e HTTPS.
 - **FR-009**: A documentação DEVE explicar triggers, verificações, branch,
   ativação inicial de Pages, endereço esperado, base, reprodução local e limites
   reais de validação, distinguindo artefato local de execução remota.
+- **FR-010**: Releases da web DEVEM seguir a política SemVer documentada em
+  `CONTRIBUTING.md`, com versão sincronizada em `web/package.json` e
+  `web/package-lock.json`, histórico em `CHANGELOG.md` e tag Git da mesma
+  versão, sem prefixo. O Git Flow DEVE finalizar o trabalho em `develop`,
+  preparar `release/<version>` e incorporar a release em `main` e `develop`.
+  A publicação DEVE ocorrer somente após os checks; a versão da API não muda
+  por uma release exclusiva da web. Tags publicadas não DEVEM ser substituídas.
 
 ## Critérios de sucesso
 
 - **SC-001**: Os checks locais equivalentes ao workflow passam; a estrutura
   impede publicação após falha e em pull requests ou outras branches.
-- **SC-002**: O artefato contém somente frontend e entradas das três rotas,
+- **SC-002**: O artefato contém somente frontend e entradas das sete rotas,
   com recursos resolvidos corretamente em `/` e `/maisciencia/`.
 - **SC-003**: Um servidor estático sem fallback serve as rotas provisórias;
   navegador confirma navegação e recursos na base de projeto sem falhas.
 - **SC-004**: Há somente um workflow novo, para a web; instruções de ativação
   e evidências não declaram execução ou publicação remota não realizada.
+- **SC-005**: Versão dos manifestos, tag e changelog correspondem; `main` e
+  `develop` contêm a release e o workflow associado termina com sucesso.
+  A página inicial, as seis rotas provisórias e os recursos publicados
+  respondem no domínio configurado.
 
 ## Premissas e limites
 
@@ -100,5 +122,6 @@ O remote observado é `ifesguarapari/maisciencia` e a branch padrão remota loca
 aponta para `main`. Sem domínio próprio, o endereço esperado é
 `https://ifesguarapari.github.io/maisciencia/`; a configuração do Pages poderá
 fornecer uma base diferente. Não se presume que Pages já esteja habilitado.
-O caminho público `/feira` foi solicitado em português e permanece preservado;
+Os caminhos públicos `/feira`, `/oficinas`, `/oficinas/ler`, `/oficinas/lancar`
+e `/oficinas/melhorar` foram solicitados em português e permanecem preservados;
 os demais novos nomes técnicos usam inglês.

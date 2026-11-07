@@ -3,10 +3,12 @@ import { registerSW } from 'virtual:pwa-register'
 import { institutions, coordinators, collaborators } from './data.js'
 import { filterInstitutions, getCities } from './filters.js'
 import { getPageRoute, publicUrl } from './paths.js'
+import { placeholderPages } from './pages.js'
 
 const sectionIds = ['inicio', 'sobre', 'oficinas', 'escolas', 'equipe', 'apoio']
 const base = import.meta.env.BASE_URL
 const pageRoute = getPageRoute(window.location.pathname, base)
+const placeholderPage = placeholderPages[pageRoute]
 
 async function prepareAppearance() {
   const hero = new Image()
@@ -48,13 +50,19 @@ Alpine.data('landing', () => ({
   },
 
   get isPlaceholder() {
-    return this.isLogin || this.isFair
+    return Boolean(placeholderPage)
+  },
+
+  get placeholderTitle() {
+    return placeholderPage?.title || ''
   },
 
   get placeholderDescription() {
-    return this.isFair
-      ? 'A página da feira está em construção. Em breve, você encontrará aqui mais informações.'
-      : 'O ambiente digital do Ifes Mais Ciência na Escola estará disponível em breve.'
+    return placeholderPage?.description || ''
+  },
+
+  get placeholderAccent() {
+    return placeholderPage?.accent || '#67d5c7'
   },
 
   get filteredInstitutions() {
@@ -71,7 +79,7 @@ Alpine.data('landing', () => ({
 
   init() {
     if (this.isPlaceholder) {
-      document.title = `${this.isFair ? 'Feira' : 'Acesso ao Aplicativo'} | Ifes Mais Ciência na Escola`
+      document.title = `${this.placeholderTitle} | Ifes Mais Ciência na Escola`
       document.querySelector('meta[name="description"]')?.setAttribute('content', this.placeholderDescription)
     }
     this.updateApp = registerSW({

@@ -10,7 +10,7 @@ async function fixture(t, base = '/') {
   const directory = path.join(workspace, 'dist')
   t.after(() => rm(workspace, { recursive: true, force: true }))
   const files = {
-    'index.html': `<link rel="manifest" href="${base}manifest.webmanifest"><link rel="stylesheet" href="${base}assets/main.css"><script src="${base}assets/main.js"></script><a href="${base}login/">Login</a><a href="${base}feira">Fair</a><svg><use :href="open ? '/unused/close.svg' : '/unused/menu.svg'" href="${base}icons/interface.svg#menu"></use></svg><a href="https://example.org/">External</a>`,
+    'index.html': `<link rel="manifest" href="${base}manifest.webmanifest"><link rel="stylesheet" href="${base}assets/main.css"><script src="${base}assets/main.js"></script><a href="${base}login/">Login</a><a href="${base}feira">Fair</a><a href="${base}oficinas/">Workshops</a><a href="${base}oficinas/ler">Reading</a><a href="${base}oficinas/lancar/">Rockets</a><a href="${base}oficinas/melhorar">Cities</a><svg><use :href="open ? '/unused/close.svg' : '/unused/menu.svg'" href="${base}icons/interface.svg#menu"></use></svg><a href="https://example.org/">External</a>`,
     'assets/main.css': `@import './theme.css'; body { background: url('${base}images/hero.svg'); }`,
     'assets/theme.css': 'body { color: white; }',
     'assets/main.js': `new Workbox('${base}sw.js', { scope: '${base}' }); import('./chunk.js'); const image = '${base}images/hero.svg';`,
@@ -19,10 +19,14 @@ async function fixture(t, base = '/') {
     'icons/interface.svg': '<svg><symbol id="menu"></symbol></svg>',
     'icons/pwa.png': '',
     'manifest.webmanifest': JSON.stringify({ id: base, start_url: base, scope: base, icons: [{ src: `${base}icons/pwa.png` }] }),
-    'sw.js': `precacheAndRoute([{url:'index.html'},{url:'login/index.html'},{url:'feira/index.html'}]);`,
+    'sw.js': `precacheAndRoute([{url:'index.html'},{url:'login/index.html'},{url:'feira/index.html'},{url:'oficinas/index.html'},{url:'oficinas/ler/index.html'},{url:'oficinas/lancar/index.html'},{url:'oficinas/melhorar/index.html'}]);`,
   }
   files['login/index.html'] = files['index.html']
   files['feira/index.html'] = files['index.html']
+  files['oficinas/index.html'] = files['index.html']
+  files['oficinas/ler/index.html'] = files['index.html']
+  files['oficinas/lancar/index.html'] = files['index.html']
+  files['oficinas/melhorar/index.html'] = files['index.html']
   await Promise.all(Object.entries(files).map(async ([name, content]) => {
     await mkdir(path.dirname(path.join(directory, name)), { recursive: true })
     await writeFile(path.join(directory, name), content)
@@ -35,7 +39,7 @@ for (const base of ['/', '/maisciencia/']) {
     const directory = await fixture(t, base)
     const result = await checkBuild({ directory, base })
     assert.equal(result.base, base)
-    assert.equal(result.filesChecked, 12)
+    assert.equal(result.filesChecked, 16)
     assert.ok(result.referencesChecked > 20)
   })
 }
@@ -46,16 +50,36 @@ test('rejects a missing physical route even when the home page links to it', asy
   await assert.rejects(checkBuild({ directory, base: '/maisciencia/' }), /Missing required build entry: feira\/index.html/)
 })
 
+test('requires each child workshop HTML even when its parent page exists', async (t) => {
+  const directory = await fixture(t, '/maisciencia/')
+  for (const route of ['ler', 'lancar', 'melhorar']) {
+    const filename = path.join(directory, `oficinas/${route}/index.html`)
+    const content = await readFile(filename, 'utf8')
+    await rm(filename)
+    await assert.rejects(checkBuild({ directory, base: '/maisciencia/' }), (error) => {
+      assert.ok(error.message.includes(`Missing required build entry: oficinas/${route}/index.html`))
+      return true
+    })
+    await writeFile(filename, content)
+  }
+})
+
 test('checks resources from nested documents rather than only the home page', async (t) => {
   const directory = await fixture(t, '/maisciencia/')
-  await writeFile(path.join(directory, 'login/index.html'), '<link rel="manifest" href="/maisciencia/manifest.webmanifest"><img src="images/hero.svg">')
-  await assert.rejects(checkBuild({ directory, base: '/maisciencia/' }), /login\/index.html: missing resource images\/hero.svg/)
+  await writeFile(path.join(directory, 'oficinas/ler/index.html'), '<link rel="manifest" href="/maisciencia/manifest.webmanifest"><img src="images/hero.svg">')
+  await assert.rejects(checkBuild({ directory, base: '/maisciencia/' }), /oficinas\/ler\/index.html: missing resource images\/hero.svg/)
 })
 
 test('rejects static resources that escape the configured project base', async (t) => {
   const directory = await fixture(t, '/maisciencia/')
   await writeFile(path.join(directory, 'assets/main.css'), 'body { background: url(/images/hero.svg); }')
   await assert.rejects(checkBuild({ directory, base: '/maisciencia/' }), /URL escapes base \/maisciencia\/: \/images\/hero.svg/)
+})
+
+test('rejects another site with a base that only shares the project prefix', async (t) => {
+  const directory = await fixture(t, '/maisciencia/')
+  await writeFile(path.join(directory, 'oficinas/lancar/index.html'), '<link rel="manifest" href="/maisciencia/manifest.webmanifest"><a href="/maisciencia-other/oficinas/ler/">Other site</a>')
+  await assert.rejects(checkBuild({ directory, base: '/maisciencia/' }), /URL escapes base \/maisciencia\/: \/maisciencia-other\/oficinas\/ler\//)
 })
 
 test('rejects nonexistent resources in built JavaScript and module imports', async (t) => {
@@ -96,6 +120,13 @@ test('rejects provisional routes left out of the service worker precache', async
   const directory = await fixture(t)
   await writeFile(path.join(directory, 'sw.js'), "precacheAndRoute([{url:'index.html'}])")
   await assert.rejects(checkBuild({ directory }), /sw.js: route is missing from precache: login\/index.html/)
+})
+
+test('rejects a workshop left out of precache while the other routes remain cached', async (t) => {
+  const directory = await fixture(t, '/maisciencia/')
+  const filename = path.join(directory, 'sw.js')
+  await writeFile(filename, (await readFile(filename, 'utf8')).replace(",{url:'oficinas/melhorar/index.html'}", ''))
+  await assert.rejects(checkBuild({ directory, base: '/maisciencia/' }), /sw.js: route is missing from precache: oficinas\/melhorar\/index.html/)
 })
 
 test('rejects API responses accidentally added to the service worker precache', async (t) => {
