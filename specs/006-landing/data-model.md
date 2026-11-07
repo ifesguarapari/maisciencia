@@ -7,7 +7,9 @@ Esta feature não altera coleções, credenciais ou documentos MongoDB. O conte�
 | --- | --- | --- |
 | Instituição | `id`, `name`, `city`, `type` e detalhes apenas quando fornecidos | Identificar escola ou campus sem dados fabricados |
 | Pessoa | Nome e função fornecidos | Representar três coordenadores e seis colaboradores |
-| Oficina | Título, categoria, ambiente virtual, URL e culminância | Apresentar os três temas sem datas fixas; associação em `contracts/ui.json` |
+| Oficina | Título, categoria, botão Saiba mais, rota provisória e culminância | Apresentar os três temas sem datas ou números; associação em `contracts/ui.json` |
+| Página provisória | Título, descrição e cor em `web/src/pages.js` | Apresentar aplicativo, feira, oficinas e suas três páginas individuais sem backend |
+| Parceria | Legenda, nome e CNPJ fornecidos | Exibir os três textos da parceria Profe no rodapé, conforme `contracts/ui.json` |
 | Projeto aprovado | `name`, `process`, `valueBrl` e `valueLabel` | Associar cada um dos dois títulos ao processo CNPq e ao valor fornecidos, conforme `contracts/ui.json` |
 | Aba da rede | `schools` ou `campuses` | Selecionar o conjunto de instituições |
 | Filtro | Texto de busca e município | Restringir resultados da aba ativa |

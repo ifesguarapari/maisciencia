@@ -68,3 +68,22 @@ pendentes até execução. Não representam homologação humana.
 - [x] T024 [US4] Adicionar os botões Feira no cabeçalho, menu móvel e hero com detalhes rosa e implementar `/feira` provisório, preservando `/login`, em `web/index.html`, `web/src/main.js` e `web/src/style.css`; sincronizar contrato e documentação (FR-010, FR-015).
 - [x] T025 [US3] Verificar botões, rotas, retorno, foco, menu e layout responsivo no navegador e executar ESLint, build e validação SDD, registrando resultados e limites (FR-010, FR-011, FR-015).
 - [x] T026 [US3] Corrigir a ocultação visual do texto auxiliar do menu móvel em `web/src/style.css`, preservando seu nome acessível, e conferir novamente o controle e o link Feira em telas pequenas (FR-011).
+
+## Evolução: nova arte do favicon
+
+- [x] T027 [US3] Atualizar os quatro PNGs de `web/public/icons/` a partir da revisão de `web/public/favicon.svg` fornecida em 2026-11-07, preservando dimensões, cores, fundo e área segura maskable; conferir imagens e build (FR-002, FR-012).
+
+## Evolução: páginas das oficinas e parceria
+
+- [x] T028 [US1] Usar somente OFICINA nos selos e substituir os links externos por botões Saiba mais nas cores dos cards em `web/index.html` e `web/src/style.css`, mantendo as culminâncias (FR-006).
+- [x] T029 [US4] Adicionar as quatro rotas provisórias de oficinas ao catálogo e ao estado da página em `web/src/`, com navegação para `/oficinas`, títulos próprios e retorno; sincronizar contratos e documentação (FR-003, FR-010).
+- [x] T030 [US1] Apresentar a parceria Profe no rodapé em três linhas, com nome e CNPJ fornecidos, em `web/index.html` e `web/src/style.css` (FR-009).
+- [x] T031 [US3] Executar lint, testes, builds e verificação do artefato e conferir cards, rodapé e rotas no navegador; registrar evidências reais (FR-006, FR-009, FR-010, FR-011, FR-012).
+
+## Evolução: parceria integrada e padrão dos botões
+
+- [x] T032 [US1] Integrar a parceria ao parágrafo de identidade do rodapé e padronizar Saiba mais e Voltar ao Início com borda, texto colorido, raio suave e fundo translúcido em `web/index.html` e `web/src/style.css`; sincronizar contrato e conferir build/layout/foco (FR-006, FR-009, FR-011).
+
+## Evolução: duas ações na abertura
+
+- [x] T033 [US4] Retirar Conheça Mais e padronizar Feira e Aplicativo no hero com os botões do cabeçalho, preservando rosa e verde, em `web/index.html` e `web/src/style.css`; sincronizar contratos e documentação e conferir build, layout, foco e navegação (FR-011, FR-015).

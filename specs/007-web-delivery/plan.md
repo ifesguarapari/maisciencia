@@ -24,13 +24,24 @@ ativa. Não criar workflow ou infraestrutura para a API.
 Usar `import.meta.env.BASE_URL` para caminhos gerados em JavaScript e
 `%BASE_URL%` nos links HTML que não são recursos automaticamente tratados pelo
 Vite. Os recursos CSS são reescritos pelo Vite. Separar o prefixo antes de
-identificar `/login` e `/feira`, inclusive com barra final.
+identificar `/login`, `/feira`, `/oficinas`, `/oficinas/ler`, `/oficinas/lancar`
+e `/oficinas/melhorar`, inclusive com barra final.
 
-Um plugin de build emite `login/index.html` e `feira/index.html` a partir do
-HTML compilado antes da geração do service worker. Todos os caminhos compilados
-usam a base absoluta, permitindo servir esses documentos sem fallback. Manter
-a atualização PWA por prompt, manifesto e cache sob a base e exclusão das rotas
-de API. Não usar uma página 404 para mascarar rotas existentes.
+Centralizar em `web/src/pages.js` o catálogo das seis páginas provisórias,
+com título, mensagem e cor, e derivar dele as sete entradas HTML. A interface,
+o plugin de build `web/build/static-routes.js` e o verificador
+`web/scripts/check-build.mjs` compartilham esse catálogo para manter a seleção
+de rota, a emissão de arquivos e a conferência do artefato coerentes.
+
+O plugin emite `login/index.html`, `feira/index.html`, `oficinas/index.html`,
+`oficinas/ler/index.html`, `oficinas/lancar/index.html` e
+`oficinas/melhorar/index.html` a partir do HTML compilado antes da geração do
+service worker. Com a página inicial, são sete entradas físicas. Todos os
+caminhos compilados usam a base absoluta, permitindo servir os documentos
+aninhados sem fallback. Manter a atualização PWA por prompt, manifesto e cache
+sob a base e exclusão das rotas de API. O verificador deve exigir as sete
+entradas e sua inclusão no precache. Não usar uma página 404 para mascarar
+rotas existentes.
 
 A inspeção do artefato identificou que `media="print"` no link CSS de entrada
 fazia o build anterior copiar a folha sem a transformação necessária. O plugin
@@ -57,17 +68,45 @@ desta feature é o artefato estático e os jobs de entrega.
 | FR-002 | Checks do build e verificador de artefato | Executar comandos equivalentes e casos de falha pertinentes |
 | FR-003 | Guards de branch/evento e permissões dos jobs | Revisão de PR, push e dispatch sem disparar GitHub |
 | FR-004 | Artefato `web/dist`, deploy dependente e concorrência | Conferir diretório e política da publicação |
-| FR-005 | Base do Vite, HTML, caminhos e detecção de rota | Testes e builds na raiz e no prefixo |
-| FR-006 | Entradas físicas produzidas no build | HTTP estático sem fallback e navegador |
+| FR-005 | Base do Vite, HTML, caminhos e catálogo de rotas | Testes e builds na raiz e no prefixo |
+| FR-006 | Sete entradas físicas derivadas do catálogo compartilhado | HTTP estático sem fallback, incluindo rotas aninhadas, e navegador |
 | FR-007 | Manifesto, service worker e cache com base | Inspeção do artefato e exercício local em navegador |
 | FR-008 | Escopo web e preservação de `.env` | Inspeção dos arquivos e ausência de workflow API |
 | FR-009 | README, arquitetura e quickstart | Conferência de comandos, links e limites |
+| FR-010 | Política em CONTRIBUTING, manifestos, changelog e Git Flow | Comparação de versões e tag; branches sincronizadas e run da release |
 
 ## Verificação planejada
 
 Executar ESLint, testes da web, build e verificação do artefato para ambas as
 bases. Validar YAML do workflow com ferramenta disponível e revisar condições e
 permissões. Executar validador SDD. Servir o artefato por servidor estático sem
-fallback e conferir home, aplicativo e feira em navegador real, além de manifesto,
-fontes, SVGs e imagens. A ativação de Pages e a execução de Actions ficam como
+fallback e conferir início, aplicativo, feira, página geral das oficinas e três
+páginas individuais em navegador real. Exercitar acesso direto, recarga e barra
+final nas duas bases, além de manifesto, fontes, SVGs e imagens. A ativação de Pages e a execução de Actions ficam como
 etapas remotas não executadas nesta entrega local.
+
+## Evolução: release e publicação autorizadas em 2026-11-07
+
+Evoluir esta especificação viva para a execução remota solicitada. A consulta
+ao Pages encontrou `build_type=workflow`, HTTPS obrigatório e o domínio
+`https://maisciencia.ifes.app.br/`, portanto a publicação usa a base `/` sem
+alterar DNS. O workflow existente já obtém a base correta de `configure-pages`.
+
+Adotar 0.2.0 para as novas rotas públicas de oficinas e os ajustes institucionais.
+Usar o SemVer incorporado em `npm version`, sem dependências novas. Documentar
+patch, minor, major e a convenção durante 0.y.z em `CONTRIBUTING.md`; registrar
+as alterações em `CHANGELOG.md`. Atualizar somente a versão da web e o lockfile.
+
+Após conferir o diff, criar commit Conventional Commits na bugfix atual,
+finalizá-la em `develop`, abrir `release/0.2.0`, preparar versão e changelog
+e executar os checks equivalentes ao workflow. Finalizar a release com tag
+anotada 0.2.0 e merge nas duas branches, sem reescrever histórico. Enviar
+somente `main`, `develop` e essa tag, preferencialmente em push atômico.
+Usar os hooks existentes de Commitizen; não desativar verificações.
+
+Acompanhar o run Web do commit exato de `main` até sua conclusão. Conferir
+por HTTPS a página inicial, as seis rotas provisórias e os recursos contra o
+build local; verificar a interface publicada em navegador. Publicar as notas
+da versão na release do GitHub, vinculadas à tag existente. Registrar a
+evidência remota em `verification.md`, sem alterar retroativamente a tag
+publicada; o registro posterior pode ser um commit documental em `develop`.

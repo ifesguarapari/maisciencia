@@ -13,6 +13,7 @@
 | FR-007 | Manifesto, service worker e recursos sob a base | Manifesto e escopo conferidos; navegação estática offline passou sob `/maisciencia/` |
 | FR-008 | Ausência de workflow API e preservação de configuração local | Somente `web.yml`; `.env` ignorados e ausentes do artefato |
 | FR-009 | Instruções reproduzíveis e limites honestos | README, arquitetura, contribuição e quickstart sincronizados |
+| FR-010 | Política SemVer, manifestos, changelog, Git Flow e tag | Política registrada para preparar 0.2.0; finalização e resultados remotos serão registrados após execução |
 
 ## Checks de código e artefato
 
@@ -91,7 +92,49 @@ O validador SDD passou com sete features, 66 requisitos e 72 tarefas, e
 encerrados depois da conferência. A revisão dos artefatos é local e não
 substitui revisão humana ou execução real do workflow no GitHub.
 
-## Limites remotos
+## Evolução local das rotas em 2026-11-07
+
+As quatro rotas de oficinas acrescentadas por 006 estão no catálogo compartilhado,
+no emissor de HTML e no verificador do artefato. Os 37 testes Node passaram, assim
+como os builds e `check:build` nas duas bases: 33 arquivos, 701 referências na
+raiz e 698 no prefixo. As sete entradas HTML estão no precache. O Chrome confirmou
+acesso direto e variantes com barra final por HTTP estático sem fallback nas
+duas bases, sem erros ou escapes da base; detalhes em
+[006-landing](../006-landing/verification.md).
+
+Essa evolução não alterou o workflow nem executou uma publicação remota.
+
+## Preparação da release 0.2.0 em 2026-11-07
+
+O usuário autorizou commits, Git Flow, versionamento e publicação. A consulta
+real ao GitHub encontrou Pages com `build_type=workflow`, domínio
+`maisciencia.ifes.app.br` e HTTPS obrigatório. O último run observado antes
+da nova release foi [40749047261](https://github.com/ifesguarapari/maisciencia/actions/runs/40749047261),
+concluído com sucesso para 0.1.0. `main` e `develop` estavam sincronizadas com
+as respectivas referências remotas após fetch.
+
+A versão proposta é 0.2.0 pelas novas páginas e navegação de oficinas. Git Flow,
+npm e Commitizen já estão instalados; não foi necessária biblioteca adicional.
+A preparação mantém a API em 0.1.0 e preserva os `.env` ignorados. Os resultados
+da nova release serão registrados depois de executados, sem inferência a partir
+da publicação anterior.
+
+O commit `5539edf` incorporou as páginas e revisões institucionais; a bugfix
+foi finalizada em `develop` e `release/0.2.0` foi aberta pelo Git Flow. O bump
+`npm --prefix web version minor --no-git-tag-version` sincronizou as três
+ocorrências da versão nos dois manifestos, sem modificar versões de pacotes.
+O changelog registra 0.2.0 com data de 2026-11-07.
+
+A instalação limpa `npm ci --cache /tmp/maisciencia-release-npm-cache
+--no-audit --no-fund` instalou os 553 pacotes do lockfile. ESLint e os 37 testes
+Node passaram; os nove testes Python da ferramenta SDD também passaram. Builds
+e `check:build` passaram em `/maisciencia/` e `/`: 33 arquivos com 691 e 694
+referências internas, respectivamente. O build final está na base `/`, usada
+pelo domínio configurado. O validador SDD passou com sete features, 67 requisitos
+e 84 tarefas, assim como `git diff --check`. O hook Commitizen validou o commit;
+Black e Pylint não tiveram arquivos Python da API para conferir.
+
+## Limites da preparação original
 
 GitHub Actions, ativação de Pages, publicação remota, domínio, DNS e VPS não
 foram executados nesta preparação local. Esses resultados não podem ser inferidos

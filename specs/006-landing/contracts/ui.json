@@ -17,14 +17,46 @@
       "description": "A página da feira está em construção. Em breve, você encontrará aqui mais informações.",
       "apiRequests": false,
       "returnTo": "/"
+    },
+    "/oficinas/ler": {
+      "view": "placeholder",
+      "title": "Ler um Livro com Jogos",
+      "description": "Esta página está em construção. Em breve, você encontrará aqui mais informações sobre esta oficina.",
+      "apiRequests": false,
+      "returnTo": "/"
+    },
+    "/oficinas/lancar": {
+      "view": "placeholder",
+      "title": "Lançar Foguetes com Precisão",
+      "description": "Esta página está em construção. Em breve, você encontrará aqui mais informações sobre esta oficina.",
+      "apiRequests": false,
+      "returnTo": "/"
+    },
+    "/oficinas/melhorar": {
+      "view": "placeholder",
+      "title": "Melhorar a Cidade com Eletrônica",
+      "description": "Esta página está em construção. Em breve, você encontrará aqui mais informações sobre esta oficina.",
+      "apiRequests": false,
+      "returnTo": "/"
+    },
+    "/oficinas": {
+      "view": "placeholder",
+      "title": "Oficinas",
+      "description": "Esta página está em construção. Em breve, você poderá conhecer como as oficinas são planejadas e executadas.",
+      "apiRequests": false,
+      "returnTo": "/"
     }
   },
   "fairLinks": {
     "label": "Feira",
     "href": "/feira",
     "accent": "#d94b91",
-    "locations": ["desktop-navigation", "mobile-navigation", "hero-actions"],
-    "heroPosition": "after-learn-more"
+    "locations": [
+      "desktop-navigation",
+      "mobile-navigation",
+      "hero-actions"
+    ],
+    "heroPosition": "before-application"
   },
   "requiredSections": [
     "inicio",
@@ -96,37 +128,61 @@
     "updatesRequireAction": true,
     "iconSource": "/favicon.svg",
     "icons": [
-      { "src": "/icons/apple-touch-icon.png", "size": 180, "purpose": "apple-touch-icon", "opaque": true },
-      { "src": "/icons/pwa-192x192.png", "size": 192, "purpose": "any" },
-      { "src": "/icons/pwa-512x512.png", "size": 512, "purpose": "any" },
-      { "src": "/icons/pwa-maskable-512x512.png", "size": 512, "purpose": "maskable", "opaque": true, "safeZoneRadiusRatio": 0.4 }
+      {
+        "src": "/icons/apple-touch-icon.png",
+        "size": 180,
+        "purpose": "apple-touch-icon",
+        "opaque": true
+      },
+      {
+        "src": "/icons/pwa-192x192.png",
+        "size": 192,
+        "purpose": "any"
+      },
+      {
+        "src": "/icons/pwa-512x512.png",
+        "size": 512,
+        "purpose": "any"
+      },
+      {
+        "src": "/icons/pwa-maskable-512x512.png",
+        "size": 512,
+        "purpose": "maskable",
+        "opaque": true,
+        "safeZoneRadiusRatio": 0.4
+      }
     ]
   },
   "workshops": {
     "heading": "Oficinas práticas. Muitas possibilidades de descoberta.",
     "fixedPeriods": false,
-    "environmentLabel": "Ambiente virtual",
     "items": [
       {
         "id": "games",
         "title": "Ler um Livro com Jogos",
-        "environment": "Letreirama",
-        "url": "https://www.letreirama.com.br/"
+        "url": "/oficinas/ler"
       },
       {
         "id": "rockets",
         "title": "Lançar Foguetes com Precisão",
         "category": "FÍSICA + MATEMÁTICA",
-        "environment": "Foguetrõnica",
-        "url": "https://www.foguetronica.com.br/"
+        "url": "/oficinas/lancar"
       },
       {
         "id": "cities",
         "title": "Melhorar a Cidade com Eletrônica",
-        "environment": "Tecidade",
-        "url": "https://www.tecidade.com.br/"
+        "url": "/oficinas/melhorar"
       }
-    ]
+    ],
+    "badgeLabel": "OFICINA",
+    "buttonLabel": "Saiba mais",
+    "buttonShape": "slightly-rounded",
+    "buttonColor": "workshop-color",
+    "overviewUrl": "/oficinas",
+    "buttonRadiusPx": 6,
+    "buttonBackgroundOpacity": 0.1,
+    "buttonText": "accent",
+    "buttonBorder": "accent"
   },
   "approvedProjects": {
     "heading": "PROJETOS APROVADOS",
@@ -144,5 +200,31 @@
         "valueLabel": "R$ 210 mil"
       }
     ]
+  },
+  "partnership": {
+    "label": "Desenvolvido em parceria com:",
+    "name": "Profe - Soluções Em Tecnologia Educacional Ltda",
+    "registration": "CNPJ: 66.907.525/0001-13",
+    "lines": 3,
+    "location": "footer-identity",
+    "placement": "after-description",
+    "sameParagraph": true
+  },
+  "buttons": {
+    "heroActions": {
+      "labels": ["Feira", "Aplicativo"],
+      "destinations": ["/feira", "/login"],
+      "style": "header-equivalent",
+      "accents": ["pink", "mint"],
+      "radiusPx": 6,
+      "minimumHeightPx": 44,
+      "learnMore": false
+    },
+    "learnMoreAndReturn": {
+      "style": "tinted-outline",
+      "radiusPx": 6,
+      "backgroundOpacity": 0.1,
+      "minimumHeightPx": 44
+    }
   }
 }

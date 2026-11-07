@@ -15,8 +15,8 @@ específico desta página; nomes técnicos, código e comentários continuam em 
 
 Esta é uma mudança nova que substitui a demonstração de sessões e saúde da
 página inicial inventariada em `003-web-pwa`. A autenticação do backend continua
-fora desta página pública; `/login` e `/feira` apresentam somente as mensagens
-provisórias pedidas, em português do Brasil.
+fora desta página pública; `/login`, `/feira` e as páginas de `/oficinas`
+apresentam somente as mensagens provisórias pedidas, em português do Brasil.
 
 Os caminhos desta especificação são relativos à base pública do site.
 [007-web-delivery](../007-web-delivery/spec.md) acrescenta hospedagem no prefixo
@@ -31,10 +31,10 @@ para conhecer sua proposta, atividades e rede de colaboração.
 
 - Dada a página inicial, quando a abro, então vejo as marcas fornecidas, a
   ilustração da jovem cientista e o título institucional em português.
-- Dada a navegação, quando escolho um link interno, então alcanço a seção
-  correspondente e identifico a seção ativa, também no menu móvel.
+- Dada a navegação, quando escolho um link interno, então alcanço a seção ou
+  página correspondente e identifico a seção ativa, também no menu móvel.
 - Dadas as oficinas, quando leio seus cards, então encontro os três temas,
-  descrições, ambientes virtuais e atividades de culminância fornecidos,
+  descrições, botões “Saiba mais” e atividades de culminância fornecidos,
   sem períodos vinculados a um ano específico.
 
 ### US2 — Encontrar instituições e pessoas (P1)
@@ -71,18 +71,27 @@ para acessar seu conteúdo em celular ou computador.
 
 ### US4 — Acessar os ambientes em preparação (P2)
 
-Como visitante, quero entender a disponibilidade do aplicativo e da feira
+Como visitante, quero entender a disponibilidade do aplicativo, da feira e das oficinas
 para saber que seus ambientes ainda estão em preparação.
 
 - Dado o botão Aplicativo, quando o ativo, então chego a `/login` com título
   “Acesso ao Aplicativo”, a mensagem de disponibilidade futura e retorno ao site.
 - Dada a página inicial, quando procuro a feira, então encontro o botão “Feira”
-  em rosa no cabeçalho desktop e no menu móvel e ao lado de “Conheça Mais”.
+  em rosa no cabeçalho desktop, no menu móvel e ao lado de “Aplicativo” na
+  abertura. A abertura contém somente esses dois botões, sem “Conheça Mais”.
+- Dados os botões da abertura, quando os vejo, então Feira usa rosa e Aplicativo
+  usa verde do tema, com o mesmo padrão de borda, texto colorido, fundo
+  translúcido e cantos levemente arredondados dos botões do cabeçalho.
 - Dado um desses botões, quando o ativo, então chego a `/feira`, com o título
   “Feira”, a mensagem “A página da feira está em construção. Em breve, você
   encontrará aqui mais informações.” e um botão para voltar ao site.
 - Dada a página pública ou provisória, quando a abro, então não são enviados
   pedidos de sessão, saúde ou autenticação ao backend.
+- Dado um botão “Saiba mais”, quando o ativo, então abro a página provisória
+  da oficina correspondente, em construção e com retorno ao site.
+- Dado o item Oficinas da navegação, quando o ativo, então abro `/oficinas`,
+  com uma mensagem de construção e de futura apresentação do planejamento
+  e da execução das oficinas.
 
 ## Requisitos
 
@@ -97,6 +106,7 @@ para saber que seus ambientes ainda estão em preparação.
   ativa e oferecer menu móvel com abertura e fechamento acessíveis.
   Os links da seção de projeto DEVEM usar “Projeto” nos menus e no rodapé;
   a identificação da seção DEVE usar “PROJETO”, sem o artigo inicial.
+  O item Oficinas dos menus e rodapé DEVE apontar à página `/oficinas`.
 - **FR-004**: A página DEVE conter início, projeto, impacto, metodologia,
   oficinas, instituições, equipe, apoio e encerramento, além de rodapé.
   Em “Atividades Semanais”, a metodologia DEVE descrever atividades
@@ -107,12 +117,13 @@ para saber que seus ambientes ainda estão em preparação.
   o movimento não estiver reduzido.
 - **FR-006**: A seção DEVE usar o título “Oficinas práticas. Muitas possibilidades
   de descoberta.” e apresentar as três oficinas fornecidas com suas respectivas
-  atividades de culminância. Os cards DEVEM substituir períodos e datas por
-  “Ambiente virtual”, com Letreirama (`https://www.letreirama.com.br/`) para
-  Ler um Livro com Jogos; Foguetrõnica (`https://www.foguetronica.com.br/`) para
-  Lançar Foguetes com Precisão; e Tecidade (`https://www.tecidade.com.br/`) para
-  Melhorar a Cidade com Eletrônica. A categoria da oficina de foguetes DEVE ser
-  “FÍSICA + MATEMÁTICA”.
+  atividades de culminância. Os três selos DEVEM exibir somente “OFICINA”,
+  sem numeração. Os cards DEVEM apresentar botões “Saiba mais” com leve
+  arredondamento, borda e texto na cor da oficina e fundo levemente translúcido,
+  seguindo o estilo de Feira e Aplicativo e substituindo a legenda Ambiente
+  virtual e os links Letreirama, Foguetrõnica e Tecidade. Os destinos DEVEM ser
+  `/oficinas/ler`, `/oficinas/lancar` e `/oficinas/melhorar`, respectivamente.
+  A categoria da oficina de foguetes DEVE ser “FÍSICA + MATEMÁTICA”.
 - **FR-007**: A rede DEVE oferecer abas, busca por instituição, filtro por
   município, cards e detalhes expansíveis para as 21 escolas e os nove campi.
 - **FR-008**: Pessoas, vínculos e informações complementares DEVEM limitar-se
@@ -128,14 +139,28 @@ para saber que seus ambientes ainda estão em preparação.
   apoios representados, sem as marcas Ifes/Mais Ciência nessa linha.
   O rodapé DEVE apontar ao Instagram
   `@ifesmaisciencia`, sem inventar contatos ou outras redes.
+  DEVE também apresentar, em três linhas, “Desenvolvido em parceria com:”,
+  “Profe - Soluções Em Tecnologia Educacional Ltda” e
+  “CNPJ: 66.907.525/0001-13”, conforme fornecido pelo usuário.
+  Essa mensagem DEVE ficar no quadrante de identidade, abaixo de “Ciência,
+  tecnologia e inovação aproximando escolas e comunidades.”, dentro do mesmo
+  parágrafo, sem criar uma faixa ou um parágrafo separado no rodapé.
 - **FR-010**: `/login` e `/feira` DEVEM exibir somente suas apresentações
   provisórias e o botão de retorno ao site, inclusive no acesso direto e com
   barra final. A página pública e as provisórias DEVEM operar sem chamadas ao
   backend. `/login` mantém seu conteúdo; `/feira` apresenta o título e mensagem
   definidos em US4, em português do Brasil.
+  `/oficinas`, `/oficinas/ler`, `/oficinas/lancar` e `/oficinas/melhorar` DEVEM
+  seguir a mesma apresentação provisória, com título correspondente e aviso
+  de construção. `/oficinas` DEVE informar que apresentará futuramente como
+  as oficinas são planejadas e executadas. As rotas DEVEM aceitar barra final,
+  respeitar a base pública e funcionar sem backend.
 - **FR-011**: A página DEVE usar HTML semântico, um único H1 por rota visível,
   rótulos e estados acessíveis, foco visível, operação por teclado, redução
   de movimento e comportamento responsivo sem depender dos efeitos visuais.
+  Os botões “Saiba mais” e “Voltar ao Início” DEVEM acompanhar o padrão visual
+  de Feira e Aplicativo: cantos levemente arredondados, borda e fonte coloridas
+  e fundo com baixa opacidade na mesma cor, mantendo contraste e foco visível.
 - **FR-012**: A entrega DEVE incluir título e descrição SEO fornecidos,
   metadados em português e cache PWA de recursos estáticos, mantendo a API
   excluída e a atualização dependente de ação explícita do visitante.
@@ -154,9 +179,12 @@ para saber que seus ambientes ainda estão em preparação.
   animação de crescimento e redução nem ampliação ao passar o ponteiro.
 - **FR-015**: A página DEVE oferecer links “Feira” para `/feira`, com aparência
   de botão e detalhes na cor rosa do tema, no cabeçalho desktop, no menu móvel
-  e imediatamente depois de “Conheça Mais” no hero. O botão do cabeçalho DEVE
-  seguir o formato de Aplicativo. Os botões DEVEM ter foco visível e permitir
-  reorganização em telas estreitas sem sobreposição ou rolagem horizontal.
+  e no hero. A área de ações do hero DEVE conter somente “Feira” e “Aplicativo”,
+  nessa ordem, sem o botão “Conheça Mais”. Esses dois botões DEVEM seguir o
+  mesmo padrão do cabeçalho, com raio suave, borda, fonte colorida e fundo
+  translúcido: rosa para Feira e verde do tema para Aplicativo, que aponta a
+  `/login`. Os botões DEVEM ter foco visível e permitir reorganização em telas
+  estreitas sem sobreposição ou rolagem horizontal.
 
 ### Projetos aprovados de FR-009
 
@@ -179,6 +207,8 @@ indicadores globais nem deduz um novo investimento total.
 - **SC-004**: Os três links Feira abrem `/feira`; o acesso direto a `/login`,
   `/feira` e suas variantes com barra final e o retorno ao site funcionam sem
   pedidos de API ou formulário de autenticação.
+  Os botões Saiba mais abrem as três oficinas correspondentes e o item Oficinas
+  abre a página geral, com o mesmo comportamento provisório e de retorno.
 - **SC-005**: ESLint, build e validação estrutural SDD passam; evidências de
   navegador, instalação e offline são registradas somente quando executadas.
 - **SC-006**: Em acesso inicial com recursos atrasados, o navegador mostra o

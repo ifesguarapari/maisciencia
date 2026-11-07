@@ -1,3 +1,5 @@
+import { placeholderPages } from './pages.js'
+
 export function normalizeBasePath(value = '/') {
   if (!/^(?:\/[a-zA-Z0-9._~-]+)*\/?$/.test(value)
     || value.split('/').some((segment) => segment === '.' || segment === '..')) {
@@ -14,7 +16,8 @@ export function getPageRoute(pathname, base) {
   if (pathname === base.slice(0, -1)) return 'home'
   if (!pathname.startsWith(base)) return null
   const route = pathname.slice(base.length).replace(/\/$/, '')
-  return ['', 'login', 'feira'].includes(route) ? route || 'home' : null
+  if (!route) return 'home'
+  return Object.hasOwn(placeholderPages, route) ? route : null
 }
 
 export function apiNavigationDenylist(base) {
