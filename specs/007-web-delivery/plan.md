@@ -73,6 +73,7 @@ desta feature é o artefato estático e os jobs de entrega.
 | FR-007 | Manifesto, service worker e cache com base | Inspeção do artefato e exercício local em navegador |
 | FR-008 | Escopo web e preservação de `.env` | Inspeção dos arquivos e ausência de workflow API |
 | FR-009 | README, arquitetura e quickstart | Conferência de comandos, links e limites |
+| FR-010 | Política em CONTRIBUTING, manifestos, changelog e Git Flow | Comparação de versões e tag; branches sincronizadas e run da release |
 
 ## Verificação planejada
 

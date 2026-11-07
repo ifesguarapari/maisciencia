@@ -119,6 +119,21 @@ A preparação mantém a API em 0.1.0 e preserva os `.env` ignorados. Os resulta
 da nova release serão registrados depois de executados, sem inferência a partir
 da publicação anterior.
 
+O commit `5539edf` incorporou as páginas e revisões institucionais; a bugfix
+foi finalizada em `develop` e `release/0.2.0` foi aberta pelo Git Flow. O bump
+`npm --prefix web version minor --no-git-tag-version` sincronizou as três
+ocorrências da versão nos dois manifestos, sem modificar versões de pacotes.
+O changelog registra 0.2.0 com data de 2026-11-07.
+
+A instalação limpa `npm ci --cache /tmp/maisciencia-release-npm-cache
+--no-audit --no-fund` instalou os 553 pacotes do lockfile. ESLint e os 37 testes
+Node passaram; os nove testes Python da ferramenta SDD também passaram. Builds
+e `check:build` passaram em `/maisciencia/` e `/`: 33 arquivos com 691 e 694
+referências internas, respectivamente. O build final está na base `/`, usada
+pelo domínio configurado. O validador SDD passou com sete features, 67 requisitos
+e 84 tarefas, assim como `git diff --check`. O hook Commitizen validou o commit;
+Black e Pylint não tiveram arquivos Python da API para conferir.
+
 ## Limites da preparação original
 
 GitHub Actions, ativação de Pages, publicação remota, domínio, DNS e VPS não
