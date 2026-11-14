@@ -134,6 +134,7 @@ cartão WebP e recursos contra o build; realizar smoke dirigido em navegador.
 Criar a release no GitHub após sucesso e registrar os resultados em `develop`.
 
 A leitura da issue GitHub #2 encontrou o título “Feira” e requisitos da
-página completa da FEMAIS-ES; `/feira` ainda é provisória. O pedido de
-esclarecimento sobre seu fechamento está separado do trabalho de publicar
-esta release. Não marcar critérios ou homologação dessa issue como realizados.
+página completa da FEMAIS-ES; `/feira` ainda é provisória. O usuário esclareceu
+que a issue deve permanecer aberta para implementação posterior. Finalizar
+somente a branch de trabalho, preservando a referência pedida `re #2` nos
+commits, sem marcar critérios ou homologação da issue como realizados.
