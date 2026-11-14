@@ -197,6 +197,32 @@ completa que não foram implementados nesta feature. Foi solicitado
 esclarecimento sobre seu fechamento, separado da finalização da branch.
 Os critérios e a aprovação humana da issue não foram marcados como concluídos.
 
+O usuário respondeu que a issue #2 deve permanecer aberta para implementar
+a Feira depois. Essa decisão foi preservada; nenhuma mudança foi enviada
+ao cadastro da issue. O fechamento autorizado passa a ser o da branch Git Flow.
+
+O commit `bb128bf`, criado pelo assistente Commitizen, contém `re #2` como
+rodapé. A primeira tentativa local omitiu o rodapé por consumo de Enter na
+confirmação do assistente; o commit ainda não publicado foi corrigido pelo
+próprio Commitizen antes da integração. Os hooks existentes passaram.
+`git flow feature finish --no-ff issue/2` criou o merge explícito `8fbf0c0`
+em `develop` e removeu a feature local. `release/0.3.0` foi aberta e o bump
+npm atualizou a versão da web nos dois manifestos, sem alterar dependências
+ou a versão da API. O changelog registra a nova versão e seu escopo.
+
+A instalação limpa pelo lockfile instalou os 553 pacotes existentes, sem
+atualizações de dependências. ESLint e os 61 testes Node passaram; os nove
+testes Python da ferramenta SDD também passaram. Builds e `check:build`
+passaram nas duas configurações: 37 arquivos e 686 referências internas em
+`https://ifesguarapari.github.io/maisciencia/`; 37 arquivos e 689 referências
+em `https://maisciencia.ifes.app.br/`. Cada artefato teve sete HTMLs, robots,
+sitemap e compartilhamento aprovados pelo verificador SEO. O build final usa
+a configuração do domínio próprio. A PWA gerou 32 e 35 entradas, respectivamente.
+
+O validador SDD passou com oito features, 76 requisitos e 100 tarefas;
+`git diff --check` e a validação Commitizen do intervalo de commits passaram.
+Não foram repetidos testes da API, pois seus arquivos não mudaram.
+
 ## Limites da preparação original
 
 GitHub Actions, ativação de Pages, publicação remota, domínio, DNS e VPS não
