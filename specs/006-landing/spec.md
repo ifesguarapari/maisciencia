@@ -100,8 +100,9 @@ para saber que seus ambientes ainda estão em preparação.
   Os textos públicos, incluindo rótulos acessíveis, DEVEM usar hífen simples
   no lugar do caractere de travessão, conforme a revisão solicitada.
 - **FR-002**: A composição DEVE usar a paleta escura, as marcas SVG originais
-  no cabeçalho e rodapé e `background.webp` com a personagem à direita, sem
-  recriar marcas governamentais ou fotografias de profissionais.
+  Ifes/Mais Ciência no cabeçalho, Pop Ciência no rodapé e `background.webp`
+  com a personagem à direita, sem recriar marcas governamentais ou fotografias
+  de profissionais. As marcas DEVEM manter suas proporções.
 - **FR-003**: A navegação DEVE ser fixa, adaptar-se à rolagem, indicar a seção
   ativa e oferecer menu móvel com abertura e fechamento acessíveis.
   Os links da seção de projeto DEVEM usar “Projeto” nos menus e no rodapé;
@@ -129,8 +130,10 @@ para saber que seus ambientes ainda estão em preparação.
 - **FR-008**: Pessoas, vínculos e informações complementares DEVEM limitar-se
   ao conteúdo fornecido. A equipe DEVE conter coordenação, colaboração e duas
   áreas expansíveis das redes, sem nomes ou dados institucionais inventados.
-  A colaboração DEVE apresentar Marcelene Alves Duarte, com a função
-  “Colaboração em Matemática”, conforme a substituição solicitada pelo usuário.
+  A colaboração DEVE apresentar Ijanai dos Santos Sobrinho, com a função
+  “Colaboração em Foguetes”, conforme a substituição solicitada pelo usuário.
+  O nome da colaboração em Literatura DEVE ser exibido como
+  “Nanine R. P. dos Santos Pereira”, conforme a abreviação solicitada.
 - **FR-009**: O apoio DEVE identificar MCTI, CNPq e FNDCT, a chamada e uma área
   “PROJETOS APROVADOS” com os dois projetos, processos CNPq e valores fornecidos
   abaixo, omitindo a referência ao processo Ifes PROEX em toda a página.
@@ -139,8 +142,12 @@ para saber que seus ambientes ainda estão em preparação.
   apoios representados, sem as marcas Ifes/Mais Ciência nessa linha.
   O rodapé DEVE apontar ao Instagram
   `@ifesmaisciencia`, sem inventar contatos ou outras redes.
+  Seu bloco de identidade DEVE usar somente `popciencia.svg` e o subtítulo
+  “Programa Nacional de Popularização da Ciência”, substituindo as duas
+  marcas e o subtítulo anteriores somente nesse bloco. Missão, parceria,
+  navegação, informações institucionais e demais conteúdos DEVEM ser preservados.
   DEVE também apresentar, em três linhas, “Desenvolvido em parceria com:”,
-  “Profe - Soluções Em Tecnologia Educacional Ltda” e
+  “Profe - Soluções em Tecnologia Educacional Ltda” e
   “CNPJ: 66.907.525/0001-13”, conforme fornecido pelo usuário.
   Essa mensagem DEVE ficar no quadrante de identidade, abaixo de “Ciência,
   tecnologia e inovação aproximando escolas e comunidades.”, dentro do mesmo
@@ -161,9 +168,11 @@ para saber que seus ambientes ainda estão em preparação.
   Os botões “Saiba mais” e “Voltar ao Início” DEVEM acompanhar o padrão visual
   de Feira e Aplicativo: cantos levemente arredondados, borda e fonte coloridas
   e fundo com baixa opacidade na mesma cor, mantendo contraste e foco visível.
-- **FR-012**: A entrega DEVE incluir título e descrição SEO fornecidos,
+- **FR-012**: A entrega DEVE incluir título e descrição SEO institucionais,
   metadados em português e cache PWA de recursos estáticos, mantendo a API
   excluída e a atualização dependente de ação explícita do visitante.
+  A evolução [008-seo](../008-seo/spec.md) rege a otimização de metadados,
+  canonical e política de indexação, preservando a identidade e o conteúdo.
   Os quatro ícones PNG da aplicação DEVEM reproduzir a marca e as cores de
   `web/public/favicon.svg`: Apple Touch com 180 por 180 px, PWA com 192 e
   512 px e maskable com 512 px. Apple Touch e maskable DEVEM ter fundo opaco;

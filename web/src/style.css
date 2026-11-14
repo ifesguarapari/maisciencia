@@ -294,9 +294,8 @@ p { margin-block: 0; }
 
 .site-footer { padding-top: 65px; background: #0d0f12; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr .7fr 1fr .75fr; gap: 50px; padding-bottom: 50px; }
-.footer-brand { display: flex; align-items: center; gap: 14px; width: fit-content; margin-bottom: 22px; }
-.footer-brand .brand-ifes { width: 39px; height: 52px; }
-.footer-brand .brand-science { width: 112px; height: 42px; }
+.footer-brand { display: block; width: fit-content; max-width: 100%; margin-bottom: 22px; }
+.footer-program { width: 160px; max-width: 100%; height: auto; object-fit: contain; }
 .footer-identity strong { display: block; margin-bottom: 10px; color: #d9e0e9; font-size: 12px; font-weight: 550; }
 .footer-identity p { max-width: 270px; color: #7f8c9e; font-size: 11px; line-height: 1.95; }
 .footer-grid h2, .footer-grid h3 { margin: 8px 0 24px; color: #d2d8e2; font-size: 11px; font-weight: 550; }

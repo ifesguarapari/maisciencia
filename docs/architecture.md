@@ -109,10 +109,27 @@ ou no prefixo do GitHub Pages, sem depender de fallback SPA. A demonstração
 anterior dos fluxos de sessão e saúde foi substituída na entrada pública;
 a baseline `003` preserva seu inventário retrospectivo.
 
+`008-seo` centraliza identidade e metadados em `web/src/seo.js`. O build entrega
+título, descrição, canonical HTTPS e política de indexação próprios no HTML
+de cada rota; o cliente mantém a coerência quando o PWA entrega o shell da
+inicial. Somente a inicial permite indexação, entra no sitemap e recebe
+JSON-LD `WebSite`; as seis provisórias usam `noindex,follow`. O build gera
+`robots.txt` permissivo e `sitemap.xml`, combinando a origem pública
+`WEB_SITE_ORIGIN` com `WEB_BASE_PATH`. A origem padrão é
+`https://maisciencia.ifes.app.br`; configuração alternativa exige HTTPS e
+origem sem caminho de página, consulta, fragmento ou credenciais. O
+[guia de SEO](seo.md) registra a manutenção e o trabalho manual de Search
+Console. Esses sinais não comprovam indexação nem posição no Google.
+
 A landing apresenta as seções, instituições e pessoas fornecidas, com filtros
 e painéis locais. Dados complementares de `site.docx` não fornecidos não são
-inventados. O rodapé registra a parceria em três linhas: “Desenvolvido em
-parceria com:”, “Profe - Soluções Em Tecnologia Educacional Ltda” e
+inventados. O cabeçalho mantém as marcas Ifes e Mais Ciência. Somente o rodapé
+usa a imagem original `web/public/images/popciencia.svg`, com proporção
+preservada e o subtítulo “Programa Nacional de Popularização da Ciência”.
+O cartão de compartilhamento `slide.webp` mantém sua composição anterior.
+O rodapé preserva missão, navegação, informações e Instagram e registra a
+parceria em três linhas: “Desenvolvido em
+parceria com:”, “Profe - Soluções em Tecnologia Educacional Ltda” e
 “CNPJ: 66.907.525/0001-13”. As três linhas ficam no quadrante `.footer-identity`,
 dentro do mesmo parágrafo da missão, após “Ciência, tecnologia e inovação
 aproximando escolas e comunidades.”. O BFF e a autenticação continuam
@@ -153,6 +170,7 @@ do site devem ser registradas somente após sua realização em
 - [003-web-pwa](../specs/003-web-pwa/spec.md): interface, saúde agregada e PWA.
 - [006-landing](../specs/006-landing/spec.md): apresentação pública, rede, equipe e acessos provisórios ao aplicativo, à feira e às oficinas.
 - [007-web-delivery](../specs/007-web-delivery/spec.md): integração contínua e hospedagem estática da web no GitHub Pages.
+- [008-seo](../specs/008-seo/spec.md): identidade no HTML inicial, canonical, indexação e manutenção de SEO.
 - [CONTRIBUTING.md](../CONTRIBUTING.md): idioma, qualidade e configuração local.
 
 As verificações e suas limitações pertencem às features. Inspeção de

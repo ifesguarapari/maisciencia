@@ -179,6 +179,24 @@ físicos ou outros motores. Esses limites permanecem distintos do sucesso
 do deploy e dos arquivos publicados. A validação estrutural SDD e
 `git diff --check` passaram também após registrar os resultados remotos.
 
+## Preparação da release 0.3.0 em 2026-11-14
+
+O usuário autorizou finalizar `feature/issue/2` pelo Git Flow, usar Commitizen
+com a referência `re #2`, versionar semanticamente e publicar pelo Actions.
+A revisão do diff recomendou 0.3.0 pelas funcionalidades de SEO, descoberta
+e compartilhamento. Não identificou bloqueios materiais. Os novos módulos,
+checks e assets são parte necessária do stage; `.env` e API ficam preservados.
+
+Após fetch, `main` e `develop` estavam sincronizadas com o remoto; a última
+tag era 0.2.0. O Pages continua configurado por workflow no domínio
+`https://maisciencia.ifes.app.br/`, com HTTPS obrigatório. Os resultados da
+nova execução serão registrados após ocorrerem, sem inferir sucesso da anterior.
+
+A consulta à issue GitHub #2 retornou “Feira”, com requisitos da FEMAIS-ES
+completa que não foram implementados nesta feature. Foi solicitado
+esclarecimento sobre seu fechamento, separado da finalização da branch.
+Os critérios e a aprovação humana da issue não foram marcados como concluídos.
+
 ## Limites da preparação original
 
 GitHub Actions, ativação de Pages, publicação remota, domínio, DNS e VPS não

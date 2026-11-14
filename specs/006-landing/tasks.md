@@ -87,3 +87,15 @@ pendentes até execução. Não representam homologação humana.
 ## Evolução: duas ações na abertura
 
 - [x] T033 [US4] Retirar Conheça Mais e padronizar Feira e Aplicativo no hero com os botões do cabeçalho, preservando rosa e verde, em `web/index.html` e `web/src/style.css`; sincronizar contratos e documentação e conferir build, layout, foco e navegação (FR-011, FR-015).
+
+## Evolução: identidade Pop Ciência no rodapé
+
+- [x] T034 [US1] Substituir as marcas e o subtítulo da identidade do rodapé por `popciencia.svg` e o nome do programa em `web/index.html`, ajustar proporção em `web/src/style.css` e sincronizar contrato/docs; conferir conteúdo preservado, build e layout responsivo (FR-002, FR-009, FR-011).
+
+## Evolução: grafia da parceria e colaboração em Foguetes
+
+- [x] T035 [US1] Corrigir a grafia da parceria em `web/index.html` e substituir pessoa, função e iniciais em `web/src/data.js`; sincronizar contrato e documentos atuais, conferir dados e build e registrar evidências (FR-008, FR-009).
+
+## Evolução: abreviação da colaboração em Literatura
+
+- [x] T036 [US1] Abreviar o nome de Nanine em `web/src/data.js`, atualizar o contrato e conferir nome, função, iniciais e build, registrando a evidência (FR-008).
