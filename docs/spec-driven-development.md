@@ -26,6 +26,7 @@ foi produzido por SDD.
 | `specs/005-domain-names/` | Evolução dos nomes solicitada durante a adoção |
 | `specs/006-landing/` | Página institucional especificada antes da implementação |
 | `specs/007-web-delivery/` | Integração contínua da web e artefato estático para GitHub Pages |
+| `specs/008-seo/` | Metadados por rota, indexação e roteiro de manutenção de SEO |
 
 As baselines capturam o sistema existente e declaram suas lacunas. Sua existência
 não representa aprovação humana ou testes de integração concluídos. A mudança
@@ -34,6 +35,10 @@ A página `006` evolui a entrada pública descrita em `003`, com a exceção de
 idioma autorizada e a rota provisória do futuro aplicativo. O inventário
 retrospectivo permanece identificado, sem transformar a interface antiga
 em requisito vigente da landing page.
+A evolução `008` rege os sinais de SEO da apresentação e de suas rotas,
+preservando o conteúdo de `006` e a entrega estática de `007`. O
+[guia de SEO](seo.md) distingue checks locais de publicação, Search Console
+e indexação real; as evidências continuam na especificação correspondente.
 
 ## Preparar a ferramenta
 

@@ -43,9 +43,9 @@ export const coordinators = [
 
 export const collaborators = [
   { id: 'collaborator-1', name: 'Ramon Rosa Maia Vieira Junior', role: 'Colaboração em Pesquisa', initials: 'RJ' },
-  { id: 'collaborator-2', name: 'Nanine Renata Passos dos Santos Pereira', role: 'Colaboração em Literatura', initials: 'NP' },
+  { id: 'collaborator-2', name: 'Nanine R. P. dos Santos Pereira', role: 'Colaboração em Literatura', initials: 'NP' },
   { id: 'collaborator-3', name: 'Debora Assis Cantarela', role: 'Colaboração em Modelagem', initials: 'DC' },
   { id: 'collaborator-4', name: 'Ronald Corradi Costa', role: 'Colaboração em Eletrônica', initials: 'RC' },
   { id: 'collaborator-5', name: 'Fernando Gagno Júnior', role: 'Colaboração em Ciência', initials: 'FJ' },
-  { id: 'collaborator-6', name: 'Marcelene Alves Duarte', role: 'Colaboração em Matemática', initials: 'MD' },
+  { id: 'collaborator-6', name: 'Ijanai dos Santos Sobrinho', role: 'Colaboração em Foguetes', initials: 'IS' },
 ]

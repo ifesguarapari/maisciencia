@@ -1,8 +1,10 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { routeEntries } from '../src/pages.js'
+import { getPageSeo } from '../src/seo.js'
+import { renderPageMetadata, renderRobots, renderSitemap } from './seo.js'
 
-export function staticRouteEntries() {
+export function staticRouteEntries(options = {}) {
   let outputDirectory
   return {
     name: 'static-route-entries',
@@ -19,8 +21,11 @@ export function staticRouteEntries() {
         if (routeEntry === 'index.html') continue
         const filename = resolve(outputDirectory, routeEntry)
         await mkdir(dirname(filename), { recursive: true })
-        await writeFile(filename, entry.source)
+        const route = routeEntry.slice(0, -'/index.html'.length)
+        await writeFile(filename, renderPageMetadata(entry.source, getPageSeo(route, options)))
       }
+      await writeFile(resolve(outputDirectory, 'robots.txt'), renderRobots(options))
+      await writeFile(resolve(outputDirectory, 'sitemap.xml'), renderSitemap(options))
     },
   }
 }

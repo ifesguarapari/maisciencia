@@ -20,6 +20,12 @@ o Git Flow, versionar semanticamente e publicar a web, incluindo os commits,
 merges, tag e pushes necessários. Essa evolução usa a configuração existente
 do Pages, com domínio próprio, e substitui o limite remoto da execução original.
 
+Em 2026-11-14, o usuário autorizou também a publicação das evoluções de 006
+e 008 a partir de `feature/issue/2`, com Commitizen, referência `re #2`,
+release SemVer e GitHub Actions. A finalização da branch e o estado da issue
+no GitHub são operações distintas; não representam aceite dos requisitos
+da página completa da FEMAIS-ES, que permanece fora dessa implementação.
+
 ## Histórias e aceitação
 
 ### US1 — Validar alterações antes da publicação (P1)

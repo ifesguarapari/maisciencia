@@ -14,7 +14,7 @@ locais executados nesta entrega; não representam homologação humana.
 | FR-005 | Cinco indicadores exatos, contagem e estado final com movimento reduzido | Valores finais observados em Chrome; observer e proteção contra repetição inspecionados. |
 | FR-006 | Oficinas práticas, selos sem números, botões internos e culminâncias | Três botões Saiba mais com raio de 6 px, borda e texto na cor do card e fundo translúcido conferidos na fonte, build e Chrome. Destinos e culminâncias preservados. |
 | FR-007 | Contagem 21/9, busca, filtro, abas, detalhes e estado vazio | Sete testes Node passaram; fluxos interativos passaram em Chrome. |
-| FR-008 | Pessoas e dados limitados ao material fornecido | Marcelene Alves Duarte substitui o suporte em Informática na colaboração; função e iniciais atualizadas. Mantidas três pessoas na coordenação e seis na colaboração. |
+| FR-008 | Pessoas e dados limitados ao material fornecido | Ijanai dos Santos Sobrinho apresentado em Colaboração em Foguetes, com iniciais IS. Mantidas três pessoas na coordenação e seis na colaboração. |
 | FR-009 | Identificações, faixa de apoios, projetos, Instagram e parceria Profe | Projetos e faixa conferidos; parceria com nome e CNPJ exatos dentro do mesmo parágrafo da missão em footer-identity, inclusive em 320 px. Processo Ifes PROEX continua ausente. |
 | FR-010 | Seis páginas provisórias, variantes com barra final, retorno e ausência de API | Aplicativo, feira e quatro rotas de oficinas conferidos nas duas bases, com H1 e mensagens próprios; retorno e acesso direto passaram no Chrome. |
 | FR-011 | Layout, teclado, semântica, foco e movimento reduzido | Chrome em 1440, 390 e 320 px, teclado das abas, Escape, foco e redução de movimento passaram. |
@@ -386,11 +386,85 @@ permanentes nem repetiram ESLint, testes Node, instalação, atualização ou
 offline. As evidências desses exercícios anteriores continuam com seu alcance
 original. Não houve publicação remota nesta revisão.
 
+## Evolução: identidade Pop Ciência no rodapé em 2026-11-14
+
+Somente o bloco `.footer-identity` passou a usar o SVG original
+`images/popciencia.svg` e o subtítulo “Programa Nacional de Popularização da
+Ciência”. A imagem tem largura de 160 px e altura automática, com limite de
+largura e `object-fit: contain`. O link da marca continua retornando ao início.
+As regras específicas das duas marcas antigas no rodapé foram removidas.
+
+Uma comparação do HTML anterior e posterior, normalizando somente o link
+da marca e o h3 alterados, confirmou que todo o restante do rodapé ficou
+idêntico. Missão, parceria no mesmo parágrafo, CNPJ, navegação, informações
+e Instagram foram preservados. SHA256 confirmou que Pop Ciência, as duas
+marcas do cabeçalho e o cartão de compartilhamento não foram alterados.
+
+Build e `check:build` passaram na base `/`, com 37 arquivos, 689 referências
+internas e os sete HTMLs aprovados pelo verificador SEO. A PWA gerou 35
+entradas de precache. O validador SDD passou com oito features, 76 requisitos
+e 94 tarefas, assim como `git diff --check`.
+
+Chrome headless conferiu 1440, 390 e 320 px. A imagem carregou com 160 por
+139,9375 px, sem distorção ou overflow; subtítulo e quatro grupos do rodapé
+foram encontrados. A parceria permaneceu no mesmo parágrafo. Cabeçalho com
+os dois SVGs e metadados apontando a `slide.webp` continuaram corretos.
+O clique real na marca chegou a `#inicio` com scrollY zero. Não houve erros
+de runtime ou recursos na conferência dirigida, com 21 respostas observadas.
+As capturas desktop e móvel foram inspecionadas; Chrome e servidor temporários
+foram encerrados.
+
+O helper temporário exigiu ajuste na limpeza do perfil do Chrome e na captura
+de tela para evitar o relayout provocado por captura além do viewport. Esses
+ajustes de coleta não motivaram mudanças no produto. Esta revisão de HTML/CSS
+não acrescentou testes permanentes nem repetiu ESLint, testes Node, offline,
+instalação ou publicação. As evidências anteriores conservam seus limites.
+
+## Evolução: grafia da parceria e colaboração em Foguetes em 2026-11-14
+
+A parceria passou a usar “Profe - Soluções em Tecnologia Educacional Ltda”,
+com a preposição em minúscula, no HTML e nos documentos atuais. O registro
+`collaborator-6` passou a apresentar Ijanai dos Santos Sobrinho, com função
+“Colaboração em Foguetes” e iniciais IS. As evidências históricas das
+substituições anteriores foram preservadas.
+
+A importação dos dados conferiu nome, função, iniciais, ausência do registro
+anterior e manutenção de três coordenadores e seis colaboradores. ESLint
+direcionado a `web/src/data.js` e os sete testes existentes de dados/filtros
+passaram. Não foram criados testes permanentes para reproduzir esses textos.
+
+Build e `check:build` passaram na base `/`: 37 arquivos, 689 referências
+internas e sete HTMLs aprovados pelo SEO. A grafia nova consta nas sete
+entradas; o JavaScript compilado contém os novos nome, função e iniciais,
+sem os valores substituídos. O helper dessa inspeção precisou aceitar também
+as crases usadas pelo minificador em literais; o resultado final passou sem
+mudança no produto motivada por esse ajuste.
+
+O validador SDD passou com oito features, 76 requisitos e 95 tarefas;
+`git diff --check` passou. Esta revisão de conteúdo não repetiu a suíte
+completa, navegação em navegador, instalação ou offline, e não foi publicada.
+
+## Evolução: abreviação da colaboração em Literatura em 2026-11-14
+
+O nome de `collaborator-2` passou a ser “Nanine R. P. dos Santos Pereira”.
+A importação dos dados confirmou o nome, a função em Literatura, as iniciais
+NP e as contagens de três coordenadores e seis colaboradores. O contrato
+acompanha a nova grafia. ESLint direcionado a `web/src/data.js` passou.
+
+Build e `check:build` passaram na base `/`, com 37 arquivos, 689 referências
+internas e os sete HTMLs aprovados pelo SEO. O bundle contém o nome abreviado
+e não contém a versão completa substituída. O validador SDD passou com oito
+features, 76 requisitos e 96 tarefas; `git diff --check` também passou.
+Não foram criados testes permanentes para o texto nem repetidos os testes
+Node ou o navegador para essa abreviação; não houve publicação.
+
 ## Limitações preservadas
 
 O usuário confirmou continuar sem os dados complementares de `site.docx`.
-Não há aprovação humana dos artefatos. Instalação, ciclo de atualização e
-publicação em hospedagem não foram executados. A evidência offline limita-se
+Não há aprovação humana dos artefatos. Instalação e ciclo de atualização
+não foram executados. A publicação anterior de 0.2.0 está registrada em
+[007-web-delivery](../007-web-delivery/verification.md); esta revisão não
+incluiu novo deploy. A evidência offline limita-se
 ao exercício descrito acima, sem operações autenticadas ou banco de dados.
 Dados e processos institucionais reproduzem o texto fornecido; não representam
 auditoria externa. Não se prevê execução de MongoDB, Kong ou autenticação nesta feature.

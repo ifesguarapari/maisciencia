@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -79,17 +79,32 @@
     })()
   </script>
   <link id="page-styles" rel="stylesheet" href="/src/style.css" media="print" />
-  <meta name="description" content="Conheça o Ifes Mais Ciência na Escola, projeto de extensão que promove educação científica, inclusão digital e inovação por meio de laboratórios maker e atividades práticas em escolas públicas do Espírito Santo." />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="pt_BR" />
-  <meta property="og:title" content="Ifes Mais Ciência na Escola | Ciência, Tecnologia e Inovação" />
-  <meta property="og:description" content="Ciência que inspira. Tecnologia que transforma. Conheça o projeto e sua rede de aprendizagem no Espírito Santo." />
+  <!-- seo:start -->
+  <title id="seo-title">Ifes Mais Ciência na Escola | Educação científica no ES</title>
+  <meta id="seo-description" name="description" content="Conheça o projeto Ifes Mais Ciência na Escola: educação científica, laboratórios maker e oficinas de tecnologia em escolas públicas do Espírito Santo." />
+  <meta id="seo-og-url" property="og:url" content="https://maisciencia.ifes.app.br/" />
+  <meta id="seo-og-type" property="og:type" content="website" />
+  <meta id="seo-og-title" property="og:title" content="Ifes Mais Ciência na Escola | Educação científica no ES" />
+  <meta id="seo-og-description" property="og:description" content="Conheça o projeto Ifes Mais Ciência na Escola: educação científica, laboratórios maker e oficinas de tecnologia em escolas públicas do Espírito Santo." />
+  <meta id="seo-og-site_name" property="og:site_name" content="Ifes Mais Ciência na Escola" />
+  <meta id="seo-og-locale" property="og:locale" content="pt_BR" />
+  <meta id="seo-og-image" property="og:image" content="https://maisciencia.ifes.app.br/icons/slide.webp" />
+  <meta id="seo-og-image-secure_url" property="og:image:secure_url" content="https://maisciencia.ifes.app.br/icons/slide.webp" />
+  <meta id="seo-og-image-type" property="og:image:type" content="image/webp" />
+  <meta id="seo-og-image-width" property="og:image:width" content="750" />
+  <meta id="seo-og-image-height" property="og:image:height" content="425" />
+  <meta id="seo-og-image-alt" property="og:image:alt" content="Ifes Mais Ciência na Escola: marcas do Ifes e Mais Ciência na Escola sobre uma ilustração de ciência e tecnologia" />
+  <meta id="seo-twitter-card" name="twitter:card" content="summary_large_image" />
+  <meta id="seo-twitter-title" name="twitter:title" content="Ifes Mais Ciência na Escola | Educação científica no ES" />
+  <meta id="seo-twitter-description" name="twitter:description" content="Conheça o projeto Ifes Mais Ciência na Escola: educação científica, laboratórios maker e oficinas de tecnologia em escolas públicas do Espírito Santo." />
+  <meta id="seo-twitter-image" name="twitter:image" content="https://maisciencia.ifes.app.br/icons/slide.webp" />
+  <meta id="seo-twitter-image-alt" name="twitter:image:alt" content="Ifes Mais Ciência na Escola: marcas do Ifes e Mais Ciência na Escola sobre uma ilustração de ciência e tecnologia" />
+  <!-- seo:end -->
   <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
   <link rel="apple-touch-icon" href="%BASE_URL%icons/apple-touch-icon.png" />
   <link rel="preload" as="image" href="%BASE_URL%images/background.webp" fetchpriority="high" />
   <link rel="preload" as="font" href="%BASE_URL%fonts/jakarta.woff2" type="font/woff2" crossorigin />
   <link rel="preload" as="font" href="%BASE_URL%fonts/inter.woff2" type="font/woff2" crossorigin />
-  <title>Ifes Mais Ciência na Escola | Ciência, Tecnologia e Inovação</title>
 </head>
 <body x-data="landing" @keydown.escape.window="closeMenu(true)">
   <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-atomic="true">
@@ -253,7 +268,7 @@
   </main>
   <footer class="site-footer" x-show="!isPlaceholder"><div class="container">
     <div class="footer-grid">
-      <div class="footer-identity"><a class="brand footer-brand" href="#inicio" aria-label="Ifes Mais Ciência na Escola - início"><img class="brand-ifes" src="%BASE_URL%images/ifes.svg" alt="Instituto Federal do Espírito Santo" width="600" height="800" loading="lazy" /><span class="brand-divider" aria-hidden="true"></span><img class="brand-science" src="%BASE_URL%images/maisciencia.svg" alt="Mais Ciência na Escola" width="800" height="300" loading="lazy" /></a><h3>Ifes Mais Ciência na Escola</h3><p>Ciência, tecnologia e inovação aproximando escolas e comunidades. <span class="footer-partnership"><span>Desenvolvido em parceria com:</span><span class="partnership-name">Profe - Soluções Em Tecnologia Educacional Ltda</span><span>CNPJ: 66.907.525/0001-13</span></span></p></div>
+      <div class="footer-identity"><a class="footer-brand" href="#inicio" aria-label="Pop Ciência - início"><img class="footer-program" src="%BASE_URL%images/popciencia.svg" alt="Pop Ciência" width="289" height="253" loading="lazy" /></a><h3>Programa Nacional de Popularização da Ciência</h3><p>Ciência, tecnologia e inovação aproximando escolas e comunidades. <span class="footer-partnership"><span>Desenvolvido em parceria com:</span><span class="partnership-name">Profe - Soluções em Tecnologia Educacional Ltda</span><span>CNPJ: 66.907.525/0001-13</span></span></p></div>
       <div><h3>Navegação</h3><nav class="footer-navigation" aria-label="Navegação do rodapé"><a href="#inicio">Início</a><a href="#sobre">Projeto</a><a href="%BASE_URL%oficinas">Oficinas</a><a href="#escolas">Escolas</a><a href="#equipe">Equipe</a><a href="#apoio">Apoio</a></nav></div>
       <div class="footer-information"><h3>Informações Institucionais</h3><p>Instituto Federal do Espírito Santo</p><p>Projeto de Extensão</p></div>
       <div><h3>Redes Sociais</h3><a class="social-link" href="https://www.instagram.com/ifesmaisciencia/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @ifesmaisciencia (abre em nova aba)"><svg class="icon" aria-hidden="true"><use href="%BASE_URL%icons/interface.svg#instagram" /></svg><span>@ifesmaisciencia</span><svg class="icon" aria-hidden="true"><use href="%BASE_URL%icons/interface.svg#arrow-up-right" /></svg></a></div>

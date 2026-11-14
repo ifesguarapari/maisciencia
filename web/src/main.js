@@ -4,11 +4,13 @@ import { institutions, coordinators, collaborators } from './data.js'
 import { filterInstitutions, getCities } from './filters.js'
 import { getPageRoute, publicUrl } from './paths.js'
 import { placeholderPages } from './pages.js'
+import { getPageSeo, syncPageSeo } from './seo.js'
 
 const sectionIds = ['inicio', 'sobre', 'oficinas', 'escolas', 'equipe', 'apoio']
 const base = import.meta.env.BASE_URL
 const pageRoute = getPageRoute(window.location.pathname, base)
 const placeholderPage = placeholderPages[pageRoute]
+syncPageSeo(document, getPageSeo(pageRoute || 'home', { base, origin: import.meta.env.WEB_SITE_ORIGIN }))
 
 async function prepareAppearance() {
   const hero = new Image()
@@ -78,10 +80,6 @@ Alpine.data('landing', () => ({
   },
 
   init() {
-    if (this.isPlaceholder) {
-      document.title = `${this.placeholderTitle} | Ifes Mais Ciência na Escola`
-      document.querySelector('meta[name="description"]')?.setAttribute('content', this.placeholderDescription)
-    }
     this.updateApp = registerSW({
       onNeedRefresh: () => {
         this.updateAvailable = true
