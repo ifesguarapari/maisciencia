@@ -36,7 +36,9 @@ de rota, a emissão de arquivos e a conferência do artefato coerentes.
 O plugin emite `login/index.html`, `feira/index.html`, `oficinas/index.html`,
 `oficinas/ler/index.html`, `oficinas/lancar/index.html` e
 `oficinas/melhorar/index.html` a partir do HTML compilado antes da geração do
-service worker. Com a página inicial, são sete entradas físicas. Todos os
+service worker. A evolução [008-seo](../008-seo/spec.md) personaliza o head
+dessas cópias por rota e acrescenta robots e sitemap ao mesmo artefato.
+Com a página inicial, são sete entradas físicas. Todos os
 caminhos compilados usam a base absoluta, permitindo servir os documentos
 aninhados sem fallback. Manter a atualização PWA por prompt, manifesto e cache
 sob a base e exclusão das rotas de API. O verificador deve exigir as sete
@@ -110,3 +112,29 @@ build local; verificar a interface publicada em navegador. Publicar as notas
 da versão na release do GitHub, vinculadas à tag existente. Registrar a
 evidência remota em `verification.md`, sem alterar retroativamente a tag
 publicada; o registro posterior pode ser um commit documental em `develop`.
+
+## Evolução: release 0.3.0 da feature issue/2
+
+Em 2026-11-14, concluir a entrega de SEO, compartilhamento e ajustes
+institucionais de 006 e 008. Usar 0.3.0, pois há funcionalidades adicionais
+de descoberta/indexação e compartilhamento, conforme a política SemVer local.
+Preservar a versão independente da API e a configuração existente do Pages.
+
+Criar o commit da feature pelo assistente Commitizen com rodapé `re #2`.
+Finalizar por `git flow feature finish --no-ff issue/2`, tornando a integração
+explícita no histórico. Abrir `release/0.3.0`, usar `npm version minor
+--no-git-tag-version` e preparar changelog e evidências. Executar instalação
+limpa, lint, testes, SDD e os builds nas duas bases antes de finalizar a release.
+Registrar também a preparação da release com Commitizen e a referência pedida.
+
+Finalizar a release com tag anotada imutável, merge em `main` e retorno a
+`develop`, enviando branches e tag sem push forçado. Acompanhar o run do
+commit exato de produção. Conferir por HTTPS páginas, robots, sitemap,
+cartão WebP e recursos contra o build; realizar smoke dirigido em navegador.
+Criar a release no GitHub após sucesso e registrar os resultados em `develop`.
+
+A leitura da issue GitHub #2 encontrou o título “Feira” e requisitos da
+página completa da FEMAIS-ES; `/feira` ainda é provisória. O usuário esclareceu
+que a issue deve permanecer aberta para implementação posterior. Finalizar
+somente a branch de trabalho, preservando a referência pedida `re #2` nos
+commits, sem marcar critérios ou homologação da issue como realizados.

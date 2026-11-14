@@ -108,7 +108,8 @@ alterar um arquivo, revise o resultado e prepare esse arquivo novamente.
 
 A web segue [Semantic Versioning 2.0.0](https://semver.org/) no formato
 `MAJOR.MINOR.PATCH`. O contrato público da web é a navegação, as rotas e os
-comportamentos descritos em `specs/006-landing/` e `specs/007-web-delivery/`.
+comportamentos descritos em `specs/006-landing/`, `specs/007-web-delivery/`
+e `specs/008-seo/`.
 Correções compatíveis usam patch; novas funcionalidades compatíveis usam minor;
 mudanças incompatíveis usam major a partir de 1.0.0. Durante o desenvolvimento
 inicial 0.y.z, novas funcionalidades e mudanças incompatíveis usam minor,

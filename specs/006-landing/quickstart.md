@@ -40,7 +40,11 @@ Na raiz, execute `python3 scripts/validate-specs.py`. Registre resultados em
 
 ## Roteiro de comportamento
 
-1. Confira hero, marcas, nove seções, três oficinas, equipe e rodapé.
+1. Confira hero, nove seções, três oficinas, equipe e rodapé. O cabeçalho deve
+   manter Ifes e Mais Ciência; somente o rodapé deve usar a imagem original
+   `public/images/popciencia.svg`, com proporção preservada e o subtítulo
+   “Programa Nacional de Popularização da Ciência”. Confira a leitura em
+   celular e desktop e a composição anterior de `public/icons/slide.webp`.
 2. Navegue por links internos e confira o menu em celular e desktop.
 3. Abra a rede: alterne as abas e confira 21 escolas e nove campi.
 4. Combine nome e município, confira o estado sem resultados e abra detalhes.
@@ -70,11 +74,12 @@ Na raiz, execute `python3 scripts/validate-specs.py`. Registre resultados em
    deve ser “Esta página está em construção. Em breve, você encontrará aqui mais
    informações sobre esta oficina.”.
 10. Confira no rodapé as três linhas exatas “Desenvolvido em parceria com:”,
-    “Profe - Soluções Em Tecnologia Educacional Ltda” e “CNPJ: 66.907.525/0001-13”.
+    “Profe - Soluções em Tecnologia Educacional Ltda” e “CNPJ: 66.907.525/0001-13”.
     Elas devem ficar no quadrante `.footer-identity`, dentro do mesmo parágrafo
     da missão, após “Ciência, tecnologia e inovação aproximando escolas e
     comunidades.”, sem faixa ou parágrafo separado. Confira a leitura em
-    celular e desktop.
+    celular e desktop e preserve os conteúdos e destinos da navegação,
+    informações e Instagram do rodapé.
 11. Confira “Voltar ao Início” no encerramento: cantos de 6 px, borda e texto
     na cor menta e fundo menta com 10% de opacidade, seguindo o estilo de Feira
     e Aplicativo. Ative o botão e confira o retorno ao início. Use somente

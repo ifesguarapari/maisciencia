@@ -86,6 +86,20 @@
   "team": {
     "coordinators": 3,
     "collaborators": 6,
+    "requiredCollaborators": [
+      {
+        "id": "collaborator-2",
+        "name": "Nanine R. P. dos Santos Pereira",
+        "role": "Colaboração em Literatura",
+        "initials": "NP"
+      },
+      {
+        "id": "collaborator-6",
+        "name": "Ijanai dos Santos Sobrinho",
+        "role": "Colaboração em Foguetes",
+        "initials": "IS"
+      }
+    ],
     "networkPanels": 2,
     "fictionalPortraits": false
   },
@@ -201,9 +215,15 @@
       }
     ]
   },
+  "footer": {
+    "image": "/images/popciencia.svg",
+    "imageAlt": "Pop Ciência",
+    "heading": "Programa Nacional de Popularização da Ciência",
+    "preserveAspectRatio": true
+  },
   "partnership": {
     "label": "Desenvolvido em parceria com:",
-    "name": "Profe - Soluções Em Tecnologia Educacional Ltda",
+    "name": "Profe - Soluções em Tecnologia Educacional Ltda",
     "registration": "CNPJ: 66.907.525/0001-13",
     "lines": 3,
     "location": "footer-identity",

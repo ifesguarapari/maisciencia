@@ -1,12 +1,12 @@
 {
   "name": "maisciencia-web",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "check:build": "node scripts/check-build.mjs",
+    "check:build": "node scripts/check-build.mjs && node scripts/check-seo.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

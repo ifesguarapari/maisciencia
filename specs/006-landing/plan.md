@@ -1,5 +1,8 @@
 # Plano: página institucional
 
+A evolução [008-seo](../008-seo/spec.md) personaliza metadados no HTML inicial,
+mantendo a apresentação e o carregamento descritos neste plano.
+
 **Feature**: `006-landing` | **Data**: 2026-10-28
 **Especificação**: [spec.md](spec.md)
 
@@ -96,7 +99,7 @@ Vite; não se acrescenta uma folha bloqueante duplicada no build.
 | FR-005 | Indicadores HTML e contagem progressiva no módulo principal |
 | FR-006 | Título, categoria, selos OFICINA sem números e botões Saiba mais nas cores dos cards em `web/index.html` e `web/src/style.css` |
 | FR-007 | Dados de instituições, abas, busca, filtro e painéis Alpine |
-| FR-008 | Listas em `web/src/data.js`, incluindo Marcelene Alves Duarte em Matemática, e estados sem dados não fornecidos |
+| FR-008 | Listas em `web/src/data.js`, incluindo Ijanai dos Santos Sobrinho em Foguetes, e estados sem dados não fornecidos |
 | FR-009 | Projetos e faixa de apoio; rodapé com parceria Profe em três linhas, sem referência ao processo Ifes PROEX |
 | FR-010 | Catálogo compartilhado de apresentações provisórias de aplicativo, feira e oficinas, com retorno e sem API; entradas físicas mantidas pela feature 007 |
 | FR-011 | HTML, CSS responsivo e comportamento de redução de movimento |
@@ -223,3 +226,29 @@ fundo translúcido. Definir altura mínima de 44 px e tipografia explícita no
 hero, que não herda as regras tipográficas da navegação. Remover variantes
 de botão que fiquem sem uso. Preservar os destinos e conferir layout, foco,
 cores e cliques em desktop e celular no build com prefixo do Pages.
+
+## Evolução: identidade Pop Ciência no rodapé
+
+Em 2026-11-14, substituir somente a marca composta de `.footer-identity`
+pelo SVG fornecido `web/public/images/popciencia.svg` e alterar seu subtítulo
+para “Programa Nacional de Popularização da Ciência”. Usar imagem com largura
+de 160 px, altura automática e limite da largura disponível, preservando
+cores e proporção do SVG. Retirar as regras específicas das marcas antigas
+no rodapé. Manter o link de retorno ao início e todos os demais conteúdos.
+Conferir o quadrante em desktop e celular, sem alterar o cabeçalho ou o cartão
+de compartilhamento. Registrar build e inspeção de layout em `verification.md`.
+
+## Evolução: grafia da parceria e colaboração em Foguetes
+
+Em 2026-11-14, corrigir somente a preposição da parceria para “Soluções em
+Tecnologia Educacional” no rodapé e nos documentos vigentes. Substituir o
+registro `collaborator-6` em `web/src/data.js` por Ijanai dos Santos Sobrinho,
+com função “Colaboração em Foguetes” e iniciais IS, mantendo o identificador
+e as contagens da equipe. Conferir dados importados e conteúdo do build,
+sem reescrever evidências históricas das substituições anteriores.
+
+## Evolução: abreviação do nome da colaboração em Literatura
+
+Em 2026-11-14, alterar somente o nome de `collaborator-2` em
+`web/src/data.js` para “Nanine R. P. dos Santos Pereira”. Preservar função,
+iniciais NP, identificador e contagens; conferir o dado e o bundle compilado.

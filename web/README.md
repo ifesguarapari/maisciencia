@@ -6,6 +6,9 @@ Tailwind CSS, Alpine.js e PWA. A especificação vigente dessa apresentação é
 [003-web-pwa](../specs/003-web-pwa/spec.md) preserva o inventário da demonstração
 anterior de sessões e saúde. As mudanças seguem o
 [fluxo SDD](../docs/spec-driven-development.md).
+Os metadados e a política de indexação seguem
+[008-seo](../specs/008-seo/spec.md); o [guia de SEO](../docs/seo.md) reúne
+configuração, checks e o roteiro manual do Search Console.
 
 ## Desenvolvimento
 
@@ -48,9 +51,12 @@ e BFF continuam documentados em [api/README.md](../api/README.md).
 
 ## Conteúdo e identidade
 
-`public/images/` contém os arquivos fornecidos `ifes.svg`, `maisciencia.svg`
-e `background.webp`. As marcas preservam cores e proporções. As ilustrações
-secundárias são decorativas e não representam fotografias de pessoas reais.
+`public/images/` contém os arquivos fornecidos `ifes.svg`, `maisciencia.svg`,
+`popciencia.svg` e `background.webp`. O cabeçalho mantém Ifes e Mais Ciência;
+somente o rodapé usa a imagem original `popciencia.svg`, com o subtítulo
+“Programa Nacional de Popularização da Ciência”. As marcas preservam cores
+e proporções. As ilustrações secundárias são decorativas e não representam
+fotografias de pessoas reais.
 
 `public/favicon.svg` é a origem dos quatro ícones PNG em `public/icons/`:
 Apple Touch com 180 px, PWA com 192 e 512 px e maskable com 512 px. Ao atualizar
@@ -58,6 +64,12 @@ essa arte, reexporte os PNGs nas mesmas dimensões. Apple Touch e maskable usam
 fundo cinza opaco; a marca maskable fica dentro da área circular central de
 raio igual a 40% da largura. `interface.svg` contém os símbolos dos controles
 da página e é independente dos ícones de instalação.
+
+`public/icons/slide.webp` é o cartão de compartilhamento de 750 por 425 px,
+composto a partir de `images/background.webp`, `images/ifes.svg` e
+`images/maisciencia.svg`. O bloco Open Graph do HTML principal e os metadados
+gerados por rota apontam à URL absoluta desse arquivo, com tipo WebP,
+dimensões e texto alternativo. O cartão Twitter acompanha a mesma imagem.
 
 Os dados de instituições e equipe ficam separados da apresentação em
 `src/data.js`. Há 21 escolas municipais, nove campi, três coordenadores e
@@ -72,13 +84,14 @@ fundo na mesma cor com 10% de opacidade, seguindo o estilo de Feira e Aplicativo
 Esses botões substituem a legenda Ambiente virtual e os links das antigas
 marcas externas. “Voltar ao Início”, no encerramento, segue esse mesmo estilo
 na cor menta, com foco visível em todos esses controles.
-O rodapé apresenta a parceria em três linhas dentro do mesmo parágrafo da
-missão, no quadrante `.footer-identity`, após “Ciência, tecnologia e inovação
-aproximando escolas e comunidades.”:
+O rodapé preserva missão, navegação, informações e Instagram e apresenta a
+parceria em três linhas dentro do mesmo parágrafo da missão, no quadrante
+`.footer-identity`, após “Ciência, tecnologia e inovação aproximando escolas
+e comunidades.”:
 
 ```text
 Desenvolvido em parceria com:
-Profe - Soluções Em Tecnologia Educacional Ltda
+Profe - Soluções em Tecnologia Educacional Ltda
 CNPJ: 66.907.525/0001-13
 ```
 
@@ -99,8 +112,10 @@ npm run check:build
 npm run preview
 ```
 
-`npm test` executa os testes locais de dados e filtros com o runner nativo do
-Node.js, sem serviços externos.
+`npm test` executa os testes locais de dados, filtros e SEO com o runner nativo
+do Node.js, sem serviços externos. `check:build` confere recursos e sinais de
+SEO do artefato; resultados e limites de SEO ficam em
+[008-seo/verification.md](../specs/008-seo/verification.md).
 
 Na raiz do repositório, execute `python3 scripts/validate-specs.py`.
 Os resultados de filtros, navegação e layout devem ser registrados em
@@ -150,11 +165,15 @@ o endereço alternativo de projeto é `https://ifesguarapari.github.io/maiscienc
 Para conferir também essa base de projeto:
 
 ```bash
-WEB_BASE_PATH=/maisciencia/ npm run build
-WEB_BASE_PATH=/maisciencia/ npm run check:build
+WEB_SITE_ORIGIN=https://ifesguarapari.github.io WEB_BASE_PATH=/maisciencia/ npm run build
+WEB_SITE_ORIGIN=https://ifesguarapari.github.io WEB_BASE_PATH=/maisciencia/ npm run check:build
 ```
 
 `WEB_BASE_PATH` é uma variável pública de build; não exige mudar `.env`.
+`WEB_SITE_ORIGIN` define opcionalmente a origem HTTPS dos URLs de SEO, sem
+credenciais, caminho de página, consulta ou fragmento; seu padrão é
+`https://maisciencia.ifes.app.br`. Use a mesma origem e base no build e no
+`check:build`, conforme os [exemplos de SEO](../docs/seo.md#verificação-local).
 Na publicação, a configuração do Pages fornece a base efetiva. Caminhos de
 recursos, navegação e PWA acompanham essa base. O backend e o VPS não participam
 desse workflow, e uma configuração local não significa publicação já realizada.

@@ -4,15 +4,23 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { apiNavigationDenylist, normalizeBasePath, publicUrl } from './src/paths.js'
 import { staticRouteEntries } from './build/static-routes.js'
 import { deferredPageStyles } from './build/deferred-styles.js'
+import { pageSeo } from './build/seo.js'
+import { normalizeSiteOrigin, seoNavigationDenylist } from './src/seo.js'
 
 const base = normalizeBasePath(process.env.WEB_BASE_PATH || '/')
+const origin = normalizeSiteOrigin(process.env.WEB_SITE_ORIGIN)
+const seo = { base, origin }
 
 export default defineConfig({
   base,
+  define: {
+    'import.meta.env.WEB_SITE_ORIGIN': JSON.stringify(origin),
+  },
   plugins: [
     tailwindcss(),
     deferredPageStyles(),
-    staticRouteEntries(),
+    pageSeo(seo),
+    staticRouteEntries(seo),
     VitePWA({
       registerType: 'prompt',
       scope: base,
@@ -36,7 +44,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,webp,woff2}'],
-        navigateFallbackDenylist: apiNavigationDenylist(base),
+        navigateFallbackDenylist: [...apiNavigationDenylist(base), ...seoNavigationDenylist(base)],
       },
     }),
   ],
