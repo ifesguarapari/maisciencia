@@ -300,3 +300,22 @@ Os avisos de dependências obsoletas já existentes não motivaram atualização
 de dependências nesta release. Nenhum arquivo da API foi alterado, por isso
 seus testes não foram repetidos. Os builds finais serão conferidos após o
 bump dos manifestos em `release/0.4.0`.
+
+O assistente Commitizen criou `0b4f73c`, `feat(web): add FEMAIS-ES exhibition
+pages`, com o corpo descritivo e rodapé `re #2`. Os hooks passaram, sem
+pular verificações; Black/Pylint não tinham arquivos de API para analisar.
+`git flow feature finish --no-ff issue/2` criou o merge explícito `ff16ff4`
+em `develop` e removeu a feature local. `git flow release start 0.4.0` abriu
+a release e `npm version minor --no-git-tag-version` sincronizou a versão
+0.4.0 nos dois manifestos. O diff do lockfile só alterou os dois campos de
+versão da raiz; nenhuma dependência mudou. O changelog foi datado em
+2026-11-14 conforme o contexto do usuário.
+
+Os builds finais da versão 0.4.0 e os respectivos `check:build` passaram:
+45 arquivos e 851 referências internas na base `/maisciencia/` com origem
+GitHub; 45 arquivos e 854 referências na base `/` com domínio próprio.
+Os onze HTMLs, robots, sitemap, cartões e rotas foram aprovados. O precache
+teve 40 e 43 entradas, respectivamente. O artefato final em `web/dist` usa
+a raiz de produção; a cópia local usada na futura conferência HTTPS está
+em `/tmp/maisciencia-release040-root`. A validação SDD e diff permaneceram
+limpos após preparar os manifestos e o changelog.
