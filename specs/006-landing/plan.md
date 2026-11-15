@@ -15,10 +15,11 @@ instituições e pessoas são separados em `web/src/data.js`. `web/src/main.js`
 coordena menu, navegação, filtros, detalhes e efeitos progressivos. Não incluir
 o cliente de autenticação na inicialização da página pública.
 
-`web/index.html` apresenta a landing page em `/` e o conteúdo provisório em
-`/login` e `/feira`, selecionados pelo caminho atual, incluindo barra final.
-O servidor de produção deve oferecer fallback HTML para essas rotas. Não criar
-formulário nem simular login ou funcionalidades da feira.
+`web/index.html` apresenta a landing page em `/` e o conteúdo provisório de
+`/login` e oficinas, selecionados pelo caminho atual, incluindo barra final.
+A antiga Feira provisória é substituída por template próprio de 009. As
+evoluções 007 e 009 fornecem entradas estáticas por rota; não há dependência
+de fallback SPA no servidor. Não criar formulário nem simular login ou inscrição.
 
 A evolução [007-web-delivery](../007-web-delivery/spec.md) substitui a dependência
 de fallback por entradas HTML físicas para hospedagem estática. Conteúdo e
@@ -252,3 +253,13 @@ sem reescrever evidências históricas das substituições anteriores.
 Em 2026-11-14, alterar somente o nome de `collaborator-2` em
 `web/src/data.js` para “Nanine R. P. dos Santos Pereira”. Preservar função,
 iniciais NP, identificador e contagens; conferir o dado e o bundle compilado.
+
+## Evolução: apresentação da FEMAIS-ES
+
+A feature [009-fair](../009-fair/plan.md) substitui a página provisória de
+`/feira` por template e estilos próprios, com renderização estática e seleção
+no shell PWA antes de iniciar Alpine. Preservar o HTML e os três links Feira
+da página principal. Expandir o catálogo para regulamento e três etapas;
+`/login` e oficinas mantêm o fluxo provisório. A paleta específica e a íntegra
+das regras pertencem a 009, sem alterar dados da equipe, indicadores ou apoio
+da principal. As quantias mantidas na principal não são copiadas para a Feira.

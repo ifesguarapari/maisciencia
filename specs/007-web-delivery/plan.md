@@ -27,23 +27,19 @@ Vite. Os recursos CSS são reescritos pelo Vite. Separar o prefixo antes de
 identificar `/login`, `/feira`, `/oficinas`, `/oficinas/ler`, `/oficinas/lancar`
 e `/oficinas/melhorar`, inclusive com barra final.
 
-Centralizar em `web/src/pages.js` o catálogo das seis páginas provisórias,
-com título, mensagem e cor, e derivar dele as sete entradas HTML. A interface,
-o plugin de build `web/build/static-routes.js` e o verificador
-`web/scripts/check-build.mjs` compartilham esse catálogo para manter a seleção
-de rota, a emissão de arquivos e a conferência do artefato coerentes.
+Centralizar em `web/src/pages.js` o catálogo de duas páginas de conteúdo
+(Feira e regulamento) e oito provisórias. Com a inicial, derivar as onze
+entradas HTML. A interface, o plugin de rotas estáticas e o verificador de
+build compartilham esse catálogo para manter seleção e emissão coerentes.
 
-O plugin emite `login/index.html`, `feira/index.html`, `oficinas/index.html`,
-`oficinas/ler/index.html`, `oficinas/lancar/index.html` e
-`oficinas/melhorar/index.html` a partir do HTML compilado antes da geração do
-service worker. A evolução [008-seo](../008-seo/spec.md) personaliza o head
-dessas cópias por rota e acrescenta robots e sitemap ao mesmo artefato.
-Com a página inicial, são sete entradas físicas. Todos os
-caminhos compilados usam a base absoluta, permitindo servir os documentos
-aninhados sem fallback. Manter a atualização PWA por prompt, manifesto e cache
-sob a base e exclusão das rotas de API. O verificador deve exigir as sete
-entradas e sua inclusão no precache. Não usar uma página 404 para mascarar
-rotas existentes.
+O plugin emite os documentos correspondentes antes da geração do service
+worker. A evolução [008-seo](../008-seo/spec.md) personaliza o head por rota
+e acrescenta robots e sitemap; [009-fair](../009-fair/plan.md) fornece conteúdo
+estático próprio para Feira, regulamento e etapas. Todos os caminhos usam
+a base absoluta, permitindo servir documentos aninhados sem fallback.
+Manter atualização PWA por prompt, manifesto e cache sob a base e exclusão
+das APIs. O verificador deve exigir as onze entradas e sua inclusão no
+precache. Não usar página 404 para mascarar rotas existentes.
 
 A inspeção do artefato identificou que `media="print"` no link CSS de entrada
 fazia o build anterior copiar a folha sem a transformação necessária. O plugin
@@ -71,7 +67,7 @@ desta feature é o artefato estático e os jobs de entrega.
 | FR-003 | Guards de branch/evento e permissões dos jobs | Revisão de PR, push e dispatch sem disparar GitHub |
 | FR-004 | Artefato `web/dist`, deploy dependente e concorrência | Conferir diretório e política da publicação |
 | FR-005 | Base do Vite, HTML, caminhos e catálogo de rotas | Testes e builds na raiz e no prefixo |
-| FR-006 | Sete entradas físicas derivadas do catálogo compartilhado | HTTP estático sem fallback, incluindo rotas aninhadas, e navegador |
+| FR-006 | Onze entradas físicas derivadas do catálogo compartilhado | HTTP estático sem fallback, incluindo rotas aninhadas, e navegador |
 | FR-007 | Manifesto, service worker e cache com base | Inspeção do artefato e exercício local em navegador |
 | FR-008 | Escopo web e preservação de `.env` | Inspeção dos arquivos e ausência de workflow API |
 | FR-009 | README, arquitetura e quickstart | Conferência de comandos, links e limites |
@@ -133,8 +129,37 @@ commit exato de produção. Conferir por HTTPS páginas, robots, sitemap,
 cartão WebP e recursos contra o build; realizar smoke dirigido em navegador.
 Criar a release no GitHub após sucesso e registrar os resultados em `develop`.
 
-A leitura da issue GitHub #2 encontrou o título “Feira” e requisitos da
-página completa da FEMAIS-ES; `/feira` ainda é provisória. O usuário esclareceu
+Na preparação da release 0.3.0, a leitura da issue GitHub #2 encontrou o título
+“Feira” e requisitos da página completa da FEMAIS-ES; `/feira` era provisória. O usuário esclareceu
 que a issue deve permanecer aberta para implementação posterior. Finalizar
 somente a branch de trabalho, preservando a referência pedida `re #2` nos
 commits, sem marcar critérios ou homologação da issue como realizados.
+
+## Evolução: conteúdo estático da Feira
+
+A ampliação de 009 utiliza renderer compartilhado entre build e navegador
+para apresentar as regras já no HTML entregue e corrigir a seleção quando
+a PWA retorna o shell da inicial. As páginas novas entram nos mesmos checks
+de recursos, SEO e precache. Os trechos de release 0.2.0 e 0.3.0 acima
+descrevem execuções anteriores; não constituem evidência remota desta mudança.
+
+## Release 0.4.0 da FEMAIS-ES
+
+A solicitação atual autoriza publicar 009 e a evolução de 008, usando
+`feat(web)` com Commitizen e rodapé `re #2`. A versão 0.4.0 é minor porque
+introduz conteúdo e rotas compatíveis: Feira, regulamento e três etapas.
+A versão independente da API permanece 0.1.0. Não modificar dependências,
+workflow ou configuração de domínio.
+
+Validar instalação pelo lockfile, ESLint, testes Node, ferramenta SDD, dois
+builds e recursos estáticos. Finalizar `feature/issue/2` em `develop` com
+merge explícito, abrir `release/0.4.0`, incrementar somente os manifestos
+web pelo npm, datar o changelog e criar o commit de preparação pelo
+Commitizen. Finalizar Git Flow com tag anotada imutável, enviar `main`,
+`develop` e a tag atomicamente e acompanhar o run do commit exato.
+
+Conferir HTTPS, SEO e imagem nova no domínio público e navegação em Chrome.
+Publicar notas da release ligadas à tag existente; consolidar evidências
+pós-deploy em `develop`, sem alterar a tag. Após enviar essas evidências,
+recriar localmente `feature/issue/2` com `git flow feature start issue/2` e
+deixá-la ativa, limpa e baseada em `develop`. A issue #2 fica aberta.

@@ -27,6 +27,7 @@ foi produzido por SDD.
 | `specs/006-landing/` | Página institucional especificada antes da implementação |
 | `specs/007-web-delivery/` | Integração contínua da web e artefato estático para GitHub Pages |
 | `specs/008-seo/` | Metadados por rota, indexação e roteiro de manutenção de SEO |
+| `specs/009-fair/` | Apresentação FEMAIS-ES, regulamento integral e etapas da primeira edição |
 
 As baselines capturam o sistema existente e declaram suas lacunas. Sua existência
 não representa aprovação humana ou testes de integração concluídos. A mudança
@@ -39,6 +40,9 @@ A evolução `008` rege os sinais de SEO da apresentação e de suas rotas,
 preservando o conteúdo de `006` e a entrega estática de `007`. O
 [guia de SEO](seo.md) distingue checks locais de publicação, Search Console
 e indexação real; as evidências continuam na especificação correspondente.
+A evolução `009` substitui a antiga Feira provisória por uma apresentação
+própria, regulamento e três etapas em construção, preservando o conteúdo
+institucional de `006` e os mecanismos de entrega e SEO de `007` e `008`.
 
 ## Preparar a ferramenta
 

@@ -24,7 +24,15 @@ Em 2026-11-14, o usuário autorizou também a publicação das evoluções de 00
 e 008 a partir de `feature/issue/2`, com Commitizen, referência `re #2`,
 release SemVer e GitHub Actions. A finalização da branch e o estado da issue
 no GitHub são operações distintas; não representam aceite dos requisitos
-da página completa da FEMAIS-ES, que permanece fora dessa implementação.
+da página completa da FEMAIS-ES, que permaneceu fora da release 0.3.0. A
+solicitação posterior de 2026-11-14 especifica essa página em
+[009-fair](../009-fair/spec.md), sem autorizar seu fechamento automático.
+
+O pedido posterior autoriza publicar a FEMAIS-ES de 009 e seu cartão social
+por Git Flow, Commitizen com `re #2`, release SemVer e GitHub Actions. Após
+confirmar o deploy, recriar `feature/issue/2` a partir de `develop` e deixá-la
+ativa localmente. A issue #2 continua aberta; finalizar uma branch não
+representa homologação humana nem autoriza fechar a issue.
 
 ## Histórias e aceitação
 
@@ -63,8 +71,9 @@ Como visitante, quero abrir a página e suas rotas diretamente, com imagens,
 
 - Dado o site em `/maisciencia/`, quando abro início, aplicativo, feira ou oficinas, então
   recursos, links e retorno permanecem dentro desse prefixo.
-- Dada uma primeira visita a uma das seis páginas provisórias, quando o servidor só oferece
-  arquivos estáticos, então recebo HTML existente sem depender de fallback SPA.
+- Dada uma primeira visita à Feira, ao regulamento ou a uma das oito páginas
+  provisórias, quando o servidor só oferece arquivos estáticos, então recebo
+  HTML existente, com conteúdo próprio, sem depender de fallback SPA.
 - Dado o build na raiz, quando abro as mesmas rotas, então os fluxos anteriores
   continuam disponíveis. Manifesto e service worker usam a base correspondente.
 
@@ -84,10 +93,12 @@ Como visitante, quero abrir a página e suas rotas diretamente, com imagens,
 - **FR-005**: O código DEVE permitir builds na raiz e no prefixo do Pages. Links,
   imagens, SVGs com fragmentos, fontes e seleção de rota DEVEM respeitar a base
   configurada, sem modificar conteúdo, cores ou interações institucionais.
-- **FR-006**: O build DEVE produzir entradas HTML físicas para `login/` e
-  `feira/`, além de `oficinas/`, `oficinas/ler/`, `oficinas/lancar/` e
-  `oficinas/melhorar/`, com seus textos provisórios e retorno, preservando acesso direto,
-  atualização e variantes com barra final em hospedagem estática.
+- **FR-006**: O build DEVE produzir onze entradas HTML físicas: a inicial,
+  `login/`, `feira/`, `feira/regulamento/`, `feira/202612/`, `feira/202703/`,
+  `feira/202706/`, `oficinas/`, `oficinas/ler/`, `oficinas/lancar/` e
+  `oficinas/melhorar/`. Feira e regulamento DEVEM conter o conteúdo completo
+  de 009; as oito provisórias DEVEM ter aviso e retorno. Acesso direto,
+  atualização e variantes com barra final DEVEM funcionar em hospedagem estática.
 - **FR-007**: Manifesto, ícones, registro e escopo do service worker DEVEM
   respeitar a base. Navegação e recursos estáticos podem funcionar offline após
   cache; respostas de API DEVEM continuar excluídas e atualização continua
@@ -111,15 +122,15 @@ Como visitante, quero abrir a página e suas rotas diretamente, com imagens,
 
 - **SC-001**: Os checks locais equivalentes ao workflow passam; a estrutura
   impede publicação após falha e em pull requests ou outras branches.
-- **SC-002**: O artefato contém somente frontend e entradas das sete rotas,
+- **SC-002**: O artefato contém somente frontend e entradas das onze rotas,
   com recursos resolvidos corretamente em `/` e `/maisciencia/`.
-- **SC-003**: Um servidor estático sem fallback serve as rotas provisórias;
+- **SC-003**: Um servidor estático sem fallback serve todas as rotas;
   navegador confirma navegação e recursos na base de projeto sem falhas.
 - **SC-004**: Há somente um workflow novo, para a web; instruções de ativação
   e evidências não declaram execução ou publicação remota não realizada.
 - **SC-005**: Versão dos manifestos, tag e changelog correspondem; `main` e
   `develop` contêm a release e o workflow associado termina com sucesso.
-  A página inicial, as seis rotas provisórias e os recursos publicados
+  A página inicial, a Feira, o regulamento, as oito rotas provisórias e os recursos publicados
   respondem no domínio configurado.
 
 ## Premissas e limites
@@ -131,3 +142,12 @@ fornecer uma base diferente. Não se presume que Pages já esteja habilitado.
 Os caminhos públicos `/feira`, `/oficinas`, `/oficinas/ler`, `/oficinas/lancar`
 e `/oficinas/melhorar` foram solicitados em português e permanecem preservados;
 os demais novos nomes técnicos usam inglês.
+
+## Evolução: rotas FEMAIS-ES
+
+[009-fair](../009-fair/spec.md) amplia o artefato para onze HTMLs, incluindo
+regulamento e três etapas em construção. Feira e regulamento passam a ter
+conteúdo estático próprio. Esta ampliação local não executa uma nova release
+nem implica publicação ou encerramento da issue #2; isso exige uma execução
+de entrega registrada separadamente. Os resultados remotos de 0.3.0 ficam
+preservados como histórico.
