@@ -114,6 +114,7 @@
     <button id="page-loader-retry" type="button" hidden>Recarregar página</button>
   </div>
   <div id="site-content">
+  <!-- page:start -->
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
   <header class="site-header" :class="{ 'is-scrolled': scrolled, 'menu-is-open': menuOpen }">
     <div class="container header-inner">
@@ -275,6 +276,7 @@
     </div>
     <div class="footer-bottom"><p>© <span x-text="currentYear">2026</span> Ifes Mais Ciência na Escola.</p><a href="#inicio">Voltar ao topo <svg class="icon" aria-hidden="true"><use href="%BASE_URL%icons/interface.svg#arrow-up" /></svg></a></div>
   </div></footer>
+  <!-- page:end -->
   <aside class="update-notice" x-show="updateAvailable" x-cloak role="status"><p>Uma nova versão do site está disponível.</p><button class="text-link" type="button" @click="updateApp(true)">Atualizar agora <span aria-hidden="true">↗</span></button></aside>
   </div>
   <script id="page-script" type="module" src="/src/main.js"></script>

@@ -15,8 +15,10 @@ específico desta página; nomes técnicos, código e comentários continuam em 
 
 Esta é uma mudança nova que substitui a demonstração de sessões e saúde da
 página inicial inventariada em `003-web-pwa`. A autenticação do backend continua
-fora desta página pública; `/login`, `/feira` e as páginas de `/oficinas`
-apresentam somente as mensagens provisórias pedidas, em português do Brasil.
+fora desta página pública; `/login` e as páginas de `/oficinas` apresentam
+somente as mensagens provisórias pedidas, em português do Brasil. A evolução
+[009-fair](../009-fair/spec.md) substitui a antiga apresentação provisória de
+`/feira` pela página da FEMAIS-ES, seu regulamento e as etapas da 1ª edição.
 
 Os caminhos desta especificação são relativos à base pública do site.
 [007-web-delivery](../007-web-delivery/spec.md) acrescenta hospedagem no prefixo
@@ -71,8 +73,8 @@ para acessar seu conteúdo em celular ou computador.
 
 ### US4 — Acessar os ambientes em preparação (P2)
 
-Como visitante, quero entender a disponibilidade do aplicativo, da feira e das oficinas
-para saber que seus ambientes ainda estão em preparação.
+Como visitante, quero acessar a Feira e entender a disponibilidade do
+aplicativo e das oficinas, cujos ambientes ainda estão em preparação.
 
 - Dado o botão Aplicativo, quando o ativo, então chego a `/login` com título
   “Acesso ao Aplicativo”, a mensagem de disponibilidade futura e retorno ao site.
@@ -82,9 +84,9 @@ para saber que seus ambientes ainda estão em preparação.
 - Dados os botões da abertura, quando os vejo, então Feira usa rosa e Aplicativo
   usa verde do tema, com o mesmo padrão de borda, texto colorido, fundo
   translúcido e cantos levemente arredondados dos botões do cabeçalho.
-- Dado um desses botões, quando o ativo, então chego a `/feira`, com o título
-  “Feira”, a mensagem “A página da feira está em construção. Em breve, você
-  encontrará aqui mais informações.” e um botão para voltar ao site.
+- Dado um botão Feira, quando o ativo, então chego à página FEMAIS-ES em
+  `/feira`, conforme 009, com apresentação, primeira edição e regulamento.
+  Somente as três páginas de etapa permanecem em construção.
 - Dada a página pública ou provisória, quando a abro, então não são enviados
   pedidos de sessão, saúde ou autenticação ao backend.
 - Dado um botão “Saiba mais”, quando o ativo, então abro a página provisória
@@ -152,11 +154,12 @@ para saber que seus ambientes ainda estão em preparação.
   Essa mensagem DEVE ficar no quadrante de identidade, abaixo de “Ciência,
   tecnologia e inovação aproximando escolas e comunidades.”, dentro do mesmo
   parágrafo, sem criar uma faixa ou um parágrafo separado no rodapé.
-- **FR-010**: `/login` e `/feira` DEVEM exibir somente suas apresentações
-  provisórias e o botão de retorno ao site, inclusive no acesso direto e com
-  barra final. A página pública e as provisórias DEVEM operar sem chamadas ao
-  backend. `/login` mantém seu conteúdo; `/feira` apresenta o título e mensagem
-  definidos em US4, em português do Brasil.
+- **FR-010**: `/login` DEVE exibir sua apresentação provisória e o botão de
+  retorno ao site, inclusive no acesso direto e com barra final. A página
+  pública e as provisórias DEVEM operar sem chamadas ao backend. `/login`
+  mantém seu conteúdo; `/feira` DEVE apresentar a FEMAIS-ES e encaminhar ao
+  regulamento e às três etapas, conforme [009-fair](../009-fair/spec.md),
+  substituindo seu estado provisório anterior.
   `/oficinas`, `/oficinas/ler`, `/oficinas/lancar` e `/oficinas/melhorar` DEVEM
   seguir a mesma apresentação provisória, com título correspondente e aviso
   de construção. `/oficinas` DEVE informar que apresentará futuramente como
@@ -257,3 +260,13 @@ Em 2026-10-28, o usuário solicitou a revisão de FR-006 para tornar os cards
 independentes de períodos anuais e associar cada oficina ao ambiente virtual
 fornecido. “Foguetrõnica” preserva a grafia solicitada; “Tecidade” é o rótulo
 inferido do domínio fornecido. A disponibilidade dos destinos não foi verificada.
+
+## Evolução: página FEMAIS-ES em 2026-11-14
+
+O usuário solicitou substituir `/feira` pela apresentação completa da Feira,
+baseada em `proposta.docx` e nas artes próprias fornecidas. A nova feature
+[009-fair](../009-fair/spec.md) rege conteúdo sem valores monetários, identidade
+azul-petróleo, primeira edição em três etapas e regulamento integral. A
+principal mantém conteúdo e botões existentes; sua referência à Feira passa
+a abrir essa apresentação. Evidências anteriores de `/feira` em construção
+são históricas, sem representar o comportamento vigente após 009.

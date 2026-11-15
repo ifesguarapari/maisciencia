@@ -5,16 +5,29 @@ import { filterInstitutions, getCities } from './filters.js'
 import { getPageRoute, publicUrl } from './paths.js'
 import { placeholderPages } from './pages.js'
 import { getPageSeo, syncPageSeo } from './seo.js'
+import { isFairRoute, renderFairPage } from './fair.js'
+import fairTemplate from './fair.html?raw'
 
-const sectionIds = ['inicio', 'sobre', 'oficinas', 'escolas', 'equipe', 'apoio']
 const base = import.meta.env.BASE_URL
 const pageRoute = getPageRoute(window.location.pathname, base)
 const placeholderPage = placeholderPages[pageRoute]
+const isFairPage = isFairRoute(pageRoute)
+const sectionIds = isFairPage
+  ? ['inicio', 'sobre', 'edicao', 'experiencia', 'atividades', 'participacao', 'regulamento', 'apoio']
+  : ['inicio', 'sobre', 'oficinas', 'escolas', 'equipe', 'apoio']
+if (isFairPage && document.querySelector('[data-fair-page]')?.dataset.fairPage !== pageRoute) {
+  const content = document.getElementById('site-content')
+  const notice = content.querySelector('.update-notice')
+  content.innerHTML = renderFairPage(fairTemplate, pageRoute, base)
+  if (notice) content.append(notice)
+}
+document.body.classList.toggle('fair-page', isFairPage)
+document.querySelector('meta[name="theme-color"]').content = isFairPage ? '#203445' : '#101114'
 syncPageSeo(document, getPageSeo(pageRoute || 'home', { base, origin: import.meta.env.WEB_SITE_ORIGIN }))
 
 async function prepareAppearance() {
   const hero = new Image()
-  hero.src = publicUrl('images/background.webp', base)
+  hero.src = publicUrl(isFairPage ? 'images/feira/background.webp' : 'images/background.webp', base)
   const resources = [
     hero.decode?.(),
     ...[...document.querySelectorAll('.site-header img')].map((image) => image.decode?.()),
@@ -34,7 +47,7 @@ Alpine.data('landing', () => ({
   isFair: pageRoute === 'feira',
   menuOpen: false,
   scrolled: false,
-  activeSection: 'inicio',
+  activeSection: pageRoute === 'feira/regulamento' ? 'regulamento' : 'inicio',
   currentYear: new Date().getFullYear(),
   schoolTab: 'schools',
   searchQuery: '',

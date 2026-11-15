@@ -19,10 +19,14 @@ async function fixture(t, base = '/') {
     'icons/interface.svg': '<svg><symbol id="menu"></symbol></svg>',
     'icons/pwa.png': '',
     'manifest.webmanifest': JSON.stringify({ id: base, start_url: base, scope: base, icons: [{ src: `${base}icons/pwa.png` }] }),
-    'sw.js': `precacheAndRoute([{url:'index.html'},{url:'login/index.html'},{url:'feira/index.html'},{url:'oficinas/index.html'},{url:'oficinas/ler/index.html'},{url:'oficinas/lancar/index.html'},{url:'oficinas/melhorar/index.html'}]);`,
+    'sw.js': `precacheAndRoute([{url:'index.html'},{url:'login/index.html'},{url:'feira/index.html'},{url:'feira/regulamento/index.html'},{url:'feira/202612/index.html'},{url:'feira/202703/index.html'},{url:'feira/202706/index.html'},{url:'oficinas/index.html'},{url:'oficinas/ler/index.html'},{url:'oficinas/lancar/index.html'},{url:'oficinas/melhorar/index.html'}]);`,
   }
   files['login/index.html'] = files['index.html']
   files['feira/index.html'] = files['index.html']
+  files['feira/regulamento/index.html'] = files['index.html']
+  files['feira/202612/index.html'] = files['index.html']
+  files['feira/202703/index.html'] = files['index.html']
+  files['feira/202706/index.html'] = files['index.html']
   files['oficinas/index.html'] = files['index.html']
   files['oficinas/ler/index.html'] = files['index.html']
   files['oficinas/lancar/index.html'] = files['index.html']
@@ -39,7 +43,7 @@ for (const base of ['/', '/maisciencia/']) {
     const directory = await fixture(t, base)
     const result = await checkBuild({ directory, base })
     assert.equal(result.base, base)
-    assert.equal(result.filesChecked, 16)
+    assert.equal(result.filesChecked, 20)
     assert.ok(result.referencesChecked > 20)
   })
 }
@@ -60,6 +64,17 @@ test('requires each child workshop HTML even when its parent page exists', async
       assert.ok(error.message.includes(`Missing required build entry: oficinas/${route}/index.html`))
       return true
     })
+    await writeFile(filename, content)
+  }
+})
+
+test('requires each child fair document even when its parent page exists', async (t) => {
+  const directory = await fixture(t)
+  for (const route of ['regulamento', '202612', '202703', '202706']) {
+    const filename = path.join(directory, `feira/${route}/index.html`)
+    const content = await readFile(filename, 'utf8')
+    await rm(filename)
+    await assert.rejects(checkBuild({ directory }), (error) => error.message.includes(`Missing required build entry: feira/${route}/index.html`))
     await writeFile(filename, content)
   }
 })

@@ -32,9 +32,10 @@ página já no HTML inicial, antes da execução do JavaScript.
 Como mecanismo de busca, quero rastrear os recursos e identificar somente as
 páginas que já oferecem conteúdo institucional útil para resultados de pesquisa.
 
-- A página inicial permite indexação. Aplicativo, feira e as quatro páginas
-  de oficinas permanecem rastreáveis, mas têm `noindex,follow` enquanto provisórias.
-- O sitemap contém somente a página inicial canônica, sem fragmentos de seção,
+- A página inicial, a apresentação da feira e o regulamento permitem indexação.
+  Aplicativo, as quatro páginas de oficinas e as três etapas da feira permanecem
+  rastreáveis, mas têm `noindex,follow` enquanto provisórias.
+- O sitemap contém somente as três páginas prontas canônicas, sem fragmentos de seção,
   páginas em construção ou datas de atualização inventadas.
 - O robots permite rastrear páginas, estilos, scripts e imagens, incluindo
   as páginas em que o crawler precisa ler `noindex`.
@@ -52,11 +53,13 @@ e Search Console, sem confundir um build correto com indexação pelo Google.
 
 - **FR-001**: A página inicial DEVE ter título e descrição descritivos em pt-BR,
   idioma preservado e exatamente um endereço canônico HTTPS no HTML inicial.
-- **FR-002**: Cada uma das seis páginas provisórias DEVE receber título,
+- **FR-002**: Cada página além da inicial DEVE receber título,
   descrição e canonical próprios no HTML inicial; variantes com barra final e
   navegação pelo shell PWA DEVEM convergir para os mesmos sinais da rota.
-- **FR-003**: A página inicial DEVE permitir indexação; as seis provisórias
-  DEVEM usar `noindex,follow` e ficar fora do sitemap até terem conteúdo final.
+- **FR-003**: A página inicial, `/feira` e `/feira/regulamento` DEVEM permitir indexação;
+  as oito provisórias DEVEM usar `noindex,follow` e ficar fora do sitemap até
+  terem conteúdo final. A apresentação da feira e o regulamento deixam de ser
+  provisórios conforme [009-fair](../009-fair/spec.md).
 - **FR-004**: O build DEVE fornecer `robots.txt` e `sitemap.xml` com URLs
   absolutas e consistentes. Recursos necessários à renderização NÃO DEVEM ser
   bloqueados. O sitemap NÃO DEVE inventar `lastmod`, prioridade ou periodicidade.
@@ -64,14 +67,19 @@ e Search Console, sem confundir um build correto com indexação pelo Google.
   consistentes com sua identidade real. NÃO DEVE inventar avaliações, endereço,
   entidade jurídica ou funcionalidade de busca. As provisórias não repetem esse bloco.
 - **FR-006**: Metadados de compartilhamento DEVEM refletir título, descrição,
-  URL e a imagem `icons/slide.webp`, com texto alternativo. Essa imagem DEVE
-  ter 750 por 425 pixels e combinar `images/background.webp`, `images/ifes.svg`
-  e `images/maisciencia.svg`, preservando a identidade das marcas fornecidas.
-  O HTML principal e os HTMLs gerados DEVEM incluir Open Graph com URL, tipo,
-  título, descrição, nome do site, idioma, imagem HTTPS, tipo MIME, largura,
-  altura e descrição da imagem. Os cartões de compartilhamento DEVEM usar a
-  mesma imagem. Esses sinais não devem ser apresentados como garantia de
-  posicionamento no Google nem de prévia validada no WhatsApp.
+  URL e imagem adequados à rota, com texto alternativo. A inicial e as demais
+  páginas institucionais DEVEM preservar `icons/slide.webp`, composto por
+  `images/background.webp`, `images/ifes.svg` e `images/maisciencia.svg`.
+  `/feira` e suas quatro subpáginas DEVEM usar `icons/feira/slide.webp`,
+  composto por `images/feira/background.webp`, `images/ifes.svg` e
+  `images/feira/femais.svg`. Os dois cartões DEVEM ter 750 por 425 pixels,
+  formato WebP e identidade fiel às marcas, sem alterar as fontes ou substituir
+  o cartão anterior. O HTML inicial DEVE incluir uma única ocorrência de cada
+  campo Open Graph: URL canônica, tipo, título, descrição, nome do site, idioma,
+  imagem HTTPS e URL segura, MIME, largura, altura e texto alternativo.
+  Os cartões Twitter DEVEM apontar para a mesma imagem Open Graph da rota.
+  A sincronização pelo shell PWA DEVE preservar essa seleção. Esses sinais
+  não representam garantia de posição no Google nem prévia validada no WhatsApp.
 - **FR-007**: A origem pública HTTPS DEVE ser configurável no build e respeitar
   a base `/` ou `/maisciencia/`. A origem inválida DEVE ser rejeitada; `.env`
   existentes e segredos DEVEM ser preservados. A origem padrão é o domínio atual.
@@ -84,7 +92,7 @@ e Search Console, sem confundir um build correto com indexação pelo Google.
 
 ## Critérios de sucesso
 
-- **SC-001**: As sete entradas HTML têm os metadados esperados antes de JavaScript,
+- **SC-001**: As onze entradas HTML têm os metadados esperados antes de JavaScript,
   com canonical único e política correta, nas duas bases de build suportadas.
 - **SC-002**: Robots e sitemap passam nos checks; casos negativos relevantes
   são rejeitados, incluindo indexação indevida de uma provisória.
@@ -107,3 +115,25 @@ verificação, alterar DNS, prometer rich results ou alegar homologação pelo G
 
 Esta especificação precede a implementação do SEO. As entregas 006 e 007
 mantêm as evidências históricas; 008 passa a reger metadados e indexação.
+
+## Evolução: conteúdo da FEMAIS-ES em 2026-11-14
+
+A solicitação de [009-fair](../009-fair/spec.md) substitui o aviso de construção
+de `/feira` e cria `/feira/regulamento` com conteúdo institucional real. Essas
+duas rotas passam a ser indexáveis e entram no sitemap. As etapas
+`/feira/202612`, `/feira/202703` e `/feira/202706` permanecem em construção,
+com canonical próprio e `noindex,follow`. As dez páginas além da inicial têm
+metadados próprios. `WebSite` continua exclusivo da inicial, e a imagem de
+compartilhamento já existente é preservada. A mudança é preparada localmente,
+sem alegar publicação, indexação ou atualização de prévia externa.
+
+## Evolução: cartão próprio da Feira e revisão de SEO
+
+Em 2026-11-14, o usuário solicitou rever o SEO para Google e preparar o
+compartilhamento da Feira com uma composição própria. O novo cartão amplia
+FR-006; a política de três páginas prontas indexáveis e oito provisórias
+não muda. A composição e as tags devem ser verificadas localmente, e qualquer
+consulta de produção deve identificar a versão efetivamente publicada. Não
+confundir a release anterior com o conteúdo desta branch ainda não publicado.
+A revisão não autoriza registrar acesso ao Search Console, indexação real ou
+prévia externa sem evidência; a avaliação técnica distingue essas camadas.

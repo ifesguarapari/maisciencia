@@ -18,33 +18,42 @@ mantém esses sinais quando uma navegação PWA recebe o shell da página inicia
 | --- | --- | --- |
 | `/` | `index,follow,max-image-preview:large` | Incluída |
 | `/login/` | `noindex,follow` | Excluída |
-| `/feira/` | `noindex,follow` | Excluída |
+| `/feira/` | `index,follow,max-image-preview:large` | Incluída |
+| `/feira/regulamento/` | `index,follow,max-image-preview:large` | Incluída |
+| `/feira/202612/` | `noindex,follow` | Excluída |
+| `/feira/202703/` | `noindex,follow` | Excluída |
+| `/feira/202706/` | `noindex,follow` | Excluída |
 | `/oficinas/` | `noindex,follow` | Excluída |
 | `/oficinas/ler/` | `noindex,follow` | Excluída |
 | `/oficinas/lancar/` | `noindex,follow` | Excluída |
 | `/oficinas/melhorar/` | `noindex,follow` | Excluída |
 
-As seis páginas com aviso provisório continuam acessíveis e rastreáveis.
+As oito páginas com aviso provisório continuam acessíveis e rastreáveis.
 Não as bloqueie em `robots.txt`: o crawler precisa acessá-las para ler
 [`noindex`](https://developers.google.com/search/docs/crawling-indexing/block-indexing).
 Estilos, JavaScript e imagens também precisam estar disponíveis para renderização.
 
 O build gera `dist/robots.txt` permissivo, com indicação do sitemap, e
-`dist/sitemap.xml` somente com a URL canônica da página inicial. Não entram
+`dist/sitemap.xml` com as URLs canônicas da inicial, da apresentação da
+FEMAIS-ES e do regulamento, conforme [009-fair](../specs/009-fair/spec.md). Não entram
 fragmentos de seção, páginas em construção, `lastmod` inventado, prioridade
 ou frequência artificial. Um [sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
 informa as URLs desejadas, sem garantir seu rastreamento ou indexação.
 
-A página inicial contém JSON-LD `WebSite` com nome e URL reais. As provisórias
-não repetem esse bloco. Não adicionar avaliações, depoimentos, endereço,
+A página inicial contém JSON-LD `WebSite` com nome e URL reais. As demais
+páginas, inclusive feira e regulamento indexáveis, não repetem esse bloco. Não adicionar avaliações, depoimentos, endereço,
 entidade jurídica ou `SearchAction` sem conteúdo e funcionalidade reais que
 os sustentem. O recurso de [nome do site](https://developers.google.com/search/docs/appearance/site-names)
 do Google se aplica a domínio ou subdomínio; hospedagem em subpasta não recebe
 essa mesma elegibilidade.
 
 Open Graph e os metadados do cartão de compartilhamento usam título,
-descrição, URL e `icons/slide.webp`, com texto alternativo. Esse cartão tem
-750 por 425 px e combina o fundo com as marcas Ifes e Mais Ciência na Escola.
+descrição, URL e imagem próprios da rota, com texto alternativo. A inicial,
+login e oficinas preservam `icons/slide.webp`, com o fundo institucional e as
+marcas Ifes e Mais Ciência. `/feira`, seu regulamento e as três etapas usam
+`icons/feira/slide.webp`, com `images/feira/background.webp`, Ifes e a
+logomarca FEMAIS-ES. Ambos são WebP de 750 por 425 px, com proporções das
+marcas preservadas.
 O HTML principal e as entradas geradas incluem `og:url`, `og:type`, `og:title`,
 `og:description`, `og:image`, `og:site_name` e `og:locale`, além de URL segura,
 MIME WebP, largura, altura e descrição da imagem. Os campos seguem o
@@ -53,10 +62,25 @@ Eles descrevem a apresentação de links compartilhados; não
 representam garantia de ranking na pesquisa.
 
 Depois de publicar, confira a resposta pública da página e de
-`https://maisciencia.ifes.app.br/icons/slide.webp`. Plataformas podem guardar
+`https://maisciencia.ifes.app.br/icons/slide.webp` ou, para a Feira,
+`https://maisciencia.ifes.app.br/icons/feira/slide.webp`. Plataformas podem guardar
 uma prévia anterior em cache. A validação local do HTML e da imagem não
 comprova que WhatsApp ou outras redes atualizaram a prévia; isso precisa ser
 conferido no compartilhamento real após o deploy.
+
+## Estado público observado em 2026-11-14
+
+A resposta de produção consultada ainda corresponde à versão anterior: a
+inicial permite indexação, robots permite rastreamento e o sitemap contém
+apenas a inicial. `/feira/` ainda é uma apresentação provisória com
+`noindex,follow`; o regulamento e o novo cartão da Feira ainda responderam
+404 nessa consulta. Portanto, os sinais da Feira pronta preparados nesta
+branch só poderão ser coletados externamente depois da implantação.
+
+Essas observações de HTTP não provam se uma URL já foi indexada. A conferência
+de propriedade, inspeção de URL e acompanhamento de cobertura dependem do
+Search Console, que não foi acessado nesta revisão. A imagem e os metadados
+locais também não comprovam atualização da prévia no WhatsApp.
 
 ## Origem pública e base
 
@@ -97,7 +121,7 @@ build substitui `dist/`; reconstrua com a configuração de destino antes de
 preparar uma publicação. `check:build` inclui os checks de recursos e SEO.
 Na raiz, execute também `python3 scripts/validate-specs.py`.
 
-Confira as sete entradas por HTTP estático sem fallback: título e descrição
+Confira as onze entradas por HTTP estático sem fallback: título e descrição
 próprios, canonical único, política da tabela e JSON-LD somente na inicial.
 Inspecione `robots.txt`, XML do sitemap e recursos na base escolhida. Em
 navegador, confira o conteúdo após o carregamento e uma navegação atendida
@@ -166,7 +190,7 @@ informações confirmadas. Preserve os dados fornecidos de 21 escolas, nove
 campi e 11 municípios; apresente nomes e contexto em texto útil, sem repetir
 palavras-chave artificialmente ou publicar números sem atualização real.
 
-Ao concluir as páginas de oficinas e feira, inclua descrição das atividades,
+Ao concluir as páginas de oficinas e etapas da feira, inclua descrição das atividades,
 público, orientações e resultados disponíveis. Publique datas, locais e
 contatos somente quando confirmados. Use fotografias autorizadas com textos
 alternativos que descrevam seu conteúdo e contexto; imagens decorativas

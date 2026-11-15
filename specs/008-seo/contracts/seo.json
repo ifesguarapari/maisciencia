@@ -5,7 +5,11 @@
   "originVariable": "WEB_SITE_ORIGIN",
   "siteName": "Ifes Mais Ciência na Escola",
   "homeTitle": "Ifes Mais Ciência na Escola | Educação científica no ES",
-  "indexableRoutes": ["home"],
+  "indexableRoutes": [
+    "home",
+    "feira",
+    "feira/regulamento"
+  ],
   "placeholderRobots": "noindex,follow",
   "homeRobots": "index,follow,max-image-preview:large",
   "canonicalTrailingSlash": true,
@@ -15,10 +19,34 @@
   "shareImageType": "image/webp",
   "shareImageWidth": 750,
   "shareImageHeight": 425,
-  "shareImageSources": ["images/background.webp", "images/ifes.svg", "images/maisciencia.svg"],
+  "shareImageSources": [
+    "images/background.webp",
+    "images/ifes.svg",
+    "images/maisciencia.svg"
+  ],
   "robotsFile": "robots.txt",
   "sitemapFile": "sitemap.xml",
-  "pwaFallbackExcludes": ["robots.txt", "sitemap.xml"],
+  "pwaFallbackExcludes": [
+    "robots.txt",
+    "sitemap.xml"
+  ],
   "sitemapContainsFragments": false,
-  "sitemapInventsLastmod": false
+  "sitemapInventsLastmod": false,
+  "fairShareImage": "icons/feira/slide.webp",
+  "fairShareImageSources": [
+    "images/feira/background.webp",
+    "images/ifes.svg",
+    "images/feira/femais.svg"
+  ],
+  "fairShareImageRoutes": [
+    "feira",
+    "feira/regulamento",
+    "feira/202612",
+    "feira/202703",
+    "feira/202706"
+  ],
+  "fairShareImageAlt": "FEMAIS-ES: marcas do Ifes e Feira Mais Ciência na Escola sobre uma ilustração de ciência, tecnologia e inovação",
+  "shareImagesPreserveSources": true,
+  "shareMetadataInInitialHtml": true,
+  "shareMetadataUnique": true
 }

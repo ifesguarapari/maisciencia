@@ -276,3 +276,27 @@ foram executados nesta preparação local. Esses resultados não podem ser infer
 de testes locais, inspeção de YAML ou build bem-sucedido.
 Não foram verificados instalação no sistema operacional, atualização entre duas
 versões publicadas, dispositivos físicos ou outros motores de navegador.
+
+## Preparação da release 0.4.0
+
+Em 2026-11-14, o usuário autorizou finalizar a feature atual, criar commits
+com Commitizen e `re #2`, versionar e publicar pelo GitHub Actions e recriar
+a feature local após o deploy. A revisão independente não encontrou
+bloqueios. A versão minor 0.4.0 corresponde às novas páginas e funcionalidades
+compatíveis de 009 e 008; a API permanece sem alterações.
+
+As referências foram atualizadas do origin: `main` e `develop` estavam
+sincronizadas, com tag mais recente 0.3.0. O Pages confirmou modo workflow,
+domínio `maisciencia.ifes.app.br` e HTTPS. Resultados locais e remotos da
+release serão registrados após execução, sem inferir publicação a partir
+das evidências anteriores. T017-T020 cobrem a preparação e conferência.
+Rastreabilidade: FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007,
+FR-008, FR-009 e FR-010.
+
+A instalação limpa pelo lockfile instalou os 553 pacotes existentes. ESLint,
+80 testes Node, nove testes Python do validador e estrutura SDD passaram
+(nove features, 91 requisitos e 124 tarefas); `git diff --check` ficou limpo.
+Os avisos de dependências obsoletas já existentes não motivaram atualização
+de dependências nesta release. Nenhum arquivo da API foi alterado, por isso
+seus testes não foram repetidos. Os builds finais serão conferidos após o
+bump dos manifestos em `release/0.4.0`.

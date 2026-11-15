@@ -5,12 +5,13 @@ import path from 'node:path'
 import { test } from 'node:test'
 import { renderPageMetadata, renderRobots, renderSitemap } from '../build/seo.js'
 import { checkSeo } from '../scripts/check-seo.mjs'
-import { placeholderPages, routeEntries } from '../src/pages.js'
+import { contentPages, placeholderPages, routeEntries } from '../src/pages.js'
 import { getPageRoute } from '../src/paths.js'
 import { DEFAULT_SITE_ORIGIN, getPageSeo, seoNavigationDenylist, syncPageSeo } from '../src/seo.js'
 
 const contract = JSON.parse(await readFile(new URL('../../specs/008-seo/contracts/seo.json', import.meta.url), 'utf8'))
 const template = '<!doctype html><html lang="pt-BR"><head><!-- seo:start --><!-- seo:end --></head><body><main>Content</main></body></html>'
+const imageFixture = await readFile(new URL('../public/icons/slide.webp', import.meta.url))
 
 test('discovery documents bypass the PWA navigation shell without excluding pages or adjacent paths', () => {
   for (const base of ['/', '/maisciencia/', '/preview/site.v2/']) {
@@ -36,7 +37,8 @@ async function fixture(t, options = {}) {
   }))
   files['robots.txt'] = renderRobots(options)
   files['sitemap.xml'] = renderSitemap(options)
-  files['icons/slide.webp'] = 'image fixture'
+  files['icons/slide.webp'] = imageFixture
+  files['icons/feira/slide.webp'] = imageFixture
   files['assets/main.css'] = 'body { color: white; }'
   files['assets/main.js'] = 'export const ready = true'
   await Promise.all(Object.entries(files).map(async ([file, source]) => {
@@ -55,9 +57,9 @@ async function change(directory, file, transform) {
 }
 
 for (const [base, origin] of [['/', DEFAULT_SITE_ORIGIN], ['/maisciencia/', 'https://ifesguarapari.github.io']]) {
-  test(`verifies the seven initial HTML documents and discovery files under ${origin}${base}`, async (t) => {
+  test(`verifies every initial HTML document and discovery files under ${origin}${base}`, async (t) => {
     const directory = await fixture(t, { base, origin })
-    assert.deepEqual(await checkSeo({ directory, base, origin }), { base, origin, pagesChecked: 7 })
+    assert.deepEqual(await checkSeo({ directory, base, origin }), { base, origin, pagesChecked: routeEntries.length })
   })
 
   test(`metadata follows the SEO contract and route catalog under ${base}`, () => {
@@ -72,6 +74,23 @@ for (const [base, origin] of [['/', DEFAULT_SITE_ORIGIN], ['/maisciencia/', 'htt
     assert.equal(home.imageType, contract.shareImageType)
     assert.equal(home.imageWidth, contract.shareImageWidth)
     assert.equal(home.imageHeight, contract.shareImageHeight)
+    assert.deepEqual(['home', ...Object.keys(contentPages).filter((route) => contentPages[route].indexable)].sort(), [...contract.indexableRoutes].sort())
+    for (const [route, page] of Object.entries(contentPages)) {
+      const metadata = getPageSeo(route, { base, origin })
+      assert.equal(metadata.title, `${page.title} | ${contract.siteName}`)
+      assert.equal(metadata.description, page.description)
+      assert.equal(metadata.indexable, true)
+      assert.equal(metadata.robots, contract.homeRobots)
+      assert.equal(metadata.canonical, `${origin}${base}${route}/`)
+      for (const suffix of ['', '/']) {
+        const resolved = getPageRoute(`${base}${route}${suffix}`, base)
+        assert.equal(getPageSeo(resolved, { base, origin }).canonical, metadata.canonical)
+      }
+      const source = renderPageMetadata(template, metadata)
+      assert.ok(!source.includes('application/ld+json'))
+      assert.equal(metadata.image, `${origin}${base}${contract.fairShareImage}`)
+      assert.equal(metadata.imageAlt, contract.fairShareImageAlt)
+    }
     for (const [route, page] of Object.entries(placeholderPages)) {
       const metadata = getPageSeo(route, { base, origin })
       assert.equal(metadata.title, `${page.title} | ${contract.siteName}`)
@@ -79,6 +98,8 @@ for (const [base, origin] of [['/', DEFAULT_SITE_ORIGIN], ['/maisciencia/', 'htt
       assert.equal(metadata.indexable, false)
       assert.equal(metadata.robots, contract.placeholderRobots)
       assert.equal(metadata.canonical, `${origin}${base}${route}/`)
+      const isFair = contract.fairShareImageRoutes.includes(route)
+      assert.equal(metadata.image, `${origin}${base}${isFair ? contract.fairShareImage : contract.shareImage}`)
       for (const suffix of ['', '/']) {
         const resolved = getPageRoute(`${base}${route}${suffix}`, base)
         assert.equal(getPageSeo(resolved, { base, origin }).canonical, metadata.canonical)
@@ -149,11 +170,11 @@ test('rejects a provisional entry carrying the home title and description', asyn
   await assert.rejects(checkSeo({ directory }), /login\/index\.html: (?:expected one nonempty title matching this route|description does not match this route)/)
 })
 
-test('rejects six noindex routes added to the sitemap', async (t) => {
+test('rejects noindex routes added to the sitemap', async (t) => {
   const directory = await fixture(t)
   await change(directory, 'sitemap.xml', (xml) => xml.replace('</urlset>', `${Object.keys(placeholderPages)
     .map((route) => `<url><loc>${DEFAULT_SITE_ORIGIN}/${route}/</loc></url>`).join('')}</urlset>`))
-  await assert.rejects(checkSeo({ directory }), /sitemap\.xml: expected only the indexable home URL/)
+  await assert.rejects(checkSeo({ directory }), /sitemap\.xml: expected only the indexable URLs/)
 })
 
 test('rejects section fragments and invented sitemap update dates', async (t) => {
@@ -161,7 +182,7 @@ test('rejects section fragments and invented sitemap update dates', async (t) =>
   const filename = path.join(directory, 'sitemap.xml')
   const original = await readFile(filename, 'utf8')
   await writeFile(filename, original.replace('</loc>', '#about</loc>'))
-  await assert.rejects(checkSeo({ directory }), /sitemap\.xml: expected only the indexable home URL/)
+  await assert.rejects(checkSeo({ directory }), /sitemap\.xml: expected only the indexable URLs/)
   await writeFile(filename, original.replace('</url>', '<lastmod>2026-11-14</lastmod></url>'))
   await assert.rejects(checkSeo({ directory }), /lastmod, changefreq and priority must not be invented/)
 })
@@ -187,7 +208,7 @@ test('accepts a more specific robots allow rule and a disallow outside the artif
   const base = '/maisciencia/'
   const directory = await fixture(t, { base })
   await change(directory, 'robots.txt', (source) => `${source}Disallow: /\nAllow: ${base}\nDisallow: /api/\n`)
-  assert.equal((await checkSeo({ directory, base })).pagesChecked, 7)
+  assert.equal((await checkSeo({ directory, base })).pagesChecked, routeEntries.length)
 })
 
 test('rejects a robots sitemap URL pointing to a different project base', async (t) => {
@@ -222,7 +243,7 @@ test('rejects incorrect sharing URLs and a missing image asset', async (t) => {
   await assert.rejects(checkSeo({ directory }), /sharing image is missing from artifact/)
 })
 
-test('rejects WebSite JSON-LD copied to provisional routes or given a false identity', async (t) => {
+test('rejects WebSite JSON-LD copied to secondary content routes or given a false identity', async (t) => {
   const directory = await fixture(t)
   const home = await readFile(path.join(directory, 'index.html'), 'utf8')
   const structured = home.match(/<script\b[^>]*type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/)[0]
@@ -261,7 +282,7 @@ test('synchronizes home shell metadata to provisional routes and back without du
   unrelated.setAttribute('name', 'theme-color')
   unrelated.setAttribute('content', '#101010')
   elements.push(unrelated)
-  for (const route of ['home', 'oficinas/ler', 'oficinas/ler', 'home']) {
+  for (const route of ['home', 'feira', 'feira/regulamento', 'feira/202612', 'feira/202703', 'feira/202706', 'oficinas/ler', 'oficinas/ler', 'home']) {
     const metadata = getPageSeo(route, { base: '/maisciencia/' })
     syncPageSeo(document, metadata)
     assert.equal(elements.filter(({ tag }) => tag === 'title').length, 1)
@@ -269,8 +290,87 @@ test('synchronizes home shell metadata to provisional routes and back without du
     const canonical = elements.filter(({ attrs }) => attrs.rel === 'canonical')
     assert.equal(canonical.length, 1)
     assert.equal(canonical[0].attrs.href, metadata.canonical)
-    assert.equal(elements.find(({ attrs }) => attrs.name === 'robots').attrs.content, route === 'home' ? contract.homeRobots : contract.placeholderRobots)
+    assert.equal(elements.find(({ attrs }) => attrs.name === 'robots').attrs.content, metadata.indexable ? contract.homeRobots : contract.placeholderRobots)
+    assert.equal(elements.find(({ attrs }) => attrs.property === 'og:image').attrs.content, metadata.image)
+    assert.equal(elements.find(({ attrs }) => attrs.name === 'twitter:image').attrs.content, metadata.image)
     assert.equal(elements.filter(({ attrs }) => attrs.type === 'application/ld+json').length, route === 'home' ? 1 : 0)
     assert.ok(elements.includes(unrelated))
   }
+})
+
+
+test('rejects accidental noindex on the fair and its regulation', async (t) => {
+  const directory = await fixture(t)
+  for (const route of ['feira', 'feira/regulamento']) {
+    const filename = path.join(directory, route, 'index.html')
+    const original = await readFile(filename, 'utf8')
+    await change(directory, `${route}/index.html`, (html) => html.replace('index,follow,max-image-preview:large', 'noindex,follow'))
+    await assert.rejects(checkSeo({ directory }), (error) => error.message.includes(`${route}/index.html: robots must be`))
+    await writeFile(filename, original)
+  }
+})
+
+test('rejects missing or duplicate ready fair URLs in the sitemap', async (t) => {
+  const directory = await fixture(t)
+  const filename = path.join(directory, 'sitemap.xml')
+  const original = await readFile(filename, 'utf8')
+  for (const route of ['feira', 'feira/regulamento']) {
+    const entry = `<url><loc>${DEFAULT_SITE_ORIGIN}/${route}/</loc></url>`
+    await writeFile(filename, original.replace(entry, ''))
+    await assert.rejects(checkSeo({ directory }), /sitemap\.xml: expected only the indexable URLs/)
+    await writeFile(filename, original.replace(entry, `${entry}${entry}`))
+    await assert.rejects(checkSeo({ directory }), /sitemap\.xml: expected only the indexable URLs/)
+  }
+})
+
+test('rejects an indexable dated fair placeholder', async (t) => {
+  const directory = await fixture(t)
+  await change(directory, 'feira/202612/index.html', (html) => html.replace('noindex,follow', 'index,follow,max-image-preview:large'))
+  await assert.rejects(checkSeo({ directory }), /feira\/202612\/index\.html: robots must be/)
+})
+
+test('the fair family shares its own image without changing institutional or workshop cards', () => {
+  for (const route of contract.fairShareImageRoutes) {
+    const metadata = getPageSeo(route)
+    assert.equal(metadata.image, `${DEFAULT_SITE_ORIGIN}/${contract.fairShareImage}`)
+    assert.equal(metadata.imageAlt, contract.fairShareImageAlt)
+    const html = renderPageMetadata(template, metadata)
+    for (const name of ['og:image', 'og:image:secure_url', 'twitter:image']) {
+      assert.ok(html.includes(`${name}" content="${metadata.image}"`), `${route}: ${name}`)
+    }
+    assert.ok(!html.includes(`content="${DEFAULT_SITE_ORIGIN}/${contract.shareImage}"`))
+  }
+  for (const route of ['home', 'login', 'oficinas', 'oficinas/ler', 'oficinas/lancar', 'oficinas/melhorar']) {
+    assert.equal(getPageSeo(route).image, `${DEFAULT_SITE_ORIGIN}/${contract.shareImage}`)
+  }
+})
+
+test('requires the fair sharing asset even when the institutional image exists', async (t) => {
+  const directory = await fixture(t)
+  await rm(path.join(directory, contract.fairShareImage))
+  await assert.rejects(checkSeo({ directory }), /feira\/index\.html: sharing image is missing from artifact/)
+})
+
+test('rejects copied institutional image tags on a fair document', async (t) => {
+  const directory = await fixture(t)
+  await change(directory, 'feira/index.html', (html) => html.replaceAll('/icons/feira/slide.webp', '/icons/slide.webp'))
+  await assert.rejects(checkSeo({ directory }), /feira\/index\.html: og:image does not match this route/)
+})
+
+test('rejects a non-WebP file disguised as a sharing image', async (t) => {
+  const directory = await fixture(t)
+  await writeFile(path.join(directory, contract.fairShareImage), Buffer.from('\x89PNG\r\n\x1a\nnot a WebP'))
+  await assert.rejects(checkSeo({ directory }), /icons\/feira\/slide\.webp: sharing image must have a complete WebP RIFF container/)
+})
+
+test('rejects truncated sharing images and dimensions inconsistent with social metadata', async (t) => {
+  const directory = await fixture(t)
+  const filename = path.join(directory, contract.fairShareImage)
+  await writeFile(filename, imageFixture.subarray(0, imageFixture.length - 1))
+  await assert.rejects(checkSeo({ directory }), /sharing image must have a complete WebP RIFF container/)
+  const resizedHeader = Buffer.from(imageFixture)
+  assert.equal(resizedHeader.toString('ascii', 12, 16), 'VP8 ')
+  resizedHeader.writeUInt16LE(1200, 26)
+  await writeFile(filename, resizedHeader)
+  await assert.rejects(checkSeo({ directory }), /sharing image must be 750x425; found 1200x425/)
 })

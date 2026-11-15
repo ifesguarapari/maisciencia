@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./fair.css";
 
 @font-face {
   font-family: "Inter";
