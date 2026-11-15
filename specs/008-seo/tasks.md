@@ -17,3 +17,20 @@ T002 e T003 são sequenciais. T004 e T005 podem avançar em paralelo após o
 contrato de T001. T007 foi acrescentada pela lacuna observada durante T006;
 a conclusão de T006 depende também dessa correção. Revisões humanas
 e tarefas externas não são aprovadas automaticamente.
+
+## Evolução: apresentação e regulamento da FEMAIS-ES
+
+- [x] T010 [US1] Estender `web/src/seo.js` ao catálogo de páginas prontas e provisórias, com canonical e metadados próprios para feira, regulamento e três etapas, mantendo `WebSite` exclusivo da inicial (FR-002, FR-003, FR-005, FR-008).
+- [x] T011 [US2] Gerar e validar o sitemap com inicial, feira e regulamento em `web/build/seo.js` e `web/scripts/check-seo.mjs`; excluir as oito provisórias e preservar a política de robots (FR-003, FR-004, FR-008).
+- [x] T012 [US3] Atualizar `web/tests/seo.test.js`, `specs/008-seo/contracts/seo.json` e `docs/seo.md`; executar testes e registrar alcance e limites das onze rotas (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009).
+
+## Evolução: cartão e metadados sociais próprios da Feira
+
+- [x] T013 [US1] Criar `web/public/icons/feira/slide.webp` com 750 por 425 pixels, usando o fundo `images/feira/background.webp` e as marcas `images/ifes.svg` e `images/feira/femais.svg`; conferir composição, formato e preservação dos arquivos originais e do cartão principal (FR-006).
+- [x] T014 [US1] Selecionar o cartão próprio nas cinco rotas da Feira em `web/src/seo.js`, com Open Graph/Twitter únicos e coerentes no HTML inicial e shell PWA; ajustar `web/tests/seo.test.js` e `web/scripts/check-seo.mjs` para validar escolha, recurso, tipo e dimensões (FR-002, FR-006, FR-007, FR-008).
+- [x] T015 [US3] Revisar sinais de Google Search com fontes primárias, conferir builds/HTTP nas duas bases e registrar em `specs/008-seo/verification.md` e `docs/seo.md` os resultados, a versão pública observada e os limites de Search Console, indexação e prévia externa (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009).
+
+T013 e a implementação de T014 podem avançar em paralelo após este contrato;
+a validação do artefato em T015 depende do cartão final e dos metadados
+integrados. A revisão de fontes e do estado público pode ocorrer antes,
+sem atribuir seus resultados à branch ainda não publicada.

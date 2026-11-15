@@ -29,6 +29,13 @@ T005 e verificações finais dependem da implementação concreta.
 ## Evolução: release 0.3.0 da feature issue/2
 
 - [x] T013 [US2] Revisar o diff, registrar a feature com Commitizen e `re #2`, finalizar `feature/issue/2` e preparar `release/0.3.0` com versão da web e `CHANGELOG.md` (FR-009, FR-010).
-- [ ] T014 [US2] Executar checks locais, registrar preparação com Commitizen e `re #2`, finalizar a release, enviar `main`, `develop` e tag 0.3.0 e acompanhar o workflow até seu resultado real (FR-002, FR-003, FR-004, FR-010).
-- [ ] T015 [US3] Conferir por HTTPS páginas, SEO, imagem de compartilhamento e recursos, fazer smoke em navegador e publicar notas/evidências reais da release (FR-005, FR-006, FR-007, FR-008, FR-009).
+- [x] T014 [US2] Executar checks locais, registrar preparação com Commitizen e `re #2`, finalizar a release, enviar `main`, `develop` e tag 0.3.0 e acompanhar o workflow até seu resultado real (FR-002, FR-003, FR-004, FR-010).
+- [x] T015 [US3] Conferir por HTTPS páginas, SEO, imagem de compartilhamento e recursos, fazer smoke em navegador e publicar notas/evidências reais da release (FR-005, FR-006, FR-007, FR-008, FR-009).
 - [x] T016 [US2] Resolver o estado da issue GitHub #2 conforme o esclarecimento de escopo solicitado ao usuário, distinguindo seu fechamento da finalização da branch e sem aprovar critérios pendentes (FR-009, FR-010).
+
+## Release 0.4.0 e reabertura da feature
+
+- [x] T017 [US2] Validar o diff e a instalação limpa; registrar a feature com Commitizen e `re #2`, finalizar `feature/issue/2` em `develop` e preparar `release/0.4.0`, manifestos web e `CHANGELOG.md` (FR-002, FR-009, FR-010).
+- [ ] T018 [US2] Conferir os dois builds, criar commit de preparação com Commitizen e `re #2`, finalizar Git Flow e enviar `main`, `develop` e tag 0.4.0; acompanhar os jobs do commit exato no Actions (FR-002, FR-003, FR-004, FR-010).
+- [ ] T019 [US3] Conferir páginas, recursos, SEO, novo cartão e apresentação por HTTPS/Chrome; publicar notas da versão e registrar evidências reais e limites em `verification.md` e `docs/seo.md` (FR-005, FR-006, FR-007, FR-008, FR-009).
+- [ ] T020 [US2] Incorporar evidências a `develop` com Commitizen e `re #2`, enviar a branch e recriar `feature/issue/2` pelo Git Flow, confirmando base, branch ativa e árvore limpa, sem fechar a issue #2 (FR-009, FR-010).

@@ -1,0 +1,247 @@
+{
+  "feature": "009-fair",
+  "locale": "pt-BR",
+  "title": "FEMAIS-ES",
+  "subtitle": "Feira Estadual Mais Ciência na Escola do Espírito Santo",
+  "basePaths": [
+    "/",
+    "/maisciencia/"
+  ],
+  "background": "images/feira/background.webp",
+  "brand": "images/feira/femais.svg",
+  "backgroundColor": "#203445",
+  "buttonColors": {
+    "yellow": "#f4ce2f",
+    "blue": "#0096e1",
+    "pink": "#f09bbe"
+  },
+  "monetaryAmounts": false,
+  "apiRequests": false,
+  "registrationEnabled": false,
+  "edition": 1,
+  "stages": [
+    {
+      "route": "/feira/202612",
+      "month": "2026-12",
+      "dateLabel": "Dezembro de 2026",
+      "location": "IFES Vila Velha",
+      "view": "placeholder",
+      "returnTo": "/feira",
+      "institutions": [
+        {
+          "name": "EMEF Dr. Hélio Ferraz",
+          "city": "Serra-ES"
+        },
+        {
+          "name": "EMEF Irmã Dulce",
+          "city": "Serra-ES"
+        },
+        {
+          "name": "EMEFTI Residencial Jacaraípe",
+          "city": "Serra-ES"
+        },
+        {
+          "name": "IFES Serra",
+          "city": null
+        },
+        {
+          "name": "EMEF Orestes Souto Novaes",
+          "city": "Viana-ES"
+        },
+        {
+          "name": "EMEF Dorival Brandão",
+          "city": "Viana-ES"
+        },
+        {
+          "name": "EMEF Francisco de Assis Pereira",
+          "city": "Viana-ES"
+        },
+        {
+          "name": "IFES Viana",
+          "city": null
+        },
+        {
+          "name": "UMEFTI Professor Élson José de Souza",
+          "city": "Vila Velha-ES"
+        },
+        {
+          "name": "UMEIEFTI Reverendo Waldomiro Martins Ferreira",
+          "city": "Vila Velha-ES"
+        },
+        {
+          "name": "UMEFTI Macionília Maurício Bueno",
+          "city": "Vila Velha-ES"
+        },
+        {
+          "name": "IFES Vila Velha",
+          "city": null
+        },
+        {
+          "name": "IFES Venda Nova do Imigrante",
+          "city": null
+        }
+      ]
+    },
+    {
+      "route": "/feira/202703",
+      "month": "2027-03",
+      "dateLabel": "Março de 2027",
+      "location": "IFES Piúma",
+      "view": "placeholder",
+      "returnTo": "/feira",
+      "institutions": [
+        {
+          "name": "EMEF Presidente Costa e Silva",
+          "city": "Guarapari-ES"
+        },
+        {
+          "name": "EMEF Cândida Soares Machado",
+          "city": "Guarapari-ES"
+        },
+        {
+          "name": "EMEIEF Constantino José Vieira",
+          "city": "Guarapari-ES"
+        },
+        {
+          "name": "IFES Guarapari",
+          "city": null
+        },
+        {
+          "name": "EMEF Ana Araújo",
+          "city": "Alfredo Chaves-ES"
+        },
+        {
+          "name": "EMEF Crubixá",
+          "city": "Alfredo Chaves-ES"
+        },
+        {
+          "name": "EMEF Sagrada Família",
+          "city": "Alfredo Chaves-ES"
+        },
+        {
+          "name": "EMEB Josefina Ramos Nunes",
+          "city": "Anchieta-ES"
+        },
+        {
+          "name": "EMEF Irmã Terezinha Godoy de Almeida",
+          "city": "Anchieta-ES"
+        },
+        {
+          "name": "EMEIEF Professora Maria Luiza Flores",
+          "city": "Anchieta-ES"
+        },
+        {
+          "name": "IFES Piúma",
+          "city": null
+        },
+        {
+          "name": "IFES Cachoeiro de Itapemirim",
+          "city": null
+        }
+      ]
+    },
+    {
+      "route": "/feira/202706",
+      "month": "2027-06",
+      "dateLabel": "Junho de 2027",
+      "location": "IFES Linhares",
+      "view": "placeholder",
+      "returnTo": "/feira",
+      "institutions": [
+        {
+          "name": "EMEF Prefeito Roberto Calmon",
+          "city": "Linhares-ES"
+        },
+        {
+          "name": "EMEFTI Evaldo Soella",
+          "city": "Linhares-ES"
+        },
+        {
+          "name": "EMEF Zeferino Batista Fiorot",
+          "city": "Linhares-ES"
+        },
+        {
+          "name": "IFES Linhares",
+          "city": null
+        },
+        {
+          "name": "IFES São Mateus",
+          "city": null
+        }
+      ]
+    }
+  ],
+  "routes": {
+    "/feira": {
+      "view": "fair",
+      "indexable": true
+    },
+    "/feira/regulamento": {
+      "view": "regulation",
+      "indexable": true
+    }
+  },
+  "regulation": {
+    "route": "/feira/regulamento",
+    "sectionCount": 17,
+    "preambleParagraphCount": 2,
+    "source": "proposta.docx",
+    "preserveNumbering": true,
+    "preserveInclusionPercentages": true
+  },
+  "indexableRoutes": [
+    "home",
+    "feira",
+    "feira/regulamento"
+  ],
+  "structuredDataRoutes": [
+    "home"
+  ],
+  "motion": {
+    "imageScale": false,
+    "desktopParallax": "translation",
+    "respectsReducedMotion": true
+  },
+  "publishesAutomatically": false,
+  "headerBrands": [
+    "images/ifes.svg",
+    "images/maisciencia.svg"
+  ],
+  "heroBrand": {
+    "image": "images/feira/femais.svg",
+    "replacesDisplayTitle": true,
+    "preserveAspectRatio": true
+  },
+  "editionLabel": "Primeira edição",
+  "introLabel": "Feira expositiva",
+  "stageLabel": "Encontro",
+  "stageCardConstructionNotice": false,
+  "audience": [
+    "teachers",
+    "students",
+    "parents"
+  ],
+  "purpose": "Scientific and technological exhibition for the Mais Ciência na Escola school community and local innovation learning",
+  "gamification": {
+    "proposal": true,
+    "interaction": "exhibitors and activities",
+    "progress": "accumulated points",
+    "recognition": [
+      "trophies",
+      "awards"
+    ],
+    "scoringSystemEnabled": false,
+    "inventedRules": false,
+    "heading": "Explore. Interaja. Acumule aprendizagens."
+  },
+  "week": {
+    "image": "images/feira/snct2026.svg",
+    "year": 2026,
+    "edition": 23,
+    "theme": "Ciência Delas",
+    "slogan": "A ciência é delas, é com elas, e é para todos nós.",
+    "url": "https://semanact.mcti.gov.br/",
+    "placement": "after-stage-cards",
+    "fairParticipates": true
+  }
+}

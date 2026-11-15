@@ -1,4 +1,4 @@
-import { placeholderPages } from './pages.js'
+import { pages } from './pages.js'
 import { normalizeBasePath } from './paths.js'
 
 export const DEFAULT_SITE_ORIGIN = 'https://maisciencia.ifes.app.br'
@@ -29,24 +29,27 @@ export function normalizeSiteOrigin(value = DEFAULT_SITE_ORIGIN) {
 export function getPageSeo(route = 'home', { base = '/', origin = DEFAULT_SITE_ORIGIN } = {}) {
   base = normalizeBasePath(base)
   origin = normalizeSiteOrigin(origin)
-  const page = Object.hasOwn(placeholderPages, route) ? placeholderPages[route] : null
+  const page = Object.hasOwn(pages, route) ? pages[route] : null
   if (route !== 'home' && !page) throw new Error(`Unknown SEO route: ${route}`)
-  const indexable = route === 'home'
+  const indexable = route === 'home' || page.indexable === true
+  const isFair = route === 'feira' || route.startsWith('feira/')
   return {
     route,
     base,
     origin,
     siteName,
-    title: indexable ? homeTitle : `${page.title} | ${siteName}`,
-    description: indexable ? homeDescription : page.description,
-    canonical: `${origin}${base}${indexable ? '' : `${route}/`}`,
+    title: route === 'home' ? homeTitle : `${page.title} | ${siteName}`,
+    description: route === 'home' ? homeDescription : page.description,
+    canonical: `${origin}${base}${route === 'home' ? '' : `${route}/`}`,
     robots: indexable ? 'index,follow,max-image-preview:large' : 'noindex,follow',
     indexable,
-    image: `${origin}${base}icons/slide.webp`,
+    image: `${origin}${base}${isFair ? 'icons/feira/slide.webp' : 'icons/slide.webp'}`,
     imageType: 'image/webp',
     imageWidth: 750,
     imageHeight: 425,
-    imageAlt: 'Ifes Mais Ciência na Escola: marcas do Ifes e Mais Ciência na Escola sobre uma ilustração de ciência e tecnologia',
+    imageAlt: isFair
+      ? 'FEMAIS-ES: marcas do Ifes e Feira Mais Ciência na Escola sobre uma ilustração de ciência, tecnologia e inovação'
+      : 'Ifes Mais Ciência na Escola: marcas do Ifes e Mais Ciência na Escola sobre uma ilustração de ciência e tecnologia',
   }
 }
 
@@ -78,7 +81,7 @@ export function getSeoTags(metadata) {
     meta('name', 'twitter:image', metadata.image),
     meta('name', 'twitter:image:alt', metadata.imageAlt),
   ]
-  if (metadata.indexable) {
+  if (metadata.route === 'home') {
     tags.push({
       tag: 'script',
       attrs: { id: 'seo-structured-data', type: 'application/ld+json' },

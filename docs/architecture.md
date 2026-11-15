@@ -79,12 +79,11 @@ BFF verificam origem e JSON; logout e renovação exigem CSRF válido.
 Respostas de sessão não são armazenadas no cache PWA.
 
 `web/` usa HTML, Tailwind CSS e Alpine.js, com build Vite e PWA. A página
-institucional em `/` e as seis páginas provisórias `/login`, `/feira`,
-`/oficinas`, `/oficinas/ler`, `/oficinas/lancar` e `/oficinas/melhorar` usam
-português do Brasil, conforme o pedido específico de `006-landing`. Essas
-páginas não enviam requisições de API. Os botões rosa Feira no cabeçalho
-desktop, no menu móvel e no hero abrem `/feira`, que apresenta
-o título “Feira”, a mensagem de página em construção e o retorno ao site.
+institucional em `/`, a Feira, seu regulamento e as páginas provisórias
+usam português do Brasil, conforme os pedidos específicos de `006-landing`
+e `009-fair`. Essas páginas não enviam requisições de API. Os botões rosa
+Feira no cabeçalho desktop, no menu móvel e no hero abrem `/feira`, que
+apresenta a FEMAIS-ES e dá acesso à primeira edição e ao regulamento.
 O hero contém somente Feira em rosa e Aplicativo em verde, sem Conheça Mais,
 com o mesmo estilo dos equivalentes do cabeçalho: cantos de 6 px, borda e texto
 coloridos e fundo na mesma cor com 10% de opacidade para Feira e 7% para
@@ -99,34 +98,58 @@ correspondentes de ler, lançar e melhorar. “Voltar ao Início”, no encerram
 segue o mesmo estilo na cor menta; esses controles mantêm foco visível.
 Os links externos e a legenda Ambiente virtual foram substituídos.
 
-`web/src/pages.js` centraliza os títulos, mensagens e cores das páginas
-provisórias, além da lista de sete entradas HTML consumida pela interface,
-pelo plugin de rotas estáticas e pelo verificador de build. O build de
-`007-web-delivery` fornece `index.html` e uma entrada `<route>/index.html` para
-cada página provisória, incluindo as oficinas aninhadas. Isso permite acesso
-direto, recarga e variantes com barra final em hospedagem estática, na raiz
-ou no prefixo do GitHub Pages, sem depender de fallback SPA. A demonstração
-anterior dos fluxos de sessão e saúde foi substituída na entrada pública;
-a baseline `003` preserva seu inventário retrospectivo.
+`web/src/pages.js` centraliza o catálogo de páginas: Feira e regulamento
+com conteúdo, oito apresentações provisórias e a entrada inicial. A interface,
+o plugin de rotas estáticas e o verificador de build compartilham as onze
+entradas HTML. `007-web-delivery` fornece `<route>/index.html`, incluindo
+rotas aninhadas. Isso permite acesso direto, recarga e barra final na raiz
+ou no prefixo do GitHub Pages, sem depender de fallback SPA. A baseline `003`
+preserva o inventário retrospectivo da demonstração de sessões e saúde.
 
 `008-seo` centraliza identidade e metadados em `web/src/seo.js`. O build entrega
-título, descrição, canonical HTTPS e política de indexação próprios no HTML
-de cada rota; o cliente mantém a coerência quando o PWA entrega o shell da
-inicial. Somente a inicial permite indexação, entra no sitemap e recebe
-JSON-LD `WebSite`; as seis provisórias usam `noindex,follow`. O build gera
-`robots.txt` permissivo e `sitemap.xml`, combinando a origem pública
-`WEB_SITE_ORIGIN` com `WEB_BASE_PATH`. A origem padrão é
-`https://maisciencia.ifes.app.br`; configuração alternativa exige HTTPS e
-origem sem caminho de página, consulta, fragmento ou credenciais. O
-[guia de SEO](seo.md) registra a manutenção e o trabalho manual de Search
-Console. Esses sinais não comprovam indexação nem posição no Google.
+título, descrição, canonical HTTPS e política própria por rota; o cliente
+mantém a coerência quando o PWA entrega o shell da inicial. Início, Feira e
+regulamento permitem indexação e entram no sitemap; somente a inicial recebe
+JSON-LD `WebSite`. As oito provisórias usam `noindex,follow`. O build gera
+`robots.txt` permissivo e `sitemap.xml`, combinando `WEB_SITE_ORIGIN` HTTPS
+com `WEB_BASE_PATH`. A origem padrão é `https://maisciencia.ifes.app.br`;
+origens alternativas não podem ter caminho, consulta, fragmento ou credenciais.
+O [guia de SEO](seo.md) registra manutenção e etapas manuais de Search Console.
+Esses sinais não comprovam indexação nem posição no Google.
+
+[009-fair](../specs/009-fair/spec.md) rege `/feira`: identidade própria com
+`images/feira/background.webp` e `images/feira/femais.svg`, paleta
+azul-petróleo e botões amarelo,
+azul e rosa translúcidos. O regulamento integral em `/feira/regulamento`
+apresenta os textos ao final de `proposta.docx`; a Feira não publica orçamento
+nem quantias monetárias. A primeira edição se divide em dezembro de 2026
+(IFES Vila Velha), março de 2027 (IFES Piúma) e junho de 2027 (IFES Linhares).
+As rotas `/feira/202612`, `/feira/202703` e `/feira/202706` permanecem em
+construção. A renderização compartilhada oferece conteúdo no HTML físico
+e seleciona a mesma apresentação antes de Alpine quando o shell PWA é usado.
+São páginas estáticas, sem inscrição, backend ou mudança de infraestrutura.
+
+O cabeçalho da Feira usa Ifes e Mais Ciência; a logomarca da Feira aparece
+ampliada no destaque principal. “Primeira edição”, “Feira expositiva” e
+“Encontro” sem numeral são os rótulos editoriais vigentes. Os cards recebem
+listas das instituições participantes, mantidas em `web/src/fair-data.js`,
+com 13, 12 e cinco instituições nos encontros, respectivamente. A retirada
+do aviso nos cards não altera o caráter provisório das páginas de destino.
+A apresentação destaca professores, alunos e pais do programa e a exposição
+científica e tecnológica. A proposta gamificada incentiva interações com
+expositores e acúmulo de pontos para troféus e premiações ao final, sem
+implementar pontuação, regras ou serviços adicionais. O regulamento extraído
+permanece integralmente preservado.
 
 A landing apresenta as seções, instituições e pessoas fornecidas, com filtros
 e painéis locais. Dados complementares de `site.docx` não fornecidos não são
 inventados. O cabeçalho mantém as marcas Ifes e Mais Ciência. Somente o rodapé
 usa a imagem original `web/public/images/popciencia.svg`, com proporção
 preservada e o subtítulo “Programa Nacional de Popularização da Ciência”.
-O cartão de compartilhamento `slide.webp` mantém sua composição anterior.
+O cartão institucional `icons/slide.webp` mantém sua composição anterior.
+As cinco rotas da Feira usam `icons/feira/slide.webp`, com fundo e marca
+próprios da FEMAIS-ES e a marca Ifes, conforme 008. O HTML inicial e a
+sincronização PWA mantêm Open Graph e Twitter coerentes com essa seleção.
 O rodapé preserva missão, navegação, informações e Instagram e registra a
 parceria em três linhas: “Desenvolvido em
 parceria com:”, “Profe - Soluções em Tecnologia Educacional Ltda” e
@@ -168,9 +191,10 @@ do site devem ser registradas somente após sua realização em
 - [001-platform-foundation](../specs/001-platform-foundation/spec.md): processos, contratos de infraestrutura e dados.
 - [002-web-sessions](../specs/002-web-sessions/spec.md): identidade, sessão e fronteira navegador/backend.
 - [003-web-pwa](../specs/003-web-pwa/spec.md): interface, saúde agregada e PWA.
-- [006-landing](../specs/006-landing/spec.md): apresentação pública, rede, equipe e acessos provisórios ao aplicativo, à feira e às oficinas.
+- [006-landing](../specs/006-landing/spec.md): apresentação pública, rede, equipe e acessos ao aplicativo, à Feira e às oficinas.
 - [007-web-delivery](../specs/007-web-delivery/spec.md): integração contínua e hospedagem estática da web no GitHub Pages.
 - [008-seo](../specs/008-seo/spec.md): identidade no HTML inicial, canonical, indexação e manutenção de SEO.
+- [009-fair](../specs/009-fair/spec.md): apresentação FEMAIS-ES, regras e etapas da primeira edição.
 - [CONTRIBUTING.md](../CONTRIBUTING.md): idioma, qualidade e configuração local.
 
 As verificações e suas limitações pertencem às features. Inspeção de

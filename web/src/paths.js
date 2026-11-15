@@ -1,4 +1,4 @@
-import { placeholderPages } from './pages.js'
+import { pages } from './pages.js'
 
 export function normalizeBasePath(value = '/') {
   if (!/^(?:\/[a-zA-Z0-9._~-]+)*\/?$/.test(value)
@@ -17,7 +17,7 @@ export function getPageRoute(pathname, base) {
   if (!pathname.startsWith(base)) return null
   const route = pathname.slice(base.length).replace(/\/$/, '')
   if (!route) return 'home'
-  return Object.hasOwn(placeholderPages, route) ? route : null
+  return Object.hasOwn(pages, route) ? route : null
 }
 
 export function apiNavigationDenylist(base) {

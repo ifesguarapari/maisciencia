@@ -1,5 +1,7 @@
+import { contentPages } from '../src/pages.js'
 import { getPageRoute } from '../src/paths.js'
 import { getPageSeo, getSeoTags } from '../src/seo.js'
+import { renderPageContent } from './page-content.js'
 
 const metadataBlock = /<!-- seo:start -->[\s\S]*?<!-- seo:end -->/g
 const escapeMarkup = (value) => String(value).replace(/[&<>"']/g, (character) => ({
@@ -25,8 +27,9 @@ export function renderRobots(options = {}) {
 }
 
 export function renderSitemap(options = {}) {
-  const home = getPageSeo('home', options)
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${escapeMarkup(home.canonical)}</loc></url>\n</urlset>\n`
+  const routes = ['home', ...Object.keys(contentPages).filter((route) => contentPages[route].indexable)]
+  const locations = routes.map((route) => `  <url><loc>${escapeMarkup(getPageSeo(route, options).canonical)}</loc></url>`).join('\n')
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${locations}\n</urlset>\n`
 }
 
 export function pageSeo(options = {}) {
@@ -38,7 +41,7 @@ export function pageSeo(options = {}) {
       handler(html, context) {
         const pathname = new URL(context.originalUrl || context.path, 'https://development.invalid').pathname
         const route = context.server ? getPageRoute(pathname, home.base) || 'home' : 'home'
-        return renderPageMetadata(html, getPageSeo(route, options))
+        return renderPageMetadata(renderPageContent(html, route, home.base), getPageSeo(route, options))
       },
     },
   }

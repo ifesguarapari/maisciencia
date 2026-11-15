@@ -2,7 +2,8 @@
 
 Página institucional do Ifes Mais Ciência na Escola em Vite vanilla, HTML,
 Tailwind CSS, Alpine.js e PWA. A especificação vigente dessa apresentação é
-[006-landing](../specs/006-landing/spec.md); a baseline
+[006-landing](../specs/006-landing/spec.md); a Feira segue
+[009-fair](../specs/009-fair/spec.md). A baseline
 [003-web-pwa](../specs/003-web-pwa/spec.md) preserva o inventário da demonstração
 anterior de sessões e saúde. As mudanças seguem o
 [fluxo SDD](../docs/spec-driven-development.md).
@@ -30,7 +31,8 @@ em rosa e Aplicativo em verde, sem o botão Conheça Mais. Os dois repetem o
 estilo dos equivalentes do cabeçalho: cantos de 6 px, borda e texto coloridos
 e fundo na mesma cor com 10% de opacidade para Feira e 7% para Aplicativo.
 Seus destinos `/feira` e `/login` respeitam a base pública. A rota `/feira`
-exibe o título “Feira”, uma mensagem de página em construção e o retorno ao site.
+apresenta a FEMAIS-ES, com objetivos, público, modalidades, primeira edição
+e acesso ao regulamento integral em `/feira/regulamento`.
 O item Oficinas no cabeçalho desktop, no menu móvel e no rodapé abre `/oficinas`,
 que informa a futura apresentação do planejamento e da execução das oficinas.
 Os botões “Saiba mais” dos três cards abrem as páginas correspondentes:
@@ -42,8 +44,8 @@ Os botões “Saiba mais” dos três cards abrem as páginas correspondentes:
 | `/oficinas/lancar` | Lançar Foguetes com Precisão |
 | `/oficinas/melhorar` | Melhorar a Cidade com Eletrônica |
 
-Todas as páginas provisórias exibem aviso de construção ou disponibilidade
-futura e retorno ao site. Aceitam acesso direto com ou sem barra final,
+As páginas provisórias do aplicativo e das oficinas exibem aviso de construção
+ou disponibilidade futura e retorno ao site. Aceitam acesso direto com ou sem barra final,
 respeitam a base pública e operam sem chamadas de API. Não há formulário,
 restauração de sessão ou consulta de
 saúde na página pública desta entrega. Os serviços de autenticação
@@ -51,9 +53,15 @@ e BFF continuam documentados em [api/README.md](../api/README.md).
 
 ## Conteúdo e identidade
 
-`public/images/` contém os arquivos fornecidos `ifes.svg`, `maisciencia.svg`,
-`popciencia.svg` e `background.webp`. O cabeçalho mantém Ifes e Mais Ciência;
-somente o rodapé usa a imagem original `popciencia.svg`, com o subtítulo
+`public/images/` contém os arquivos institucionais fornecidos `ifes.svg`,
+`maisciencia.svg`, `popciencia.svg` e `background.webp`. As duas artes da
+Feira ficam em `public/images/feira/background.webp` e
+`public/images/feira/femais.svg`. A Feira preserva a paleta azul-petróleo do
+fundo e botões amarelo `#f4ce2f`, azul `#0096e1` e rosa `#f09bbe`, com borda,
+cantos suaves e fundo translúcido. Os cabeçalhos usam Ifes e Mais Ciência;
+a logomarca da Feira aparece ampliada e proporcional no destaque principal.
+
+O rodapé usa a imagem original `popciencia.svg`, com o subtítulo
 “Programa Nacional de Popularização da Ciência”. As marcas preservam cores
 e proporções. As ilustrações secundárias são decorativas e não representam
 fotografias de pessoas reais.
@@ -67,9 +75,14 @@ da página e é independente dos ícones de instalação.
 
 `public/icons/slide.webp` é o cartão de compartilhamento de 750 por 425 px,
 composto a partir de `images/background.webp`, `images/ifes.svg` e
-`images/maisciencia.svg`. O bloco Open Graph do HTML principal e os metadados
-gerados por rota apontam à URL absoluta desse arquivo, com tipo WebP,
-dimensões e texto alternativo. O cartão Twitter acompanha a mesma imagem.
+`images/maisciencia.svg`. Ele permanece na inicial e nas páginas
+institucionais. A família de rotas `/feira` usa o cartão
+`public/icons/feira/slide.webp`, também de 750 por 425 px, composto a partir
+de `images/feira/background.webp`, `images/ifes.svg` e
+`images/feira/femais.svg`. O bloco Open Graph do HTML inicial de cada rota
+aponta para a URL absoluta do cartão correspondente, com tipo WebP, dimensões
+e texto alternativo. O cartão Twitter acompanha a mesma imagem. A leitura
+desses sinais no build não comprova indexação ou prévia externa já atualizada.
 
 Os dados de instituições e equipe ficam separados da apresentação em
 `src/data.js`. Há 21 escolas municipais, nove campi, três coordenadores e
@@ -95,11 +108,52 @@ Profe - Soluções em Tecnologia Educacional Ltda
 CNPJ: 66.907.525/0001-13
 ```
 
-A interface institucional, incluindo as seis páginas provisórias, usa português
+A interface institucional, incluindo Feira, regulamento e oito páginas provisórias, usa português
 do Brasil por pedido específico de `006-landing`. Código, identificadores,
 arquivos e comentários continuam em inglês; `/feira` e `/oficinas` preservam
 os caminhos públicos solicitados pelo usuário. A exceção de idioma está registrada na
 [constituição](../.specify/memory/constitution.md).
+
+## FEMAIS-ES
+
+A Feira substitui sua antiga tela provisória. O cronograma vigente da
+Primeira edição segue o pedido do usuário, em três etapas:
+
+| Período | Local | Página da etapa |
+| --- | --- | --- |
+| Dezembro de 2026 | IFES Vila Velha | `/feira/202612` |
+| Março de 2027 | IFES Piúma | `/feira/202703` |
+| Junho de 2027 | IFES Linhares | `/feira/202706` |
+
+A apresentação caracteriza uma feira expositiva científica e tecnológica
+voltada a professores, alunos e pais do programa Mais Ciência na Escola.
+Os cards usam “Encontro” sem numeração e mostram as instituições fornecidas,
+na ordem do contrato: 13 no primeiro, 12 no segundo e cinco no terceiro.
+A lista substitui o aviso de construção somente nos cards. As três páginas
+de etapa continuam em construção, com retorno à Feira.
+
+A proposta gamificada incentiva a interação com expositores e atividades,
+com acúmulo de pontos que contribuem para troféus e premiações ao final.
+A apresentação não implementa um sistema de pontuação nem define quantidades,
+regras de classificação ou prêmios específicos.
+
+O menu e o trecho
+Regulamento apontam para `/feira/regulamento`, com os dois parágrafos de
+preâmbulo e as 17 seções normativas da proposta fornecida. O texto conserva
+numeração, subitens e percentuais de inclusão; não exibe orçamento ou quantias
+monetárias. Não há formulário nem inscrição efetivamente disponível.
+
+`src/fair.html`, `src/fair.js` e `src/fair.css` mantêm a apresentação específica;
+`src/fair-data.js` compartilha as etapas e listas de instituições;
+`src/regulation.js` contém os dados normativos, preservados nas correções. A renderização compartilhada
+fornece conteúdo ao HTML estático e ao shell PWA antes da inicialização Alpine.
+Início, Feira e regulamento são indexáveis; aplicativo, oficinas e três etapas
+provisórias permanecem fora do sitemap com `noindex,follow`.
+
+As evidências e os limites desta implementação ficam em
+[009-fair/verification.md](../specs/009-fair/verification.md). A implantação
+anterior 0.3.0 não comprova publicação desta mudança; uma nova release deve
+seguir o fluxo de entrega quando solicitada. A issue #2 permanece aberta.
 
 ## Comandos e verificação
 
@@ -139,15 +193,13 @@ A variável `VITE_API_URL` permanece disponível para futuras integrações,
 mas a landing não faz chamadas de API. Variáveis `VITE_*` são públicas no build:
 não inclua senhas, tokens ou segredos internos.
 
-Em produção, sirva `dist/` por HTTPS. `src/pages.js` centraliza as seis páginas
-provisórias e as sete entradas HTML: `index.html`, `login/index.html`,
-`feira/index.html`, `oficinas/index.html`, `oficinas/ler/index.html`,
-`oficinas/lancar/index.html` e `oficinas/melhorar/index.html`. A interface, o
-plugin de rotas estáticas e o verificador de build usam esse mesmo catálogo.
-As entradas permitem abrir as rotas diretamente em um servidor estático sem
-fallback SPA, inclusive nos caminhos aninhados das oficinas. O servidor pode
-normalizar a URL para barra final. Quando o aplicativo passar a usar o backend,
-encaminhe `/api` para o Kong e siga o contrato do BFF.
+Em produção, sirva `dist/` por HTTPS. `src/pages.js` centraliza as duas
+páginas de conteúdo, as oito provisórias e as onze entradas HTML físicas.
+A interface, o plugin de rotas estáticas e o verificador de build usam o
+mesmo catálogo. As entradas permitem acesso direto em servidor estático sem
+fallback SPA, incluindo caminhos aninhados. O servidor pode normalizar a URL
+para barra final. Quando o aplicativo passar a usar o backend, encaminhe
+`/api` para o Kong e siga o contrato do BFF.
 O proxy local de Vite é uma configuração de desenvolvimento.
 
 ## GitHub Actions e Pages

@@ -15,11 +15,11 @@ test('build bases accept root and absolute prefixes with or without a final slas
 for (const base of ['/', '/maisciencia/', '/preview/site/']) {
   test(`direct routes and final slash variants select the right page under ${base}`, () => {
     assert.equal(getPageRoute(base, base), 'home')
-    for (const route of ['login', 'feira', 'oficinas', 'oficinas/ler', 'oficinas/lancar', 'oficinas/melhorar']) {
+    for (const route of ['login', 'feira', 'feira/regulamento', 'feira/202612', 'feira/202703', 'feira/202706', 'oficinas', 'oficinas/ler', 'oficinas/lancar', 'oficinas/melhorar']) {
       assert.equal(getPageRoute(`${base}${route}`, base), route)
       assert.equal(getPageRoute(`${base}${route}/`, base), route)
     }
-    for (const route of ['login-extra', 'login/details', 'oficinas-extra', 'oficinas/unknown', 'oficinas/ler-extra', 'oficinas/ler/details', 'oficinas//ler', 'oficinas/ler//', 'constructor', 'toString', '__proto__']) {
+    for (const route of ['login-extra', 'login/details', 'oficinas-extra', 'oficinas/unknown', 'oficinas/ler-extra', 'oficinas/ler/details', 'oficinas//ler', 'oficinas/ler//', 'feira/202613', 'feira/regulamento-extra', 'feira/202612/details', 'constructor', 'toString', '__proto__']) {
       assert.equal(getPageRoute(`${base}${route}`, base), null, route)
     }
   })

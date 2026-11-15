@@ -3,6 +3,26 @@
 As releases da web seguem a política SemVer descrita em
 [CONTRIBUTING.md](CONTRIBUTING.md). As versões da API são independentes.
 
+## 0.4.0 - 2026-11-14
+
+### Novidades
+
+- Página FEMAIS-ES com apresentação da feira expositiva, público escolar,
+  modalidades, experiência gamificada e destaque da SNCT 2026 - Ciência Delas.
+- Primeira edição em três encontros, com as 30 instituições distribuídas
+  em Vila Velha, Piúma e Linhares e páginas provisórias próprias.
+- Regulamento completo com 17 seções, índice e conteúdo disponível no HTML inicial.
+- Identidade visual própria, imagens organizadas em `images/feira/` e
+  cartão social `icons/feira/slide.webp` com 750 por 425 pixels.
+- SEO e compartilhamento por rota, sitemap com inicial, Feira e regulamento
+  e validação do formato e das dimensões reais dos cartões WebP.
+
+### Correções
+
+- Proporções das marcas do cabeçalho padronizadas entre início e Feira,
+  incluindo tamanhos de celular.
+- Seleção de conteúdo e metadados da Feira preservada em navegações PWA.
+
 ## 0.3.0 - 2026-11-14
 
 ### Novidades

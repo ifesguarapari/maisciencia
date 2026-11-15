@@ -7,7 +7,7 @@
 
 Manter Node 24, Vite, HTML, Tailwind, Alpine e PWA, sem biblioteca nova ou backend.
 Centralizar a identidade e os descritores dos metadados em `web/src/seo.js`.
-Derivar as provisórias de `web/src/pages.js`, sem criar catálogo paralelo de rotas.
+Derivar páginas de conteúdo e provisórias de `web/src/pages.js`, sem criar catálogo paralelo de rotas.
 A configuração `WEB_SITE_ORIGIN` é pública, HTTPS, sem caminho, consulta,
 fragmento ou credenciais; o padrão é `https://maisciencia.ifes.app.br`.
 
@@ -23,7 +23,8 @@ uma rota provisória. Não depender dessa sincronização para o HTML físico.
 Cada provisória tem canonical próprio com barra final e `noindex,follow`.
 
 Usar `WebSite` somente na home, sem `SearchAction`. A imagem específica de
-compartilhamento é definida na evolução abaixo. Sitemap lista somente a home;
+compartilhamento é definida na evolução abaixo. Sitemap lista a home e as
+páginas de conteúdo explicitamente indexáveis no catálogo;
 robots permite rastreamento. Não adicionar cache PWA de robots ou sitemap.
 Excluir esses dois arquivos do fallback de navegação HTML: a conferência
 com service worker ativo identificou que robots era substituído pelo shell.
@@ -77,3 +78,43 @@ sincronização PWA usam os mesmos descritores para evitar divergência.
 Conferir contrato, testes e os sete HTMLs compilados com URL absoluta da
 imagem, tipo e dimensões corretos. A inspeção local de metadados não comprova
 que WhatsApp ou outras plataformas atualizaram ou exibiram suas prévias.
+
+## Evolução: apresentação e regulamento da feira
+
+O catálogo compartilhado passa a expor `pages`, `contentPages` e
+`placeholderPages`. `getPageSeo` consulta `pages`, preserva títulos, descrições
+e canonical individuais e deriva a política de indexação do estado explícito
+da página. `getSeoTags` identifica a rota `home`, em vez do estado de indexação,
+para emitir `WebSite`; assim, as novas páginas indexáveis não duplicam a
+identidade raiz. O sitemap é derivado de `contentPages` indexáveis e da inicial.
+Os checks exigem exatamente esse conjunto, recusando omissões, duplicação,
+placeholders, fragmentos e datas inventadas. Testes cobrem as onze rotas nas
+bases `/` e `/maisciencia/`, além da troca de metadados pelo shell PWA.
+FR-002, FR-003, FR-004, FR-005 e FR-008 acompanham essa evolução.
+
+## Evolução: compartilhamento próprio da Feira e auditoria de busca
+
+Preservar `web/public/icons/slide.webp` e os arquivos de origem. Produzir
+`web/public/icons/feira/slide.webp` como composição do fundo da Feira com
+Ifes e a logomarca FEMAIS-ES, em WebP opaco com 750 por 425 pixels. A criação
+usa a ferramenta integrada de imagem com referências fornecidas; registrar
+prompt, saída final, dimensões, inspeção e preservação das fontes somente
+quando executados. A conversão final não deve mudar as marcas nem as fontes.
+
+Em `web/src/seo.js`, selecionar esse cartão nas cinco rotas conhecidas da
+família `feira`; a inicial, login e oficinas mantêm o cartão institucional.
+O descritor fornece imagem, MIME, largura, altura e alternativa; Open Graph
+e Twitter consomem o mesmo descritor. Não duplicar blocos no HTML nem depender
+do JavaScript para os metadados de uma resposta física. A sincronização PWA
+usa a mesma seleção. Cada página mantém seu título, descrição e canonical.
+
+Estender os testes de SEO e o check do artefato para rejeitar cartão da família
+incorreta, recurso ausente e dimensões/MIME incoerentes. Construir as duas bases,
+conferir os onze HTMLs e a resposta HTTP do cartão. As três rotas indexáveis,
+as oito provisórias, sitemap e `WebSite` exclusivo da inicial não mudam.
+
+Revisar Google Search Central e protocolo Open Graph com fontes primárias
+atuais; distinguir revisão de código/build, resposta pública da versão
+implantada e acompanhamento real em Search Console. Não criar verificação
+de propriedade, prometer posição ou tratar preview local como WhatsApp real.
+Essa evolução atende FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008 e FR-009.

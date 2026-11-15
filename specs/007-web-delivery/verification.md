@@ -5,15 +5,15 @@
 | Requisito | Evidência | Estado observado |
 | --- | --- | --- |
 | FR-001 | Eventos, Node, cache e lockfile do workflow | YAML conferido; instalação limpa pelo lockfile passou |
-| FR-002 | ESLint, testes, build, artefato e SDD | ESLint, 37 testes, builds e verificador passaram localmente e no run da release 0.2.0 |
+| FR-002 | ESLint, testes, build, artefato e SDD | ESLint, 61 testes, builds e verificador passaram localmente e no run da release 0.3.0 |
 | FR-003 | Guards e permissões de PR, push e dispatch | Revisão de nove combinações de evento/ref e permissões sem escrita no build |
-| FR-004 | Diretório publicado, dependência e concorrência | Upload restrito a `web/dist`; deploy 42384132172 concluiu com sucesso para o commit da tag 0.2.0 |
+| FR-004 | Diretório publicado, dependência e concorrência | Upload restrito a `web/dist`; deploy 43637653321 concluiu com sucesso para o commit da tag 0.3.0 |
 | FR-005 | Builds e testes de caminhos nas duas bases | `/` e `/maisciencia/` passaram; artefatos e navegador conferidos |
 | FR-006 | Entradas físicas e HTTP sem fallback | Sete páginas publicadas e 13 variantes de URL conferidas por HTTPS; conteúdo corresponde ao build local |
 | FR-007 | Manifesto, service worker e recursos sob a base | Manifesto e escopo conferidos; navegação estática offline passou sob `/maisciencia/` |
 | FR-008 | Ausência de workflow API e preservação de configuração local | Somente `web.yml`; `.env` ignorados e ausentes do artefato |
 | FR-009 | Instruções reproduzíveis e limites honestos | README, arquitetura, contribuição e quickstart sincronizados |
-| FR-010 | Política SemVer, manifestos, changelog, Git Flow e tag | 0.2.0 sincronizada nos manifestos e changelog; Git Flow concluído, tag e branches enviados, release GitHub publicada |
+| FR-010 | Política SemVer, manifestos, changelog, Git Flow e tag | 0.3.0 sincronizada nos manifestos e changelog; feature e release finalizadas, tag e branches enviados, release GitHub publicada |
 
 ## Checks de código e artefato
 
@@ -223,6 +223,52 @@ O validador SDD passou com oito features, 76 requisitos e 100 tarefas;
 `git diff --check` e a validação Commitizen do intervalo de commits passaram.
 Não foram repetidos testes da API, pois seus arquivos não mudaram.
 
+## Publicação da release 0.3.0 em 2026-11-14
+
+O commit de preparação `7c92dd2` foi criado pelo assistente Commitizen como
+`build(release): prepare 0.3.0`, com rodapé `re #2`. O Git Flow finalizou a
+release e criou a tag anotada 0.3.0 no merge de produção
+`5e7c1a8c3d9e996032ec64411476f706a5ebbce9`. O retorno a `develop` é `82d2078`.
+O push atômico enviou `main`, `develop` e somente a nova tag, sem reescrever
+histórico. As branches temporárias feature e release foram removidas localmente.
+
+O [workflow 43637653321](https://github.com/ifesguarapari/maisciencia/actions/runs/43637653321)
+terminou com `success` para o commit exato de produção. Os jobs Validate and
+build web e Deploy web to GitHub Pages passaram, incluindo instalação limpa,
+ESLint, testes, SDD, leitura do Pages, build, checks e upload. A
+[release 0.3.0](https://github.com/ifesguarapari/maisciencia/releases/tag/0.3.0)
+foi publicada com as notas em português e referência à issue, sem fechá-la.
+
+A conferência HTTPS realizou 50 consultas: 37 arquivos e 13 variantes das
+sete páginas. Todas terminaram em HTTP 200, com SHA256 correspondente ao
+build local na base `/`. Robots respondeu `text/plain`, sitemap respondeu
+`application/xml` e o cartão respondeu `image/webp`, com 71.404 bytes.
+Isso confirma os arquivos novos no domínio público, inclusive os sinais de
+SEO disponíveis antes do JavaScript; não comprova indexação ou prévia em
+aplicativos de redes sociais.
+
+Chrome com perfil novo online conferiu a home em 1440 e 390 px, sem overflow,
+com estilos, fontes e inicialização prontos. A equipe apresentou os seis
+colaboradores, Ijanai em Foguetes com iniciais IS e Nanine com nome abreviado.
+O rodapé apresentou Pop Ciência proporcional, subtítulo e parceria com a
+grafia corrigida. A imagem OG foi recebida como WebP de 750 por 425 px.
+Capturas do desktop e do celular foram inspecionadas.
+
+A home manteve canonical raiz, política indexável e um único WebSite. O
+clique real na oficina Ler foi atendido pelo service worker com canonical
+próprio, `noindex` e sem WebSite; o retorno restaurou os sinais da home.
+As 66 respostas observadas não tiveram erros HTTP, falhas de carregamento,
+exceções de runtime, erros de console ou chamadas de API. Chrome foi encerrado.
+Não foram repetidos instalação no sistema operacional, Lighthouse, contraste
+formal, offline ou atualização de uma instalação antiga para esta publicação.
+
+A leitura final da issue [#2](https://github.com/ifesguarapari/maisciencia/issues/2)
+confirmou estado `open`, como o usuário pediu após esclarecer seu escopo.
+Nenhum critério pendente ou homologação da FEMAIS-ES foi aprovado. Os registros
+posteriores ao deploy são incorporados a `develop`, preservando a tag imutável
+e o commit de produção. O validador SDD e `git diff --check` passaram após
+consolidar essas evidências.
+
 ## Limites da preparação original
 
 GitHub Actions, ativação de Pages, publicação remota, domínio, DNS e VPS não
@@ -230,3 +276,46 @@ foram executados nesta preparação local. Esses resultados não podem ser infer
 de testes locais, inspeção de YAML ou build bem-sucedido.
 Não foram verificados instalação no sistema operacional, atualização entre duas
 versões publicadas, dispositivos físicos ou outros motores de navegador.
+
+## Preparação da release 0.4.0
+
+Em 2026-11-14, o usuário autorizou finalizar a feature atual, criar commits
+com Commitizen e `re #2`, versionar e publicar pelo GitHub Actions e recriar
+a feature local após o deploy. A revisão independente não encontrou
+bloqueios. A versão minor 0.4.0 corresponde às novas páginas e funcionalidades
+compatíveis de 009 e 008; a API permanece sem alterações.
+
+As referências foram atualizadas do origin: `main` e `develop` estavam
+sincronizadas, com tag mais recente 0.3.0. O Pages confirmou modo workflow,
+domínio `maisciencia.ifes.app.br` e HTTPS. Resultados locais e remotos da
+release serão registrados após execução, sem inferir publicação a partir
+das evidências anteriores. T017-T020 cobrem a preparação e conferência.
+Rastreabilidade: FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007,
+FR-008, FR-009 e FR-010.
+
+A instalação limpa pelo lockfile instalou os 553 pacotes existentes. ESLint,
+80 testes Node, nove testes Python do validador e estrutura SDD passaram
+(nove features, 91 requisitos e 124 tarefas); `git diff --check` ficou limpo.
+Os avisos de dependências obsoletas já existentes não motivaram atualização
+de dependências nesta release. Nenhum arquivo da API foi alterado, por isso
+seus testes não foram repetidos. Os builds finais serão conferidos após o
+bump dos manifestos em `release/0.4.0`.
+
+O assistente Commitizen criou `0b4f73c`, `feat(web): add FEMAIS-ES exhibition
+pages`, com o corpo descritivo e rodapé `re #2`. Os hooks passaram, sem
+pular verificações; Black/Pylint não tinham arquivos de API para analisar.
+`git flow feature finish --no-ff issue/2` criou o merge explícito `ff16ff4`
+em `develop` e removeu a feature local. `git flow release start 0.4.0` abriu
+a release e `npm version minor --no-git-tag-version` sincronizou a versão
+0.4.0 nos dois manifestos. O diff do lockfile só alterou os dois campos de
+versão da raiz; nenhuma dependência mudou. O changelog foi datado em
+2026-11-14 conforme o contexto do usuário.
+
+Os builds finais da versão 0.4.0 e os respectivos `check:build` passaram:
+45 arquivos e 851 referências internas na base `/maisciencia/` com origem
+GitHub; 45 arquivos e 854 referências na base `/` com domínio próprio.
+Os onze HTMLs, robots, sitemap, cartões e rotas foram aprovados. O precache
+teve 40 e 43 entradas, respectivamente. O artefato final em `web/dist` usa
+a raiz de produção; a cópia local usada na futura conferência HTTPS está
+em `/tmp/maisciencia-release040-root`. A validação SDD e diff permaneceram
+limpos após preparar os manifestos e o changelog.

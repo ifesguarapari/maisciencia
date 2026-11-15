@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path'
 import { routeEntries } from '../src/pages.js'
 import { getPageSeo } from '../src/seo.js'
 import { renderPageMetadata, renderRobots, renderSitemap } from './seo.js'
+import { renderPageContent } from './page-content.js'
 
 export function staticRouteEntries(options = {}) {
   let outputDirectory
@@ -22,7 +23,8 @@ export function staticRouteEntries(options = {}) {
         const filename = resolve(outputDirectory, routeEntry)
         await mkdir(dirname(filename), { recursive: true })
         const route = routeEntry.slice(0, -'/index.html'.length)
-        await writeFile(filename, renderPageMetadata(entry.source, getPageSeo(route, options)))
+        const metadata = getPageSeo(route, options)
+        await writeFile(filename, renderPageMetadata(renderPageContent(entry.source, route, metadata.base), metadata))
       }
       await writeFile(resolve(outputDirectory, 'robots.txt'), renderRobots(options))
       await writeFile(resolve(outputDirectory, 'sitemap.xml'), renderSitemap(options))

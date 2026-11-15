@@ -1,7 +1,7 @@
 import { readdir, readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { routeEntries } from '../src/pages.js'
+import { contentPages, routeEntries } from '../src/pages.js'
 import { DEFAULT_SITE_ORIGIN, getPageSeo } from '../src/seo.js'
 
 function decodeEntities(value) {
@@ -16,6 +16,41 @@ function decodeEntities(value) {
 function attributes(source) {
   return Object.fromEntries([...source.matchAll(/([^\s=<>/]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g)]
     .map((match) => [match[1].toLowerCase(), decodeEntities(match[2] ?? match[3] ?? match[4])]))
+}
+
+function webpDimensions(bytes) {
+  if (bytes.length < 20 || bytes.toString('ascii', 0, 4) !== 'RIFF'
+    || bytes.toString('ascii', 8, 12) !== 'WEBP' || bytes.readUInt32LE(4) + 8 !== bytes.length) {
+    throw new Error('sharing image must have a complete WebP RIFF container')
+  }
+  let image
+  let canvas
+  for (let offset = 12; offset < bytes.length;) {
+    if (offset + 8 > bytes.length) throw new Error('sharing image has a truncated WebP chunk')
+    const type = bytes.toString('ascii', offset, offset + 4)
+    const size = bytes.readUInt32LE(offset + 4)
+    const start = offset + 8
+    const end = start + size
+    const next = end + (size % 2)
+    if (next > bytes.length || (size % 2 && bytes[end] !== 0)) {
+      throw new Error('sharing image has an incomplete WebP chunk')
+    }
+    const data = bytes.subarray(start, end)
+    if (type === 'VP8X' && size === 10) {
+      canvas = { width: data.readUIntLE(4, 3) + 1, height: data.readUIntLE(7, 3) + 1 }
+    } else if (type === 'VP8 ' && size > 10 && data.subarray(3, 6).equals(Buffer.from([0x9d, 0x01, 0x2a]))) {
+      image = { width: data.readUInt16LE(6) & 0x3fff, height: data.readUInt16LE(8) & 0x3fff }
+    } else if (type === 'VP8L' && size > 5 && data[0] === 0x2f) {
+      const dimensions = data.readUInt32LE(1)
+      image = { width: (dimensions & 0x3fff) + 1, height: ((dimensions >>> 14) & 0x3fff) + 1 }
+    }
+    offset = next
+  }
+  if (!image || !image.width || !image.height) throw new Error('sharing image is missing a supported WebP image header')
+  if (canvas && (canvas.width !== image.width || canvas.height !== image.height)) {
+    throw new Error('sharing image WebP canvas and image dimensions disagree')
+  }
+  return image
 }
 
 async function listFiles(directory, prefix = '') {
@@ -74,7 +109,7 @@ function checkRobots(source, { base, origin, files, fail }) {
   }
 }
 
-function checkSitemap(source, canonical, fail) {
+function checkSitemap(source, canonicals, fail) {
   const xml = source.replace(/^\uFEFF/, '').replace(/<\?xml\s[^?]*\?>/, '').replace(/<!--[\s\S]*?-->/g, '').trim()
   const root = /^<urlset\b([^>]*)>([\s\S]*)<\/urlset>$/.exec(xml)
   if (!root || attributes(root[1]).xmlns !== 'http://www.sitemaps.org/schemas/sitemap/0.9'
@@ -85,8 +120,8 @@ function checkSitemap(source, canonical, fail) {
     fail('sitemap.xml: lastmod, changefreq and priority must not be invented')
   }
   const locations = [...xml.matchAll(/<loc>([^<]*)<\/loc>/g)].map((match) => decodeEntities(match[1].trim()))
-  if (locations.length !== 1 || locations[0] !== canonical) {
-    fail(`sitemap.xml: expected only the indexable home URL ${canonical}; found ${locations.join(', ') || 'none'}`)
+  if (JSON.stringify([...locations].sort()) !== JSON.stringify([...canonicals].sort())) {
+    fail(`sitemap.xml: expected only the indexable URLs ${canonicals.join(', ')}; found ${locations.join(', ') || 'none'}`)
   }
 }
 
@@ -100,6 +135,7 @@ export async function checkSeo({ directory = 'dist', base = '/', origin = DEFAUL
   const errors = new Set()
   const fail = (message) => errors.add(message)
   const homeUrl = `${origin}${base}`
+  const imageCache = new Map()
   let pagesChecked = 0
 
   async function readRequired(file) {
@@ -142,7 +178,7 @@ export async function checkSeo({ directory = 'dist', base = '/', origin = DEFAUL
     }
     singleMeta('name', 'description', expected.description)
     const robots = singleMeta('name', 'robots')
-    const expectedRobots = route === 'home' ? ['index', 'follow', 'max-image-preview:large'] : ['noindex', 'follow']
+    const expectedRobots = expected.indexable ? ['index', 'follow', 'max-image-preview:large'] : ['noindex', 'follow']
     const actualRobots = robots?.toLowerCase().split(',').map((value) => value.trim()).sort()
     if (JSON.stringify(actualRobots) !== JSON.stringify(expectedRobots.sort())) {
       documentFail(`robots must be ${expectedRobots.join(',')} for this route`)
@@ -166,6 +202,20 @@ export async function checkSeo({ directory = 'dist', base = '/', origin = DEFAUL
     }
     const image = singleImageUrl(expected.image)
     if (image && !fileSet.has(image)) documentFail(`sharing image is missing from artifact: ${expected.image}`)
+    else if (image) {
+      if (!imageCache.has(image)) {
+        try {
+          imageCache.set(image, webpDimensions(await readFile(path.join(directory, image))))
+        } catch (error) {
+          imageCache.set(image, { error: error.message })
+        }
+      }
+      const dimensions = imageCache.get(image)
+      if (dimensions.error) documentFail(`${image}: ${dimensions.error}`)
+      else if (dimensions.width !== expected.imageWidth || dimensions.height !== expected.imageHeight) {
+        documentFail(`${image}: sharing image must be ${expected.imageWidth}x${expected.imageHeight}; found ${dimensions.width}x${dimensions.height}`)
+      }
+    }
 
     function singleImageUrl(value) {
       let url
@@ -210,7 +260,10 @@ export async function checkSeo({ directory = 'dist', base = '/', origin = DEFAUL
   const robots = await readRequired('robots.txt')
   if (robots !== null) checkRobots(robots, { base, origin, files, fail })
   const sitemap = await readRequired('sitemap.xml')
-  if (sitemap !== null) checkSitemap(sitemap, homeUrl, fail)
+  if (sitemap !== null) {
+    const routes = ['home', ...Object.keys(contentPages).filter((route) => contentPages[route].indexable)]
+    checkSitemap(sitemap, routes.map((route) => getPageSeo(route, { base, origin }).canonical), fail)
+  }
   if (errors.size) throw new Error(`SEO verification failed:\n${[...errors].map((error) => `- ${error}`).join('\n')}`)
   return { base, origin, pagesChecked }
 }

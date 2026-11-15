@@ -12,11 +12,11 @@
       "returnTo": "/"
     },
     "/feira": {
-      "view": "placeholder",
-      "title": "Feira",
-      "description": "A página da feira está em construção. Em breve, você encontrará aqui mais informações.",
+      "view": "fair",
+      "title": "FEMAIS-ES",
       "apiRequests": false,
-      "returnTo": "/"
+      "returnTo": "/",
+      "specification": "009-fair"
     },
     "/oficinas/ler": {
       "view": "placeholder",
@@ -45,6 +45,36 @@
       "description": "Esta página está em construção. Em breve, você poderá conhecer como as oficinas são planejadas e executadas.",
       "apiRequests": false,
       "returnTo": "/"
+    },
+    "/feira/regulamento": {
+      "view": "regulation",
+      "apiRequests": false,
+      "returnTo": "/feira",
+      "specification": "009-fair"
+    },
+    "/feira/202612": {
+      "view": "placeholder",
+      "apiRequests": false,
+      "returnTo": "/feira",
+      "specification": "009-fair",
+      "date": "Dezembro de 2026",
+      "location": "IFES Vila Velha"
+    },
+    "/feira/202703": {
+      "view": "placeholder",
+      "apiRequests": false,
+      "returnTo": "/feira",
+      "specification": "009-fair",
+      "date": "Março de 2027",
+      "location": "IFES Piúma"
+    },
+    "/feira/202706": {
+      "view": "placeholder",
+      "apiRequests": false,
+      "returnTo": "/feira",
+      "specification": "009-fair",
+      "date": "Junho de 2027",
+      "location": "IFES Linhares"
     }
   },
   "fairLinks": {
@@ -232,10 +262,19 @@
   },
   "buttons": {
     "heroActions": {
-      "labels": ["Feira", "Aplicativo"],
-      "destinations": ["/feira", "/login"],
+      "labels": [
+        "Feira",
+        "Aplicativo"
+      ],
+      "destinations": [
+        "/feira",
+        "/login"
+      ],
       "style": "header-equivalent",
-      "accents": ["pink", "mint"],
+      "accents": [
+        "pink",
+        "mint"
+      ],
       "radiusPx": 6,
       "minimumHeightPx": 44,
       "learnMore": false
