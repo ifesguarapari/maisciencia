@@ -160,6 +160,8 @@ Commitizen. Finalizar Git Flow com tag anotada imutável, enviar `main`,
 
 Conferir HTTPS, SEO e imagem nova no domínio público e navegação em Chrome.
 Publicar notas da release ligadas à tag existente; consolidar evidências
-pós-deploy em `develop`, sem alterar a tag. Após enviar essas evidências,
-recriar localmente `feature/issue/2` com `git flow feature start issue/2` e
-deixá-la ativa, limpa e baseada em `develop`. A issue #2 fica aberta.
+pós-deploy em `develop`, sem alterar a tag. Recriar a feature com
+`git flow feature start issue/2` após confirmar o deploy, antes de registrar
+a execução, para que o resultado conste como evidência realizada. Consolidar
+as notas em `develop`, enviá-las e atualizar a feature por fast-forward,
+deixando-a ativa, limpa e com o mesmo HEAD de `develop`. A issue #2 fica aberta.

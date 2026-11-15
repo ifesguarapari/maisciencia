@@ -201,3 +201,9 @@ As verificações e suas limitações pertencem às features. Inspeção de
 configuração e testes com mocks não comprovam integração real com Kong e
 MongoDB. Resultados devem registrar o que foi executado, sem transformar
 pendências de infraestrutura ou funcionalidades futuras em tarefas concluídas.
+
+A release web 0.4.0 publicou a apresentação da FEMAIS-ES, regulamento e
+etapas da Primeira edição no domínio existente, via Git Flow e GitHub
+Actions. A API continua 0.1.0 e sem workflow de implantação. O registro da
+publicação e da recriação local de `feature/issue/2` está nas evidências
+de 007; a issue #2 permanece aberta para evoluções.

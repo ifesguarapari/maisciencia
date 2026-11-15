@@ -319,3 +319,55 @@ teve 40 e 43 entradas, respectivamente. O artefato final em `web/dist` usa
 a raiz de produção; a cópia local usada na futura conferência HTTPS está
 em `/tmp/maisciencia-release040-root`. A validação SDD e diff permaneceram
 limpos após preparar os manifestos e o changelog.
+
+## Publicação da release 0.4.0 e recriação da feature
+
+O commit `94857a1`, `build(release): prepare 0.4.0`, foi criado no assistente
+Commitizen com rodapé `re #2`; os hooks passaram. O Git Flow finalizou a
+release com merge em `main`, tag anotada 0.4.0 e retorno a `develop`, removendo
+a branch temporária. A tag aponta para o commit de produção
+`c9dcd6a93d933a2e6d50ad8383ea14296793bc4e`; o merge de retorno a `develop`
+é `fcb5379ecb072a12f3d9025af19332c42de342e9`. As árvores das duas branches
+eram iguais ao finalizar a release. O push atômico enviou `main`, `develop`
+e somente a tag nova, sem reescrever histórico.
+
+O [run 43658087707](https://github.com/ifesguarapari/maisciencia/actions/runs/43658087707)
+terminou com `success` para esse commit exato. Os jobs Validate and build web
+(132641036911) e Deploy web to GitHub Pages (132641135607) passaram. O deploy
+foi concluído em `2026-11-15T00:26:09Z`, correspondente a 2026-11-14 no fuso
+do usuário. A [release 0.4.0](https://github.com/ifesguarapari/maisciencia/releases/tag/0.4.0)
+foi publicada com notas em português, tag verificada e referência `re #2`.
+
+A conferência HTTPS em `/tmp/maisciencia-release040-http.json` realizou
+66 consultas: 45 arquivos e 21 variantes de páginas. Todas terminaram em
+HTTP 200, com SHA-256 idêntico ao arquivo correspondente do artefato validado.
+Robots respondeu `text/plain`; sitemap, `application/xml`; e o cartão próprio
+da Feira, `image/webp`, com 79.688 bytes. Seu SHA-256 é
+`3c3897f851b1de60e887ccb3914575cb9ff71ec5c0511213100f7498df13f379`.
+
+Chrome online com perfil novo conferiu início e Feira em 1440 e 390 px,
+sem estouro horizontal, com proporções iguais das marcas do cabeçalho.
+Os três encontros apresentaram 30 instituições na distribuição 13/12/5,
+SNCT e o título “Acumule aprendizagens” corretos. O regulamento preservou
+exatamente 17 seções, 154 parágrafos normativos e dois de preâmbulo. Início,
+Feira e regulamento permitiram indexação; a etapa provisória manteve noindex.
+O cartão próprio respondeu 200 e foi decodificado com 750 por 425 px.
+Robots e sitemap permaneceram corretos com PWA ativo; o sitemap contém
+três URLs. Houve dez documentos atendidos pelo service worker e 168 respostas
+sem erros HTTP, rede, runtime, console ou chamadas de API.
+
+Evidência de navegador: `/tmp/maisciencia-release040-browser.json`, com
+lista de falhas vazia. Foram produzidas quatro capturas
+`/tmp/maisciencia-release040-{desktop,mobile}-{home,fair}.png`; as da Feira
+foram conferidas visualmente. Chrome terminou com código zero e o perfil
+temporário foi removido. Não foram testados instalação, atualização de uma
+PWA antiga, modo offline, indexação real no Google ou prévia no WhatsApp.
+Não houve homologação humana, mudança de API, workflow ou DNS.
+
+Depois de confirmar a publicação, `git flow feature start issue/2` recriou
+a branch a partir de `develop` no commit `fcb5379`. A execução retornou
+temporariamente a `develop` para consolidar estas evidências; o passo final
+usa fast-forward para atualizar a feature com a documentação e deixá-la
+ativa. Essa ordem permite registrar a recriação depois de executá-la, sem
+alterar a tag publicada. A leitura da issue #2 confirmou estado `open`,
+sem marcar critérios de aceite ou fechar a issue.

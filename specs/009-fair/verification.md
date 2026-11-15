@@ -299,3 +299,13 @@ A participação da FEMAIS nessas ações é informação fornecida pelo usuári
 não se afirma cadastro ou chancela institucional adicional. Não houve
 publicação remota nem nova validação de instalação, atualização ou modo
 offline da PWA nesta correção.
+
+## Publicação da primeira apresentação da FEMAIS-ES
+
+A release 0.4.0 publicou esta funcionalidade após os checks locais e o
+GitHub Actions. Feira, regulamento, etapas, artes, SNCT e cartão foram
+conferidos no domínio público; o smoke confirmou o conteúdo, as instituições
+e o regulamento, sem falhas de runtime ou API. Resultados, commits, run e
+limites estão em [007-web-delivery](../007-web-delivery/verification.md).
+As observações de preparação local acima são históricas. Não houve
+homologação humana, implementação de inscrições ou fechamento da issue #2.

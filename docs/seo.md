@@ -68,19 +68,26 @@ uma prévia anterior em cache. A validação local do HTML e da imagem não
 comprova que WhatsApp ou outras redes atualizaram a prévia; isso precisa ser
 conferido no compartilhamento real após o deploy.
 
-## Estado público observado em 2026-11-14
+## Estado público após a release 0.4.0
 
-A resposta de produção consultada ainda corresponde à versão anterior: a
-inicial permite indexação, robots permite rastreamento e o sitemap contém
-apenas a inicial. `/feira/` ainda é uma apresentação provisória com
-`noindex,follow`; o regulamento e o novo cartão da Feira ainda responderam
-404 nessa consulta. Portanto, os sinais da Feira pronta preparados nesta
-branch só poderão ser coletados externamente depois da implantação.
+Em 2026-11-14, a release 0.4.0 foi publicada pelo GitHub Actions e conferida
+por HTTPS e Chrome no domínio `maisciencia.ifes.app.br`. A inicial, a Feira
+e o regulamento responderam com conteúdo pronto, canonical próprio e
+indexação permitida. O sitemap publicado contém essas três URLs. As oito
+páginas provisórias continuam com `noindex,follow`. Robots permite rastrear
+as páginas e os recursos, incluindo a nova imagem `icons/feira/slide.webp`,
+que respondeu 200 como WebP de 750 por 425 pixels.
 
-Essas observações de HTTP não provam se uma URL já foi indexada. A conferência
-de propriedade, inspeção de URL e acompanhamento de cobertura dependem do
-Search Console, que não foi acessado nesta revisão. A imagem e os metadados
-locais também não comprovam atualização da prévia no WhatsApp.
+A consulta anterior à publicação encontrou a Feira provisória com noindex
+e recursos novos ainda ausentes. Essa situação foi substituída pelo deploy
+confirmado; seu registro histórico permanece nas evidências de 008. Os
+45 arquivos e as variantes de rota conferidos correspondem ao build validado,
+e a navegação atendida pelo service worker preservou conteúdo e metadados.
+
+Essas observações não provam indexação real. Propriedade, inspeção de URL e
+acompanhamento dependem do Search Console, que não foi acessado. Também não
+foi exercitada a prévia dentro do WhatsApp. Consulte as evidências da
+[publicação](../specs/007-web-delivery/verification.md).
 
 ## Origem pública e base
 
