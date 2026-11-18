@@ -480,3 +480,25 @@ Arquivos temporários usados como apoio: `/tmp/maisciencia-0.5.0-actions.json`,
 `/tmp/maisciencia-0.5.0-browser-results.json`. Não fazem parte do artefato nem
 substituem as evidências versionadas acima. Navegador e perfil temporários
 foram encerrados após a conferência.
+
+## Preparação da correção 0.5.1 (2026-11-18)
+
+A troca PNG→SVG é uma correção compatível, classificada como patch. A revisão
+independente confirmou escopo restrito, SVG válido com 26.983 bytes e SHA-256
+`971e144e09b8ba59d161d7383e0e8f6e91955b926af9c932e4b4b5880bc48c26`.
+ESLint e os 89 testes existentes passaram. O validador SDD passou com nove
+features, 95 requisitos e 138 tarefas; `git diff --check` passou.
+
+Commitizen 4.19.3 criou `fix(web): replace JIC artwork with SVG`, commit
+`bae93f1`, com referência `re #2`, que mantém a issue aberta. O hook de
+mensagem passou e Black/Pylint foram ignorados por não haver mudanças API.
+Git Flow finalizou `feature/issue/2` em develop e iniciou `release/0.5.1`.
+`npm --prefix web version patch --no-git-tag-version` sincronizou os manifestos
+em 0.5.1 e o changelog foi atualizado. T025 concluída; publicação, validação
+remota e recriação da feature aguardam suas próprias evidências.
+
+Os artefatos preparados de 0.5.1 passaram: 66 arquivos, 905 referências
+internas em `/maisciencia/` e 908 em `/`, com onze HTMLs e SEO válido.
+O SVG aparece no HTML e no precache; o PNG está ausente da fonte e do
+artefato. A validação SDD passou novamente. As dependências não foram
+alteradas; a instalação limpa fica a cargo do workflow antes do deploy.

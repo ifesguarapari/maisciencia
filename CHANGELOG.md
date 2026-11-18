@@ -3,6 +3,13 @@
 As releases da web seguem a política SemVer descrita em
 [CONTRIBUTING.md](CONTRIBUTING.md). As versões da API são independentes.
 
+## 0.5.1 - 2026-11-18
+
+### Correções
+
+- Arte da Jornada de Integração substituída pelo SVG fornecido, com dimensões
+  proporcionais no encontro de dezembro e remoção do PNG anterior.
+
 ## 0.5.0 - 2026-11-18
 
 ### Novidades
