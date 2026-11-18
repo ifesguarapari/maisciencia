@@ -3,6 +3,26 @@
 As releases da web seguem a política SemVer descrita em
 [CONTRIBUTING.md](CONTRIBUTING.md). As versões da API são independentes.
 
+## 0.5.0 - 2026-11-18
+
+### Novidades
+
+- Página do encontro da FEMAIS-ES em 04 de dezembro de 2026, no Ifes Vila Velha,
+  com programação, público convidado e as 13 instituições participantes.
+- Cinco eixos e 20 atividades com ilustrações SVG próprias, exposições,
+  expositores, interações e descrições completas em detalhes expansíveis.
+- Apresentação da Jornada de Integração 2026 com imagem, período e link oficial.
+- Página de dezembro indexável, com metadados de compartilhamento e inclusão
+  no sitemap, que passa a conter quatro páginas prontas.
+
+### Correções
+
+- Data 04/12/2026 identificada no card da Feira, título, programação e metadados.
+- Rótulos “Primeira edição” e “Projeto” e avisos “(A confirmar)” nos encontros
+  de Piúma e Linhares, com fonte menor e itálica.
+- Transição do fundo móvel preservada quando o título ocupa mais linhas e
+  dimensões declaradas da imagem da Jornada alinhadas ao arquivo original.
+
 ## 0.4.0 - 2026-11-14
 
 ### Novidades
