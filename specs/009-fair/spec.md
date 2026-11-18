@@ -188,7 +188,8 @@ os expositores e a programação no Ifes Vila Velha para aproveitar o encontro.
   estudantes, pais, responsáveis e autoridades; não inventar inscrição, app
   funcional, fórmula de pontuação ou disponibilidade de serviços.
 - **FR-019**: A página DEVE apresentar a Jornada de Integração em paralelo à
-  Feira, com `images/feira/jic2026.png`, link para
+  Feira, com o SVG fornecido `images/feira/jic2026.svg`, preservando sua
+  proporção e removendo o PNG anterior, e link para
   `https://jornadadeintegracao.ifes.edu.br` e as informações fornecidas sobre
   Ensino, Pesquisa, Extensão, Inovação, Pós-Graduação e Internacionalização.
   O período de 30/11 a 04/12/2026 e a programação aberta ao público DEVEM se

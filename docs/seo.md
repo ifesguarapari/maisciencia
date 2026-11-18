@@ -68,16 +68,22 @@ uma prévia anterior em cache. A validação local do HTML e da imagem não
 comprova que WhatsApp ou outras redes atualizaram a prévia; isso precisa ser
 conferido no compartilhamento real após o deploy.
 
-## Evolução local do encontro de dezembro
+## Encontro de dezembro publicado em 0.5.0
 
-A tabela acima descreve a política da nova página `/feira/202612`, com conteúdo
-fornecido em `202612.docx`. Sua inclusão leva o sitemap local a quatro URLs,
-com sete páginas ainda provisórias. A release pública 0.4.0 descrita abaixo
-precede esse conteúdo e não comprova sua implantação. A próxima publicação
-deve conferir o HTML, canonical, sitemap e recursos antes de acompanhar a
-indexação. Não há novo acesso ao Search Console ou teste no WhatsApp nesta edição.
+A página `/feira/202612`, com conteúdo de `202612.docx` e data 04/12/2026
+confirmada pelo usuário, foi publicada na release 0.5.0 pelo
+[GitHub Actions](https://github.com/ifesguarapari/maisciencia/actions/runs/44236342876).
+O sitemap público agora contém quatro URLs, com sete páginas ainda provisórias.
+A conferência HTTPS validou os metadados das onze rotas, os 66 arquivos do
+artefato, robots e sitemap. O encontro de dezembro possui 20 atividades e
+usa o cartão da Feira. O Chrome confirmou data e metadados em produção.
 
-## Estado público após a release 0.4.0
+A publicação anterior de 0.4.0, registrada abaixo, precede esse conteúdo.
+Acompanhar rastreamento e indexação continua dependendo do Search Console,
+que não foi acessado nesta execução; a prévia real no WhatsApp também não
+foi testada. Veja as [evidências da entrega](../specs/007-web-delivery/verification.md).
+
+## Estado público após a release 0.4.0 (histórico)
 
 Em 2026-11-14, a release 0.4.0 foi publicada pelo GitHub Actions e conferida
 por HTTPS e Chrome no domínio `maisciencia.ifes.app.br`. A inicial, a Feira

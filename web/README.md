@@ -138,7 +138,7 @@ A programação tem credenciamento às 14h30, visita aos estandes às 15h, momen
 cultural às 17h30 e encerramento às 18h, em 04 de dezembro de 2026
 (04/12/2026), conforme confirmação do usuário. A página preserva o público convidado das 13 instituições.
 
-A Jornada de Integração tem apresentação própria, com `jic2026.png` e link
+A Jornada de Integração tem apresentação própria, com `jic2026.svg` e link
 para seu site oficial. O período 30/11–04/12/2026 e a programação aberta ao
 público pertencem à Jornada, que reúne também Fecinc e Semana de Ciência e
 Tecnologia do Campus Vila Velha. Março e junho continuam em construção,
@@ -264,3 +264,13 @@ Instalação, atualização e abertura offline precisam de origem adequada e
 navegador compatível; só devem ser declaradas verificadas após execução real.
 
 As demais convenções estão em [CONTRIBUTING.md](../CONTRIBUTING.md).
+
+## Publicação 0.5.0
+
+A release 0.5.0 foi publicada em 2026-11-18 pelo GitHub Actions, com build e
+deploy aprovados. Acesse o
+[encontro de 04/12/2026 no Ifes Vila Velha](https://maisciencia.ifes.app.br/feira/202612/).
+A conferência HTTPS cobriu onze rotas e 66 arquivos; metadados, imagens,
+robots e sitemap passaram. O Chrome confirmou a apresentação em desktop e
+celular. A issue #2 continua aberta e a feature foi recriada pelo Git Flow.
+Consulte o [registro da implantação](../specs/007-web-delivery/verification.md).

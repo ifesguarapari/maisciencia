@@ -416,3 +416,89 @@ referências internas e 11 HTMLs; o precache contém 64 entradas. Os checks de
 SEO, robots e sitemap passaram em ambos, com quatro páginas prontas e sete
 provisórias. A validação SDD passou novamente. A API permanece em 0.1.0.
 O resultado do Actions e a validação pública ainda não foram executados.
+
+### Implantação e validação pública de 0.5.0
+
+O segundo commit criado pelo Commitizen, `1441ce92039b2cf3d54bf338a0d38f9f404b249f`,
+registrou a preparação como `fix(release): prepare 0.5.0`, com `fix #2`.
+O hook Conventional Commits passou; Black e Pylint foram ignorados por não
+haver mudanças de API. `git flow release finish -m 'Release 0.5.0' 0.5.0`
+incorporou a release em `main`, criou a tag anotada 0.5.0 e incorporou a tag
+em `develop`, removendo a branch de release. A tag aponta para
+`c24236e9fb64c29bcafc3ff35bbb4fed801c5da8`, mesmo commit de `main`.
+O merge de retorno gerou `8b33ff714a8cb785156fa325728f38ee4f7d21e7` em
+`develop`; os três manifestos consultados em main, develop e tag indicaram
+0.5.0. O push atômico enviou `main`, `develop` e `refs/tags/0.5.0` sem
+reescrever histórico.
+
+A execução [44236342876](https://github.com/ifesguarapari/maisciencia/actions/runs/44236342876)
+foi iniciada pelo push e terminou em **success** para o SHA exato da release.
+O job de build `134573283128` passou por instalação, ESLint, testes, SDD,
+configuração Pages, build, check do artefato e upload. O job de deploy
+`134573475133` também terminou em **success**. O run foi criado em
+2026-11-18T04:17:53Z e terminou em 2026-11-18T04:18:42Z. Esses resultados
+confirmam a implantação desta versão, em vez de reutilizar evidências de 0.4.0.
+
+A conferência HTTPS no domínio `https://maisciencia.ifes.app.br` usou TLS
+normal, até seis downloads simultâneos e nenhum acesso à API ou a domínios
+externos. Foram observadas **77 respostas HTTP 200**, sem falhas, cobrindo os
+**66 arquivos** do artefato, sem diferenças de nomes de assets com hash.
+As onze rotas canônicas passaram com título, descrição, canonical, Open Graph
+e Twitter corretos. Inicial, Feira, regulamento e dezembro são indexáveis;
+as sete páginas provisórias usam noindex e o sitemap contém quatro URLs.
+Robots permite rastrear os recursos.
+
+A página [do encontro](https://maisciencia.ifes.app.br/feira/202612/)
+respondeu com 04/12/2026 no Ifes Vila Velha, quatro horários, 20 atividades,
+cinco eixos e 13 instituições. Os 20 SVGs são XML válido em 480 × 300;
+os cartões WebP têm 750 × 425 pixels e a imagem JIC tem 300 × 213.
+Os hashes dos recursos estáveis correspondem ao artefato validado localmente.
+
+Chrome real confirmou o encontro e o card da Feira em 1440, 390 e 320 px:
+79 respostas e nenhum erro de console, execução ou recurso, com data,
+metadados e dimensões corretos e sem rolagem horizontal. O hero de 320 px
+foi inspecionado visualmente em produção. Essa conferência não repetiu os
+exercícios anteriores de PWA offline ou atualização de clientes já instalados.
+Google Search Console, indexação efetiva e prévia dentro do WhatsApp não
+foram exercitados. Não houve homologação editorial humana.
+
+As [notas da release 0.5.0](https://github.com/ifesguarapari/maisciencia/releases/tag/0.5.0)
+foram publicadas, sem marcação de rascunho ou pré-release, vinculadas à tag
+existente. A issue #2 foi fechada automaticamente pelo rodapé `fix #2` e
+reaberta conforme a decisão anterior de preservá-la. O conector GitHub
+retornou 403 ao tentar alterar seu estado; a CLI autenticada executou
+`gh issue reopen 2` com sucesso, sem comentário ou mudança de escopo.
+
+Após o deploy, `git flow feature start issue/2` recriou a feature a partir
+de `develop`, ambas em `8b33ff714a8cb785156fa325728f38ee4f7d21e7`, com árvore
+limpa. T021–T024 estão concluídas. A consolidação documental em develop
+será incorporada por fast-forward à feature reaberta, preservando a mesma
+base e o estado final solicitado. A versão da API continua 0.1.0.
+
+Arquivos temporários usados como apoio: `/tmp/maisciencia-0.5.0-actions.json`,
+`/tmp/maisciencia-0.5.0-http-results.json` e
+`/tmp/maisciencia-0.5.0-browser-results.json`. Não fazem parte do artefato nem
+substituem as evidências versionadas acima. Navegador e perfil temporários
+foram encerrados após a conferência.
+
+## Preparação da correção 0.5.1 (2026-11-18)
+
+A troca PNG→SVG é uma correção compatível, classificada como patch. A revisão
+independente confirmou escopo restrito, SVG válido com 26.983 bytes e SHA-256
+`971e144e09b8ba59d161d7383e0e8f6e91955b926af9c932e4b4b5880bc48c26`.
+ESLint e os 89 testes existentes passaram. O validador SDD passou com nove
+features, 95 requisitos e 138 tarefas; `git diff --check` passou.
+
+Commitizen 4.19.3 criou `fix(web): replace JIC artwork with SVG`, commit
+`bae93f1`, com referência `re #2`, que mantém a issue aberta. O hook de
+mensagem passou e Black/Pylint foram ignorados por não haver mudanças API.
+Git Flow finalizou `feature/issue/2` em develop e iniciou `release/0.5.1`.
+`npm --prefix web version patch --no-git-tag-version` sincronizou os manifestos
+em 0.5.1 e o changelog foi atualizado. T025 concluída; publicação, validação
+remota e recriação da feature aguardam suas próprias evidências.
+
+Os artefatos preparados de 0.5.1 passaram: 66 arquivos, 905 referências
+internas em `/maisciencia/` e 908 em `/`, com onze HTMLs e SEO válido.
+O SVG aparece no HTML e no precache; o PNG está ausente da fonte e do
+artefato. A validação SDD passou novamente. As dependências não foram
+alteradas; a instalação limpa fica a cargo do workflow antes do deploy.

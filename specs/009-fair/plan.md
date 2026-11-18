@@ -161,7 +161,7 @@ marcas, botões translúcidos, revelações e parallax com movimento reduzido.
 
 Os novos SVGs ficam em `web/public/images/feira/activities/`, com nomes em
 inglês, dimensões 480 × 300 e composições originais no estilo das oficinas.
-Usar a imagem original `jic2026.png` no trecho específico da Jornada. Não
+Usar a imagem original `jic2026.svg` no trecho específico da Jornada. Não
 incluir arquivos DOCX no artefato público, valores monetários ou serviços
 simulados. O documento não informa o dia da FEMAIS; a correção explícita
 posterior do usuário confirma 04/12/2026. Essa data acompanha o card, o
@@ -215,3 +215,13 @@ permanecer aberta conforme decisão anterior, mesmo que seja necessário
 restaurar esse estado após o fechamento automático causado pela referência
 pedida. Não atribuir implementação nem homologação às funcionalidades
 restantes por causa da entrega desta página.
+
+## Substituição da arte da Jornada por SVG
+
+Usar o arquivo `web/public/images/feira/jic2026.svg` fornecido pelo usuário
+no lugar do PNG. Atualizar o caminho em `december-data.js` e no contrato,
+e ajustar as dimensões declaradas no renderer à proporção da nova imagem.
+Remover o PNG da pasta pública, mantendo os registros históricos de sua
+publicação em 0.5.0. Conferir build e referências para evitar recurso antigo
+ou ausente; preservar o conteúdo e o link da Jornada. A correção permanece
+na feature local, sem executar nova release por esta solicitação.
