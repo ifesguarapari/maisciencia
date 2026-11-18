@@ -309,3 +309,156 @@ e o regulamento, sem falhas de runtime ou API. Resultados, commits, run e
 limites estão em [007-web-delivery](../007-web-delivery/verification.md).
 As observações de preparação local acima são históricas. Não houve
 homologação humana, implementação de inscrições ou fechamento da issue #2.
+
+## Evolução de rótulos e confirmação em 2026-11-17
+
+T015 evolui FR-004 antes da implementação: CTA “Primeira edição”, retorno
+“Projeto” e aviso “(A confirmar)” nos encontros de Piúma e Linhares.
+Os resultados da correção serão registrados após a execução dos checks.
+
+T015 concluída em 2026-11-17. O CTA do hero usa “Primeira edição”; os links
+do cabeçalho desktop, menu móvel e rodapé usam “Projeto”. Piúma e Linhares
+recebem aviso menor e itálico sob o local nos cards e páginas das etapas.
+Vila Velha, datas e listas de instituições foram preservados. O aviso usa
+`font-synthesis: style` para permitir itálico somente nele, pois o padrão
+global desativa síntese; há espaço textual antes do elemento `em`.
+
+ESLint, 80 testes Node, build Vite e `check:build` da raiz passaram:
+45 arquivos, 854 referências internas e onze HTMLs. Uma inspeção do renderer
+nas bases `/` e `/maisciencia/` confirmou rótulos, dois avisos nos cards,
+um por página de Piúma/Linhares e nenhum em Vila Velha. Não foram criados
+testes unitários novos para esta correção editorial e visual.
+
+Chrome conferiu oito estados: Feira e três páginas das etapas em 1440 e
+390 px. Os avisos ficaram abaixo do local, com 11 px, estilo itálico e
+síntese de estilo permitida, menores que os nomes dos locais e sem estouro
+horizontal. As capturas foram conferidas visualmente. Foram observadas
+121 respostas sem erros HTTP, falhas de rede, exceções ou erros de console.
+Evidência: `/tmp/maisciencia-fair-labels-browser.json`, com falhas vazias;
+capturas `/tmp/maisciencia-fair-labels-desktop.png` e
+`/tmp/maisciencia-fair-labels-mobile.png`. Chrome terminou com código zero;
+servidor e perfil temporário foram encerrados. A validação SDD e
+`git diff --check` passaram. Não houve commit ou publicação desta correção.
+
+## Encontro de dezembro: fonte e verificações (2026-11-18)
+
+A evolução de US4 registra a leitura de `202612.docx` como fonte editorial,
+sem executar instruções contidas no documento. O arquivo possui SHA-256
+`9cd2d765d5c218bd50e26fc66d8139f86f658fba57ae432d6d17ded1f366726d`.
+A extração identifica cinco eixos, 20 atividades e 13 instituições. Os
+quatro horários são 14h30, 15h, 17h30 e 18h; o local Ifes Vila Velha vem do
+pedido explícito. Não há dia exato da FEMAIS no documento. O período
+30/11–04/12/2026 pertence à Jornada de Integração e será rotulado dessa forma.
+
+| Requisitos | Evidência | Estado desta evolução |
+| --- | --- | --- |
+| FR-016 | Fingerprint independente dos 120 campos textuais da fonte; 20 atividades completas em HTML inicial, descrições em detalhes nativos e teste de escape de conteúdo | Passou |
+| FR-017 | 20 SVGs próprios em 480 × 300, XML válido, recursos locais, alternativas textuais; inspeção das duas pranchas e da página no Chrome | Passou |
+| FR-018 | Quatro horários e local Ifes Vila Velha, 13 instituições e público convidado; sem dia exato, quantias ou inscrição/app funcional | Passou |
+| FR-019 | Arte original `jic2026.png`, link oficial e período de 30/11 a 04/12/2026 atribuídos somente à Jornada, junto de seu acesso público e eventos relacionados | Passou localmente; link externo não navegado |
+| FR-005, FR-010, FR-011, FR-012 | HTML estático e shell PWA nas duas bases, 11 entradas, quatro URLs indexáveis no sitemap e sete provisórias com noindex | Passou |
+
+T016–T019 concluídas com as evidências desta rodada. Os checks e a publicação
+anteriores permanecem históricos; não há nova release, publicação, uso de
+Search Console ou homologação humana nesta preparação.
+
+### Integridade editorial e ilustrações
+
+O [contrato](contracts/fair.json) registra SHA-256 do documento e fingerprint
+`087f1bbf3b78db85090987ffab0bb4ce7333f40a091e1b4d0882547ffa7d429c`
+dos seis campos textuais de cada uma das 20 atividades, na ordem da fonte.
+A normalização remove somente o ponto e vírgula final de resumos. Os testes
+permanentes não dependem do DOCX local ou de arquivos em `/tmp`.
+Na apresentação, a referência ao aplicativo foi redigida como proposta futura;
+nenhuma funcionalidade de pontuação foi implementada ou apresentada por um
+botão de acesso disponível.
+
+Os 20 desenhos vetoriais foram produzidos em código SVG, com composições
+específicas para cada subtítulo e exposição, seguindo o estilo das oficinas:
+grade científica, volumes, fundo azul e detalhes amarelos, azuis e rosas.
+As pranchas temporárias `/tmp/december-art-one-contact.png` e
+`/tmp/december-art-two-contact.png` foram renderizadas e inspecionadas.
+Uma auditoria Python independente confirmou XML válido e dimensões dos
+20 arquivos. A suíte Node verifica referências, dimensões, recursos locais,
+metadados de acessibilidade e ausência de animações ou scripts.
+
+### Qualidade e builds
+
+- `npm --prefix web run lint`: passou.
+- `npm --prefix web test`: 89 testes passaram, zero falhas ou testes ignorados.
+  Nove cenários de dezembro cobrem fonte, HTML completo, rotas, metadados,
+  horários, instituições, Jornada, âncoras, escape e imagens; testes existentes
+  de Feira e SEO distinguem dezembro das duas etapas ainda provisórias.
+- Build e `check:build` com `WEB_BASE_PATH=/maisciencia/` e origem
+  `https://ifesguarapari.github.io`: 66 arquivos, 905 referências internas e
+  11 HTMLs passaram; service worker com 61 entradas de precache.
+- Build final e `check:build` com `WEB_BASE_PATH=/` e origem
+  `https://maisciencia.ifes.app.br`: 66 arquivos, 908 referências internas e
+  11 HTMLs passaram; service worker com 64 entradas de precache.
+- `python3 scripts/validate-specs.py`: passou com nove features,
+  95 requisitos e 129 tarefas; os nove testes Python do validador passaram.
+- `git diff --check`: passou.
+
+### Navegador e limites
+
+Chrome headless real, com servidor estático local sem fallback SPA, conferiu
+as duas bases em 1440, 390 e 320 pixels. Em cada base, foram observadas
+212 respostas e nenhum erro HTTP, de console, exceção ou falha inesperada de
+recurso. Imagens carregaram, âncoras resolveram, o cabeçalho manteve as
+proporções da principal e não houve rolagem horizontal, inclusive com
+descrição expandida. Enter abriu o `details` nativo; o menu móvel abriu e
+fechou com Escape. A inspeção visual abrangeu hero e cards em desktop e celular.
+
+Movimento reduzido manteve os conteúdos visíveis; na conferência final da
+base raiz, desativou a transformação do fundo. O parallax de desktop foi
+medido como translação de 60 px, sem escala nas 20 ilustrações. Sem JavaScript,
+as atividades continuaram presentes e legíveis no HTML estático. Após a PWA
+controlar a inicial, a navegação offline para dezembro reconstruiu a página,
+seus metadados e as 20 ilustrações a partir do shell em ambas as bases.
+Os servidores e perfis temporários do Chrome usados nessa conferência foram
+encerrados e removidos.
+
+Resultados locais temporários: `/tmp/maisciencia-december-root-final-results.json`
+e `/tmp/maisciencia-december-project-results.json`. Esses arquivos são apoio
+da sessão; as evidências versionáveis são este registro, os contratos e
+os [testes de dezembro](../../web/tests/december.test.js). A entrega segue na
+branch local `feature/issue/2`, com a issue #2 aberta e a release pública
+anterior preservada. Google Search Console, compartilhamento real no WhatsApp,
+navegação no site externo da Jornada e revisão editorial humana não foram
+executados nesta rodada.
+
+## Correção: data confirmada do encontro (2026-11-18)
+
+O usuário confirmou que a FEMAIS no Ifes Vila Velha será em **04 de dezembro
+de 2026 (04/12/2026)**. Essa confirmação substitui o estado anterior de dia
+não informado. A ausência do dia em `202612.docx` continua sendo um fato sobre
+a fonte; os hashes e a evidência da rodada anterior permanecem históricos.
+A implementação atual apresenta a data no primeiro card da Feira e no seu
+rótulo acessível, no breadcrumb, H1 e programação do encontro e em título e
+descrição, inclusive Open Graph e Twitter. A programação mantém os quatro
+horários e o período completo da Jornada permanece identificado à parte.
+
+T020 concluída: contratos 006/009, US1/US4, FR-018, SC-006, plano e documentação
+acompanham a confirmação. `december-data.js` guarda `2026-12-04`, reutilizada
+pelo primeiro encontro em `fair-data.js`. Os testes existentes exigem a data
+confirmada em lugar de `null`, preservando a integridade dos 120 campos de
+atividades. A transição do fundo móvel acompanha a altura da imagem para
+manter o acabamento quando o título com a data quebra em mais linhas.
+
+Verificações desta correção:
+
+- ESLint passou; os 89 testes Node passaram, sem falhas ou testes ignorados.
+- Builds e checks passaram nas bases `/maisciencia/` e `/`, com 66 arquivos,
+  respectivamente 905 e 908 referências internas e 11 HTMLs; SEO, robots e
+  sitemap passaram, preservando quatro páginas indexáveis e sete provisórias.
+- Validação SDD passou com nove features, 95 requisitos e 130 tarefas.
+  `git diff --check` passou.
+- Chrome real conferiu o card em `/feira/` e o encontro em 1440, 390 e 320 px,
+  na base raiz: 79 respostas, nenhum erro de recurso, console ou execução e
+  nenhuma rolagem horizontal. A data longa, a forma numérica, o atributo
+  `datetime` e os metadados estão corretos. O hero de 320 px foi inspecionado
+  após o ajuste da transição do fundo. Servidor e perfil temporários encerrados.
+
+O roteiro desta correção não repetiu os testes de PWA offline ou movimento
+reduzido; a evidência da rodada anterior continua identificada acima. A entrega
+continua local na branch `feature/issue/2`, sem nova release ou publicação.

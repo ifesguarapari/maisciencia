@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">From an idea to a small business</title>
+  <desc id="description">A small storefront, a planning board, a rising chart and a glowing idea bulb illustrate practical support for local entrepreneurship.</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#F09BBE" stop-opacity=".18"/><stop offset="1" stop-color="#203445" stop-opacity="0"/></radialGradient>
+    <linearGradient id="blue" x1="140" y1="80" x2="320" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#81C9E8"/><stop offset="1" stop-color="#286487"/></linearGradient>
+    <linearGradient id="metal" x1="170" y1="80" x2="300" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#BCD1DC"/><stop offset="1" stop-color="#51798F"/></linearGradient>
+    <linearGradient id="pink" x1="160" y1="100" x2="310" y2="220" gradientUnits="userSpaceOnUse"><stop stop-color="#F3B9D0"/><stop offset="1" stop-color="#B86491"/></linearGradient>
+    <linearGradient id="yellow" x1="180" y1="80" x2="320" y2="210" gradientUnits="userSpaceOnUse"><stop stop-color="#FAE99A"/><stop offset="1" stop-color="#D1AB24"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#93BDCF" stroke-opacity=".055"/></pattern>
+  </defs>
+  <path fill="#203445" d="M0 0h480v300H0z"/>
+  <ellipse cx="240" cy="158" rx="225" ry="157" fill="url(#glow)"/>
+  <path fill="url(#grid)" d="M0 0h480v300H0z"/>
+  <g stroke="#F09BBE" stroke-opacity=".16"><ellipse cx="240" cy="227" rx="173" ry="38"/><ellipse cx="240" cy="227" rx="141" ry="26"/><path d="M40 227h27m347 0h27M240 266v17"/></g>
+  <path d="m106 224 137-48 133 49-134 48z" fill="#1C374A" stroke="#567C93"/>
+  <path d="m134 157 96-27 52 21v84l-96 29-52-22z" fill="#5D8092" stroke="#A5C4D2"/>
+  <path d="m186 180 96-29v84l-96 29z" fill="#365D75"/>
+  <path d="m127 142 98-29 64 26-99 30z" fill="#7A567B" stroke="#D9A3C3"/>
+  <path d="m127 142 63 27v23c-8 5-15 1-16-7-8 5-17 1-18-7-8 5-16 0-17-7-7 3-12-3-12-9z" fill="#E7A2C0"/>
+  <path d="m190 169 99-30v20c-4 9-13 12-18 7-4 9-14 12-19 6-4 9-15 12-20 6-5 9-15 12-21 6-4 7-14 8-21 5z" fill="url(#pink)"/>
+  <g stroke="#8B5A7F" stroke-width="2"><path d="m149 135 19 26v21m3-54 19 25v35m23-39 1 33m22-39v34m21-40v34m21-41v32"/></g>
+  <path d="m143 184 29 12v44l-29-12z" fill="#1A3B51" stroke="#A9C8D5"/><path d="m204 204 59-18v30l-59 18z" fill="#8DC6DB" stroke="#C4E1ED"/>
+  <path d="m210 225 48-15" stroke="#365F76"/><path d="M164 216v7" stroke="#F4CE2F" stroke-width="2"/>
+  <path d="m306 104 58 17v91l-58-18z" fill="#203F55" stroke="#8CB5CB" stroke-width="2"/>
+  <path d="m315 121 37 11m-37-3 24 7" stroke="#A7C9D9" stroke-width="2"/>
+  <path d="m317 181 6-18 11 8 13-24" stroke="#F4CE2F" stroke-width="3" stroke-linejoin="round"/><path d="m339 147 9-2 2 10" stroke="#F4CE2F" stroke-width="2"/>
+  <path d="M335 203v24m-14 1 28 9" stroke="#87ACBF" stroke-width="4"/>
+  <path d="M235 71c0-27 45-27 45 0 0 16-14 19-14 32h-18c0-13-13-16-13-32z" fill="url(#yellow)" stroke="#F8E494"/>
+  <path d="M248 104h18m-17 6h16m-12 6h7" stroke="#92ADBC" stroke-width="3" stroke-linecap="round"/>
+  <path d="m253 101-5-27 9 7 9-7-5 27" stroke="#B18C1D" stroke-width="2"/>
+  <path d="M256 35v-8m32 24 6-5m-71 5-6-5m81 33h8m-94 0h-8" stroke="#F4CE2F" stroke-width="2" stroke-linecap="round"/>
+  <g stroke="#A3C5D5" stroke-opacity=".55" stroke-linecap="round"><path d="M91 88v10m-5-5h10M386 105v10m-5-5h10"/><circle cx="118" cy="232" r="2"/><circle cx="358" cy="61" r="2"/><path d="M302 43h14m5 0h5"/></g>
+</svg>

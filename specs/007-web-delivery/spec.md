@@ -71,7 +71,7 @@ Como visitante, quero abrir a página e suas rotas diretamente, com imagens,
 
 - Dado o site em `/maisciencia/`, quando abro início, aplicativo, feira ou oficinas, então
   recursos, links e retorno permanecem dentro desse prefixo.
-- Dada uma primeira visita à Feira, ao regulamento ou a uma das oito páginas
+- Dada uma primeira visita à Feira, ao regulamento, ao encontro de dezembro ou a uma das sete páginas
   provisórias, quando o servidor só oferece arquivos estáticos, então recebo
   HTML existente, com conteúdo próprio, sem depender de fallback SPA.
 - Dado o build na raiz, quando abro as mesmas rotas, então os fluxos anteriores
@@ -96,8 +96,8 @@ Como visitante, quero abrir a página e suas rotas diretamente, com imagens,
 - **FR-006**: O build DEVE produzir onze entradas HTML físicas: a inicial,
   `login/`, `feira/`, `feira/regulamento/`, `feira/202612/`, `feira/202703/`,
   `feira/202706/`, `oficinas/`, `oficinas/ler/`, `oficinas/lancar/` e
-  `oficinas/melhorar/`. Feira e regulamento DEVEM conter o conteúdo completo
-  de 009; as oito provisórias DEVEM ter aviso e retorno. Acesso direto,
+  `oficinas/melhorar/`. Feira, regulamento e dezembro DEVEM conter o conteúdo
+  de 009; as sete provisórias DEVEM ter aviso e retorno. Acesso direto,
   atualização e variantes com barra final DEVEM funcionar em hospedagem estática.
 - **FR-007**: Manifesto, ícones, registro e escopo do service worker DEVEM
   respeitar a base. Navegação e recursos estáticos podem funcionar offline após
@@ -130,7 +130,7 @@ Como visitante, quero abrir a página e suas rotas diretamente, com imagens,
   e evidências não declaram execução ou publicação remota não realizada.
 - **SC-005**: Versão dos manifestos, tag e changelog correspondem; `main` e
   `develop` contêm a release e o workflow associado termina com sucesso.
-  A página inicial, a Feira, o regulamento, as oito rotas provisórias e os recursos publicados
+  A página inicial, a Feira, o regulamento, dezembro, as sete rotas provisórias e os recursos publicados
   respondem no domínio configurado.
 
 ## Premissas e limites
@@ -151,3 +151,36 @@ conteúdo estático próprio. Esta ampliação local não executa uma nova relea
 nem implica publicação ou encerramento da issue #2; isso exige uma execução
 de entrega registrada separadamente. Os resultados remotos de 0.3.0 ficam
 preservados como histórico.
+
+## Evolução: conteúdo de dezembro em 2026-11-18
+
+O primeiro encontro passa a oferecer conteúdo de 009. O inventário de onze
+entradas não muda: três páginas de conteúdo, sete provisórias e a inicial.
+Essa preparação local não executa release nem altera o workflow. A publicação
+0.4.0 descrita nas evidências continua sendo a versão anterior deste conteúdo.
+
+## Autorização da release 0.5.0 em 2026-11-18
+
+O pedido posterior autoriza concluir `feature/issue/2` pelo Git Flow,
+registrar os commits pelo Commitizen com rodapé `fix #2`, preparar a release
+SemVer, publicar pelo GitHub Actions e recriar `feature/issue/2` após a
+implantação. A versão planejada é 0.5.0, uma evolução minor por acrescentar
+a página completa do encontro de dezembro sem incompatibilidade das rotas.
+
+A entrega inclui `/feira/202612`, suas 20 atividades ilustradas e a data
+confirmada de 04/12/2026 no Ifes Vila Velha, além dos ajustes de rótulos e
+dos avisos “(A confirmar)” de Piúma e Linhares. O inventário permanece com
+onze HTMLs, quatro páginas indexáveis e sete provisórias. A API, seu
+versionamento e a configuração de domínio continuam fora desta release.
+
+Finalizar a feature significa encerrar a branch de trabalho, não concluir
+automaticamente a issue GitHub #2. A orientação anterior de mantê-la aberta
+para as funcionalidades restantes continua válida. O rodapé solicitado
+`fix #2` deve ser preservado; se o GitHub encerrar a issue automaticamente
+durante a integração, seu estado deve ser restaurado para aberto, sem
+atribuir homologação ou conclusão aos critérios pendentes.
+
+Checks locais, integração, publicação, conferência externa e recriação da
+feature precisam de evidências próprias. Esta autorização substitui o
+limite de preparação local do trecho anterior, mas ainda não comprova
+execução do Actions nem disponibilidade da versão 0.5.0 em produção.

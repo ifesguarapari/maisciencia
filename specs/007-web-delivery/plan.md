@@ -27,8 +27,8 @@ Vite. Os recursos CSS são reescritos pelo Vite. Separar o prefixo antes de
 identificar `/login`, `/feira`, `/oficinas`, `/oficinas/ler`, `/oficinas/lancar`
 e `/oficinas/melhorar`, inclusive com barra final.
 
-Centralizar em `web/src/pages.js` o catálogo de duas páginas de conteúdo
-(Feira e regulamento) e oito provisórias. Com a inicial, derivar as onze
+Centralizar em `web/src/pages.js` o catálogo de três páginas de conteúdo
+(Feira, regulamento e dezembro) e sete provisórias. Com a inicial, derivar as onze
 entradas HTML. A interface, o plugin de rotas estáticas e o verificador de
 build compartilham esse catálogo para manter seleção e emissão coerentes.
 
@@ -165,3 +165,52 @@ pós-deploy em `develop`, sem alterar a tag. Recriar a feature com
 a execução, para que o resultado conste como evidência realizada. Consolidar
 as notas em `develop`, enviá-las e atualizar a feature por fast-forward,
 deixando-a ativa, limpa e com o mesmo HEAD de `develop`. A issue #2 fica aberta.
+
+## Release 0.5.0 do encontro de dezembro
+
+Em 2026-11-18, o usuário autorizou finalizar a feature, usar Commitizen com
+rodapé `fix #2`, preparar a versão SemVer, implantar pelo GitHub Actions e
+reabrir a feature local. Planejar 0.5.0 como minor: a nova página completa
+de dezembro adiciona conteúdo compatível às rotas existentes. Preservar
+as versões independentes da web e da API, o domínio e o workflow atual.
+
+Antes do commit, revisar o diff e executar os checks pertinentes ao conteúdo
+final de 009, inclusive a confirmação de 04/12/2026 no Ifes Vila Velha, os
+20 SVGs, os rótulos e os avisos das outras etapas. Executar instalação pelo
+lockfile, ESLint, testes Node, validador SDD e builds/checks nas bases `/`
+e `/maisciencia/`. Conferir onze HTMLs, quatro URLs no sitemap e sete rotas
+com `noindex,follow`; registrar resultados reais e limites.
+
+Criar o commit da feature pelo assistente Commitizen, com o tipo adequado
+ao conteúdo e o rodapé literal `fix #2`. Finalizar com
+`git flow feature finish --no-ff issue/2`, iniciar `release/0.5.0` e usar
+`npm version minor --no-git-tag-version` em `web` para sincronizar os
+manifestos. Atualizar `CHANGELOG.md` com a data e o conteúdo finais, repetir
+os checks exigidos pela preparação e criar o commit da release pelo
+Commitizen com o mesmo rodapé. Manter todos os hooks ativos.
+
+Finalizar Git Flow com tag anotada imutável 0.5.0 e integração em `main` e
+`develop`. Enviar somente essas branches e a tag, preferencialmente de
+forma atômica e sem push forçado. Acompanhar o workflow do commit exato de
+`main`, identificando os jobs de build e deploy e sua URL; sucesso de um
+run anterior não comprova esta publicação.
+
+Após sucesso, conferir por HTTPS o conteúdo da Feira e de dezembro, sua
+data, atividades, recursos, metadados, robots e sitemap contra o artefato
+validado. Realizar smoke dirigido da interface publicada em navegador,
+distinguindo esse resultado dos checks locais. Publicar as notas da
+release do GitHub ligadas à tag existente e registrar evidências reais
+em `verification.md`, sem alterar a tag publicada.
+
+Finalização da branch e fechamento da issue são operações distintas.
+Preservar o rodapé pedido `fix #2`, mas conferir o estado da issue #2 após
+a integração: a decisão anterior do usuário mantém a issue aberta; restaurar
+esse estado caso a automação do GitHub a encerre. O restante do escopo da
+Feira não deve ser marcado como concluído por causa desta release.
+
+Consolidar as evidências em `develop` com Commitizen e a referência pedida,
+enviar a branch e recriar `feature/issue/2` com `git flow feature start issue/2`
+após confirmar a implantação. Se a recriação preceder o commit documental,
+atualizar a feature por fast-forward. Ao terminar, conferir a branch ativa,
+a árvore limpa, o mesmo HEAD de `develop` e a issue #2 aberta. Não presumir
+que esses estados existem antes da execução.

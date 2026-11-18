@@ -1,9 +1,13 @@
+import { decemberFair } from './december-data.js'
+
 export const fairEditions = [
   {
     route: 'feira/202612',
+    date: decemberFair.schedule.date,
     month: 'Dezembro',
     year: '2026',
     location: 'IFES Vila Velha',
+    tentative: false,
     color: 'yellow',
     institutions: [
       { name: 'EMEF Dr. Hélio Ferraz', city: 'Serra-ES' },
@@ -26,6 +30,7 @@ export const fairEditions = [
     month: 'Março',
     year: '2027',
     location: 'IFES Piúma',
+    tentative: true,
     color: 'blue',
     institutions: [
       { name: 'EMEF Presidente Costa e Silva', city: 'Guarapari-ES' },
@@ -47,6 +52,7 @@ export const fairEditions = [
     month: 'Junho',
     year: '2027',
     location: 'IFES Linhares',
+    tentative: true,
     color: 'pink',
     institutions: [
       { name: 'EMEF Prefeito Roberto Calmon', city: 'Linhares-ES' },

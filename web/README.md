@@ -108,7 +108,7 @@ Profe - Soluções em Tecnologia Educacional Ltda
 CNPJ: 66.907.525/0001-13
 ```
 
-A interface institucional, incluindo Feira, regulamento e oito páginas provisórias, usa português
+A interface institucional, incluindo Feira, regulamento, dezembro e sete páginas provisórias, usa português
 do Brasil por pedido específico de `006-landing`. Código, identificadores,
 arquivos e comentários continuam em inglês; `/feira` e `/oficinas` preservam
 os caminhos públicos solicitados pelo usuário. A exceção de idioma está registrada na
@@ -121,7 +121,7 @@ Primeira edição segue o pedido do usuário, em três etapas:
 
 | Período | Local | Página da etapa |
 | --- | --- | --- |
-| Dezembro de 2026 | IFES Vila Velha | `/feira/202612` |
+| 04 de dezembro de 2026 | IFES Vila Velha | `/feira/202612` |
 | Março de 2027 | IFES Piúma | `/feira/202703` |
 | Junho de 2027 | IFES Linhares | `/feira/202706` |
 
@@ -129,8 +129,20 @@ A apresentação caracteriza uma feira expositiva científica e tecnológica
 voltada a professores, alunos e pais do programa Mais Ciência na Escola.
 Os cards usam “Encontro” sem numeração e mostram as instituições fornecidas,
 na ordem do contrato: 13 no primeiro, 12 no segundo e cinco no terceiro.
-A lista substitui o aviso de construção somente nos cards. As três páginas
-de etapa continuam em construção, com retorno à Feira.
+Os cards preservam as listas; a página `/feira/202612` apresenta o encontro
+de dezembro com programação no Ifes Vila Velha, cinco eixos e 20 atividades
+ilustradas a partir de `202612.docx`. Cada card identifica exposição, expositor
+e interatividade, com descrição completa em detalhes nativos. As 20 artes SVG
+ficam em `public/images/feira/activities/`, no padrão visual das oficinas.
+A programação tem credenciamento às 14h30, visita aos estandes às 15h, momento
+cultural às 17h30 e encerramento às 18h, em 04 de dezembro de 2026
+(04/12/2026), conforme confirmação do usuário. A página preserva o público convidado das 13 instituições.
+
+A Jornada de Integração tem apresentação própria, com `jic2026.png` e link
+para seu site oficial. O período 30/11–04/12/2026 e a programação aberta ao
+público pertencem à Jornada, que reúne também Fecinc e Semana de Ciência e
+Tecnologia do Campus Vila Velha. Março e junho continuam em construção,
+com retorno à Feira e o aviso “(A confirmar)” junto aos locais.
 
 A proposta gamificada incentiva a interação com expositores e atividades,
 com acúmulo de pontos que contribuem para troféus e premiações ao final.
@@ -147,12 +159,12 @@ monetárias. Não há formulário nem inscrição efetivamente disponível.
 `src/fair-data.js` compartilha as etapas e listas de instituições;
 `src/regulation.js` contém os dados normativos, preservados nas correções. A renderização compartilhada
 fornece conteúdo ao HTML estático e ao shell PWA antes da inicialização Alpine.
-Início, Feira e regulamento são indexáveis; aplicativo, oficinas e três etapas
-provisórias permanecem fora do sitemap com `noindex,follow`.
+Início, Feira, regulamento e dezembro são indexáveis; aplicativo, oficinas e
+duas etapas provisórias permanecem fora do sitemap com `noindex,follow`.
 
 As evidências e os limites desta implementação ficam em
-[009-fair/verification.md](../specs/009-fair/verification.md). A implantação
-anterior 0.3.0 não comprova publicação desta mudança; uma nova release deve
+[009-fair/verification.md](../specs/009-fair/verification.md). A publicação
+0.4.0 não inclui o novo conteúdo do encontro de dezembro; uma nova release deve
 seguir o fluxo de entrega quando solicitada. A issue #2 permanece aberta.
 
 ## Comandos e verificação
@@ -193,8 +205,8 @@ A variável `VITE_API_URL` permanece disponível para futuras integrações,
 mas a landing não faz chamadas de API. Variáveis `VITE_*` são públicas no build:
 não inclua senhas, tokens ou segredos internos.
 
-Em produção, sirva `dist/` por HTTPS. `src/pages.js` centraliza as duas
-páginas de conteúdo, as oito provisórias e as onze entradas HTML físicas.
+Em produção, sirva `dist/` por HTTPS. `src/pages.js` centraliza as três
+páginas de conteúdo, as sete provisórias e as onze entradas HTML físicas.
 A interface, o plugin de rotas estáticas e o verificador de build usam o
 mesmo catálogo. As entradas permitem acesso direto em servidor estático sem
 fallback SPA, incluindo caminhos aninhados. O servidor pode normalizar a URL

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">An observatory beneath the stars</title>
+  <desc id="description">A telescope on a tripod looks toward a crescent moon and constellations beside a portable planetarium dome.</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#F4CE2F" stop-opacity=".24"/><stop offset="1" stop-color="#203445" stop-opacity="0"/></radialGradient>
+    <linearGradient id="surface" x1="140" y1="85" x2="335" y2="239" gradientUnits="userSpaceOnUse"><stop stop-color="#456578"/><stop offset="1" stop-color="#294457"/></linearGradient>
+    <linearGradient id="paper" x1="170" y1="92" x2="270" y2="208" gradientUnits="userSpaceOnUse"><stop stop-color="#F4EADD"/><stop offset="1" stop-color="#C4CAD0"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#B5D5E9" stroke-opacity=".055"/></pattern>
+  </defs>
+  <path fill="#203445" d="M0 0h480v300H0z"/>
+  <ellipse cx="240" cy="156" rx="222" ry="157" fill="url(#glow)"/>
+  <path fill="url(#grid)" d="M0 0h480v300H0z"/>
+  <g stroke="#F4CE2F" stroke-opacity=".18"><ellipse cx="240" cy="235" rx="163" ry="32"/><ellipse cx="240" cy="235" rx="127" ry="23"/><path d="M45 235h28m334 0h28M240 273v12"/></g>
+  <g stroke="#A5CEE2" stroke-opacity=".6"><path d="m109 85 31-21 34 15 30-27m-64 12 8 31m-39-10 39 10 26-16"/><path d="m307 70 28 22 39-13 17 33"/></g>
+  <g fill="#D9E9F0"><circle cx="109" cy="85" r="2.5"/><circle cx="140" cy="64" r="3"/><circle cx="174" cy="79" r="2.5"/><circle cx="204" cy="52" r="2"/><circle cx="148" cy="95" r="2"/><circle cx="307" cy="70" r="2"/><circle cx="335" cy="92" r="3"/><circle cx="374" cy="79" r="2.5"/><circle cx="391" cy="112" r="2"/></g>
+  <path d="M280 47a28 28 0 1 0 21 46 29 29 0 0 1-21-46z" fill="#F4CE2F"/>
+  <path d="M255 220a76 76 0 0 1 152 0z" fill="#2D5775" stroke="#74B6D6" stroke-width="1.5"/>
+  <path d="M274 220c0-85 114-85 114 0m-85 0c0-99 57-99 57 0m-104-26h151m-139-25h124" stroke="#5C8CA9"/>
+  <path d="M320 220v-27a14 14 0 0 1 28 0v27" fill="#182D41" stroke="#87B4CA"/>
+  <path d="M255 220h152v10H255z" fill="#1A344B"/>
+  <g stroke="#B0C9D5" stroke-width="5" stroke-linecap="round"><path d="M201 172v23m0-9-39 58m39-58 39 58m-39-58v66"/></g>
+  <path d="m163 137 91-49 18 31-91 49z" fill="url(#surface)" stroke="#A4CADB" stroke-width="1.5"/>
+  <path d="m168 134 19 32 11-6-18-32z" fill="#F09BBE"/>
+  <path d="m247 87 11-6 22 37-11 6z" fill="#83BCD0"/>
+  <ellipse cx="269" cy="100" rx="9" ry="22" transform="rotate(-30 269 100)" fill="#163149" stroke="#B8DFEA"/>
+  <ellipse cx="269" cy="100" rx="5" ry="15" transform="rotate(-30 269 100)" fill="#0096E1" fill-opacity=".65"/>
+  <path d="m164 149-17 10 8 14 18-10" fill="#466D85" stroke="#BDD1DC"/>
+  <rect x="187" y="171" width="28" height="10" rx="4" fill="#7499AA"/>
+  <g fill="#F4CE2F"><path d="M111 133h2v12h-2zm-5 5h12v2h-12zM359 45h2v10h-2zm-4 4h10v2h-10z"/></g>
+  <g stroke="#B8D6E5" stroke-opacity=".5" stroke-linecap="round"><path d="M91 83v10m-5-5h10M386 176v10m-5-5h10"/><circle cx="359" cy="66" r="2"/><circle cx="109" cy="212" r="2"/></g>
+</svg>

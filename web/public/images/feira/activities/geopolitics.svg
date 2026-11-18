@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Dialogue across countries</title>
+  <desc id="description">A globe rises above a round conference table, with colorful delegate flags, seats and speech bubbles representing cooperation and international negotiations.</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#F09BBE" stop-opacity=".18"/><stop offset="1" stop-color="#203445" stop-opacity="0"/></radialGradient>
+    <linearGradient id="blue" x1="140" y1="80" x2="320" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#81C9E8"/><stop offset="1" stop-color="#286487"/></linearGradient>
+    <linearGradient id="metal" x1="170" y1="80" x2="300" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#BCD1DC"/><stop offset="1" stop-color="#51798F"/></linearGradient>
+    <linearGradient id="pink" x1="160" y1="100" x2="310" y2="220" gradientUnits="userSpaceOnUse"><stop stop-color="#F3B9D0"/><stop offset="1" stop-color="#B86491"/></linearGradient>
+    <linearGradient id="yellow" x1="180" y1="80" x2="320" y2="210" gradientUnits="userSpaceOnUse"><stop stop-color="#FAE99A"/><stop offset="1" stop-color="#D1AB24"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#93BDCF" stroke-opacity=".055"/></pattern>
+  </defs>
+  <path fill="#203445" d="M0 0h480v300H0z"/>
+  <ellipse cx="240" cy="158" rx="225" ry="157" fill="url(#glow)"/>
+  <path fill="url(#grid)" d="M0 0h480v300H0z"/>
+  <g stroke="#F09BBE" stroke-opacity=".16"><ellipse cx="240" cy="227" rx="173" ry="38"/><ellipse cx="240" cy="227" rx="141" ry="26"/><path d="M40 227h27m347 0h27M240 266v17"/></g>
+  <ellipse cx="244" cy="220" rx="129" ry="37" fill="#152A3C"/>
+  <path d="M143 189v36m202-36v36M184 215v26m121-26v26" stroke="#739AB0" stroke-width="8"/>
+  <ellipse cx="244" cy="184" rx="118" ry="39" fill="#345D77" stroke="#A8C7D6" stroke-width="2"/>
+  <path d="M126 184v11c0 52 236 52 236-11v-11" fill="#254A62"/>
+  <ellipse cx="244" cy="180" rx="118" ry="39" fill="#5B7F94" stroke="#ABCBD9" stroke-width="2"/>
+  <ellipse cx="244" cy="180" rx="70" ry="21" fill="#284E67" stroke="#88AFC4"/>
+  <g stroke="#BA9F56" stroke-width="2"><path d="M145 172v-29m36 59v-31m127 31v-31m35 1v-29"/></g>
+  <path d="m145 144 20 4-20 10z" fill="#F09BBE"/><path d="m181 172 22 4-22 10z" fill="#F4CE2F"/><path d="m308 172 22 4-22 10z" fill="#0096E1"/><path d="m343 144 20 4-20 10z" fill="#F09BBE"/>
+  <path d="M243 151v20" stroke="#A9C5D3" stroke-width="4"/><ellipse cx="243" cy="172" rx="16" ry="5" fill="#9ABACB"/>
+  <circle cx="243" cy="103" r="45" fill="url(#blue)" stroke="#B3DCEB" stroke-width="2"/>
+  <g stroke="#CEE7EF" stroke-opacity=".5"><ellipse cx="243" cy="103" rx="19" ry="45"/><path d="M198 103h90m-84-23h78m-78 46h78"/></g>
+  <path d="m211 79 14-7 17 7-5 15-14 2-4 12-14-10zm35 28 14-8 15 12-7 12-1 16-13 6-6-17-9-10z" fill="#F4CE2F" fill-opacity=".8"/>
+  <path d="M286 62c20 19 24 44 13 65" stroke="#F09BBE" stroke-width="3" stroke-linecap="round"/><path d="m294 125 5 7 9-7" stroke="#F09BBE" stroke-width="2"/>
+  <g fill="#284D65" stroke="#8CB5CB"><path d="M110 86h44v25h-15l-10 9v-9h-19zM327 76h43v25h-14l-10 8v-8h-19z"/></g>
+  <g stroke="#D1E4ED" stroke-linecap="round"><path d="M120 94h23m-23 8h15m202-18h23m-23 8h16"/></g>
+  <g fill="#D597B7"><rect x="113" y="196" width="28" height="18" rx="6" transform="rotate(15 113 196)"/><rect x="200" y="229" width="31" height="17" rx="6"/><rect x="280" y="229" width="31" height="17" rx="6"/><rect x="349" y="198" width="28" height="18" rx="6" transform="rotate(-15 349 198)"/></g>
+  <g stroke="#A3C5D5" stroke-opacity=".55" stroke-linecap="round"><path d="M91 88v10m-5-5h10M386 105v10m-5-5h10"/><circle cx="118" cy="232" r="2"/><circle cx="358" cy="61" r="2"/><path d="M302 43h14m5 0h5"/></g>
+</svg>

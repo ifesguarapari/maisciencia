@@ -53,11 +53,11 @@
       "specification": "009-fair"
     },
     "/feira/202612": {
-      "view": "placeholder",
+      "view": "encounter",
       "apiRequests": false,
       "returnTo": "/feira",
       "specification": "009-fair",
-      "date": "Dezembro de 2026",
+      "date": "04 de dezembro de 2026",
       "location": "IFES Vila Velha"
     },
     "/feira/202703": {

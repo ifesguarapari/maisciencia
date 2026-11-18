@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Music made with sensors and movement</title>
+  <desc id="description">Electronic percussion pads, a speaker and a motion sensor transform a moving hand into musical waves and colorful notes.</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#F09BBE" stop-opacity=".24"/><stop offset="1" stop-color="#203445" stop-opacity="0"/></radialGradient>
+    <linearGradient id="surface" x1="140" y1="85" x2="335" y2="239" gradientUnits="userSpaceOnUse"><stop stop-color="#456578"/><stop offset="1" stop-color="#294457"/></linearGradient>
+    <linearGradient id="paper" x1="170" y1="92" x2="270" y2="208" gradientUnits="userSpaceOnUse"><stop stop-color="#F4EADD"/><stop offset="1" stop-color="#C4CAD0"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#B5D5E9" stroke-opacity=".055"/></pattern>
+  </defs>
+  <path fill="#203445" d="M0 0h480v300H0z"/>
+  <ellipse cx="240" cy="156" rx="222" ry="157" fill="url(#glow)"/>
+  <path fill="url(#grid)" d="M0 0h480v300H0z"/>
+  <g stroke="#F09BBE" stroke-opacity=".18"><ellipse cx="240" cy="235" rx="163" ry="32"/><ellipse cx="240" cy="235" rx="127" ry="23"/><path d="M45 235h28m334 0h28M240 273v12"/></g>
+  <path d="m124 218 124-46 126 43-125 48z" fill="#172B3C" stroke="#496A81"/>
+  <path d="m132 210 116-42 118 40-117 45z" fill="url(#surface)" stroke="#7BA7BC"/>
+  <path d="m155 207 56-22 51 18-55 23z" fill="#263C50" stroke="#82A8BD"/>
+  <g stroke-width="2"><path d="m168 204 15-6 14 5-15 7z" fill="#F4CE2F" stroke="#F8DA63"/><path d="m190 195 15-6 14 5-15 7z" fill="#0096E1" stroke="#75C8F1"/><path d="m189 212 15-6 14 5-15 7z" fill="#F09BBE" stroke="#F8C3D9"/><path d="m211 203 15-6 14 5-15 7z" fill="#82B7B8" stroke="#B0D0D0"/></g>
+  <path d="m288 124 39-16 29 11v95l-38 19-30-13z" fill="#3C6179" stroke="#8AAFC3"/>
+  <path d="m288 124 30 12v97l-30-13z" fill="#517A8F"/>
+  <ellipse cx="303" cy="160" rx="10" ry="17" fill="#243B50" stroke="#90B9CB"/><ellipse cx="303" cy="199" rx="12" ry="19" fill="#243B50" stroke="#90B9CB"/><ellipse cx="303" cy="199" rx="5" ry="8" fill="#F09BBE"/>
+  <path d="M204 156c-3-7-8-14-12-17-5-4-8-1-7 3l7 18-18-30c-3-5-9-2-6 4l12 27-20-25c-4-4-9 0-5 5l18 28-22-15c-5-3-9 2-4 6l28 29c6 7 14 10 22 7l18-7 3-34c1-6-5-9-8-4l-6 9z" fill="#B1C8D4" stroke="#D2E1E8" stroke-width="1.5"/>
+  <path d="m197 197 9 17 26-12-9-18" fill="#0096E1"/>
+  <g stroke="#F4CE2F" stroke-width="2" stroke-linecap="round"><path d="M146 103c11-13 29-13 40 0m-48-8c15-18 41-18 57 0m-33 17c4-5 11-5 16 0"/></g>
+  <path d="M219 108h35v-3m-35 3 5-16 9 32 9-48 8 32h22" stroke="#F09BBE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#F4CE2F"><path d="M332 60v27h3V66l16-4v19h3V55z"/><ellipse cx="328" cy="88" rx="7" ry="5"/><ellipse cx="347" cy="82" rx="7" ry="5"/></g>
+  <path d="M275 91v20m0-18 11 8" stroke="#73C9EE" stroke-width="3" stroke-linecap="round"/><ellipse cx="270" cy="112" rx="7" ry="5" fill="#73C9EE"/>
+  <g stroke="#B8D6E5" stroke-opacity=".5" stroke-linecap="round"><path d="M91 83v10m-5-5h10M386 176v10m-5-5h10"/><circle cx="359" cy="66" r="2"/><circle cx="109" cy="212" r="2"/></g>
+</svg>

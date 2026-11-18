@@ -299,9 +299,9 @@ test('synchronizes home shell metadata to provisional routes and back without du
 })
 
 
-test('rejects accidental noindex on the fair and its regulation', async (t) => {
+test('rejects accidental noindex on ready fair pages', async (t) => {
   const directory = await fixture(t)
-  for (const route of ['feira', 'feira/regulamento']) {
+  for (const route of ['feira', 'feira/regulamento', 'feira/202612']) {
     const filename = path.join(directory, route, 'index.html')
     const original = await readFile(filename, 'utf8')
     await change(directory, `${route}/index.html`, (html) => html.replace('index,follow,max-image-preview:large', 'noindex,follow'))
@@ -314,7 +314,7 @@ test('rejects missing or duplicate ready fair URLs in the sitemap', async (t) =>
   const directory = await fixture(t)
   const filename = path.join(directory, 'sitemap.xml')
   const original = await readFile(filename, 'utf8')
-  for (const route of ['feira', 'feira/regulamento']) {
+  for (const route of ['feira', 'feira/regulamento', 'feira/202612']) {
     const entry = `<url><loc>${DEFAULT_SITE_ORIGIN}/${route}/</loc></url>`
     await writeFile(filename, original.replace(entry, ''))
     await assert.rejects(checkSeo({ directory }), /sitemap\.xml: expected only the indexable URLs/)
@@ -325,8 +325,8 @@ test('rejects missing or duplicate ready fair URLs in the sitemap', async (t) =>
 
 test('rejects an indexable dated fair placeholder', async (t) => {
   const directory = await fixture(t)
-  await change(directory, 'feira/202612/index.html', (html) => html.replace('noindex,follow', 'index,follow,max-image-preview:large'))
-  await assert.rejects(checkSeo({ directory }), /feira\/202612\/index\.html: robots must be/)
+  await change(directory, 'feira/202703/index.html', (html) => html.replace('noindex,follow', 'index,follow,max-image-preview:large'))
+  await assert.rejects(checkSeo({ directory }), /feira\/202703\/index\.html: robots must be/)
 })
 
 test('the fair family shares its own image without changing institutional or workshop cards', () => {

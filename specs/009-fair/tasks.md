@@ -75,3 +75,31 @@ houve publicação, homologação humana ou fechamento da issue.
 ## Destaque da SNCT 2026
 
 - [x] T014 [US1] Ajustar o título de gamificação e incluir arte, tema, texto fornecido, vínculo da Feira com as ações da SNCT e link oficial após os cards em `web/src/fair.html`; definir apresentação responsiva em `web/src/fair.css`, conferir HTML/build/navegador e registrar evidências em `verification.md` (FR-015, FR-008, FR-010).
+
+## Rótulos e confirmação dos encontros
+
+- [x] T015 [US1] Atualizar rótulos em `web/src/fair.html`, registrar `tentative` em `web/src/fair-data.js` e renderizar “(A confirmar)” sob Piúma e Linhares em `web/src/fair.js`, com estilo menor/itálico em `web/src/fair.css`; conferir conteúdo e checks e registrar resultados em `verification.md` (FR-004, FR-005, FR-008, FR-010).
+
+## Encontro de dezembro: conteúdo definitivo
+
+A solicitação de 2026-11-18 evolui 009 antes do código. Tarefas anteriores
+mantêm sua evidência histórica; os resultados desta rodada serão próprios.
+
+- [x] T016 [US4] Registrar a fonte `202612.docx`, intenção, dados e contratos em `specs/009-fair/`, `specs/006-landing/` e `specs/008-seo/`, distinguindo conteúdo de instruções e datas da Jornada das da Feira (FR-005, FR-011, FR-016, FR-018, FR-019).
+- [x] T017 [US4] Substituir dezembro provisório por página com cinco eixos, 20 atividades completas, público convidado, 13 escolas, programação no Ifes Vila Velha e integração JIC em `web/src/`, com renderização inicial e shell PWA compartilhados (FR-008, FR-010, FR-012, FR-016, FR-018, FR-019).
+- [x] T018 [US4] Criar e integrar 20 SVGs temáticos em `web/public/images/feira/activities/`, preservando o padrão visual das oficinas e da Feira, responsividade, alternativas textuais e movimento reduzido (FR-002, FR-003, FR-009, FR-017).
+- [x] T019 [US3] Atualizar catálogo, SEO, testes e documentação para quatro páginas indexáveis e sete provisórias, mantendo onze HTMLs e março/junho a confirmar; executar checks das duas bases e QA pertinente e registrar evidência em `verification.md` (FR-005, FR-008, FR-010, FR-011, FR-012, FR-016, FR-017, FR-018, FR-019).
+
+T016 precede o comportamento. T017 e T018 avançam em paralelo após o registro
+da intenção; T019 consolida o resultado, sem presumir publicação ou revisão
+humana. As 20 imagens e os textos da fonte devem ser conferidos por conteúdo,
+além das verificações estruturais automatizadas.
+
+T016: intenção e contrato registrados antes do comportamento, com hash da
+fonte conferido. A validação estrutural SDD passou com nove features,
+95 requisitos e 129 tarefas; `git diff --check` passou. Esse resultado não
+verifica a implementação nem conclui T017–T019.
+
+## Data confirmada pelo usuário
+
+- [x] T020 [US4] Registrar e apresentar 04/12/2026 no primeiro card, página do encontro, programação e metadados em `web/src/`; sincronizar contratos, documentação e testes existentes, executando os checks pertinentes e registrando os resultados em `verification.md` (FR-004, FR-010, FR-011, FR-016, FR-018, FR-019).

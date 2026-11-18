@@ -98,8 +98,8 @@ correspondentes de ler, lançar e melhorar. “Voltar ao Início”, no encerram
 segue o mesmo estilo na cor menta; esses controles mantêm foco visível.
 Os links externos e a legenda Ambiente virtual foram substituídos.
 
-`web/src/pages.js` centraliza o catálogo de páginas: Feira e regulamento
-com conteúdo, oito apresentações provisórias e a entrada inicial. A interface,
+`web/src/pages.js` centraliza o catálogo de páginas: Feira, regulamento e dezembro
+com conteúdo, sete apresentações provisórias e a entrada inicial. A interface,
 o plugin de rotas estáticas e o verificador de build compartilham as onze
 entradas HTML. `007-web-delivery` fornece `<route>/index.html`, incluindo
 rotas aninhadas. Isso permite acesso direto, recarga e barra final na raiz
@@ -108,9 +108,9 @@ preserva o inventário retrospectivo da demonstração de sessões e saúde.
 
 `008-seo` centraliza identidade e metadados em `web/src/seo.js`. O build entrega
 título, descrição, canonical HTTPS e política própria por rota; o cliente
-mantém a coerência quando o PWA entrega o shell da inicial. Início, Feira e
-regulamento permitem indexação e entram no sitemap; somente a inicial recebe
-JSON-LD `WebSite`. As oito provisórias usam `noindex,follow`. O build gera
+mantém a coerência quando o PWA entrega o shell da inicial. Início, Feira,
+regulamento e dezembro permitem indexação e entram no sitemap; somente a inicial
+recebe JSON-LD `WebSite`. As sete provisórias usam `noindex,follow`. O build gera
 `robots.txt` permissivo e `sitemap.xml`, combinando `WEB_SITE_ORIGIN` HTTPS
 com `WEB_BASE_PATH`. A origem padrão é `https://maisciencia.ifes.app.br`;
 origens alternativas não podem ter caminho, consulta, fragmento ou credenciais.
@@ -122,10 +122,17 @@ Esses sinais não comprovam indexação nem posição no Google.
 azul-petróleo e botões amarelo,
 azul e rosa translúcidos. O regulamento integral em `/feira/regulamento`
 apresenta os textos ao final de `proposta.docx`; a Feira não publica orçamento
-nem quantias monetárias. A primeira edição se divide em dezembro de 2026
-(IFES Vila Velha), março de 2027 (IFES Piúma) e junho de 2027 (IFES Linhares).
-As rotas `/feira/202612`, `/feira/202703` e `/feira/202706` permanecem em
-construção. A renderização compartilhada oferece conteúdo no HTML físico
+nem quantias monetárias. A primeira edição se divide em 04 de dezembro de
+2026 (IFES Vila Velha), março de 2027 (IFES Piúma) e junho de 2027 (IFES Linhares).
+A rota `/feira/202612` apresenta os cinco eixos e 20 atividades do documento
+`202612.docx`, com uma ilustração SVG por subtítulo, descrições em detalhes
+nativos, exposição, expositor e interatividade. A programação explicita
+Ifes Vila Velha em 04/12/2026, data confirmada pelo usuário, com horários
+14h30, 15h, 17h30 e 18h. O trecho
+da Jornada de Integração usa `jic2026.png` e o site oficial, atribuindo
+30/11–04/12/2026 e a participação aberta ao público somente à Jornada. A
+FEMAIS mantém o público convidado das 13 instituições. As rotas
+`/feira/202703` e `/feira/202706` permanecem em construção. A renderização compartilhada oferece conteúdo no HTML físico
 e seleciona a mesma apresentação antes de Alpine quando o shell PWA é usado.
 São páginas estáticas, sem inscrição, backend ou mudança de infraestrutura.
 
@@ -134,7 +141,8 @@ ampliada no destaque principal. “Primeira edição”, “Feira expositiva” 
 “Encontro” sem numeral são os rótulos editoriais vigentes. Os cards recebem
 listas das instituições participantes, mantidas em `web/src/fair-data.js`,
 com 13, 12 e cinco instituições nos encontros, respectivamente. A retirada
-do aviso nos cards não altera o caráter provisório das páginas de destino.
+do aviso dos cards não define o estado dos destinos: dezembro oferece conteúdo,
+enquanto março e junho permanecem provisórios e exibem “(A confirmar)”.
 A apresentação destaca professores, alunos e pais do programa e a exposição
 científica e tecnológica. A proposta gamificada incentiva interações com
 expositores e acúmulo de pontos para troféus e premiações ao final, sem

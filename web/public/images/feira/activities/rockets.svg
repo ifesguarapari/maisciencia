@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Precision rocket launches</title>
+  <desc id="description">A water rocket follows a dotted parabolic trajectory toward a target, with a launcher, angle gauge and measuring ruler.</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#F4CE2F" stop-opacity=".24"/><stop offset="1" stop-color="#203445" stop-opacity="0"/></radialGradient>
+    <linearGradient id="surface" x1="140" y1="85" x2="335" y2="239" gradientUnits="userSpaceOnUse"><stop stop-color="#456578"/><stop offset="1" stop-color="#294457"/></linearGradient>
+    <linearGradient id="paper" x1="170" y1="92" x2="270" y2="208" gradientUnits="userSpaceOnUse"><stop stop-color="#F4EADD"/><stop offset="1" stop-color="#C4CAD0"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#B5D5E9" stroke-opacity=".055"/></pattern>
+  </defs>
+  <path fill="#203445" d="M0 0h480v300H0z"/>
+  <ellipse cx="240" cy="156" rx="222" ry="157" fill="url(#glow)"/>
+  <path fill="url(#grid)" d="M0 0h480v300H0z"/>
+  <g stroke="#F4CE2F" stroke-opacity=".18"><ellipse cx="240" cy="235" rx="163" ry="32"/><ellipse cx="240" cy="235" rx="127" ry="23"/><path d="M45 235h28m334 0h28M240 273v12"/></g>
+  <path d="M89 236h303" stroke="#89B0C6" stroke-opacity=".4"/>
+  <path d="M127 222c27-137 154-174 236-12" stroke="#F4CE2F" stroke-width="2" stroke-dasharray="5 6"/>
+  <path d="m108 227 48-22 38 13-48 24z" fill="url(#surface)" stroke="#749DB3"/>
+  <path d="m131 220 21-57 18 7-20 58" stroke="#A3BECB" stroke-width="5" stroke-linejoin="round"/>
+  <path d="m145 191 27-16" stroke="#8CABBB" stroke-width="4"/>
+  <path d="M179 223a39 39 0 0 0-18-38" stroke="#0096E1" stroke-width="2"/>
+  <path d="M174 217v-7m-6-12-5 5" stroke="#0096E1" stroke-width="2"/>
+  <g transform="rotate(30 221 94)"><path d="M209 71c0-17 7-29 12-37 5 8 12 20 12 37v42h-24z" fill="#D8E1E5" stroke="#9DBECF"/>
+  <path d="M209 71h24v14h-24z" fill="#0096E1"/><path d="M209 107h24v9h-24z" fill="#F09BBE"/>
+  <path d="m209 93-12 24h12m24-24 12 24h-12" fill="#F4CE2F"/>
+  <path d="M214 119h14l-7 22z" fill="#F4CE2F"/><path d="M217 119h8l-4 14z" fill="#FFF1BA"/>
+  <circle cx="221" cy="63" r="5" fill="#3C6B88" stroke="#BCD9E5"/></g>
+  <ellipse cx="352" cy="226" rx="44" ry="16" fill="#29465E" stroke="#F09BBE" stroke-width="2"/>
+  <ellipse cx="352" cy="226" rx="29" ry="10" stroke="#F09BBE" stroke-width="2"/><ellipse cx="352" cy="226" rx="13" ry="4" fill="#F09BBE"/>
+  <path d="M352 226v-42l20 5-20 8" fill="#F09BBE" stroke="#DCE5E8" stroke-width="1.5"/>
+  <path d="M176 261h133v11H176z" fill="#B4C6CC"/><g stroke="#425E70"><path d="M186 261v7m11-7v4m11-4v7m11-7v4m11-4v7m11-7v4m11-4v7m11-7v4m11-4v7m11-7v4m11-4v7"/></g>
+  <path d="M109 121v13m-6-6h12M310 108v12m-6-6h12" stroke="#F4CE2F" stroke-width="1.5" stroke-linecap="round"/>
+  <g stroke="#B8D6E5" stroke-opacity=".5" stroke-linecap="round"><path d="M91 83v10m-5-5h10M386 176v10m-5-5h10"/><circle cx="359" cy="66" r="2"/><circle cx="109" cy="212" r="2"/></g>
+</svg>

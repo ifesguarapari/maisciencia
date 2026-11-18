@@ -23,9 +23,9 @@
     {
       "route": "/feira/202612",
       "month": "2026-12",
-      "dateLabel": "Dezembro de 2026",
+      "dateLabel": "04 de dezembro de 2026",
       "location": "IFES Vila Velha",
-      "view": "placeholder",
+      "view": "encounter",
       "returnTo": "/feira",
       "institutions": [
         {
@@ -80,7 +80,9 @@
           "name": "IFES Venda Nova do Imigrante",
           "city": null
         }
-      ]
+      ],
+      "tentative": false,
+      "exactDate": "2026-12-04"
     },
     {
       "route": "/feira/202703",
@@ -138,7 +140,8 @@
           "name": "IFES Cachoeiro de Itapemirim",
           "city": null
         }
-      ]
+      ],
+      "tentative": true
     },
     {
       "route": "/feira/202706",
@@ -168,7 +171,8 @@
           "name": "IFES São Mateus",
           "city": null
         }
-      ]
+      ],
+      "tentative": true
     }
   ],
   "routes": {
@@ -178,6 +182,10 @@
     },
     "/feira/regulamento": {
       "view": "regulation",
+      "indexable": true
+    },
+    "/feira/202612": {
+      "view": "encounter",
       "indexable": true
     }
   },
@@ -192,7 +200,8 @@
   "indexableRoutes": [
     "home",
     "feira",
-    "feira/regulamento"
+    "feira/regulamento",
+    "feira/202612"
   ],
   "structuredDataRoutes": [
     "home"
@@ -243,5 +252,245 @@
     "url": "https://semanact.mcti.gov.br/",
     "placement": "after-stage-cards",
     "fairParticipates": true
+  },
+  "editionButtonLabel": "Primeira edição",
+  "projectLinkLabel": "Projeto",
+  "tentativeLabel": "(A confirmar)",
+  "december": {
+    "route": "/feira/202612",
+    "source": "202612.docx",
+    "sourceSha256": "9cd2d765d5c218bd50e26fc66d8139f86f658fba57ae432d6d17ded1f366726d",
+    "sourceContentFingerprint": {
+      "algorithm": "sha256",
+      "fields": [
+        "title",
+        "summary",
+        "exhibition",
+        "description",
+        "exhibitor",
+        "interaction"
+      ],
+      "serialization": "UTF-8 JSON array of 20 arrays, source activity order and field order; compact separators, unescaped Unicode, no final newline",
+      "sourceNormalization": "Remove final semicolons from summary only",
+      "value": "087f1bbf3b78db85090987ffab0bb4ce7333f40a091e1b4d0882547ffa7d429c"
+    },
+    "view": "encounter",
+    "indexable": true,
+    "dateLabel": "04 de dezembro de 2026",
+    "exactDate": "2026-12-04",
+    "venue": "Ifes Vila Velha",
+    "institutionCount": 13,
+    "audience": [
+      "invited teachers",
+      "invited students",
+      "invited parents and guardians",
+      "invited authorities"
+    ],
+    "axisCount": 5,
+    "activityCount": 20,
+    "activityFields": [
+      "title",
+      "summary",
+      "exhibition",
+      "description",
+      "exhibitor",
+      "interaction"
+    ],
+    "descriptionPresentation": "native-details",
+    "illustrationSize": {
+      "width": 480,
+      "height": 300
+    },
+    "axes": [
+      {
+        "id": "exhibitions",
+        "number": "I",
+        "title": "Mostras científicas, tecnológicas e culturais",
+        "activities": [
+          {
+            "id": "literature",
+            "number": 1,
+            "title": "Exposição de Jogos Digitais Baseados em Obras Literárias",
+            "image": "images/feira/activities/literature.svg"
+          },
+          {
+            "id": "schools",
+            "number": 2,
+            "title": "Mostra Científica das Escolas Participantes do Projeto Mais Ciência na Escola",
+            "image": "images/feira/activities/schools.svg"
+          },
+          {
+            "id": "culture",
+            "number": 3,
+            "title": "Colóquio Ciência na Cultura Capixaba",
+            "image": "images/feira/activities/culture.svg"
+          },
+          {
+            "id": "museum",
+            "number": 4,
+            "title": "Museu do Agora",
+            "image": "images/feira/activities/museum.svg"
+          },
+          {
+            "id": "astronomy",
+            "number": 5,
+            "title": "Observatório de Astronomia",
+            "image": "images/feira/activities/astronomy.svg"
+          },
+          {
+            "id": "creativity",
+            "number": 6,
+            "title": "Festival de Invenção e Criatividade do Espírito Santo",
+            "image": "images/feira/activities/creativity.svg"
+          }
+        ]
+      },
+      {
+        "id": "challenges",
+        "number": "II",
+        "title": "Competições, desafios e maratonas de inovação",
+        "activities": [
+          {
+            "id": "solutions",
+            "number": 7,
+            "title": "Inovações em tecnologias sociais",
+            "image": "images/feira/activities/solutions.svg"
+          },
+          {
+            "id": "rockets",
+            "number": 8,
+            "title": "Competição de Foguetes de Precisão",
+            "image": "images/feira/activities/rockets.svg"
+          },
+          {
+            "id": "intelligence",
+            "number": 9,
+            "title": "Desafios de Inteligência Artificial",
+            "image": "images/feira/activities/intelligence.svg"
+          }
+        ]
+      },
+      {
+        "id": "discovery",
+        "number": "III",
+        "title": "Experimentação, formação e divulgação científica",
+        "activities": [
+          {
+            "id": "experiments",
+            "number": 10,
+            "title": "Espetáculos de Ciência",
+            "image": "images/feira/activities/experiments.svg"
+          },
+          {
+            "id": "water",
+            "number": 11,
+            "title": "Companhia das Águas",
+            "image": "images/feira/activities/water.svg"
+          },
+          {
+            "id": "maker",
+            "number": 12,
+            "title": "Oficinas maker e tecnológicas",
+            "image": "images/feira/activities/maker.svg"
+          },
+          {
+            "id": "learning",
+            "number": 13,
+            "title": "Palestras, minicursos e rodas de formação",
+            "image": "images/feira/activities/learning.svg"
+          }
+        ]
+      },
+      {
+        "id": "society",
+        "number": "IV",
+        "title": "Ciência, sociedade, território e diversidade",
+        "activities": [
+          {
+            "id": "geopolitics",
+            "number": 14,
+            "title": "Simulação Geopolítica",
+            "image": "images/feira/activities/geopolitics.svg"
+          },
+          {
+            "id": "territory",
+            "number": 15,
+            "title": "Atividades de etnociência e tecnologia social",
+            "image": "images/feira/activities/territory.svg"
+          },
+          {
+            "id": "accessibility",
+            "number": 16,
+            "title": "Ações de tecnologia assistiva e acessibilidade",
+            "image": "images/feira/activities/accessibility.svg"
+          }
+        ]
+      },
+      {
+        "id": "innovation",
+        "number": "V",
+        "title": "Ciência, inovação, trabalho e empreendedorismo",
+        "activities": [
+          {
+            "id": "technology",
+            "number": 17,
+            "title": "Empresa Capixaba de Tecnologia",
+            "image": "images/feira/activities/technology.svg"
+          },
+          {
+            "id": "careers",
+            "number": 18,
+            "title": "Encontro de Oportunidades",
+            "image": "images/feira/activities/careers.svg"
+          },
+          {
+            "id": "entrepreneurship",
+            "number": 19,
+            "title": "Espaço do Microempreendedor Capixaba",
+            "image": "images/feira/activities/entrepreneurship.svg"
+          },
+          {
+            "id": "recycling",
+            "number": 20,
+            "title": "Mostra de Empreendedorismo Científico e Tecnológico",
+            "image": "images/feira/activities/recycling.svg"
+          }
+        ]
+      }
+    ],
+    "schedule": [
+      {
+        "time": "14:30",
+        "title": "Credenciamento"
+      },
+      {
+        "time": "15:00",
+        "title": "Visita aos estandes"
+      },
+      {
+        "time": "17:30",
+        "title": "Momento cultural"
+      },
+      {
+        "time": "18:00",
+        "title": "Encerramento"
+      }
+    ],
+    "integration": {
+      "title": "Jornada de Integração",
+      "image": "images/feira/jic2026.png",
+      "url": "https://jornadadeintegracao.ifes.edu.br",
+      "start": "2026-11-30",
+      "end": "2026-12-04",
+      "datesApplyTo": "Jornada de Integração only",
+      "publicAccess": true,
+      "relatedEvents": [
+        "Fecinc",
+        "Semana de Ciência e Tecnologia do Campus Vila Velha"
+      ]
+    },
+    "registrationEnabled": false,
+    "scoringSystemEnabled": false,
+    "apiRequests": false
   }
 }

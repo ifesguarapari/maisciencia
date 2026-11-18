@@ -1,0 +1,132 @@
+.fair-encounter-hero { position: relative; isolation: isolate; overflow: clip; background: #203445; }
+.fair-page .hero-image.fair-encounter-image { z-index: -2; background-position: 72% center; }
+.fair-encounter-shade { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, #203445f2 8%, #203445b8 38%, #20344515 77%), linear-gradient(0deg, #203445 0%, transparent 50%); }
+.fair-encounter-inner { padding-top: 138px; padding-bottom: 32px; }
+.fair-encounter-copy { max-width: 620px; }
+.fair-encounter-logo { display: block; width: 175px; height: auto; margin-bottom: 25px; }
+.fair-encounter-hero h1 { margin: 0; font-family: "Plus Jakarta Sans", sans-serif; font-size: clamp(48px, 5.4vw, 76px); font-weight: 700; line-height: 1.08; letter-spacing: -.055em; }
+.fair-encounter-campus { margin-top: 18px; color: #f4ce2f; font-size: 20px; font-weight: 550; }
+.fair-encounter-lead { margin-top: 24px; color: #f0cfdd; font-size: 16px; line-height: 1.7; }
+.fair-encounter-description { max-width: 450px; margin-top: 15px; color: #c0cfdb; font-size: 13px; line-height: 1.9; }
+.fair-encounter-facts { display: flex; gap: 48px; margin-top: 60px; padding-top: 26px; border-top: 1px solid rgb(190 217 236 / 18%); }
+.fair-encounter-facts > span { display: flex; align-items: center; gap: 12px; color: #b6c8d7; font-size: 11px; line-height: 1.7; }
+.fair-encounter-facts strong { color: #f4ce2f; font-family: "Plus Jakarta Sans", sans-serif; font-size: 27px; font-weight: 600; }
+.fair-encounter-facts > span:nth-child(2) strong { color: #69caff; }
+.fair-encounter-facts > span:nth-child(3) strong { color: #f09bbe; }
+.fair-encounter-navigation { border-block: 1px solid rgb(190 217 236 / 12%); background: #192e3f; }
+.fair-encounter-navigation > .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; padding-block: 23px; }
+.fair-encounter-navigation a { display: flex; align-items: center; min-height: 30px; color: #c5d5e1; font-size: 11px; }
+.fair-encounter-navigation a:hover { color: #f4ce2f; }
+.fair-program { background: #203445; }
+.fair-program-month { display: grid; justify-items: end; padding-top: 6px; color: #9bb1c3; font-size: 10px; letter-spacing: .18em; }
+.fair-program-month strong { color: #f4ce2f; font-family: "Plus Jakarta Sans", sans-serif; font-size: 58px; font-weight: 650; letter-spacing: -.055em; }
+.fair-schedule { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 24px 0 0; padding: 0; list-style: none; }
+.fair-schedule li { position: relative; padding: 32px 22px 12px 0; border-top: 1px solid rgb(190 217 236 / 22%); }
+.fair-schedule-dot { position: absolute; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--stage-color); box-shadow: 0 0 0 6px #203445; }
+.fair-schedule time { color: var(--stage-color); font-family: "Plus Jakarta Sans", sans-serif; font-size: 36px; font-weight: 500; letter-spacing: -.04em; }
+.fair-schedule h3 { margin-top: 13px; color: #d7e4ee; font-size: 15px; line-height: 1.6; }
+.fair-encounter-experience { background: #1a2e3f; }
+.fair-encounter-experience-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 90px; align-items: center; }
+.fair-encounter-experience-grid > div > p:not(.eyebrow) { color: var(--fair-copy); font-size: 14px; line-height: 2; }
+.fair-encounter-experience-grid .fair-button { margin-top: 25px; }
+.fair-encounter-activities { padding-bottom: 0; }
+.fair-axis-index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 28px; margin-top: 40px; }
+.fair-axis-index a { display: flex; align-items: flex-start; gap: 13px; padding: 21px 0; border-top: 1px solid rgb(190 217 236 / 18%); color: #c2d2df; font-size: 12px; line-height: 1.8; }
+.fair-axis-index a:hover { color: #fff; }
+.fair-axis-index a > span { flex: 0 0 18px; color: var(--stage-color); }
+.fair-axis-index a > .icon { flex-shrink: 0; width: 14px; height: 14px; margin: 4px 0 0 auto; color: var(--stage-color); }
+.fair-encounter-axis { padding-top: 95px; padding-bottom: 18px; scroll-margin-top: 15px; }
+.fair-axis-heading { display: grid; grid-template-columns: 74px 1fr 44px; gap: 25px; align-items: start; padding-top: 32px; margin-bottom: 34px; border-top: 1px solid color-mix(in srgb, var(--stage-color) 40%, transparent); }
+.fair-axis-mark { color: var(--stage-color); font-family: "Plus Jakarta Sans", sans-serif; font-size: 55px; font-weight: 500; letter-spacing: -.055em; line-height: 1.2; }
+.fair-page .fair-axis-heading .eyebrow { margin-bottom: 12px; color: var(--stage-color); }
+.fair-axis-heading h3 { margin: 0; max-width: 750px; font-size: clamp(23px, 2.5vw, 32px); line-height: 1.4; letter-spacing: -.035em; }
+.fair-axis-heading p:not(.eyebrow) { max-width: 780px; margin-top: 14px; color: var(--fair-copy); font-size: 13px; line-height: 1.9; }
+.fair-axis-return { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid rgb(190 217 236 / 20%); border-radius: 6px; color: var(--stage-color); }
+.fair-axis-return:hover { background: rgb(190 217 236 / 7%); }
+.fair-activity-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 28px; }
+.fair-activity { min-width: 0; overflow: clip; border: 1px solid rgb(190 217 236 / 15%); border-radius: 8px; background: #1a2e3f; scroll-margin-top: 120px; }
+.fair-activity-image { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; border-bottom: 1px solid rgb(190 217 236 / 12%); }
+.fair-activity-body { padding: 30px; }
+.fair-activity-number { color: var(--stage-color); font-size: 9px; font-weight: 600; letter-spacing: .14em; }
+.fair-activity h4 { margin-top: 14px; color: #f1f6fa; font-family: "Plus Jakarta Sans", sans-serif; font-size: 23px; font-weight: 600; letter-spacing: -.025em; line-height: 1.5; overflow-wrap: anywhere; }
+.fair-activity-summary { margin-top: 15px; color: var(--fair-copy); font-size: 13px; line-height: 1.9; }
+.fair-activity-exhibition { padding-top: 23px; margin-top: 23px; border-top: 1px solid rgb(190 217 236 / 13%); }
+.fair-activity-exhibition > span, .fair-activity-interaction > span { color: #9fb6c8; font-size: 9px; font-weight: 500; letter-spacing: .12em; }
+.fair-activity-exhibition h5 { margin-top: 9px; color: #e4ecf3; font-size: 16px; font-weight: 550; line-height: 1.6; }
+.fair-activity-exhibition p { margin-top: 10px; color: #b2c4d2; font-size: 11px; line-height: 1.8; }
+.fair-activity-exhibition strong { color: #d5e0e9; font-weight: 500; }
+.fair-activity-details { margin-top: 22px; }
+.fair-activity-details summary { list-style: none; cursor: pointer; }
+.fair-activity-details summary::-webkit-details-marker { display: none; }
+.fair-activity-details summary > span { margin-left: 7px; font-size: 17px; line-height: 1; }
+.fair-activity-details[open] summary > span { transform: rotate(45deg); }
+.fair-activity-details > div { padding-top: 18px; }
+.fair-activity-details > div > p { color: #c3d1dd; font-size: 13px; line-height: 1.95; overflow-wrap: anywhere; }
+.fair-activity-interaction { margin-top: 25px; padding: 0 0 0 17px; border-left: 2px solid var(--stage-color); }
+.fair-activity-interaction > span { color: var(--stage-color); font-size: 8px; }
+.fair-activity-interaction p { margin-top: 9px; color: #d2e0ea; font-size: 12px; line-height: 1.85; }
+.fair-encounter-participation { margin-top: 95px; background: #1a2e3f; }
+.fair-encounter-schools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 32px; margin: 0; padding: 0; list-style: none; }
+.fair-encounter-schools li { padding: 20px 0; border-top: 1px solid rgb(190 217 236 / 15%); font-size: 13px; line-height: 1.8; overflow-wrap: anywhere; }
+.fair-encounter-schools small { display: block; margin-top: 4px; color: #a3bacb; font-size: 10px; }
+.fair-integration-panel { display: grid; grid-template-columns: 300px minmax(0, 1fr); align-items: center; gap: 65px; padding: 48px; border: 1px solid rgb(240 155 190 / 25%); border-radius: 8px; background: linear-gradient(120deg, rgb(0 150 225 / 5%), rgb(240 155 190 / 4%)); }
+.fair-integration-art > img { display: block; width: 100%; height: auto; }
+.fair-integration-art p { margin-top: 28px; color: #d4e1ea; text-align: center; font-size: 11px; font-weight: 550; letter-spacing: .08em; line-height: 1.9; }
+.fair-integration-art p > span { color: #abc0d0; font-size: 9px; }
+.fair-integration-copy p:not(.eyebrow) { margin-top: 22px; color: var(--fair-copy); font-size: 13px; line-height: 1.95; }
+.fair-integration-copy .fair-button { margin-top: 25px; }
+.fair-encounter-end { padding-block: 0 100px; }
+.fair-encounter-end > .container { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding-top: 45px; border-top: 1px solid rgb(190 217 236 / 16%); }
+.fair-encounter-end h2 { margin: 0; font-family: "Plus Jakarta Sans", sans-serif; font-size: 33px; font-weight: 600; line-height: 1.4; letter-spacing: -.04em; }
+.fair-encounter-end-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+@media (max-width: 1050px) {
+  .fair-encounter-experience-grid { gap: 40px; }
+  .fair-integration-panel { grid-template-columns: 230px minmax(0, 1fr); gap: 35px; padding: 35px; }
+  .fair-axis-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fair-activity-body { padding: 24px; }
+  .fair-activity h4 { font-size: 21px; }
+}
+@media (max-width: 700px) {
+  .fair-encounter-inner { padding-top: 115px; padding-bottom: 28px; }
+  .fair-encounter-hero .fair-breadcrumb { margin-bottom: 265px; }
+  .fair-page .hero-image.fair-encounter-image { inset: 0; height: 490px; transform: none; background-size: auto 490px; background-position: 85% top; }
+  .fair-encounter-shade { background: linear-gradient(180deg, #20344520 150px, #20344555 300px, #203445 490px); }
+  .fair-encounter-logo { width: 150px; margin-bottom: 24px; }
+  .fair-encounter-hero h1 { font-size: 49px; }
+  .fair-encounter-campus { font-size: 19px; }
+  .fair-encounter-lead { font-size: 15px; }
+  .fair-encounter-description { font-size: 12px; }
+  .fair-encounter-facts { justify-content: space-between; gap: 16px; margin-top: 36px; }
+  .fair-encounter-facts > span { display: grid; align-content: start; gap: 4px; font-size: 9px; }
+  .fair-encounter-facts strong { font-size: 25px; }
+  .fair-encounter-navigation > .container { justify-content: flex-start; gap: 8px 22px; padding-block: 17px; }
+  .fair-encounter-navigation a { font-size: 10px; }
+  .fair-program-month { display: none; }
+  .fair-schedule { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 35px; }
+  .fair-schedule li { padding-top: 22px; }
+  .fair-schedule time { font-size: 30px; }
+  .fair-schedule h3 { margin-top: 8px; font-size: 13px; }
+  .fair-encounter-experience-grid { grid-template-columns: 1fr; gap: 25px; }
+  .fair-encounter-experience-grid > div > p:not(.eyebrow) { font-size: 13px; }
+  .fair-axis-index { grid-template-columns: 1fr; margin-top: 30px; }
+  .fair-axis-index a { font-size: 11px; padding-block: 17px; }
+  .fair-encounter-axis { padding-top: 65px; }
+  .fair-axis-heading { grid-template-columns: 38px minmax(0, 1fr); gap: 17px; padding-top: 24px; }
+  .fair-axis-mark { font-size: 34px; }
+  .fair-axis-heading h3 { font-size: 23px; }
+  .fair-axis-heading p:not(.eyebrow) { font-size: 12px; }
+  .fair-axis-return { grid-column: 2; margin-top: 2px; }
+  .fair-activity-grid { grid-template-columns: 1fr; gap: 24px; }
+  .fair-activity-body { padding: 24px; }
+  .fair-activity h4 { font-size: 21px; }
+  .fair-activity-summary, .fair-activity-details > div > p { font-size: 12px; }
+  .fair-activity-exhibition h5 { font-size: 15px; }
+  .fair-encounter-participation { margin-top: 65px; }
+  .fair-encounter-schools { grid-template-columns: 1fr; }
+  .fair-encounter-schools li { font-size: 12px; }
+  .fair-integration-panel { grid-template-columns: 1fr; padding: 28px 23px; gap: 35px; }
+  .fair-integration-art { width: min(100%, 245px); margin-inline: auto; }
+  .fair-encounter-end > .container { flex-direction: column; align-items: flex-start; gap: 30px; }
+  .fair-encounter-end h2 { font-size: 30px; }
+}

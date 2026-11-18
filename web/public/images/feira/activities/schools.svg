@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">School inventions for a sustainable city</title>
+  <desc id="description">Buildings, solar panels, sensors and trees connect through an electronic circuit board to create a sustainable miniature city.</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#0096E1" stop-opacity=".24"/><stop offset="1" stop-color="#203445" stop-opacity="0"/></radialGradient>
+    <linearGradient id="surface" x1="140" y1="85" x2="335" y2="239" gradientUnits="userSpaceOnUse"><stop stop-color="#456578"/><stop offset="1" stop-color="#294457"/></linearGradient>
+    <linearGradient id="paper" x1="170" y1="92" x2="270" y2="208" gradientUnits="userSpaceOnUse"><stop stop-color="#F4EADD"/><stop offset="1" stop-color="#C4CAD0"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#B5D5E9" stroke-opacity=".055"/></pattern>
+  </defs>
+  <path fill="#203445" d="M0 0h480v300H0z"/>
+  <ellipse cx="240" cy="156" rx="222" ry="157" fill="url(#glow)"/>
+  <path fill="url(#grid)" d="M0 0h480v300H0z"/>
+  <g stroke="#0096E1" stroke-opacity=".18"><ellipse cx="240" cy="235" rx="163" ry="32"/><ellipse cx="240" cy="235" rx="127" ry="23"/><path d="M45 235h28m334 0h28M240 273v12"/></g>
+  <path d="m103 202 136-62 145 56v18l-138 64-143-60z" fill="#172B3C" stroke="#46667A"/>
+  <path d="m103 202 136-62 145 56-138 65z" fill="url(#surface)" stroke="#7AACC0"/>
+  <g stroke="#0096E1" stroke-width="2"><path d="m126 204 42-19 46 18 42-19 43 17 43-20m-181 32 44 17 49-22 43 16 45-22m-135 31 38 14 45-20"/></g>
+  <g fill="#F4CE2F"><ellipse cx="168" cy="185" rx="3" ry="1.5"/><ellipse cx="214" cy="203" rx="3" ry="1.5"/><ellipse cx="299" cy="201" rx="3" ry="1.5"/><ellipse cx="245" cy="247" rx="3" ry="1.5"/></g>
+  <path d="m208 110 28-13 28 11v91l-28 14-28-12z" fill="#5A96AF"/>
+  <path d="m236 123 28-15v91l-28 14z" fill="#2B536D"/><path d="m208 110 28-13 28 11-28 15z" fill="#B5D4DB"/>
+  <g stroke="#203F55" stroke-width="3"><path d="m214 129 15 6m-15 7 15 6m-15 7 15 6m-15 7 15 6m-15 7 15 6"/></g>
+  <g stroke="#8BC7DE" stroke-width="2.5"><path d="m243 135 14-7m-14 20 14-7m-14 20 14-7m-14 20 14-7m-14 20 14-7"/></g>
+  <path d="m277 154 25-12 23 9v53l-23 11-25-9z" fill="#CF9BAF"/><path d="m302 164 23-13v53l-23 11z" fill="#895E7B"/><path d="m277 154 25-12 23 9-23 13z" fill="#F0C9D7"/>
+  <g stroke="#794E6A" stroke-width="3"><path d="m283 170 12 5m-12 8 12 5m-12 8 12 5"/></g>
+  <path d="m144 166 33-16 23 9-33 17z" fill="#172F49" stroke="#79B7D4"/><path d="m145 166 22 10v20l-22-9m22-11 33-17v20l-33 17" fill="#426B7A"/>
+  <g stroke="#8DCCE3" stroke-width="1"><path d="m154 161 23 9m-14-14 23 9m-35 4 33-16"/></g>
+  <path d="M335 196v23m-190-18v17" stroke="#A3C9B2" stroke-width="3"/><path d="M335 194c-20-5-19-24 0-31 17 8 19 27 0 31m-190 5c-17-4-17-20 0-26 15 8 16 22 0 26" fill="#76BBA8"/>
+  <g stroke="#F4CE2F" stroke-width="1.5" stroke-linecap="round"><path d="M236 90v-8m-9-9c5-5 13-5 18 0m-24-6c8-8 22-8 30 0m-35-6c11-11 29-11 40 0"/></g>
+  <g stroke="#B8D6E5" stroke-opacity=".5" stroke-linecap="round"><path d="M91 83v10m-5-5h10M386 176v10m-5-5h10"/><circle cx="359" cy="66" r="2"/><circle cx="109" cy="212" r="2"/></g>
+</svg>

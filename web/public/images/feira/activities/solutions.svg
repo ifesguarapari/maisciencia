@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Learning economics through role play</title>
+  <desc id="description">A miniature board-game world connects a medieval tower, a factory, a market and a die to illustrate social and economic exchanges.</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#F4CE2F" stop-opacity=".24"/><stop offset="1" stop-color="#203445" stop-opacity="0"/></radialGradient>
+    <linearGradient id="surface" x1="140" y1="85" x2="335" y2="239" gradientUnits="userSpaceOnUse"><stop stop-color="#456578"/><stop offset="1" stop-color="#294457"/></linearGradient>
+    <linearGradient id="paper" x1="170" y1="92" x2="270" y2="208" gradientUnits="userSpaceOnUse"><stop stop-color="#F4EADD"/><stop offset="1" stop-color="#C4CAD0"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#B5D5E9" stroke-opacity=".055"/></pattern>
+  </defs>
+  <path fill="#203445" d="M0 0h480v300H0z"/>
+  <ellipse cx="240" cy="156" rx="222" ry="157" fill="url(#glow)"/>
+  <path fill="url(#grid)" d="M0 0h480v300H0z"/>
+  <g stroke="#F4CE2F" stroke-opacity=".18"><ellipse cx="240" cy="235" rx="163" ry="32"/><ellipse cx="240" cy="235" rx="127" ry="23"/><path d="M45 235h28m334 0h28M240 273v12"/></g>
+  <path d="m107 196 130-58 144 55v20l-133 65-141-63z" fill="#172B3C" stroke="#6B8190"/>
+  <path d="m107 196 130-58 144 55-133 64z" fill="url(#surface)" stroke="#A0BAC4"/>
+  <path d="m151 197 47-22 43 18 49-21 42 15-41 22-45 22-46-18z" stroke="#F4CE2F" stroke-width="2" stroke-dasharray="6 5"/>
+  <path d="m153 140 27-12 25 10v43l-26 13-26-11z" fill="#AEAC9D"/>
+  <path d="m180 150 25-12v43l-26 13z" fill="#657783"/>
+  <path d="m151 139 9-5v-14l10-4v13l10-4v-13l10-4v14l10-4v-13l9-4v37l-29 15z" fill="#C1C4B4"/>
+  <path d="M165 176v-13l8 3v13" fill="#263D50"/><path d="m186 162 10-5v14l-10 5z" fill="#263D50"/>
+  <path d="m267 137 42-19 30 10v52l-42 20-30-12z" fill="#7898A7"/>
+  <path d="m297 149 42-21v52l-42 20z" fill="#486E85"/>
+  <path d="m267 137 15-16 1 10 14-16 1 11 13-14 28 16-42 21z" fill="#B5C7CB"/>
+  <path d="m313 121 0-36 11-5 10 4v42" fill="#6A8D9F" stroke="#9DBBCC"/>
+  <g stroke="#253D51" stroke-width="4"><path d="m273 153 15 6m-15 8 15 6m16-11 27-13m-27 27 27-13"/></g>
+  <path d="m216 204 20-9 18 7v24l-19 10-19-7z" fill="#F4CE2F"/><path d="m216 204 19 7 19-9-18-7z" fill="#F7DF7B"/><path d="M235 211v25" stroke="#BAA647"/>
+  <g fill="#425265"><ellipse cx="223" cy="213" rx="2" ry="3"/><ellipse cx="228" cy="225" rx="2" ry="3"/><ellipse cx="241" cy="218" rx="2" ry="3"/><ellipse cx="249" cy="213" rx="2" ry="3"/></g>
+  <path d="m214 109 23-11 20 8v30l-23 12-20-8z" fill="#B36E94"/><path d="m210 109 25-25 26 21-27 15z" fill="#F09BBE"/>
+  <path d="m214 109 8 3v18l-8-3m14-13 7 3v18l-7-3m14-15 7-3v18l-7 4m10-24 7-4v17l-7 4" fill="#E2D5C8"/>
+  <g stroke="#0096E1" stroke-width="1.5" stroke-linecap="round"><path d="M229 67c21-9 45-5 58 8m-10-1 10 1-1-10m-23 35c-19 8-40 4-53-7m10 0-10 0 1 10"/></g>
+  <g stroke="#B8D6E5" stroke-opacity=".5" stroke-linecap="round"><path d="M91 83v10m-5-5h10M386 176v10m-5-5h10"/><circle cx="359" cy="66" r="2"/><circle cx="109" cy="212" r="2"/></g>
+</svg>

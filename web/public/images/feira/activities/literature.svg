@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Literature becomes interactive games</title>
+  <desc id="description">An open book unfolds into luminous game scenes beside a controller, connecting literature, coding and digital play.</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#F09BBE" stop-opacity=".24"/><stop offset="1" stop-color="#203445" stop-opacity="0"/></radialGradient>
+    <linearGradient id="surface" x1="140" y1="85" x2="335" y2="239" gradientUnits="userSpaceOnUse"><stop stop-color="#456578"/><stop offset="1" stop-color="#294457"/></linearGradient>
+    <linearGradient id="paper" x1="170" y1="92" x2="270" y2="208" gradientUnits="userSpaceOnUse"><stop stop-color="#F4EADD"/><stop offset="1" stop-color="#C4CAD0"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#B5D5E9" stroke-opacity=".055"/></pattern>
+  </defs>
+  <path fill="#203445" d="M0 0h480v300H0z"/>
+  <ellipse cx="240" cy="156" rx="222" ry="157" fill="url(#glow)"/>
+  <path fill="url(#grid)" d="M0 0h480v300H0z"/>
+  <g stroke="#F09BBE" stroke-opacity=".18"><ellipse cx="240" cy="235" rx="163" ry="32"/><ellipse cx="240" cy="235" rx="127" ry="23"/><path d="M45 235h28m334 0h28M240 273v12"/></g>
+  <path d="m118 179 104-57 138 48-109 68-133-47z" fill="#172B3C"/>
+  <path d="m125 170 94-57 139 48v13l-105 65-128-49z" fill="#975F85" stroke="#D58AAC"/>
+  <path d="M251 208c-33-26-70-36-111-39V98c48 3 81 15 111 40z" fill="url(#paper)"/>
+  <path d="M251 208c28-31 59-47 94-52V86c-43 7-72 25-94 52z" fill="#F2DFE3"/>
+  <path d="M251 138v70" stroke="#A37B94" stroke-width="2"/>
+  <g stroke="#A48B9B" stroke-width="3" stroke-linecap="round"><path d="m155 119 56 18m-56-3 69 23m-69-8 52 18m-52-3 64 23m-64-9 43 15"/></g>
+  <path d="m278 153 22-14 21 6v23l-21 13-22-7z" fill="#58748B"/>
+  <path d="m277 151 22-14 23 7-22 14z" fill="#F4CE2F"/><path d="M300 158v23" stroke="#233D52"/>
+  <path d="m277 134 13-25 12 10 13-30 19 44" stroke="#0096E1" stroke-width="3" stroke-linejoin="round"/>
+  <g fill="#F09BBE"><path d="M291 72h10v10h-10zM309 58h8v8h-8zM322 73h7v7h-7zM342 54h6v6h-6z"/></g>
+  <g transform="rotate(-10 315 217)"><path d="M276 186c-14 0-23 10-26 26l-3 17c-3 17 11 24 22 13l12-11h55l12 11c12 11 25 3 22-13l-3-17c-3-16-12-26-26-26z" fill="url(#surface)" stroke="#A3BBD0" stroke-width="1.5"/>
+  <path d="M269 200h8v8h8v8h-8v8h-8v-8h-8v-8h8z" fill="#DAE4E9"/>
+  <circle cx="343" cy="204" r="4" fill="#F09BBE"/><circle cx="352" cy="213" r="4" fill="#F4CE2F"/><circle cx="334" cy="213" r="4" fill="#0096E1"/><circle cx="343" cy="222" r="4" fill="#84C2CA"/><path d="M301 211h14" stroke="#D1DDE3" stroke-width="3" stroke-linecap="round"/></g>
+  <g stroke="#B8D6E5" stroke-opacity=".5" stroke-linecap="round"><path d="M91 83v10m-5-5h10M386 176v10m-5-5h10"/><circle cx="359" cy="66" r="2"/><circle cx="109" cy="212" r="2"/></g>
+</svg>

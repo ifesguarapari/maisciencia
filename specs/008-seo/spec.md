@@ -32,10 +32,11 @@ página já no HTML inicial, antes da execução do JavaScript.
 Como mecanismo de busca, quero rastrear os recursos e identificar somente as
 páginas que já oferecem conteúdo institucional útil para resultados de pesquisa.
 
-- A página inicial, a apresentação da feira e o regulamento permitem indexação.
-  Aplicativo, as quatro páginas de oficinas e as três etapas da feira permanecem
+- A página inicial, a apresentação da feira, o regulamento e o encontro de
+  dezembro permitem indexação. Aplicativo, as quatro páginas de oficinas e as
+  etapas de março e junho da feira permanecem
   rastreáveis, mas têm `noindex,follow` enquanto provisórias.
-- O sitemap contém somente as três páginas prontas canônicas, sem fragmentos de seção,
+- O sitemap contém somente as quatro páginas prontas canônicas, sem fragmentos de seção,
   páginas em construção ou datas de atualização inventadas.
 - O robots permite rastrear páginas, estilos, scripts e imagens, incluindo
   as páginas em que o crawler precisa ler `noindex`.
@@ -56,10 +57,11 @@ e Search Console, sem confundir um build correto com indexação pelo Google.
 - **FR-002**: Cada página além da inicial DEVE receber título,
   descrição e canonical próprios no HTML inicial; variantes com barra final e
   navegação pelo shell PWA DEVEM convergir para os mesmos sinais da rota.
-- **FR-003**: A página inicial, `/feira` e `/feira/regulamento` DEVEM permitir indexação;
-  as oito provisórias DEVEM usar `noindex,follow` e ficar fora do sitemap até
-  terem conteúdo final. A apresentação da feira e o regulamento deixam de ser
-  provisórios conforme [009-fair](../009-fair/spec.md).
+- **FR-003**: A página inicial, `/feira`, `/feira/regulamento` e
+  `/feira/202612` DEVEM permitir indexação; as sete provisórias DEVEM usar
+  `noindex,follow` e ficar fora do sitemap até terem conteúdo final. A apresentação
+  da feira, o regulamento e dezembro deixam de ser provisórios conforme
+  [009-fair](../009-fair/spec.md).
 - **FR-004**: O build DEVE fornecer `robots.txt` e `sitemap.xml` com URLs
   absolutas e consistentes. Recursos necessários à renderização NÃO DEVEM ser
   bloqueados. O sitemap NÃO DEVE inventar `lastmod`, prioridade ou periodicidade.
@@ -137,3 +139,14 @@ consulta de produção deve identificar a versão efetivamente publicada. Não
 confundir a release anterior com o conteúdo desta branch ainda não publicado.
 A revisão não autoriza registrar acesso ao Search Console, indexação real ou
 prévia externa sem evidência; a avaliação técnica distingue essas camadas.
+
+## Evolução: dezembro pronto para pesquisa em 2026-11-18
+
+A página `/feira/202612` passa a apresentar conteúdo útil e completo do encontro,
+conforme US4 de 009. Sua política evolui para `index,follow,max-image-preview:large`
+e inclusão no sitemap. São quatro rotas indexáveis e sete provisórias, sem
+alterar as onze entradas nem o cartão compartilhado da Feira. A confirmação
+posterior do usuário fixa o encontro em 04/12/2026, refletida nos títulos e
+descrições próprios da rota; a política JSON-LD existente continua vigente.
+A mudança é local e não comprova publicação, rastreamento pelo Google ou nova
+prévia social.

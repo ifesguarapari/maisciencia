@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Data opens regional opportunities</title>
+  <desc id="description">Regional data visualizations, a stylized territory map and miniature urban buildings connect scientific research with careers and public development.</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#F4CE2F" stop-opacity=".18"/><stop offset="1" stop-color="#203445" stop-opacity="0"/></radialGradient>
+    <linearGradient id="blue" x1="140" y1="80" x2="320" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#81C9E8"/><stop offset="1" stop-color="#286487"/></linearGradient>
+    <linearGradient id="metal" x1="170" y1="80" x2="300" y2="240" gradientUnits="userSpaceOnUse"><stop stop-color="#BCD1DC"/><stop offset="1" stop-color="#51798F"/></linearGradient>
+    <linearGradient id="pink" x1="160" y1="100" x2="310" y2="220" gradientUnits="userSpaceOnUse"><stop stop-color="#F3B9D0"/><stop offset="1" stop-color="#B86491"/></linearGradient>
+    <linearGradient id="yellow" x1="180" y1="80" x2="320" y2="210" gradientUnits="userSpaceOnUse"><stop stop-color="#FAE99A"/><stop offset="1" stop-color="#D1AB24"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#93BDCF" stroke-opacity=".055"/></pattern>
+  </defs>
+  <path fill="#203445" d="M0 0h480v300H0z"/>
+  <ellipse cx="240" cy="158" rx="225" ry="157" fill="url(#glow)"/>
+  <path fill="url(#grid)" d="M0 0h480v300H0z"/>
+  <g stroke="#F4CE2F" stroke-opacity=".16"><ellipse cx="240" cy="227" rx="173" ry="38"/><ellipse cx="240" cy="227" rx="141" ry="26"/><path d="M40 227h27m347 0h27M240 266v17"/></g>
+  <path d="m98 224 143-56 147 57-143 52z" fill="#1B3447" stroke="#567F95"/>
+  <path d="m153 80 173 30v104l-173-30z" fill="#173146" stroke="#95BCCF" stroke-width="2"/>
+  <path d="m162 90 154 27v83l-154-27z" fill="#2D536C"/>
+  <path d="M239 203v26m-23 6 46 8" stroke="#92B2C4" stroke-width="5"/>
+  <path d="m176 164 24 4v-23l-24-4zm33 6 24 4v-39l-24-4zm33 6 24 4v-57l-24-4z" fill="url(#yellow)"/>
+  <path d="m174 127 23-13 21 8 22-16 25 5" stroke="#F09BBE" stroke-width="2" stroke-linecap="round"/>
+  <g fill="#F09BBE"><circle cx="174" cy="127" r="3"/><circle cx="197" cy="114" r="3"/><circle cx="218" cy="122" r="3"/><circle cx="240" cy="106" r="3"/></g>
+  <path d="m281 129 17 2 8 14-6 11 6 12-9 18-12-6-5-16-9-7 4-16z" fill="#69B9D9" stroke="#B8DDED"/>
+  <path d="m276 146 21 4m-17 12 20 5m-13-31 3 42" stroke="#2C6B8D"/>
+  <g fill="#F4CE2F"><circle cx="287" cy="145" r="2"/><circle cx="291" cy="161" r="2"/><circle cx="292" cy="176" r="2"/></g>
+  <path d="m130 198 22-10 21 8v42l-22 9-21-8z" fill="#7696A8"/><path d="m130 198 21 9 22-11m-22 11v40" stroke="#BCD2DC"/>
+  <path d="m137 210 9 4m-9 5 9 4m11-9 10-4m-10 13 10-4" stroke="#34566D" stroke-width="3"/>
+  <path d="m308 219 21-10 23 9v27l-22 10-22-9z" fill="#CB8EAD"/><path d="m308 219 22 10 22-11m-22 11v26" stroke="#F2C9DD"/>
+  <path d="m316 220 10 4m9 0 10-4m-10 14 10-4" stroke="#7A526F" stroke-width="3"/>
+  <path d="M110 119h23v25h-23z" fill="#365D75" stroke="#8ABAD2"/><path d="M115 125h13m-13 7h10m-10 6h7" stroke="#C4DDE8"/>
+  <path d="m347 157 8-13 8 13-8 13z" fill="#F4CE2F" fill-opacity=".8"/>
+  <g stroke="#A3C5D5" stroke-opacity=".55" stroke-linecap="round"><path d="M91 88v10m-5-5h10M386 105v10m-5-5h10"/><circle cx="118" cy="232" r="2"/><circle cx="358" cy="61" r="2"/><path d="M302 43h14m5 0h5"/></g>
+</svg>

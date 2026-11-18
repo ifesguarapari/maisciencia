@@ -118,3 +118,12 @@ atuais; distinguir revisão de código/build, resposta pública da versão
 implantada e acompanhamento real em Search Console. Não criar verificação
 de propriedade, prometer posição ou tratar preview local como WhatsApp real.
 Essa evolução atende FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008 e FR-009.
+
+## Conteúdo do encontro de dezembro
+
+Em 2026-11-18, a conclusão editorial de `/feira/202612` em 009 muda sua
+classificação no catálogo para conteúdo indexável. Derivar os metadados e
+sitemap da mesma fonte mantém quatro URLs prontas e sete provisórias sem
+alterar o inventário de onze HTMLs. Preservar o cartão da Feira e `WebSite`
+exclusivo da inicial. A data confirmada pelo usuário, 04/12/2026, acompanha
+os metadados do encontro; o intervalo da Jornada mantém sua identificação própria.
