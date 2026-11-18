@@ -462,3 +462,23 @@ Verificações desta correção:
 O roteiro desta correção não repetiu os testes de PWA offline ou movimento
 reduzido; a evidência da rodada anterior continua identificada acima. A entrega
 continua local na branch `feature/issue/2`, sem nova release ou publicação.
+
+## Publicação na release 0.5.0 (2026-11-18)
+
+As preparações locais acima foram publicadas pelo GitHub Actions, run
+[44236342876](https://github.com/ifesguarapari/maisciencia/actions/runs/44236342876),
+com build e deploy bem-sucedidos para a tag 0.5.0, SHA
+`c24236e9fb64c29bcafc3ff35bbb4fed801c5da8`. A
+[página pública](https://maisciencia.ifes.app.br/feira/202612/) foi conferida
+por HTTPS: data 04/12/2026, Ifes Vila Velha, quatro horários, 20 atividades,
+cinco eixos e 13 instituições. As onze rotas e os 66 arquivos foram cobertos
+por 77 respostas HTTP 200, sem falhas. O sitemap contém quatro páginas
+indexáveis e as sete provisórias continuam com noindex.
+
+Chrome em produção conferiu o encontro e seu card em 1440, 390 e 320 px,
+com 79 respostas, sem erro ou rolagem horizontal. SVGs, cartões WebP e JIC
+foram validados por formato e dimensões. Os detalhes completos do Git Flow,
+Commitizen com `fix #2`, jobs, notas de versão e restauração da issue #2 ao
+estado aberto estão nas [evidências de entrega](../007-web-delivery/verification.md).
+A feature local foi recriada pelo Git Flow após o deploy. Não houve teste de
+Search Console, prévia real no WhatsApp ou homologação editorial humana.

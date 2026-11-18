@@ -302,3 +302,22 @@ pelo service worker. A auditoria anterior que encontrou noindex/404 reflete
 a versão prévia, não o estado depois desta publicação. Evidências e run em
 [007-web-delivery](../007-web-delivery/verification.md). Não houve acesso ao
 Search Console, comprovação de indexação real ou prévia no WhatsApp.
+
+## Publicação do encontro de dezembro em 0.5.0 (2026-11-18)
+
+A tag 0.5.0 foi implantada pelo
+[run 44236342876](https://github.com/ifesguarapari/maisciencia/actions/runs/44236342876),
+com build e deploy aprovados para o SHA
+`c24236e9fb64c29bcafc3ff35bbb4fed801c5da8`.
+A conferência HTTPS verificou as onze rotas, quatro páginas indexáveis e
+sete provisórias com noindex, canonical, títulos, descrições, Open Graph e
+Twitter, robots permissivo e quatro URLs canônicas no sitemap. O encontro
+de dezembro informa 04/12/2026 no Ifes Vila Velha também nos metadados.
+Foram cobertos os 66 arquivos, com 77 respostas HTTP 200 e nenhuma falha;
+os dois cartões permanecem WebP em 750 × 425 pixels. O Chrome confirmou
+as páginas do encontro e da Feira em três larguras, sem erros.
+
+Essa evidência comprova sinais técnicos e publicação; não comprova indexação
+real no Google ou atualização da prévia em aplicativos sociais. Search
+Console e compartilhamento real no WhatsApp não foram usados. Consulte a
+[verificação da entrega](../007-web-delivery/verification.md).

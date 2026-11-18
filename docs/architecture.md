@@ -215,3 +215,12 @@ etapas da Primeira edição no domínio existente, via Git Flow e GitHub
 Actions. A API continua 0.1.0 e sem workflow de implantação. O registro da
 publicação e da recriação local de `feature/issue/2` está nas evidências
 de 007; a issue #2 permanece aberta para evoluções.
+
+## Publicação web 0.5.0
+
+Em 2026-11-18, a release web 0.5.0 publicou o encontro de 04/12/2026 no Ifes
+Vila Velha por GitHub Actions, com build e deploy aprovados. A página de
+dezembro passa a integrar as quatro URLs indexáveis, mantendo sete rotas
+provisórias e onze entradas físicas. A API permanece em 0.1.0, sem workflow
+ou implantação de VPS. As evidências estão em
+[007-web-delivery](../specs/007-web-delivery/verification.md).
