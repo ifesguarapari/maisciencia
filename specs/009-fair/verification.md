@@ -482,3 +482,27 @@ Commitizen com `fix #2`, jobs, notas de versão e restauração da issue #2 ao
 estado aberto estão nas [evidências de entrega](../007-web-delivery/verification.md).
 A feature local foi recriada pelo Git Flow após o deploy. Não houve teste de
 Search Console, prévia real no WhatsApp ou homologação editorial humana.
+
+## Arte vetorial da Jornada (2026-11-18)
+
+T021 concluída: `december-data.js` e o contrato usam o SVG fornecido
+`images/feira/jic2026.svg`; o PNG anterior foi removido da pasta pública.
+A documentação vigente acompanha a troca. Os registros anteriores sobre
+o PNG descrevem o artefato da release 0.5.0 e continuam históricos.
+
+O SVG possui XML válido, dimensões intrínsecas 258,12402 × 167,03242 e
+viewBox `0 0 68.295313 44.193996`. O renderer declara 258 × 167 e mantém o
+CSS com altura automática. O arquivo foi preservado como fornecido; uma
+renderização temporária foi inspecionada em
+`/tmp/maisciencia-jic2026-svg-preview.png`.
+
+ESLint e os 89 testes existentes passaram. Builds e checks das bases
+`/maisciencia/` e `/` passaram com 66 arquivos, respectivamente 905 e
+908 referências internas, onze HTMLs e SEO válido. O SVG está no HTML do
+encontro e no precache; o PNG está ausente tanto da fonte pública quanto
+do artefato final. O validador SDD passou com nove features, 95 requisitos
+e 135 tarefas, e `git diff --check` passou.
+
+Não foram criados testes específicos para a troca do recurso. A conferência
+desta rodada cobre o SVG e o artefato estático, sem nova execução de página
+no navegador ou publicação. A alteração permanece na feature local.

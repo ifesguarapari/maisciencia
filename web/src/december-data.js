@@ -52,7 +52,7 @@ export const decemberFair = {
       "Fecinc",
       "Semana de Ciência e Tecnologia do Campus Vila Velha"
     ],
-    "image": "images/feira/jic2026.png"
+    "image": "images/feira/jic2026.svg"
   },
   "axes": [
     {

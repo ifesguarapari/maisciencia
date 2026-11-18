@@ -214,3 +214,14 @@ após confirmar a implantação. Se a recriação preceder o commit documental,
 atualizar a feature por fast-forward. Ao terminar, conferir a branch ativa,
 a árvore limpa, o mesmo HEAD de `develop` e a issue #2 aberta. Não presumir
 que esses estados existem antes da execução.
+
+## Release patch 0.5.1
+
+Consolidar a troca da imagem pelo Commitizen como `fix(web)` com `re #2`.
+Finalizar a feature existente em develop e iniciar `release/0.5.1` pelo Git
+Flow, usando `npm --prefix web version patch --no-git-tag-version` uma vez.
+Atualizar changelog, executar os checks pertinentes e registrar a preparação
+como `build(release)`. Finalizar, enviar main/develop/tag e acompanhar o SHA
+exato no Actions. Conferir o SVG publicado, PNG ausente e proporção visual.
+Registrar resultados reais como `docs(release)`, preservando a issue aberta,
+e recriar a feature após o deploy. Não alterar dependências ou a versão API.

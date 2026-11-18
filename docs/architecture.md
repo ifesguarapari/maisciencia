@@ -129,7 +129,7 @@ A rota `/feira/202612` apresenta os cinco eixos e 20 atividades do documento
 nativos, exposição, expositor e interatividade. A programação explicita
 Ifes Vila Velha em 04/12/2026, data confirmada pelo usuário, com horários
 14h30, 15h, 17h30 e 18h. O trecho
-da Jornada de Integração usa `jic2026.png` e o site oficial, atribuindo
+da Jornada de Integração usa `jic2026.svg` e o site oficial, atribuindo
 30/11–04/12/2026 e a participação aberta ao público somente à Jornada. A
 FEMAIS mantém o público convidado das 13 instituições. As rotas
 `/feira/202703` e `/feira/202706` permanecem em construção. A renderização compartilhada oferece conteúdo no HTML físico

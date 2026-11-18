@@ -67,7 +67,7 @@ export function renderDecemberPage() {
     </div></section>
 
     <section id="integration" class="section fair-integration" aria-labelledby="integration-title"><div class="container"><div class="fair-integration-panel reveal">
-      <div class="fair-integration-art"><img src="{{base}}${integration.image}" alt="Jornada de Integração do Ifes 2026" width="300" height="213" loading="lazy" /><p>30 DE NOVEMBRO<br /><span>A 4 DE DEZEMBRO DE 2026</span></p></div>
+      <div class="fair-integration-art"><img src="{{base}}${integration.image}" alt="Jornada de Integração do Ifes 2026" width="258" height="167" loading="lazy" /><p>30 DE NOVEMBRO<br /><span>A 4 DE DEZEMBRO DE 2026</span></p></div>
       <div class="fair-integration-copy"><p class="eyebrow">CONHECIMENTO QUE SE ENCONTRA</p><h2 id="integration-title">Jornada de Integração<span class="fair-pink">.</span></h2><p>${escapeMarkup(integration.description)}</p><a class="button-tinted fair-button fair-button-pink" href="${integration.link.url}" target="_blank" rel="noopener noreferrer" aria-label="${integration.link.label} (abre em nova aba)">${integration.link.label} ${arrow}</a></div>
     </div></div></section>
 

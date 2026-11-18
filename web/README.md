@@ -138,7 +138,7 @@ A programação tem credenciamento às 14h30, visita aos estandes às 15h, momen
 cultural às 17h30 e encerramento às 18h, em 04 de dezembro de 2026
 (04/12/2026), conforme confirmação do usuário. A página preserva o público convidado das 13 instituições.
 
-A Jornada de Integração tem apresentação própria, com `jic2026.png` e link
+A Jornada de Integração tem apresentação própria, com `jic2026.svg` e link
 para seu site oficial. O período 30/11–04/12/2026 e a programação aberta ao
 público pertencem à Jornada, que reúne também Fecinc e Semana de Ciência e
 Tecnologia do Campus Vila Velha. Março e junho continuam em construção,

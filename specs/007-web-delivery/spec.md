@@ -184,3 +184,13 @@ Checks locais, integração, publicação, conferência externa e recriação da
 feature precisam de evidências próprias. Esta autorização substitui o
 limite de preparação local do trecho anterior, mas ainda não comprova
 execução do Actions nem disponibilidade da versão 0.5.0 em produção.
+
+## Correção de imagem: release 0.5.1
+
+Em 2026-11-18, o usuário autorizou publicar a substituição de `jic2026.png`
+pelo SVG fornecido. A alteração é compatível e usa patch 0.5.1, commit
+`fix(web)` e referência não conclusiva `re #2`, preservando a issue aberta.
+Finalizar a branch atual pelo Git Flow e preparar a release regular a partir
+de `develop`; manter tag imutável, checks e implantação pela main no Actions.
+Após sucesso, conferir SVG, remoção do PNG e apresentação por HTTPS, registrar
+as evidências e devolver `feature/issue/2` ativa, limpa e alinhada a develop.

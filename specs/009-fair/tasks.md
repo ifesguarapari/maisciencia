@@ -103,3 +103,7 @@ verifica a implementação nem conclui T017–T019.
 ## Data confirmada pelo usuário
 
 - [x] T020 [US4] Registrar e apresentar 04/12/2026 no primeiro card, página do encontro, programação e metadados em `web/src/`; sincronizar contratos, documentação e testes existentes, executando os checks pertinentes e registrando os resultados em `verification.md` (FR-004, FR-010, FR-011, FR-016, FR-018, FR-019).
+
+## Arte vetorial da Jornada
+
+- [x] T021 [US4] Usar o SVG fornecido em `web/public/images/feira/jic2026.svg`, atualizar dados, dimensões no renderer, contrato e documentação, remover `jic2026.png` e conferir as referências e os checks pertinentes em `verification.md` (FR-002, FR-010, FR-017, FR-019).

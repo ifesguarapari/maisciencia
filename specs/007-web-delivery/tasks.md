@@ -54,3 +54,9 @@ T021 precede a integração da release; T022 depende dos checks da versão
 preparada; T023 depende do resultado remoto de T022. T024 confirma o estado
 final solicitado e não transforma a finalização da branch em conclusão da
 issue. Nenhuma tarefa presume publicação ou homologação humana.
+
+## Release patch 0.5.1
+
+- [ ] T025 [US2] Revisar a troca de imagem, validar checks pertinentes, criar commit `fix(web)` pelo Commitizen com `re #2`, finalizar a feature e preparar `release/0.5.1`, sincronizando manifestos e changelog (FR-002, FR-009, FR-010).
+- [ ] T026 [US2] Validar os builds da correção, registrar a preparação pelo Commitizen, finalizar a release e enviar main/develop/tag 0.5.1; acompanhar o resultado do commit exato no GitHub Actions (FR-002, FR-003, FR-004, FR-010).
+- [ ] T027 [US3] Conferir SVG, ausência do PNG e layout publicados, criar notas e evidências reais, preservar a issue #2 aberta e devolver a feature recriada pelo Git Flow, ativa, limpa e alinhada a develop (FR-005, FR-006, FR-007, FR-008, FR-009, FR-010).
