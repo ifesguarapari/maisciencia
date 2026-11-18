@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./fair.css";
+@import "./december.css";
 
 @font-face {
   font-family: "Inter";

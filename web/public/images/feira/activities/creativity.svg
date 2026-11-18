@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="0 0 480 300" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Ideas move on a tablet</title>
+  <desc id="description">A tilted tablet presents a playful interactive scene, with motion arcs, animation frames and creative tools surrounding it.</desc>
+  <defs>
+    <radialGradient id="glow"><stop stop-color="#F09BBE" stop-opacity=".24"/><stop offset="1" stop-color="#203445" stop-opacity="0"/></radialGradient>
+    <linearGradient id="surface" x1="140" y1="85" x2="335" y2="239" gradientUnits="userSpaceOnUse"><stop stop-color="#456578"/><stop offset="1" stop-color="#294457"/></linearGradient>
+    <linearGradient id="paper" x1="170" y1="92" x2="270" y2="208" gradientUnits="userSpaceOnUse"><stop stop-color="#F4EADD"/><stop offset="1" stop-color="#C4CAD0"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#B5D5E9" stroke-opacity=".055"/></pattern>
+  </defs>
+  <path fill="#203445" d="M0 0h480v300H0z"/>
+  <ellipse cx="240" cy="156" rx="222" ry="157" fill="url(#glow)"/>
+  <path fill="url(#grid)" d="M0 0h480v300H0z"/>
+  <g stroke="#F09BBE" stroke-opacity=".18"><ellipse cx="240" cy="235" rx="163" ry="32"/><ellipse cx="240" cy="235" rx="127" ry="23"/><path d="M45 235h28m334 0h28M240 273v12"/></g>
+  <path d="m144 216 120-52 88 30-119 55z" fill="#142A3D"/>
+  <g transform="rotate(-9 240 151)"><rect x="142" y="68" width="196" height="164" rx="15" fill="#172D41" stroke="#8FAFC2" stroke-width="2"/>
+  <rect x="152" y="79" width="176" height="140" rx="7" fill="#3A617D"/>
+  <path d="M152 175c29-44 49 20 77-14 32-39 59-28 99-1v59H152z" fill="#487B88"/>
+  <path d="M152 196c39-27 64 9 99-12 34-21 48-11 77 6v29H152z" fill="#2B4C65"/>
+  <circle cx="291" cy="110" r="15" fill="#F4CE2F"/>
+  <path d="M172 109h35m-26-8h15" stroke="#C2D9E2" stroke-width="3" stroke-linecap="round"/>
+  <path d="M226 135c-4-10 2-20 12-20s16 10 12 20l-4 17h-16z" fill="#F09BBE"/>
+  <circle cx="234" cy="124" r="2" fill="#24394F"/><circle cx="244" cy="124" r="2" fill="#24394F"/>
+  <path d="m233 151-7 18m18-18 7 18m-19-31-13 8m29-8 13 8" stroke="#F09BBE" stroke-width="4" stroke-linecap="round"/>
+  <path d="m260 171 19-27 9 20 15-8" stroke="#F4CE2F" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 5"/>
+  <path d="M164 205h13m6 0h13m6 0h13" stroke="#8AB6CA" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="240" cy="225" r="3" fill="#A0BDCD"/></g>
+  <g stroke="#F09BBE" stroke-width="2" stroke-linecap="round"><path d="M122 105c-8 14-10 30-5 45m-7-54c-11 19-14 41-7 62m251-39c8 15 10 30 5 45m7-54c11 19 14 42 7 62"/></g>
+  <path d="m300 48 10-6 22 35-10 6z" fill="#F4CE2F"/><path d="m322 83 9-6-1 14z" fill="#D7CAB3"/>
+  <path d="m91 177 22-3 14 18-22 4z" fill="#0096E1" stroke="#7AC6EA"/><path d="m97 172 18-5 13 17-17 5z" stroke="#80BFD9"/>
+  <g fill="#F4CE2F"><path d="M211 46h3v13h-3zm-5 5h13v3h-13zM356 219h3v12h-3zm-5 5h13v3h-13z"/></g>
+  <g stroke="#B8D6E5" stroke-opacity=".5" stroke-linecap="round"><path d="M91 83v10m-5-5h10M386 176v10m-5-5h10"/><circle cx="359" cy="66" r="2"/><circle cx="109" cy="212" r="2"/></g>
+</svg>

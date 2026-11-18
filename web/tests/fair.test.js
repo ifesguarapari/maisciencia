@@ -17,7 +17,7 @@ for (const base of ['/', '/maisciencia/']) {
     assert.match(html, /Primeira edição/)
     for (const [index, stage] of contract.stages.entries()) {
       const actual = fairEditions[index]
-      assert.equal(`${actual.month} de ${actual.year}`, stage.dateLabel)
+      assert.equal(actual.date ?? null, stage.exactDate ?? null)
       assert.equal(actual.location, stage.location)
       assert.equal(`/${actual.route}`, stage.route)
       assert.deepEqual(actual.institutions, stage.institutions)
@@ -58,7 +58,7 @@ for (const base of ['/', '/maisciencia/']) {
   })
 
   test(`each provisional encounter identifies its date and campus and returns to the fair under ${base}`, () => {
-    for (const stage of contract.stages) {
+    for (const stage of contract.stages.filter(({ view }) => view === 'placeholder')) {
       const html = renderFairPage(template, stage.route.slice(1), base)
       assert.match(html, />Em construção</)
       assert.ok(html.includes(stage.location))

@@ -36,6 +36,21 @@ T005 e verificações finais dependem da implementação concreta.
 ## Release 0.4.0 e reabertura da feature
 
 - [x] T017 [US2] Validar o diff e a instalação limpa; registrar a feature com Commitizen e `re #2`, finalizar `feature/issue/2` em `develop` e preparar `release/0.4.0`, manifestos web e `CHANGELOG.md` (FR-002, FR-009, FR-010).
-- [ ] T018 [US2] Conferir os dois builds, criar commit de preparação com Commitizen e `re #2`, finalizar Git Flow e enviar `main`, `develop` e tag 0.4.0; acompanhar os jobs do commit exato no Actions (FR-002, FR-003, FR-004, FR-010).
-- [ ] T019 [US3] Conferir páginas, recursos, SEO, novo cartão e apresentação por HTTPS/Chrome; publicar notas da versão e registrar evidências reais e limites em `verification.md` e `docs/seo.md` (FR-005, FR-006, FR-007, FR-008, FR-009).
-- [ ] T020 [US2] Incorporar evidências a `develop` com Commitizen e `re #2`, enviar a branch e recriar `feature/issue/2` pelo Git Flow, confirmando base, branch ativa e árvore limpa, sem fechar a issue #2 (FR-009, FR-010).
+- [x] T018 [US2] Conferir os dois builds, criar commit de preparação com Commitizen e `re #2`, finalizar Git Flow e enviar `main`, `develop` e tag 0.4.0; acompanhar os jobs do commit exato no Actions (FR-002, FR-003, FR-004, FR-010).
+- [x] T019 [US3] Conferir páginas, recursos, SEO, novo cartão e apresentação por HTTPS/Chrome; publicar notas da versão e registrar evidências reais e limites em `verification.md` e `docs/seo.md` (FR-005, FR-006, FR-007, FR-008, FR-009).
+- [x] T020 [US2] Incorporar evidências a `develop` com Commitizen e `re #2`, enviar a branch e recriar `feature/issue/2` pelo Git Flow, confirmando base, branch ativa e árvore limpa, sem fechar a issue #2 (FR-009, FR-010).
+
+## Release 0.5.0 e recriação da feature
+
+O pedido de 2026-11-18 autoriza esta sequência. As tarefas abaixo permanecem
+pendentes até evidências próprias; a publicação 0.4.0 é histórica.
+
+- [x] T021 [US2] Revisar o conteúdo final de dezembro e os ajustes da Feira, executar instalação e checks locais pertinentes, registrar a feature pelo Commitizen com `fix #2`, finalizar `feature/issue/2` e iniciar `release/0.5.0`, atualizando somente manifestos web e `CHANGELOG.md` conforme SemVer (FR-002, FR-005, FR-006, FR-009, FR-010).
+- [ ] T022 [US2] Conferir a preparação com builds/checks das duas bases, onze HTMLs, quatro URLs indexáveis e sete provisórias; criar o commit da release com Commitizen e `fix #2`, finalizar Git Flow, enviar `main`, `develop` e tag 0.5.0 e acompanhar os jobs do commit exato no Actions até seu resultado real (FR-002, FR-003, FR-004, FR-006, FR-010).
+- [ ] T023 [US3] Conferir por HTTPS e navegador a implantação, incluindo 04/12/2026 no Ifes Vila Velha, 20 atividades, recursos, SEO, robots e sitemap; publicar notas da release ligadas à tag existente e registrar evidências e limites reais em `verification.md` (FR-005, FR-006, FR-007, FR-008, FR-009).
+- [ ] T024 [US2] Conferir e preservar a issue GitHub #2 aberta, restaurando o estado caso `fix #2` cause fechamento automático; consolidar evidências em `develop` com Commitizen e a referência pedida, enviar a branch e recriar `feature/issue/2` pelo Git Flow após o deploy, confirmando branch ativa, base em `develop` e árvore limpa (FR-009, FR-010).
+
+T021 precede a integração da release; T022 depende dos checks da versão
+preparada; T023 depende do resultado remoto de T022. T024 confirma o estado
+final solicitado e não transforma a finalização da branch em conclusão da
+issue. Nenhuma tarefa presume publicação ou homologação humana.

@@ -8,7 +8,8 @@
   "indexableRoutes": [
     "home",
     "feira",
-    "feira/regulamento"
+    "feira/regulamento",
+    "feira/202612"
   ],
   "placeholderRobots": "noindex,follow",
   "homeRobots": "index,follow,max-image-preview:large",

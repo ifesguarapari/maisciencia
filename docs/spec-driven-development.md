@@ -41,7 +41,8 @@ preservando o conteúdo de `006` e a entrega estática de `007`. O
 [guia de SEO](seo.md) distingue checks locais de publicação, Search Console
 e indexação real; as evidências continuam na especificação correspondente.
 A evolução `009` substitui a antiga Feira provisória por uma apresentação
-própria, regulamento e três etapas em construção, preservando o conteúdo
+própria, regulamento e três etapas. A evolução de dezembro de 2026 acrescenta
+conteúdo ao primeiro encontro, mantendo março e junho em construção e preservando o conteúdo
 institucional de `006` e os mecanismos de entrega e SEO de `007` e `008`.
 
 ## Preparar a ferramenta

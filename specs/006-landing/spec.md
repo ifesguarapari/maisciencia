@@ -86,7 +86,7 @@ aplicativo e das oficinas, cujos ambientes ainda estão em preparação.
   translúcido e cantos levemente arredondados dos botões do cabeçalho.
 - Dado um botão Feira, quando o ativo, então chego à página FEMAIS-ES em
   `/feira`, conforme 009, com apresentação, primeira edição e regulamento.
-  Somente as três páginas de etapa permanecem em construção.
+  Dezembro tem programação e atividades; somente março e junho permanecem em construção.
 - Dada a página pública ou provisória, quando a abro, então não são enviados
   pedidos de sessão, saúde ou autenticação ao backend.
 - Dado um botão “Saiba mais”, quando o ativo, então abro a página provisória
@@ -270,3 +270,11 @@ azul-petróleo, primeira edição em três etapas e regulamento integral. A
 principal mantém conteúdo e botões existentes; sua referência à Feira passa
 a abrir essa apresentação. Evidências anteriores de `/feira` em construção
 são históricas, sem representar o comportamento vigente após 009.
+
+## Evolução: encontro de dezembro de 2026
+
+A evolução de 009 em 2026-11-18 completa `/feira/202612` a partir de
+`202612.docx`, sem alterar a página inicial ou os destinos das oficinas.
+O contrato desta apresentação reconhece dezembro como conteúdo do encontro;
+março e junho permanecem provisórios. Inscrições e aplicativo seguem fora
+deste escopo.

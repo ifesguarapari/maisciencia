@@ -20,7 +20,7 @@ mantém esses sinais quando uma navegação PWA recebe o shell da página inicia
 | `/login/` | `noindex,follow` | Excluída |
 | `/feira/` | `index,follow,max-image-preview:large` | Incluída |
 | `/feira/regulamento/` | `index,follow,max-image-preview:large` | Incluída |
-| `/feira/202612/` | `noindex,follow` | Excluída |
+| `/feira/202612/` | `index,follow,max-image-preview:large` | Incluída |
 | `/feira/202703/` | `noindex,follow` | Excluída |
 | `/feira/202706/` | `noindex,follow` | Excluída |
 | `/oficinas/` | `noindex,follow` | Excluída |
@@ -28,20 +28,20 @@ mantém esses sinais quando uma navegação PWA recebe o shell da página inicia
 | `/oficinas/lancar/` | `noindex,follow` | Excluída |
 | `/oficinas/melhorar/` | `noindex,follow` | Excluída |
 
-As oito páginas com aviso provisório continuam acessíveis e rastreáveis.
+As sete páginas com aviso provisório continuam acessíveis e rastreáveis.
 Não as bloqueie em `robots.txt`: o crawler precisa acessá-las para ler
 [`noindex`](https://developers.google.com/search/docs/crawling-indexing/block-indexing).
 Estilos, JavaScript e imagens também precisam estar disponíveis para renderização.
 
 O build gera `dist/robots.txt` permissivo, com indicação do sitemap, e
 `dist/sitemap.xml` com as URLs canônicas da inicial, da apresentação da
-FEMAIS-ES e do regulamento, conforme [009-fair](../specs/009-fair/spec.md). Não entram
+FEMAIS-ES, do regulamento e do encontro de dezembro, conforme [009-fair](../specs/009-fair/spec.md). Não entram
 fragmentos de seção, páginas em construção, `lastmod` inventado, prioridade
 ou frequência artificial. Um [sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
 informa as URLs desejadas, sem garantir seu rastreamento ou indexação.
 
 A página inicial contém JSON-LD `WebSite` com nome e URL reais. As demais
-páginas, inclusive feira e regulamento indexáveis, não repetem esse bloco. Não adicionar avaliações, depoimentos, endereço,
+páginas, inclusive feira, regulamento e dezembro indexáveis, não repetem esse bloco. Não adicionar avaliações, depoimentos, endereço,
 entidade jurídica ou `SearchAction` sem conteúdo e funcionalidade reais que
 os sustentem. O recurso de [nome do site](https://developers.google.com/search/docs/appearance/site-names)
 do Google se aplica a domínio ou subdomínio; hospedagem em subpasta não recebe
@@ -68,19 +68,35 @@ uma prévia anterior em cache. A validação local do HTML e da imagem não
 comprova que WhatsApp ou outras redes atualizaram a prévia; isso precisa ser
 conferido no compartilhamento real após o deploy.
 
-## Estado público observado em 2026-11-14
+## Evolução local do encontro de dezembro
 
-A resposta de produção consultada ainda corresponde à versão anterior: a
-inicial permite indexação, robots permite rastreamento e o sitemap contém
-apenas a inicial. `/feira/` ainda é uma apresentação provisória com
-`noindex,follow`; o regulamento e o novo cartão da Feira ainda responderam
-404 nessa consulta. Portanto, os sinais da Feira pronta preparados nesta
-branch só poderão ser coletados externamente depois da implantação.
+A tabela acima descreve a política da nova página `/feira/202612`, com conteúdo
+fornecido em `202612.docx`. Sua inclusão leva o sitemap local a quatro URLs,
+com sete páginas ainda provisórias. A release pública 0.4.0 descrita abaixo
+precede esse conteúdo e não comprova sua implantação. A próxima publicação
+deve conferir o HTML, canonical, sitemap e recursos antes de acompanhar a
+indexação. Não há novo acesso ao Search Console ou teste no WhatsApp nesta edição.
 
-Essas observações de HTTP não provam se uma URL já foi indexada. A conferência
-de propriedade, inspeção de URL e acompanhamento de cobertura dependem do
-Search Console, que não foi acessado nesta revisão. A imagem e os metadados
-locais também não comprovam atualização da prévia no WhatsApp.
+## Estado público após a release 0.4.0
+
+Em 2026-11-14, a release 0.4.0 foi publicada pelo GitHub Actions e conferida
+por HTTPS e Chrome no domínio `maisciencia.ifes.app.br`. A inicial, a Feira
+e o regulamento responderam com conteúdo pronto, canonical próprio e
+indexação permitida. O sitemap publicado contém essas três URLs. As oito
+páginas provisórias continuam com `noindex,follow`. Robots permite rastrear
+as páginas e os recursos, incluindo a nova imagem `icons/feira/slide.webp`,
+que respondeu 200 como WebP de 750 por 425 pixels.
+
+A consulta anterior à publicação encontrou a Feira provisória com noindex
+e recursos novos ainda ausentes. Essa situação foi substituída pelo deploy
+confirmado; seu registro histórico permanece nas evidências de 008. Os
+45 arquivos e as variantes de rota conferidos correspondem ao build validado,
+e a navegação atendida pelo service worker preservou conteúdo e metadados.
+
+Essas observações não provam indexação real. Propriedade, inspeção de URL e
+acompanhamento dependem do Search Console, que não foi acessado. Também não
+foi exercitada a prévia dentro do WhatsApp. Consulte as evidências da
+[publicação](../specs/007-web-delivery/verification.md).
 
 ## Origem pública e base
 

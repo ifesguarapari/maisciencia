@@ -319,3 +319,100 @@ teve 40 e 43 entradas, respectivamente. O artefato final em `web/dist` usa
 a raiz de produção; a cópia local usada na futura conferência HTTPS está
 em `/tmp/maisciencia-release040-root`. A validação SDD e diff permaneceram
 limpos após preparar os manifestos e o changelog.
+
+## Publicação da release 0.4.0 e recriação da feature
+
+O commit `94857a1`, `build(release): prepare 0.4.0`, foi criado no assistente
+Commitizen com rodapé `re #2`; os hooks passaram. O Git Flow finalizou a
+release com merge em `main`, tag anotada 0.4.0 e retorno a `develop`, removendo
+a branch temporária. A tag aponta para o commit de produção
+`c9dcd6a93d933a2e6d50ad8383ea14296793bc4e`; o merge de retorno a `develop`
+é `fcb5379ecb072a12f3d9025af19332c42de342e9`. As árvores das duas branches
+eram iguais ao finalizar a release. O push atômico enviou `main`, `develop`
+e somente a tag nova, sem reescrever histórico.
+
+O [run 43658087707](https://github.com/ifesguarapari/maisciencia/actions/runs/43658087707)
+terminou com `success` para esse commit exato. Os jobs Validate and build web
+(132641036911) e Deploy web to GitHub Pages (132641135607) passaram. O deploy
+foi concluído em `2026-11-15T00:26:09Z`, correspondente a 2026-11-14 no fuso
+do usuário. A [release 0.4.0](https://github.com/ifesguarapari/maisciencia/releases/tag/0.4.0)
+foi publicada com notas em português, tag verificada e referência `re #2`.
+
+A conferência HTTPS em `/tmp/maisciencia-release040-http.json` realizou
+66 consultas: 45 arquivos e 21 variantes de páginas. Todas terminaram em
+HTTP 200, com SHA-256 idêntico ao arquivo correspondente do artefato validado.
+Robots respondeu `text/plain`; sitemap, `application/xml`; e o cartão próprio
+da Feira, `image/webp`, com 79.688 bytes. Seu SHA-256 é
+`3c3897f851b1de60e887ccb3914575cb9ff71ec5c0511213100f7498df13f379`.
+
+Chrome online com perfil novo conferiu início e Feira em 1440 e 390 px,
+sem estouro horizontal, com proporções iguais das marcas do cabeçalho.
+Os três encontros apresentaram 30 instituições na distribuição 13/12/5,
+SNCT e o título “Acumule aprendizagens” corretos. O regulamento preservou
+exatamente 17 seções, 154 parágrafos normativos e dois de preâmbulo. Início,
+Feira e regulamento permitiram indexação; a etapa provisória manteve noindex.
+O cartão próprio respondeu 200 e foi decodificado com 750 por 425 px.
+Robots e sitemap permaneceram corretos com PWA ativo; o sitemap contém
+três URLs. Houve dez documentos atendidos pelo service worker e 168 respostas
+sem erros HTTP, rede, runtime, console ou chamadas de API.
+
+Evidência de navegador: `/tmp/maisciencia-release040-browser.json`, com
+lista de falhas vazia. Foram produzidas quatro capturas
+`/tmp/maisciencia-release040-{desktop,mobile}-{home,fair}.png`; as da Feira
+foram conferidas visualmente. Chrome terminou com código zero e o perfil
+temporário foi removido. Não foram testados instalação, atualização de uma
+PWA antiga, modo offline, indexação real no Google ou prévia no WhatsApp.
+Não houve homologação humana, mudança de API, workflow ou DNS.
+
+Depois de confirmar a publicação, `git flow feature start issue/2` recriou
+a branch a partir de `develop` no commit `fcb5379`. A execução retornou
+temporariamente a `develop` para consolidar estas evidências; o passo final
+usa fast-forward para atualizar a feature com a documentação e deixá-la
+ativa. Essa ordem permite registrar a recriação depois de executá-la, sem
+alterar a tag publicada. A leitura da issue #2 confirmou estado `open`,
+sem marcar critérios de aceite ou fechar a issue.
+
+## Preparação da release 0.5.0 (2026-11-18)
+
+O usuário autorizou a publicação do encontro de dezembro e os ajustes da Feira,
+com Commitizen, referência `fix #2`, Git Flow e recriação da feature após o
+deploy. A versão minor reflete a nova página funcional de dezembro, com cinco
+eixos, 20 atividades ilustradas e data confirmada de 04/12/2026 no Ifes Vila
+Velha. O commit foi registrado como `fix(web)` conforme a solicitação; o bump
+SemVer considera o conteúdo agregado da release e foi executado por
+`npm --prefix web version minor --no-git-tag-version`.
+
+Antes da integração, `git fetch --prune origin` confirmou `main` e `develop`
+alinhadas às respectivas branches remotas. A configuração Pages consultada
+indicou `build_type=workflow`, CNAME `maisciencia.ifes.app.br` e HTTPS obrigatório;
+o workflow Web está ativo. A issue #2 estava aberta. A revisão independente do
+diff e dos arquivos novos não encontrou bloqueios ou arquivos inesperados.
+A altura declarada da imagem JIC foi corrigida para seus 213 pixels reais.
+
+A instalação limpa pelo lockfile concluiu com 553 pacotes. ESLint passou,
+os 89 testes Node passaram, os nove testes Python do validador passaram e a
+validação SDD passou com nove features, 95 requisitos e 134 tarefas.
+`git diff --check` passou. O Commitizen 4.19.3 criou o commit
+`f126115f9592545c1d98b3eeb0570ff81e0875f3`, com o rodapé `fix #2`; o hook
+Conventional Commits passou e Black/Pylint foram ignorados por não haver
+arquivos API alterados. A seleção inicial de `feat` foi recusada pela revisão
+automática por interpretar o pedido como tipo `fix`; a seleção `fix(web)`
+foi autorizada, sem contornar hooks ou a revisão.
+
+`git flow feature finish issue/2` integrou a feature por fast-forward em
+`develop` e removeu a branch local; `git flow release start 0.5.0` iniciou a
+release. Manifestos e lockfile estão em 0.5.0 e o changelog foi atualizado.
+T021 está concluída. Os builds da versão preparada, a finalização da release,
+o envio, o resultado remoto e a recriação da feature ainda dependem de suas
+próprias evidências e não são presumidos por este registro.
+
+### Checks dos artefatos 0.5.0
+
+Os builds da versão preparada passaram nas duas bases. Em `/maisciencia/`,
+com origem `https://ifesguarapari.github.io`, o verificador conferiu 66 arquivos,
+905 referências internas e 11 HTMLs; o precache contém 61 entradas. Em `/`,
+com origem `https://maisciencia.ifes.app.br`, conferiu 66 arquivos, 908
+referências internas e 11 HTMLs; o precache contém 64 entradas. Os checks de
+SEO, robots e sitemap passaram em ambos, com quatro páginas prontas e sete
+provisórias. A validação SDD passou novamente. A API permanece em 0.1.0.
+O resultado do Actions e a validação pública ainda não foram executados.

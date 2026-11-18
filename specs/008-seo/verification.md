@@ -290,3 +290,15 @@ sitemaps e imagens do Google Search Central e o protocolo Open Graph.
 Referências e orientação de acompanhamento estão em
 [docs/seo.md](../../docs/seo.md). Atendimento técnico e sitemap não garantem
 indexação nem a exibição do cartão por todos os aplicativos.
+
+## Estado público após a release 0.4.0
+
+A publicação autorizada substituiu a Feira provisória pela apresentação de
+009. HTTPS e Chrome confirmaram início, Feira e regulamento indexáveis,
+sitemap com três URLs, etapas provisórias noindex e cartão próprio da Feira
+respondendo 200 como WebP de 750 por 425 px. A imagem corresponde byte a
+byte ao build. Os metadados permaneceram coerentes em navegações atendidas
+pelo service worker. A auditoria anterior que encontrou noindex/404 reflete
+a versão prévia, não o estado depois desta publicação. Evidências e run em
+[007-web-delivery](../007-web-delivery/verification.md). Não houve acesso ao
+Search Console, comprovação de indexação real ou prévia no WhatsApp.

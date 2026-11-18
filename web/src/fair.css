@@ -77,6 +77,7 @@ body.fair-page { background: #203445; }
 .fair-edition-card h3 { margin: 32px 0 0; font-size: 29px; font-weight: 600; line-height: 1.25; letter-spacing: -.045em; }
 .fair-edition-card h3 > span { display: block; margin-top: 8px; font-size: 16px; color: #b3c3d0; letter-spacing: -.01em; font-weight: 400; }
 .fair-campus { margin-top: 24px; font-size: 15px; font-weight: 550; }
+.fair-location-status { display: block; margin-top: 5px; color: #b3c3d0; font-size: 11px; font-style: italic; font-synthesis: style; font-weight: 400; line-height: 1.6; }
 .fair-card-schools { flex: 1; margin-top: 26px; }
 .fair-card-schools h4 { margin: 0 0 12px; color: #e0e9ef; font-size: 11px; font-weight: 550; line-height: 1.7; }
 .fair-card-schools ul { margin: 0; padding: 0; list-style: none; }

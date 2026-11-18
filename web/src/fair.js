@@ -1,6 +1,7 @@
 import { pages, placeholderPages } from './pages.js'
 import { regulation } from './regulation.js'
 import { fairEditions } from './fair-data.js'
+import { renderDecemberPage } from './december.js'
 
 export { fairEditions } from './fair-data.js'
 
@@ -13,16 +14,20 @@ const escapeMarkup = (value) => String(value).replace(/[&<>"']/g, (character) =>
 })[character])
 
 const arrow = '<svg class="icon" aria-hidden="true"><use href="{{base}}icons/interface.svg#arrow-right" /></svg>'
+const tentativeNotice = ' <em class="fair-location-status">(A confirmar)</em>'
 
 function renderEditions() {
-  return fairEditions.map(({ route, month, year, location, color, institutions }, index) => `
+  return fairEditions.map(({ route, date, month, year, location, tentative, color, institutions }, index) => {
+    const label = date ? `${date.slice(-2)} de ${month.toLowerCase()}` : month
+    return `
     <article class="fair-edition-card fair-color-${color} reveal" style="--reveal-delay: ${index * 80}ms">
       <div class="fair-edition-card-top"><span>ENCONTRO</span><svg class="icon" aria-hidden="true"><use href="{{base}}icons/interface.svg#pin" /></svg></div>
-      <h3>${month} <span>de ${year}</span></h3>
-      <p class="fair-campus">${location}</p>
+      <h3>${label} <span>de ${year}</span></h3>
+      <p class="fair-campus">${location}${tentative ? tentativeNotice : ''}</p>
       <div class="fair-card-schools"><h4>Instituições participantes</h4><ul>${institutions.map(({ name, city }) => `<li><span class="fair-school-name">${escapeMarkup(name)}</span>${city ? `<span class="fair-school-city">${escapeMarkup(city)}</span>` : ''}</li>`).join('')}</ul></div>
-      <a class="button-tinted fair-button fair-button-${color}" href="{{base}}${route}" aria-label="Saiba mais: ${month} de ${year} - ${location}">Saiba mais ${arrow}</a>
-    </article>`).join('')
+      <a class="button-tinted fair-button fair-button-${color}" href="{{base}}${route}" aria-label="Saiba mais: ${label} de ${year} - ${location}">Saiba mais ${arrow}</a>
+    </article>`
+  }).join('')
 }
 
 function renderRegulation() {
@@ -54,7 +59,7 @@ function renderPlaceholder(route) {
         <p class="eyebrow">PRIMEIRA EDIÇÃO</p>
         <img class="fair-stage-logo" src="{{base}}images/feira/femais.svg" alt="FEMAIS-ES" width="1033" height="736" />
         <h1 id="stage-title">${edition.month}<br />de ${edition.year}<span>.</span></h1>
-        <p class="fair-stage-campus">${edition.location}</p>
+        <p class="fair-stage-campus">${edition.location}${edition.tentative ? tentativeNotice : ''}</p>
         <p class="fair-stage-status">Em construção</p><p>${escapeMarkup(page.description)}</p>
         <a class="button-tinted fair-button fair-button-${edition.color}" href="{{base}}feira#edicao">Voltar à Feira ${arrow}</a>
       </div>
@@ -65,7 +70,8 @@ export function renderFairPage(template, route, base) {
   if (!isFairRoute(route)) throw new Error(`Unknown fair route: ${route}`)
   let html = template.replace('{{route}}', route)
   if (route !== 'feira') {
-    const content = route === 'feira/regulamento' ? renderRegulation() : renderPlaceholder(route)
+    const content = route === 'feira/regulamento' ? renderRegulation()
+      : route === 'feira/202612' ? renderDecemberPage() : renderPlaceholder(route)
     html = html.replace(/<!-- fair-content:start -->[\s\S]*?<!-- fair-content:end -->/, () => content)
   } else {
     html = html.replace('{{edition-cards}}', renderEditions)

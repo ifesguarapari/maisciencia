@@ -11,6 +11,11 @@ export const contentPages = {
     description: 'Consulte o regulamento geral da FEMAIS-ES: participação, modalidades, inclusão, inscrições, apresentação, avaliação e organização da feira.',
     indexable: true,
   },
+  'feira/202612': {
+    title: 'FEMAIS-ES em 04/12/2026 - Ifes Vila Velha',
+    description: 'Conheça a programação da FEMAIS-ES em 04 de dezembro de 2026 (04/12/2026), no Ifes Vila Velha: 20 atividades em cinco eixos, exposições e uma experiência gamificada.',
+    indexable: true,
+  },
 }
 
 export const placeholderPages = {
@@ -18,11 +23,6 @@ export const placeholderPages = {
     title: 'Acesso ao Aplicativo',
     description: 'O ambiente digital do Ifes Mais Ciência na Escola estará disponível em breve.',
     accent: '#67d5c7',
-  },
-  'feira/202612': {
-    title: 'Dezembro de 2026 - IFES Vila Velha',
-    description: 'Esta página está em construção. Em breve, confira as informações do encontro da primeira edição da FEMAIS-ES no IFES Vila Velha.',
-    accent: '#f4ce2f',
   },
   'feira/202703': {
     title: 'Março de 2027 - IFES Piúma',

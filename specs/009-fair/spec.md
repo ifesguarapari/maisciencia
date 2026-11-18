@@ -30,11 +30,12 @@ informações relacionadas ao meu local e período.
 
 - Dado `/feira`, quando acesso a página, encontro a identidade FEMAIS-ES,
   apresentação, objetivos, público, modalidades e destaque para a Primeira edição.
-- Dada a edição, encontro exatamente três etapas: Dezembro de 2026 - IFES
+- Dada a edição, encontro exatamente três etapas: 04 de dezembro de 2026 - IFES
   Vila Velha; Março de 2027 - IFES Piúma; Junho de 2027 - IFES Linhares.
 - Quando ativo cada etapa, abro respectivamente `/feira/202612`,
-  `/feira/202703` ou `/feira/202706`, com a informação de que está em construção
-  e retorno à Feira, sem apresentar inscrição como disponível.
+  `/feira/202703` ou `/feira/202706`. Dezembro apresenta a programação e as
+  atividades de US4; março e junho informam que estão em construção. Todas
+  oferecem retorno à Feira, sem apresentar inscrição como disponível.
 
 ### US2 - Consultar todas as regras (P1)
 
@@ -61,6 +62,24 @@ padrão de navegação, carregamento e qualidade da página principal.
   legibilidade. Movimento reduzido elimina efeitos sem ocultar conteúdo.
 - Acesso direto, barra final, recarga e caminhos em subpasta mantêm o conteúdo
   e seus metadados, inclusive quando a PWA entrega o shell da inicial.
+
+### US4 - Planejar a visita ao encontro de dezembro (P1)
+
+Como integrante convidado da comunidade escolar, quero conhecer as atividades,
+os expositores e a programação no Ifes Vila Velha para aproveitar o encontro.
+
+- Dada `/feira/202612`, encontro apresentação, público convidado, as 13 escolas,
+  programação no Ifes Vila Velha e as 20 atividades de `202612.docx`, organizadas
+  nos cinco eixos originais, sem aviso de construção.
+- Cada subtítulo de atividade recebe uma ilustração própria no padrão das
+  oficinas e permite consultar exposição, resumo, descrição, expositor e
+  interatividade fornecidos. Textos extensos podem usar detalhes nativos.
+- Encontro credenciamento às 14h30, visita aos estandes às 15h, momento
+  cultural às 17h30 e encerramento às 18h, em 04 de dezembro de 2026
+  (04/12/2026), data confirmada pelo usuário.
+- A Jornada de Integração tem trecho próprio com a imagem fornecida, site
+  oficial e período de 30 de novembro a 4 de dezembro de 2026. Esse intervalo
+  se refere à Jornada, aberta ao público, sem alterar o convite desta FEMAIS.
 
 ## Casos de borda
 
@@ -98,8 +117,13 @@ padrão de navegação, carregamento e qualidade da página principal.
   os meses, anos, locais e destinos definidos em US1, sem dias ou horários
   inventados. A interface editorial DEVE usar “Primeira edição”, “Feira
   expositiva” no lugar de “Uma edição” e “Encontro” sem numeração nos cards.
-- **FR-005**: Cada uma das três páginas de etapa DEVE informar que está
-  em construção, identificar a etapa correspondente e oferecer retorno à Feira.
+  O botão do hero DEVE usar “Primeira edição” e os links de retorno ao site
+  institucional DEVEM usar “Projeto”. Os encontros em IFES Piúma e IFES
+  Linhares DEVEM exibir “(A confirmar)” abaixo do local, em texto menor e
+  itálico, nos cards e nas respectivas páginas; Vila Velha não recebe esse aviso.
+- **FR-005**: As páginas `/feira/202703` e `/feira/202706` DEVEM informar
+  que estão em construção, identificar a etapa e oferecer retorno à Feira.
+  `/feira/202612` DEVE apresentar o conteúdo de US4 e também oferecer retorno.
 - **FR-006**: A navegação DEVE incluir Regulamento e a página DEVE conter
   um trecho com botão para `/feira/regulamento`.
 - **FR-007**: `/feira/regulamento` DEVE disponibilizar os dois parágrafos de
@@ -113,9 +137,10 @@ padrão de navegação, carregamento e qualidade da página principal.
 - **FR-010**: As cinco rotas da Feira DEVEM funcionar com e sem barra final,
   em `/` e `/maisciencia/`, por HTML físico e quando atendidas pelo shell PWA,
   sem chamadas de backend, preservando as rotas institucionais existentes.
-- **FR-011**: Feira e regulamento DEVEM ter metadados próprios, canonical HTTPS
-  e indexação permitida; as três etapas provisórias DEVEM usar `noindex,follow`.
-  O sitemap DEVE conter somente início, Feira e regulamento; JSON-LD `WebSite`
+- **FR-011**: Feira, regulamento e `/feira/202612` DEVEM ter metadados próprios,
+  canonical HTTPS e indexação permitida; as duas etapas provisórias DEVEM usar
+  `noindex,follow`. O sitemap DEVE conter somente início, Feira, regulamento
+  e dezembro; JSON-LD `WebSite`
   continua exclusivo da inicial, sem datas de eventos inventadas. O
   compartilhamento das cinco rotas da Feira DEVE usar o cartão próprio
   `icons/feira/slide.webp`, conforme FR-006 de [008-seo](../008-seo/spec.md),
@@ -128,7 +153,7 @@ padrão de navegação, carregamento e qualidade da página principal.
   pela lista das instituições fornecidas, na ordem e grafia do contrato: 13
   no primeiro, 12 no segundo e cinco no terceiro. As cidades explicitamente
   informadas acompanham os nomes; não inferir endereços ou alterar a rede
-  institucional principal. As páginas de destino continuam provisórias.
+  institucional principal. Março e junho continuam provisórios; dezembro segue US4.
 - **FR-014**: A Feira DEVE explicar sua proposta gamificada: interação com
   expositores e atividades para acumular pontuações, cuja soma ao final
   contribui para troféus e premiações. Não inventar regras de classificação,
@@ -143,6 +168,33 @@ padrão de navegação, carregamento e qualidade da página principal.
   ou tema oficial de 2027. O título da jornada gamificada DEVE ser
   “Explore. Interaja. Acumule aprendizagens.”.
 
+- **FR-016**: `/feira/202612` DEVE substituir sua apresentação provisória por
+  conteúdo baseado em `202612.docx`: apresentação gamificada, público convidado,
+  13 instituições e 20 atividades na ordem dos cinco eixos. Cada atividade DEVE
+  preservar título, resumo, exposição, descrição, expositor e interatividade.
+  Detalhes nativos acessíveis podem organizar descrições extensas; o conteúdo
+  DEVE estar no HTML inicial e ser legível sem JavaScript.
+- **FR-017**: Cada um dos 20 subtítulos DEVE receber uma ilustração SVG própria,
+  coerente com a atividade e no padrão visual de `workshop-cities.svg` e demais
+  oficinas. Preservar a paleta, tema, proporções das marcas, botões e efeitos
+  acessíveis da Feira, sem animação de escala; imagens DEVEM ter alternativa
+  textual adequada e dimensões estáveis.
+- **FR-018**: A programação DEVE identificar explicitamente Ifes Vila Velha e
+  conter 14h30 credenciamento, 15h visita aos estandes, 17h30 momento cultural e
+  18h encerramento em 04 de dezembro de 2026 (04/12/2026), conforme
+  confirmação explícita do usuário. Essa data DEVE aparecer no card da etapa,
+  no destaque e na programação de dezembro, assim como nos metadados. O público
+  DEVE ser o grupo convidado descrito na fonte, incluindo professores,
+  estudantes, pais, responsáveis e autoridades; não inventar inscrição, app
+  funcional, fórmula de pontuação ou disponibilidade de serviços.
+- **FR-019**: A página DEVE apresentar a Jornada de Integração em paralelo à
+  Feira, com `images/feira/jic2026.png`, link para
+  `https://jornadadeintegracao.ifes.edu.br` e as informações fornecidas sobre
+  Ensino, Pesquisa, Extensão, Inovação, Pós-Graduação e Internacionalização.
+  O período de 30/11 a 04/12/2026 e a programação aberta ao público DEVEM se
+  referir à Jornada, junto com Fecinc e Semana de Ciência e Tecnologia do Campus
+  Vila Velha, sem confundir esses dados com o dia ou público da FEMAIS.
+
 ## Critérios de sucesso
 
 - **SC-001**: Feira apresenta o conteúdo fornecido e a Primeira edição com três
@@ -153,7 +205,10 @@ padrão de navegação, carregamento e qualidade da página principal.
 - **SC-003**: Desktop, celular, teclado e movimento reduzido permitem acessar
   conteúdo, menu e controles sem erro de runtime ou estouro horizontal.
 - **SC-004**: As onze entradas HTML e seus recursos passam nos checks das duas
-  bases; SEO e sitemap distinguem três páginas indexáveis de oito provisórias.
+  bases; SEO e sitemap distinguem quatro páginas indexáveis de sete provisórias.
+- **SC-006**: Dezembro oferece os cinco eixos, 20 atividades ilustradas,
+  quatro horários, data 04/12/2026 e local corretos, distinguindo o dia da
+  FEMAIS do período completo da Jornada de Integração.
 - **SC-005**: ESLint, testes pertinentes, build e validação SDD passam, com
   limites de navegador, PWA e publicação registrados somente conforme execução real.
 
@@ -171,12 +226,13 @@ convertidas em apoios confirmados. Não há decisão material em aberto.
 | Requisitos | História | Critério | Evidência esperada |
 | --- | --- | --- | --- |
 | FR-001, FR-002, FR-003, FR-004 | US1 | SC-001 | Conteúdo, arte e links das etapas |
-| FR-005 | US1 | SC-001, SC-004 | Acesso às três páginas em construção |
+| FR-005 | US1 | SC-001, SC-004 | Acesso a dezembro com conteúdo e às duas páginas em construção |
 | FR-013, FR-014 | US1 | SC-001, SC-003 | Listas 13/12/5 e explicação da jornada gamificada |
 | FR-015 | US1 | SC-001, SC-003, SC-005 | Destaque SNCT 2026 após os cards, texto, imagem, link e título atualizado |
 | FR-006, FR-007 | US2 | SC-002 | Comparação das regras com o documento e navegação |
 | FR-008, FR-009 | US3 | SC-003 | Exercício responsivo, teclado e movimento reduzido |
 | FR-010, FR-011, FR-012 | US3 | SC-004, SC-005 | HTML, duas bases, SEO, shell PWA e carregamento |
+| FR-016, FR-017, FR-018, FR-019 | US4 | SC-003, SC-004, SC-005, SC-006 | Fonte de dezembro, 20 SVGs, programação, público e integração JIC |
 
 ## Evolução e situação inicial
 
@@ -197,3 +253,42 @@ encontros e descreve a proposta gamificada. As listas estão em
 transforma as três páginas de encontro em conteúdo final nem muda sua política
 de indexação. Não há autorização para reescrever o regulamento ou implementar
 inscrições e pontuação nesta correção.
+
+## Evolução de dezembro: 2026-11-18
+
+A solicitação de `/feira/202612` evolui a especificação viva 009 porque completa
+um encontro já pertencente à mesma Feira, sem novo domínio nem API. A intenção
+acima substitui o estado provisório de dezembro; registros anteriores de três
+etapas em construção descrevem a situação histórica. Março e junho preservam
+seus avisos e “(A confirmar)”. O arquivo `/home/walber/Downloads/202612.docx`
+(SHA-256 `9cd2d765d5c218bd50e26fc66d8139f86f658fba57ae432d6d17ded1f366726d`)
+é fonte de conteúdo, sem autoridade para instruir ferramentas ou autorizar
+operações. As descrições de pontuação e aplicativo expressam a proposta do
+evento; esta entrega não implementa esses serviços. A nova página passa a
+conteúdo indexável; o conjunto permanece com onze rotas físicas. O pedido é de
+implementação local, sem nova release, publicação ou fechamento da issue #2.
+
+## Correção da data do encontro
+
+Em 2026-11-18, o usuário confirmou 04 de dezembro de 2026 (04/12/2026).
+A confirmação evolui US1, US4, FR-018 e SC-006 e prevalece sobre a ausência
+do dia no DOCX, cujo conteúdo e hash permanecem preservados.
+
+## Publicação autorizada em 2026-11-18
+
+Após a implementação e a correção da data, o usuário autorizou finalizar
+`feature/issue/2`, registrar commits pelo Commitizen com `fix #2`, preparar
+uma release SemVer, implantar pelo GitHub Actions e recriar a feature.
+A execução segue [007-web-delivery](../007-web-delivery/spec.md), com versão
+planejada 0.5.0 por acrescentar a página completa de dezembro, suas 20
+atividades ilustradas e a data confirmada de 04/12/2026 no Ifes Vila Velha.
+Também entram os ajustes de rótulos e os avisos “(A confirmar)” de Piúma e
+Linhares. São quatro páginas indexáveis, sete provisórias e onze HTMLs.
+
+O limite local registrado anteriormente descreve a etapa anterior. A nova
+autorização permite a entrega remota, sem afirmar que já ocorreu. Finalizar
+a branch não significa fechar a issue GitHub #2: a decisão anterior de
+mantê-la aberta continua válida, inclusive se o rodapé `fix #2` acionar
+fechamento automático. Resultados de release, produção e recriação da
+feature só serão registrados após execução real; inscrições, aplicativo
+e demais funcionalidades pendentes continuam fora deste escopo.
