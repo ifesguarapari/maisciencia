@@ -502,3 +502,41 @@ internas em `/maisciencia/` e 908 em `/`, com onze HTMLs e SEO válido.
 O SVG aparece no HTML e no precache; o PNG está ausente da fonte e do
 artefato. A validação SDD passou novamente. As dependências não foram
 alteradas; a instalação limpa fica a cargo do workflow antes do deploy.
+
+### Implantação da patch 0.5.1
+
+Commitizen registrou `build(release): prepare 0.5.1`, commit `e269bee`, com
+`re #2`; o hook Conventional Commits passou. Git Flow finalizou a release,
+criou a tag anotada 0.5.1 e sincronizou main/develop. Main e tag apontam para
+`3c1bc814027770a0c426c2aaa3682124d85ce17f`; o merge de retorno gerou
+`c61a8a86fbed53c29ee9cd578246523d0e5d8aa0`. O push atômico enviou branches e
+tag, sem reescrever histórico.
+
+O [run 44239581080](https://github.com/ifesguarapari/maisciencia/actions/runs/44239581080)
+terminou em success para o SHA exato da tag. Build `134583885669` e deploy
+`134584035695` passaram, incluindo instalação limpa pelo lockfile, lint,
+testes, SDD, build e check do artefato antes de publicar.
+
+A conferência HTTPS usou TLS normal e confirmou: página do encontro 200,
+SVG 200 com MIME `image/svg+xml` e SHA-256 correspondente ao arquivo fornecido,
+PNG antigo 404 e service worker 200 com SVG no precache e sem referência ao
+PNG. A página continua informando 04/12/2026 no Ifes Vila Velha. Chrome real
+carregou o SVG em 1440, 390 e 320 px, mantendo sua proporção e sem rolagem
+horizontal; foram observadas 46 respostas e nenhum erro de recurso, console
+ou execução. A seção móvel foi inspecionada visualmente. Navegador e perfil
+temporários foram encerrados. Não foram repetidos testes de PWA offline,
+Search Console ou compartilhamento social nesta correção.
+
+As [notas 0.5.1](https://github.com/ifesguarapari/maisciencia/releases/tag/0.5.1)
+foram publicadas vinculadas à tag existente. A issue #2 foi encontrada fechada
+após a incorporação do histórico e reaberta pela CLI conforme decisão anterior;
+os novos commits usam referência não conclusiva `re #2`. Após o deploy,
+`git flow feature start issue/2` recriou a feature de develop, em `c61a8a8`,
+com árvore limpa. T025–T027 concluídas. As evidências documentais serão
+sincronizadas por fast-forward para devolver a feature alinhada a develop.
+A versão API permanece 0.1.0 e o workflow da API continua fora do escopo.
+
+Apoios temporários desta sessão: `/tmp/maisciencia-0.5.1-actions.json`,
+`/tmp/maisciencia-0.5.1-http-results.json` e
+`/tmp/maisciencia-0.5.1-browser-results.json`. Os fatos acima, changelog,
+contratos e histórico Git constituem o registro versionado.

@@ -506,3 +506,16 @@ e 135 tarefas, e `git diff --check` passou.
 Não foram criados testes específicos para a troca do recurso. A conferência
 desta rodada cobre o SVG e o artefato estático, sem nova execução de página
 no navegador ou publicação. A alteração permanece na feature local.
+
+## SVG da Jornada publicado em 0.5.1 (2026-11-18)
+
+A troca local foi implantada pela tag 0.5.1, SHA
+`3c1bc814027770a0c426c2aaa3682124d85ce17f`, com build e deploy aprovados no
+[run 44239581080](https://github.com/ifesguarapari/maisciencia/actions/runs/44239581080).
+O SVG responde 200 com MIME correto e hash idêntico ao arquivo fornecido;
+o PNG removido retorna 404. HTML e precache usam somente o SVG.
+Chrome em produção confirmou carregamento e proporção em 1440, 390 e 320 px,
+sem rolagem horizontal ou erros, e a seção móvel foi inspecionada. O conteúdo
+da Jornada e a data do encontro permanecem preservados. Detalhes de versão,
+Commitizen, Git Flow e validação estão nas
+[evidências de entrega](../007-web-delivery/verification.md).
